@@ -40,6 +40,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - Veutify (https://vuetifyjs.com/en/ )
 - Vue Stripe (https://vuestripe.com/)
+- Vue2-google-maps (https://github.com/xkjyeah/vue-google-maps)
 
 ### Code guidelines
 

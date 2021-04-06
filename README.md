@@ -44,3 +44,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Code guidelines
 
 - Use all lowercase file names preferably using periods for spaces (dot case)
+- Use yarn

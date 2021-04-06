@@ -38,12 +38,31 @@
       </v-badge>
 
       </v-btn>
-      <v-btn
-        href="/"
+
+      <v-menu offset-y>
+      <template v-slot:activator="{ on, attrs }">
+       <v-btn
+          v-bind="attrs"
+          v-on="on"
         text
       >
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
+      </template>
+      <v-list>
+        <v-list-item :to="{ name: 'Sign in' }">
+          <v-list-item-title>Sign in</v-list-item-title>
+        </v-list-item>
+        <v-list-item :to="{ name: 'NotificationSettings' }">
+          <v-list-item-title>Notification Settings</v-list-item-title>
+        </v-list-item>
+        <v-list-item :to="{ name: 'Log out' }">
+          <v-list-item-title>Log out</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+
+
     </v-app-bar>
  <v-navigation-drawer
       v-model="drawer"
@@ -90,6 +109,12 @@
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Bidding</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ name: 'Properties' }">
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Properties</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

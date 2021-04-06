@@ -38,10 +38,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Plugins in use
 
-- Veutify ( )
+- Veutify (https://vuetifyjs.com/en/ )
 - Vue Stripe (https://vuestripe.com/)
 
 ### Code guidelines
 
 - Use all lowercase file names preferably using periods for spaces (dot case)
 - Use yarn
+- Put api mocked up data in src/data directory, when this is live we should be able to delete these if we do not need them for testing.

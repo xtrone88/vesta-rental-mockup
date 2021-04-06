@@ -46,3 +46,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Use all lowercase file names preferably using periods for spaces (dot case)
 - Use yarn
 - Put api mocked up data in src/data directory, when this is live we should be able to delete these if we do not need them for testing.
+- Use Material design icons first if available, Font awesome icons next if they work, if neither work we will consider a custom icon

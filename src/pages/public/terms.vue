@@ -17,7 +17,6 @@
 
       </v-col>
 
-
     </v-row>
   <Footer />
   </div>
@@ -25,14 +24,14 @@
 </template>
 
 <script>
-  import Footer from "../../components/footer";
+import Footer from '../../components/footer';
 
-  export default {
-    title: 'Vesta Leese',
-    name: 'TermsPage',
-    components: {Footer},
-    data: () => ({
+export default {
+  title: 'Vesta Leese',
+  name: 'TermsPage',
+  components: { Footer },
+  data: () => ({
 
-    }),
-  }
+  }),
+};
 </script>

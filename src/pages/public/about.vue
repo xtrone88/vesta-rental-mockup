@@ -92,11 +92,11 @@
 </template>
 
 <script>
-  export default {
-    name: 'PropertiesPage',
+export default {
+  name: 'PropertiesPage',
 
-    data: () => ({
+  data: () => ({
 
-    }),
-  }
+  }),
+};
 </script>

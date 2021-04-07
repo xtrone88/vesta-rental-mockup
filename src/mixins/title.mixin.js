@@ -1,7 +1,7 @@
 function getTitle(vm) {
   const { title } = vm.$options;
   if (title) {
-    return typeof title === "function" ? title.call(vm) : title;
+    return typeof title === 'function' ? title.call(vm) : title;
   }
 }
 export default {
@@ -10,5 +10,5 @@ export default {
     if (title) {
       document.title = title;
     }
-  }
+  },
 };

@@ -11,7 +11,7 @@
       width='100%'
     >
 
-      <v-row class="pa-8">
+      <v-row class="pa-8 d-none d-sm-flex">
         <v-col>
           <v-row class="text-h4">Vestalease</v-row>
           <v-row>About Us</v-row>
@@ -62,22 +62,21 @@
         {{ new Date().getFullYear() }} — <strong>Vesta Lease</strong>
       </v-card-text>
 
-
     </v-card>
   </v-footer>
 </template>
 
 <script>
-  export default {
-    name: 'Footer',
+export default {
+  name: 'Footer',
 
-    data: () => ({
-      icons: [
-        'mdi-facebook',
-        'mdi-twitter',
-        // 'mdi-linkedin',
-        'mdi-instagram',
-      ],
-    }),
-  }
+  data: () => ({
+    icons: [
+      'mdi-facebook',
+      'mdi-twitter',
+      // 'mdi-linkedin',
+      'mdi-instagram',
+    ],
+  }),
+};
 </script>

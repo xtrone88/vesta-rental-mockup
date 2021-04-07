@@ -92,12 +92,12 @@
 </template>
 
 <script>
-  export default {
+export default {
 
-    name: 'FavoritesPage',
+  name: 'FavoritesPage',
 
-    data: () => ({
+  data: () => ({
 
-    }),
-  }
+  }),
+};
 </script>

@@ -2,7 +2,6 @@
   <v-container>
     <v-row class="text-center">
 
-
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
           Properties
@@ -31,13 +30,13 @@
 </template>
 
 <script>
-  import {sampleProperties} from "../../../data/properties";
+import { sampleProperties } from '../../../data/properties';
 
-  export default {
-    name: 'PropertiesListPage',
+export default {
+  name: 'PropertiesListPage',
 
-    data: () => ({
-      properties: sampleProperties
-    }),
-  }
+  data: () => ({
+    properties: sampleProperties,
+  }),
+};
 </script>

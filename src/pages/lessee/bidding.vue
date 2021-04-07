@@ -17,11 +17,11 @@
 </template>
 
 <script>
-  export default {
-    name: 'PreferencesPage',
+export default {
+  name: 'PreferencesPage',
 
-    data: () => ({
+  data: () => ({
 
-    }),
-  }
+  }),
+};
 </script>

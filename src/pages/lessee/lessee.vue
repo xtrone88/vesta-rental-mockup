@@ -1,16 +1,13 @@
 <template>
-  <v-container>
-      <router-view/>
-
-  </v-container>
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'LesseePage',
+export default {
+  name: "LesseePage",
 
-    data: () => ({
-
-    }),
-  }
+  data: () => ({}),
+};
 </script>

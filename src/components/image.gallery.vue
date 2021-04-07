@@ -7,7 +7,7 @@
             <v-col cols="6">
               <v-row>
                 <v-col class="d-flex child-flex" cols="12">
-                  <v-card flat tile class="d-flex">
+                  <v-card flat tile class="d-flex rounded-l-xl">
                     <v-img
                       :src="images[0]"
                       aspect-ratio="1"
@@ -39,7 +39,7 @@
                   class="d-flex child-flex"
                   cols="6"
                 >
-                  <v-card flat tile class="d-flex">
+                  <v-card flat tile :class="`d-flex ${idx == 1 ? 'rounded-tr-xl' : idx == 3 ? 'rounded-br-xl': ''}`">
                     <v-img :src="image" aspect-ratio="1" class="grey lighten-2" @click="index = idx + 1">
                       <template v-slot:placeholder>
                         <v-row

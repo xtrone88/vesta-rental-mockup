@@ -9,7 +9,8 @@
                 <v-col class="d-flex child-flex" cols="12">
                   <v-card flat tile class="d-flex rounded-l-xl">
                     <v-img
-                      :src="images[0]"
+                      v-if="pictures.length"
+                      :src="pictures[0]"
                       aspect-ratio="1"
                       class="grey lighten-2"
                       @click="index = 0"
@@ -34,7 +35,7 @@
             <v-col cols="6">
               <v-row>
                 <v-col
-                  v-for="(image, idx) in images.slice(1)"
+                  v-for="(image, idx) in pictures.slice(1)"
                   :key="idx"
                   class="d-flex child-flex"
                   cols="6"
@@ -60,7 +61,7 @@
             </v-col>
           </v-row>
         </v-container>
-        <gallery :images="images" :index="index" @close="index = null" />
+        <gallery :images="pictures" :index="index" @close="index = null" />
       </v-card>
     </v-col>
   </v-row>
@@ -70,17 +71,11 @@ import VueGallery from "vue-gallery";
 
 export default {
   name: "ImageGallery",
+  props: ['pictures'],
   components: {
     gallery: VueGallery,
   },
   data: () => ({
-    images: [
-      "https://picsum.photos/500/300?image=10",
-      "https://picsum.photos/500/300?image=15",
-      "https://picsum.photos/500/300?image=20",
-      "https://picsum.photos/500/300?image=25",
-      "https://picsum.photos/500/300?image=30",
-    ],
     index: null,
   }),
 };

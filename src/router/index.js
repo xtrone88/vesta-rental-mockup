@@ -5,7 +5,6 @@ import FAQPage from "../pages/public/faq";
 import ContactPage from "../pages/public/contact";
 import PropertiesListPage from "../pages/public/properties/properties.list";
 import WatchingPage from "../pages/lessee/watching";
-import Detail from '../pages/public/detail';
 
 import BiddingPage from "../pages/lessee/bidding";
 import NotificationsPage from "../pages/lessee/notifications";
@@ -46,11 +45,6 @@ const routes = [
         component: FAQPage
       }
     ]
-  },
-  {
-    path: "/detail",
-    name: "Detail",
-    component: Detail
   },
 
   // Authenticated routes

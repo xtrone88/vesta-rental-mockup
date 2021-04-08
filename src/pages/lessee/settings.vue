@@ -3,7 +3,7 @@
     <v-container class="pb-12">
       <v-row class="text-start">
         <v-col class="mb-4">
-          <h1 class="display-2 font-weight-bold mb-3">Lessor Dashboard</h1>
+          <h1 class="display-2 font-weight-bold mb-3">Settings</h1>
         </v-col>
       </v-row>
       <v-row class="text-start">
@@ -16,7 +16,7 @@
           >
             <v-icon size="64" class="ml-2">mdi-view-list</v-icon>
             <v-card-title>
-              Listings <v-icon>mdi-chevron-right</v-icon></v-card-title
+              Personal Info <v-icon>mdi-chevron-right</v-icon></v-card-title
             >
             <v-card-text
               >Basic info, like your name and photo, that you use in Vesta
@@ -26,7 +26,7 @@
         </v-col>
         <v-col md="3">
           <v-card
-            :to="{ path: '/lessor/bookings' }"
+            :to="{ path: '/account/notifications/settings' }"
             rounded="xl"
             class="dashboard_card"
             elevation="4"
@@ -34,7 +34,8 @@
             <v-icon size="64" class="ml-2">mdi-calendar-check</v-icon>
 
             <v-card-title
-              >Bookings <v-icon>mdi-chevron-right</v-icon></v-card-title
+              >Notification Settings
+              <v-icon>mdi-chevron-right</v-icon></v-card-title
             >
             <v-card-text>
               Choose notification preferences and how you want to be contacted
@@ -51,27 +52,9 @@
             <v-icon size="64" class="ml-2">mdi-file</v-icon>
 
             <v-card-title
-              >Revenue Report<v-icon>mdi-chevron-right</v-icon>
+              >Payments<v-icon>mdi-chevron-right</v-icon>
             </v-card-title>
             <v-card-text> Setup your payments and payout . </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-      <v-row class="text-start">
-        <v-col md="3">
-          <v-card
-            :to="{ path: '/lessor/bidding' }"
-            rounded="xl"
-            class="dashboard_card"
-            elevation="4"
-          >
-            <v-icon size="64" class="ml-2">mdi-gavel</v-icon>
-            <v-card-title
-              >Bidding Report<v-icon>mdi-chevron-right</v-icon>
-            </v-card-title>
-            <v-card-text>
-              Basic info, like your name and photo, that you use in Vesta Lease.
-            </v-card-text>
           </v-card>
         </v-col>
       </v-row>
@@ -84,8 +67,8 @@
 import Footer from "../../components/footer";
 
 export default {
-  title: "Dashboard",
-  name: "LessorDashboardPage",
+  title: "Settings",
+  name: "SettingsDashboardPage",
   components: { Footer },
   data: () => ({}),
 };

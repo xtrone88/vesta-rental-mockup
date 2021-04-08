@@ -18,12 +18,16 @@ import LogoutPage from '../pages/lessee/auth/logout';
 import LoginPage from '../pages/lessee/auth/login';
 import SignUpPage from '../pages/lessee/auth/signup';
 import TransactionsPage from '../pages/lessee/transactions';
-
+import SettingsDashboardPage from '../pages/lessee/settings';
 import LesseePage from '../pages/lessee/lessee';
 
 // Lessor
 import LessorPage from '../pages/lessor/lessor';
 import LessorDashboardPage from '../pages/lessor/dashboard';
+import LessorBiddingPage from '../pages/lessor/bidding';
+import LessorBookingPage from '../pages/lessor/bookings';
+import LessorRevenuePage from '../pages/lessor/revenue';
+import LessorListingsPage from '../pages/lessor/listings';
 
 
 Vue.use(VueRouter);
@@ -77,6 +81,11 @@ const routes = [
     component: LesseePage,
 
     children: [
+      {
+        path: 'settings',
+        name: 'SettingsDashboardPage',
+        component: SettingsDashboardPage,
+      },
       {
         path: 'watching',
         name: 'Watching',
@@ -140,23 +149,24 @@ const routes = [
       {
         path: 'listings',
         name: 'LessorListings',
-        component: WatchingPage,
+        component: LessorListingsPage,
       },
       {
         path: 'bookings',
         name: 'LessorBookings',
-        component: LoginPage,
+        component: LessorBookingPage,
       },
       {
         path: 'revenue',
         name: 'LessorRevenue',
-        component: SignUpPage,
+        component: LessorRevenuePage,
       },
       {
         path: 'bidding',
         name: 'LessorBidding',
-        component: BiddingPage,
+        component: LessorBiddingPage,
       },
+
 
     ],
   },

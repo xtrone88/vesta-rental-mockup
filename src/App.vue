@@ -45,6 +45,9 @@ i.v-icon.v-icon {
           <v-list-item :to="{ path: '/account/notifications/settings' }">
             <v-list-item-title>Notification Settings</v-list-item-title>
           </v-list-item>
+          <v-list-item :to="{ path: '/account/settings' }">
+            <v-list-item-title>Account Settings</v-list-item-title>
+          </v-list-item>
           <v-list-item :to="{ path: '/account/logout' }">
             <v-list-item-title>Log out</v-list-item-title>
           </v-list-item>
@@ -140,13 +143,18 @@ i.v-icon.v-icon {
             </v-list-item-icon>
             <v-list-item-title>Bidding</v-list-item-title>
           </v-list-item>
-          <v-list-item :to="{ path: '/properties' }">
+          <v-list-item :to="{ path: '/lessor/listings' }">
             <v-list-item-icon>
               <v-icon>mdi-view-list</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Properties</v-list-item-title>
+            <v-list-item-title>Listings</v-list-item-title>
           </v-list-item>
-
+          <v-list-item :to="{ path: '/lessor/bookings' }">
+            <v-list-item-icon>
+              <v-icon>mdi-calendar-check</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Bookings</v-list-item-title>
+          </v-list-item>
           <v-list-item>
             <v-list-item-title>Admin</v-list-item-title>
           </v-list-item>

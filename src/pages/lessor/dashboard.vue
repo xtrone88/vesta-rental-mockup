@@ -76,17 +76,13 @@
         </v-col>
       </v-row>
     </v-container>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Footer from "../../components/footer";
-
 export default {
   title: "Dashboard",
   name: "LessorDashboardPage",
-  components: { Footer },
   data: () => ({}),
 };
 </script>

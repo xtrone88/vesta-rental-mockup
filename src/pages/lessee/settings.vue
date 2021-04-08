@@ -59,17 +59,13 @@
         </v-col>
       </v-row>
     </v-container>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Footer from "../../components/footer";
-
 export default {
   title: "Settings",
   name: "SettingsDashboardPage",
-  components: { Footer },
   data: () => ({}),
 };
 </script>

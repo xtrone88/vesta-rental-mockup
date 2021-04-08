@@ -50,8 +50,6 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <Footer />
   </div>
 </template>
 

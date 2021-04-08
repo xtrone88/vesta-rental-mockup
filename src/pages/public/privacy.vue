@@ -14,17 +14,13 @@
         <h1 class="display-2 font-weight-bold mb-3">Privacy</h1>
       </v-col>
     </v-row>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Footer from '@/components/layout/footer/footer';
-
 export default {
   title: "Vesta Leese",
   name: "PrivacyPage",
-  components: { Footer },
   data: () => ({}),
 };
 </script>

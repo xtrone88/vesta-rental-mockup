@@ -1,45 +1,37 @@
 <template>
   <div>
-    <v-row class="text-center">
+    <v-row class="text-start">
       <v-container>
         <v-col class="mb-4">
           <h1 class="display-2 font-weight-bold mb-3">Bookings</h1>
         </v-col>
 
-        <v-col class="mb-5" cols="12">
-          <v-menu
-            ref="menu1"
-            v-model="menu1"
-            :close-on-content-click="false"
-            transition="scale-transition"
-            offset-y
-            max-width="290px"
-            min-width="auto"
-          >
-            <template v-slot:activator="{ on }">
-              <v-text-field
-                v-model="dateRangeText"
-                label="Date range"
-                prepend-inner-icon="mdi-calendar"
-                readonly
-                clearable
-                outlined
-                v-on="on"
-              />
-            </template>
-            <v-date-picker v-model="date" no-title @input="menu1 = false" />
-          </v-menu>
-
+        <v-col class="mb-5 text-end" cols="12">
+          <v-btn class="mx-2" color="primary">Current </v-btn>
+          <v-btn class="mx-2" color="disabled">Past </v-btn>
           <v-data-table
             :headers="headers"
-            :items="transactions"
+            :items="bookings"
             item-key="name"
             class="elevation-1"
             :search="search"
             :custom-filter="filterOnlyCapsText"
           >
             <template v-slot:top>
-              <v-text-field v-model="search" label="Search" class="mx-4" />
+              <v-text-field
+                append-icon="mdi-magnify"
+                v-model="search"
+                label="Search"
+                class="mx-4"
+              />
+            </template>
+            <template v-slot:[`item.name`]="{ item }">
+              {{ item.firstName }} {{ item.lastName }}
+            </template>
+            <template v-slot:[`item.actions`]="{ item }">
+              <v-btn @click="contactItem(item)" class="mx-2" color="primary"
+                >Contact
+              </v-btn>
             </template>
           </v-data-table>
         </v-col>
@@ -51,7 +43,7 @@
 
 <script>
 import moment from "moment";
-import { sampleTransactions } from "../../data/transactions";
+import { sampleBookings } from "../../data/bookings";
 
 export default {
   name: "LessorBookingsPage",
@@ -60,7 +52,7 @@ export default {
   data: () => ({
     dates: ["2019-09-10", "2019-09-20"],
     search: "",
-    transactions: sampleTransactions,
+    bookings: sampleBookings,
   }),
 
   computed: {
@@ -71,12 +63,14 @@ export default {
     },
     headers() {
       return [
-        { text: "ID", value: "id" },
-        { text: "Date", value: "createdAt" },
-        { text: "Property Type", value: "propertyType" },
-        { text: "Property Description", value: "propertyDescription" },
-        { text: "Amount", value: "amount" },
-        { text: "Status", value: "status" },
+        { text: "Property Title", value: "propertyTitle" },
+        { text: "In Date", value: "inDate" },
+        { text: "Out Date", value: "outDate" },
+
+        { text: "Customer Name", value: "name" },
+        { text: "Customer Phone", value: "phone" },
+
+        { text: "Action", value: "actions" },
       ];
     },
   },

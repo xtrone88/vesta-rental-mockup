@@ -1,45 +1,55 @@
 <template>
   <div>
-    <v-row class="text-center">
+    <v-row class="text-start">
       <v-container>
         <v-col class="mb-4">
           <h1 class="display-2 font-weight-bold mb-3">Listings</h1>
         </v-col>
 
         <v-col class="mb-5" cols="12">
-          <v-menu
-            ref="menu1"
-            v-model="menu1"
-            :close-on-content-click="false"
-            transition="scale-transition"
-            offset-y
-            max-width="290px"
-            min-width="auto"
-          >
-            <template v-slot:activator="{ on }">
-              <v-text-field
-                v-model="dateRangeText"
-                label="Date range"
-                prepend-inner-icon="mdi-calendar"
-                readonly
-                clearable
-                outlined
-                v-on="on"
-              />
-            </template>
-            <v-date-picker v-model="date" no-title @input="menu1 = false" />
-          </v-menu>
-
           <v-data-table
             :headers="headers"
-            :items="transactions"
+            :items="properties"
             item-key="name"
             class="elevation-1"
             :search="search"
-            :custom-filter="filterOnlyCapsText"
           >
             <template v-slot:top>
-              <v-text-field v-model="search" label="Search" class="mx-4" />
+              <v-text-field
+                v-model="search"
+                label="Search"
+                append-icon="mdi-magnify"
+                class="mx-4"
+              />
+            </template>
+            <template v-slot:[`item.manager`]="{ item }">
+              <div class="d-flex">
+                <v-chip class="ma-2" color="primary" label>
+                  <v-icon left> mdi-account-circle-outline </v-icon>
+                  John Leider
+                </v-chip>
+                <v-btn
+                  @click="addManagerListing(item)"
+                  class="ma-2"
+                  x-small
+                  fab
+                  dark
+                  color="green"
+                >
+                  <v-icon dark> mdi-plus </v-icon>
+                </v-btn>
+              </div>
+            </template>
+            <template v-slot:[`item.stats.views`]="{ item }">
+              <v-chip color="red" dark>
+                {{ item.stats.views }}
+              </v-chip>
+            </template>
+            <template v-slot:[`item.actions`]="{ item }">
+              <v-icon small class="mr-2" @click="editItem(item)">
+                mdi-pencil
+              </v-icon>
+              <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
             </template>
           </v-data-table>
         </v-col>
@@ -51,16 +61,15 @@
 
 <script>
 import moment from "moment";
-import { sampleTransactions } from "../../data/transactions";
+import { sampleProperties } from "../../data/properties";
 
 export default {
   name: "LessorListingsPage",
   title: "Listings",
 
   data: () => ({
-    dates: ["2019-09-10", "2019-09-20"],
     search: "",
-    transactions: sampleTransactions,
+    properties: sampleProperties,
   }),
 
   computed: {
@@ -71,23 +80,16 @@ export default {
     },
     headers() {
       return [
-        { text: "ID", value: "id" },
-        { text: "Date", value: "createdAt" },
         { text: "Property Type", value: "propertyType" },
-        { text: "Property Description", value: "propertyDescription" },
-        { text: "Amount", value: "amount" },
-        { text: "Status", value: "status" },
+        { text: "Property Title", value: "title" },
+        { text: "Property Manager", value: "manager" },
+        { text: "Reserve Bids" },
+        { text: "Base Price", value: "prices.basePrice" },
+        { text: "Views", value: "stats.views" },
+        { text: "Favorites", value: "stats.favorites" },
+        { text: "Shares", value: "stats.shares" },
+        { text: "Actions", value: "actions", sortable: false },
       ];
-    },
-  },
-  methods: {
-    filterOnlyCapsText(value, search) {
-      return (
-        value != null &&
-        search != null &&
-        typeof value === "string" &&
-        value.toString().toLocaleUpperCase().indexOf(search) !== -1
-      );
     },
   },
 };

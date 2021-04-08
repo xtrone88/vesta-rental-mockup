@@ -10,6 +10,8 @@
   "dependencies": {
     "@vue-stripe/vue-stripe": "^4.1.8",
     "core-js": "^3.6.5",
+    "axios": "^0.21.1",
+    "axios-mock-adapter": "^1.19.0",
     "moment": "^2.29.1",
     "v-stripe-elements": "^1.2.0",
     "vue": "^2.6.11",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-eslint": "^10.1.0",

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-row class="text-center">
-      <v-container>
+    <v-container>
+      <v-row class="text-start">
         <v-col class="mb-4">
           <h1 class="display-2 font-weight-bold mb-3">Revenue</h1>
         </v-col>
@@ -43,8 +43,14 @@
             </template>
           </v-data-table>
         </v-col>
-      </v-container>
-    </v-row>
+      </v-row>
+      <v-row class="text-end">
+        <v-col class="mr-5 mb-12">
+          <h3>Total Revenue $4493</h3>
+        </v-col>
+      </v-row>
+    </v-container>
+
     <Footer />
   </div>
 </template>

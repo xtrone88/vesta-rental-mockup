@@ -1,0 +1,27 @@
+export const sampleBookings = [
+  {
+    propertyTitle: 'Mill house',
+    properties: [1],
+    locale: 'en-US',
+    active: false,
+    allowReservations: false,
+    showReservationTooltips: true,
+    id: 1,
+    inDate: '2021-09-03T15:48:45.072Z',
+    outDate: '2022-09-06T15:48:45.072Z',
+    accountId: '596f6fe706112710005d96ff',
+    firstName: 'John ',
+    lastName: 'Smith',
+    email: 'test_test1@test.com',
+    address: 'test address',
+    phone: '+18560341234',
+    picture: {
+      thumbnail: 'https://cdn.filepicker.io/api/file/gQOIcCCnTs2PysfQDav6',
+      regular: 'https://cdn.filepicker.io/api/file/gQOIcCCnTs2PysfQDav6',
+    },
+    notes: 'test notes',
+    createdAt: '2020-03-13T12:17:06.758Z',
+    fullName: 'test_test1 test_test1',
+    __v: 0,
+  },
+];

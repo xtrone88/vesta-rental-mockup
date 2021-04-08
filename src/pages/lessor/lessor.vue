@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "LesseePage",
+  name: "LessorPage",
 
   data: () => ({}),
 };

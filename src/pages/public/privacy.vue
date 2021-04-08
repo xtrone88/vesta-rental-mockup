@@ -11,7 +11,7 @@
       </v-col>
 
       <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">Welcome to Vesta Lease</h1>
+        <h1 class="display-2 font-weight-bold mb-3">Privacy</h1>
       </v-col>
     </v-row>
     <Footer />
@@ -19,9 +19,12 @@
 </template>
 
 <script>
+import Footer from '@/components/layout/footer/footer';
+
 export default {
   title: "Vesta Leese",
-  name: "HomePage",
+  name: "PrivacyPage",
+  components: { Footer },
   data: () => ({}),
 };
 </script>

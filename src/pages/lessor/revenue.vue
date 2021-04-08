@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-row class="text-center">
-      <v-container>
+    <v-container>
+      <v-row class="text-start">
         <v-col class="mb-4">
-          <h1 class="display-2 font-weight-bold mb-3">Transactions Page</h1>
+          <h1 class="display-2 font-weight-bold mb-3">Revenue</h1>
         </v-col>
 
         <v-col class="mb-5" cols="12">
@@ -43,8 +43,14 @@
             </template>
           </v-data-table>
         </v-col>
-      </v-container>
-    </v-row>
+      </v-row>
+      <v-row class="text-end">
+        <v-col class="mr-5 mb-12">
+          <h3>Total Revenue $4493</h3>
+        </v-col>
+      </v-row>
+    </v-container>
+
     <Footer />
   </div>
 </template>
@@ -54,7 +60,7 @@ import moment from "moment";
 import { sampleTransactions } from "../../data/transactions";
 
 export default {
-  name: "TransactionsPage",
+  name: "LessorRevenuePage",
   title: "Transactions",
 
   data: () => ({

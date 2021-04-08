@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-row class="text-center">
+    <v-row class="text-start">
       <v-container>
         <v-col class="mb-4">
-          <h1 class="display-2 font-weight-bold mb-3">Transactions Page</h1>
+          <h1 class="display-2 font-weight-bold mb-3">Bidding</h1>
         </v-col>
 
         <v-col class="mb-5" cols="12">
@@ -54,8 +54,8 @@ import moment from "moment";
 import { sampleTransactions } from "../../data/transactions";
 
 export default {
-  name: "TransactionsPage",
-  title: "Transactions",
+  name: "LessorBiddingPage",
+  title: "Bidding",
 
   data: () => ({
     dates: ["2019-09-10", "2019-09-20"],

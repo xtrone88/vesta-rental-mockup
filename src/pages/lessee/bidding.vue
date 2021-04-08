@@ -10,11 +10,9 @@
           <v-layout row wrap :class="`bid ${bid.status} my-2`">
             <v-flex xs12 md6 sm12>
               <v-layout col wrap>
-
                 <v-flex xs12 md6 sm6>
                   <v-img width="250px" height="150px" :src="`${bid.image}`" class="rounded-lg"></v-img>
                 </v-flex>
-
                 <v-flex xs12 md6 sm6>
                   <v-layout column :fill-height="!$vuetify.breakpoint.xs" :class="{'ml-5': $vuetify.breakpoint.mdOnly, 'mt-4': $vuetify.breakpoint.xsOnly}">
                     <v-layout column>
@@ -27,7 +25,6 @@
                     </v-layout>
                   </v-layout>
                 </v-flex>
-
               </v-layout>
             </v-flex>
 

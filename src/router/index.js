@@ -4,6 +4,8 @@ import HomePage from '../pages/public/home';
 import FAQPage from '../pages/public/faq';
 import ContactPage from '../pages/public/contact';
 import PropertiesListPage from '../pages/public/properties/properties.list';
+import TermsPage from '../pages/public/terms';
+import PrivacyPage from '../pages/public/privacy';
 
 // Lessee
 import WatchingPage from '../pages/lessee/watching';
@@ -18,8 +20,11 @@ import SignUpPage from '../pages/lessee/auth/signup';
 import TransactionsPage from '../pages/lessee/transactions';
 
 import LesseePage from '../pages/lessee/lessee';
-import TermsPage from '../pages/public/terms';
-import PrivacyPage from '../pages/public/privacy';
+
+// Lessor
+import LessorPage from '../pages/lessor/lessor';
+import LessorDashboardPage from '../pages/lessor/dashboard';
+
 
 Vue.use(VueRouter);
 
@@ -117,6 +122,42 @@ const routes = [
         name: 'NotificationSettings',
         component: NotificationSettingsPage,
       },
+    ],
+  },
+
+  // Authenticated routes
+  {
+    path: '/lessor',
+    name: 'Lessor',
+    component: LessorPage,
+
+    children: [
+      {
+        path: 'dashboard',
+        name: 'LessorDashboard',
+        component: LessorDashboardPage,
+      },
+      {
+        path: 'listings',
+        name: 'LessorListings',
+        component: WatchingPage,
+      },
+      {
+        path: 'bookings',
+        name: 'LessorBookings',
+        component: LoginPage,
+      },
+      {
+        path: 'revenue',
+        name: 'LessorRevenue',
+        component: SignUpPage,
+      },
+      {
+        path: 'bidding',
+        name: 'LessorBidding',
+        component: LogoutPage,
+      },
+
     ],
   },
 ];

@@ -1,3 +1,8 @@
+<style>
+i.v-icon.v-icon {
+  color: black;
+}
+</style>
 <template>
   <v-app>
     <v-app-bar app color="#242424" dark>
@@ -73,6 +78,51 @@
               <v-icon>mdi-compare-horizontal</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Transactions</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item :to="{ path: '/account/watching' }">
+            <v-list-item-icon>
+              <v-icon>mdi-eye</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Watching</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ path: '/account/favorites' }">
+            <v-list-item-icon>
+              <v-icon>mdi-heart</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Favorites</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ path: '/account/bidding' }">
+            <v-list-item-icon>
+              <v-icon>mdi-gavel</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Bidding</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ path: '/properties' }">
+            <v-list-item-icon>
+              <v-icon>mdi-view-list</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Properties</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+        <v-divider></v-divider>
+
+        <v-list-item-group
+          v-model="group"
+          active-class="indigo--text text--accent-4"
+        >
+          <v-list-item :to="{ path: '/lessor/dashboard' }">
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Lessor Dashboard</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item :to="{ path: '/account/transactions' }">
+            <v-list-item-icon>
+              <v-icon>mdi-compare-horizontal</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Listings</v-list-item-title>
           </v-list-item>
 
           <v-list-item :to="{ path: '/account/watching' }">

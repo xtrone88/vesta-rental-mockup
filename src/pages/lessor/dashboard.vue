@@ -7,7 +7,7 @@
         </v-col>
       </v-row>
       <v-row class="text-start">
-        <v-col xs="12" md="3">
+        <v-col cols="12" md="3">
           <v-card
             :to="{ path: '/lessor/listings' }"
             rounded="xl"
@@ -24,7 +24,7 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col md="3">
+        <v-col cols="12" md="3">
           <v-card
             :to="{ path: '/lessor/bookings' }"
             rounded="xl"
@@ -41,7 +41,7 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col md="3">
+        <v-col cols="12" md="3">
           <v-card
             :to="{ path: '/lessor/revenue' }"
             rounded="xl"
@@ -58,7 +58,7 @@
         </v-col>
       </v-row>
       <v-row class="text-start">
-        <v-col md="3">
+        <v-col cols="12" md="3">
           <v-card
             :to="{ path: '/lessor/bidding' }"
             rounded="xl"

@@ -115,34 +115,9 @@ i.v-icon.v-icon {
           </v-list-item>
           <v-list-item :to="{ path: '/lessor/dashboard' }">
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon>mdi-view-dashboard</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Dashboard</v-list-item-title>
-          </v-list-item>
-          <v-list-item :to="{ path: '/lessor/transactions' }">
-            <v-list-item-icon>
-              <v-icon>mdi-compare-horizontal</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Listings</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item :to="{ path: '/lessor/watching' }">
-            <v-list-item-icon>
-              <v-icon>mdi-eye</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Watching</v-list-item-title>
-          </v-list-item>
-          <v-list-item :to="{ path: '/lessor/favorites' }">
-            <v-list-item-icon>
-              <v-icon>mdi-heart</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Favorites</v-list-item-title>
-          </v-list-item>
-          <v-list-item :to="{ path: '/lessor/bidding' }">
-            <v-list-item-icon>
-              <v-icon>mdi-gavel</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Bidding</v-list-item-title>
           </v-list-item>
           <v-list-item :to="{ path: '/lessor/listings' }">
             <v-list-item-icon>
@@ -156,12 +131,26 @@ i.v-icon.v-icon {
             </v-list-item-icon>
             <v-list-item-title>Bookings</v-list-item-title>
           </v-list-item>
+          <v-list-item :to="{ path: '/lessor/revenue' }">
+            <v-list-item-icon>
+              <v-icon>mdi-file</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Revenue</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item :to="{ path: '/lessor/bidding' }">
+            <v-list-item-icon>
+              <v-icon>mdi-gavel</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Bidding</v-list-item-title>
+          </v-list-item>
+
           <v-list-item>
             <v-list-item-title>Admin</v-list-item-title>
           </v-list-item>
           <v-list-item :to="{ path: '/admin/dashboard' }">
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon>mdi-view-dashboard</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item>

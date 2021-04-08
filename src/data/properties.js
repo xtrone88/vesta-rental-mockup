@@ -83,7 +83,13 @@ export const sampleProperties = [
       'Refrigerator',
       'Stove',
     ],
-    pictures: [],
+    pictures: [
+      "https://picsum.photos/500/300?image=10",
+      "https://picsum.photos/500/300?image=15",
+      "https://picsum.photos/500/300?image=20",
+      "https://picsum.photos/500/300?image=25",
+      "https://picsum.photos/500/300?image=30",
+    ],
     picture: {
       thumbnail: 'https://cdn.filepicker.io/api/file/BE7EpDKNSviVKIRUw91o',
     },

@@ -27,7 +27,7 @@
                 v-on="on"
               />
             </template>
-            <v-date-picker v-model="date" no-title @input="menu1 = false" />
+            <v-date-picker v-model="dates" no-title @input="menu1 = false" />
           </v-menu>
 
           <v-data-table
@@ -60,6 +60,7 @@ export default {
   data: () => ({
     dates: ["2019-09-10", "2019-09-20"],
     search: "",
+    menu1: false,
     transactions: sampleTransactions,
   }),
 

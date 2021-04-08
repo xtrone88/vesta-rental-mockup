@@ -1,11 +1,11 @@
-<style>
+<style lang="scss">
 i.v-icon.v-icon {
   color: black;
 }
 </style>
 <template>
   <v-app>
-    <v-app-bar app color="#242424" dark>
+    <v-app-bar app :color="appBarColor" dark>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <div class="d-flex align-center">
         <v-btn :to="{ name: 'Home' }" plain>
@@ -198,7 +198,16 @@ export default {
   name: "App",
 
   components: {},
-
+  computed: {
+    appBarColor: function () {
+      if (this.$route.path.startsWith("/lessor")) {
+        return "#12a7c6";
+      } else if (this.$route.path.startsWith("/admin")) {
+        return "blue";
+      }
+      return "#242424";
+    },
+  },
   data: () => ({
     drawer: false,
     group: null,

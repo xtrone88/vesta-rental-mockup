@@ -155,7 +155,7 @@ const routes = [
       {
         path: 'bidding',
         name: 'LessorBidding',
-        component: LogoutPage,
+        component: BiddingPage,
       },
 
     ],

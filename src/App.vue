@@ -23,7 +23,7 @@ i.v-icon.v-icon {
 
       <v-spacer></v-spacer>
       <v-btn :to="{ path: '/account/notifications' }" text>
-        <v-badge color="green" content="6">
+        <v-badge overlap color="green" content="6">
           <v-icon>mdi-bell</v-icon>
         </v-badge>
       </v-btn>
@@ -198,6 +198,7 @@ i.v-icon.v-icon {
 // import Header from "./components/layout/header/header";
 // import Sidebar from "./components/layout/sidebar/sidebar";
 import Footer from "./components/layout/footer/footer";
+import "./assets/css/main.css";
 
 export default {
   name: "App",

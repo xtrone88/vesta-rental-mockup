@@ -122,7 +122,7 @@
               </v-card-text>
             </v-card>
             <v-btn block class="mt-6 cyan white--text"> contact </v-btn>
-          </v-col>          
+          </v-col>
         </v-row>
       </v-col>
     </v-row>
@@ -155,7 +155,7 @@ import { sampleProperties } from "@/data/properties";
 import moment from "moment";
 
 export default {
-  name: "PropertiesListPage",
+  name: "PropertyDetailPage",
   components: {
     ImageGallery,
   },
@@ -191,4 +191,3 @@ export default {
   },
 };
 </script>
-

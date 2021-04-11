@@ -672,5 +672,4 @@ export const sampleProperties = [
       value: 'unknown',
     },
   },
-
 ];

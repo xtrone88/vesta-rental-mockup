@@ -1,24 +1,18 @@
 <template>
   <v-app-bar app color="black" dark>
     <v-app-bar-nav-icon @click="setSidebarDrawer(!Sidebar_drawer)"></v-app-bar-nav-icon>
+    
     <div class="d-flex align-center">
-      <v-img
-        alt="Vuetify Logo"
-        class="shrink mr-2"
-        contain
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-        transition="scale-transition"
-        width="40"
-      />
-
-      <v-img
-        alt="vesta leese"
-        class="shrink mt-1 hidden-sm-and-down"
-        contain
-        min-width="100"
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-        width="100"
-      />
+      <v-btn :to="{ name: 'Home' }" plain>
+        <v-img
+          alt="vesta leese"
+          class="mt-1"
+          contain
+          min-width="100"
+          src="@/assets/logo.png"
+          width="100"
+        />
+      </v-btn>
     </div>
 
     <v-spacer></v-spacer>
@@ -29,23 +23,37 @@
     </v-btn>
 
     <v-menu offset-y>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn v-bind="attrs" v-on="on" text>
-          <v-icon>mdi-account-circle</v-icon>
-        </v-btn>
-      </template>
-      <v-list>
-        <v-list-item :to="{ name: 'Sign in' }">
-          <v-list-item-title>Sign in</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ name: 'NotificationSettings' }">
-          <v-list-item-title>Notification Settings</v-list-item-title>
-        </v-list-item>
-        <v-list-item :to="{ name: 'Log out' }">
-          <v-list-item-title>Log out</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" v-on="on" text>
+            <v-icon>mdi-account-circle</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item :to="{ name: 'SignUp' }">
+            <v-list-item-title>Sign up</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ name: 'Login' }">
+            <v-list-item-title>Log in</v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item :to="{ name: 'NotificationSettings' }">
+            <v-list-item-title>Notification Settings</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ name: 'SettingsDashboardPage' }">
+            <v-list-item-title>Account Settings</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ name: 'Logout' }">
+            <v-list-item-title>Log out</v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item :to="{ name: 'Properties' }">
+            <v-list-item-title>List your properties for lease</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ path: '/help' }">
+            <v-list-item-title>Help</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
   </v-app-bar>
 </template>
 
@@ -75,7 +83,7 @@ export default {
   }),
 
   computed: {
-    ...mapState(["Sidebar_drawer"]),
+    ...mapState(["Sidebar_drawer"])
   },
 
   methods: {

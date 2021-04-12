@@ -3,9 +3,10 @@ import VueRouter from 'vue-router';
 import HomePage from '../pages/public/home';
 import FAQPage from '../pages/public/faq';
 import ContactPage from '../pages/public/contact';
-import PropertiesListPage from '../pages/public/properties/properties.list';
+import PropertyDetailPage from "../pages/public/properties/property.detail";
 import TermsPage from '../pages/public/terms';
 import PrivacyPage from '../pages/public/privacy';
+import PropertiesPage from '../pages/public/property';
 
 // Lessee
 import WatchingPage from '../pages/lessee/watching';
@@ -35,141 +36,144 @@ Vue.use(VueRouter);
 const routes = [
   // Public routes
   {
-    path: '/',
-    name: 'Home',
-    component: HomePage,
+    path: "/",
+    name: "Home",
+    component: HomePage
   },
   {
-    path: '/contact',
-    name: 'Contact',
-    component: ContactPage,
+    path: "/contact",
+    name: "Contact",
+    component: ContactPage
   },
   {
-    path: '/terms',
-    name: 'Terms',
-    component: TermsPage,
+    path: "/terms",
+    name: "Terms",
+    component: TermsPage
   },
   {
-    path: '/privacy',
-    name: 'Privacy',
-    component: PrivacyPage,
+    path: "/privacy",
+    name: "Privacy",
+    component: PrivacyPage
   },
   {
-    path: '/properties',
-    name: 'Properties',
-    component: PropertiesListPage,
+    path: "/properties",
+    name: "Properties",
+    component: PropertiesPage,
+    children: [{
+      path: "/:propertyId",
+      name: "Property Detail",
+      component: PropertyDetailPage
+    }]
   },
   {
-    path: '/about',
-    name: 'About',
+    path: "/about",
+    name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../pages/public/about.vue'),
+    component: () => import(/* webpackChunkName: "about" */ "../pages/public/about.vue"),
     children: [
       {
-        path: 'frequently-asked-questions',
-        component: FAQPage,
-      },
-    ],
+        path: "frequently-asked-questions",
+        component: FAQPage
+      }
+    ]
   },
 
   // Authenticated routes
   {
-    path: '/account',
-    name: 'Account',
+    path: "/account",
+    name: "Account",
     component: LesseePage,
 
     children: [
       {
-        path: 'settings',
-        name: 'SettingsDashboardPage',
-        component: SettingsDashboardPage,
+        path: "settings",
+        name: "SettingsDashboardPage",
+        component: SettingsDashboardPage
       },
       {
-        path: 'watching',
-        name: 'Watching',
-        component: WatchingPage,
+        path: "watching",
+        name: "Watching",
+        component: WatchingPage
       },
       {
-        path: 'login',
-        name: 'Login',
-        component: LoginPage,
+        path: "login",
+        name: "Login",
+        component: LoginPage
       },
       {
-        path: 'signup',
-        name: 'SignUp',
-        component: SignUpPage,
+        path: "signup",
+        name: "SignUp",
+        component: SignUpPage
       },
       {
-        path: 'logout',
-        name: 'Logout',
-        component: LogoutPage,
+        path: "logout",
+        name: "Logout",
+        component: LogoutPage
       },
       {
-        path: 'bidding',
-        name: 'Bidding',
-        component: BiddingPage,
+        path: "bidding",
+        name: "Bidding",
+        component: BiddingPage
       },
       {
-        path: 'transactions',
-        name: 'Transactions',
-        component: TransactionsPage,
+        path: "transactions",
+        name: "Transactions",
+        component: TransactionsPage
       },
       {
-        path: 'favorites',
-        name: 'Favorites',
-        component: FavoritesPage,
+        path: "favorites",
+        name: "Favorites",
+        component: FavoritesPage
       },
       {
-        path: 'notifications',
-        name: 'Notifications',
-        component: NotificationsPage,
+        path: "notifications",
+        name: "Notifications",
+        component: NotificationsPage
       },
       {
-        path: 'notifications/settings',
-        name: 'NotificationSettings',
-        component: NotificationSettingsPage,
-      },
-    ],
+        path: "notifications/settings",
+        name: "NotificationSettings",
+        component: NotificationSettingsPage
+      }
+    ]
   },
 
   // Authenticated routes
   {
-    path: '/lessor',
-    name: 'Lessor',
+    path: "/lessor",
+    name: "Lessor",
     component: LessorPage,
 
     children: [
       {
-        path: 'dashboard',
-        name: 'LessorDashboard',
-        component: LessorDashboardPage,
+        path: "dashboard",
+        name: "LessorDashboard",
+        component: LessorDashboardPage
       },
       {
-        path: 'listings',
-        name: 'LessorListings',
-        component: LessorListingsPage,
+        path: "listings",
+        name: "LessorListings",
+        component: LessorListingsPage
       },
       {
-        path: 'bookings',
-        name: 'LessorBookings',
-        component: LessorBookingPage,
+        path: "bookings",
+        name: "LessorBookings",
+        component: LessorBookingPage
       },
       {
-        path: 'revenue',
-        name: 'LessorRevenue',
-        component: LessorRevenuePage,
+        path: "revenue",
+        name: "LessorRevenue",
+        component: LessorRevenuePage
       },
       {
-        path: 'bidding',
-        name: 'LessorBidding',
-        component: LessorBiddingPage,
-      },
-
-
-    ],
-  },
+        path: "bidding",
+        name: "LessorBidding",
+        component: LessorBiddingPage
+      }
+    ]
+  }
 ];
 
 const router = new VueRouter({

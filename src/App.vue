@@ -211,7 +211,7 @@ export default {
         return "blue";
       }
       return "#242424";
-    },
+    }
   },
   components: {
     // Header,

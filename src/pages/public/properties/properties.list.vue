@@ -1,194 +1,210 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col xs="12" sm="12" md="10" offset-md="1">
-        <v-row>
-          <v-col>
-            <div class="cyan--text">Online Auction - VL012</div>
-            <h2>
-              <div class="mr-3 d-inline-block">380 Brainard Street</div>
-              <div class="grey--text d-inline-block">
-                Jefferson County, Watertown, NY 13601
+  <div>
+    <v-container fluid>
+      <v-row>
+        <v-col>
+          <v-row>
+            <v-col class="header">
+              <div class="d-flex align-baseline">
+                <h3 class="mr-1">Popular Destination</h3>
+                <span>{{popularLocation}}</span>
               </div>
-            </h2>
-            <div>Property ID <span class="font-weight-bold">718220</span></div>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12">
-            <ImageGallery :pictures="properties[0].pictures" />
-          </v-col>
-        </v-row>
-        <v-row class="flex-xl-row-reverse d-flex">
-          <v-col md="7" xs="12" sm="12" order="xs12">
-            <v-card class="mx-auto pa-6">
-              <v-card-title class="cyan--text"> Property Details </v-card-title>
-              <v-card-subtitle class="font-weight-black">
-                Seller reserves the right to a final review of all bids
-                received. Seller my accept or reject any bid regardless of
-                whether or not the reserve price has been met.
-              </v-card-subtitle>
-              <v-card-text>
-                <v-card outlined class="rounded text-center pa-2 black--text">
-                  3 guests · 1 bedrooms · 1 beds · 1 baths
-                </v-card>
-              </v-card-text>
-              <v-divider class="mx-4" />
-              <v-card-title class="cyan--text"> Amentities </v-card-title>
-              <v-card-text>
-                <v-row justify="space-between">
-                  <v-col>
-                    <v-icon large color="black"> mdi-domain </v-icon>
-                    <br />
-                    HotHub
-                  </v-col>
-                  <v-col>
-                    <v-icon large color="black"> mdi-dialpad </v-icon>
-                    <br />
-                    HotHub
-                  </v-col>
-                  <v-col>
-                    <v-icon large color="black"> mdi-message-text </v-icon>
-                    <br />
-                    HotHub
-                  </v-col>
-                  <v-col>
-                    <v-icon large color="black"> mdi-email </v-icon>
-                    <br />
-                    HotHub
-                  </v-col>
-                </v-row>
-              </v-card-text>
-              <v-divider class="mx-4" />
-              <v-card-text>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus
-                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim. Donec pede justo,
-                fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
-                rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
-                felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-                Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
-                tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque
-                rutrum. Aenean imperdiet. imperdiet a, venenatis vitae, justo.
-                Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-                Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
-                eleifend tellus. Aenean leo ligula, porttitor eu, consequat
-                vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                viverra quis, feugiat a, tellus. Phasellus viverra nulla ut
-                metus varius laoreet. Quisque rutrum. Aenean imperdiet.
-              </v-card-text>
-            </v-card>
-          </v-col>
-          <v-col md="5" xs="12" sm="12" order="xs1">
-            <v-card class="mx-auto pa-6 text-center">
-              <v-card-title class="cyan--text text-center">
-                AUCTION TIME LEFT
-              </v-card-title>
-              <div class="font-weight-bold mb-8">
-                {{ day }}d {{ hour }}:{{ min }}:{{ sec }}
-              </div>
-
-              <v-row class="my-0 mx-n6 lease-time">
-                <v-col>
-                  <div class="cyan--text">LEASE START</div>
-                  <div>Mar 22, 2021</div>
-                </v-col>
-                <v-col style="border-left: solid 1px lightgray">
-                  <div class="cyan--text">LEASE END</div>
-                  <div>Aug 22, 2021</div>
-                </v-col>
-              </v-row>
-
-              <v-card-title class="cyan--text text-center">
-                OPENING BID
-              </v-card-title>
-              <v-card-text>
-                <div class="pa-2 mb-3 rounded bid-price">$10,000</div>
-                <div class="black--text">
-                  NUMBER OF BIDS :
-                  <span class="rounded-circle pa-1 bid-number">20</span>
-                </div>
-                <v-btn block class="mt-6 cyan white--text"> BID NOW </v-btn>
-                <v-btn block class="mt-6 cyan white--text">
-                  LEASE IT NOW FOR $11,000
-                </v-btn>
-                <v-btn text class="mt-6 cyan--text text-capitalize">
-                  Bid History
-                </v-btn>
-              </v-card-text>
-            </v-card>
-            <v-btn block class="mt-6 cyan white--text"> contact </v-btn>
-          </v-col>          
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+              <v-btn
+                v-if="$vuetify.breakpoint.mobile"
+                icon
+                color="black"
+                >
+                <v-icon>mdi-map</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row :class="{ compacted: $vuetify.breakpoint.mobile }">
+            <v-col cols="12" md="6">
+              <v-text-field
+                label="Location"
+                prepend-inner-icon="mdi-target"
+                dense
+                outlined
+                hide-details="auto"
+              />
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-menu
+                ref="menu"
+                v-model="datePickerMenu"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y
+                max-width="290px"
+                min-width="auto"
+              >
+                <template v-slot:activator="{ on }">
+                  <v-text-field
+                    v-model="dateRangeText"
+                    label="Select Date"
+                    prepend-inner-icon="mdi-calendar"
+                    readonly
+                    dense
+                    clearable
+                    outlined
+                    hide-details="auto"
+                    v-on="on"
+                  />
+                </template>
+                <v-date-picker v-model="date" no-title @input="datePickerMenu = false" />
+              </v-menu>
+            </v-col>
+          </v-row>
+          <v-row v-if="!$vuetify.breakpoint.mobile">
+            <v-col>
+              <v-chip-group
+                mandatory
+                active-class="primary--text">
+                <v-chip
+                  v-for="type in propertyTypes"
+                  :key="type">
+                  {{type}}
+                </v-chip>
+              </v-chip-group>
+            </v-col>
+          </v-row>
+          <v-row v-if="properties.length" style="{height: '100%'}">
+            <v-col cols="12" v-for="property in properties" :key="property.id">
+              <v-sheet min-height="{ $vuetify.breakpoint.mobile ? 400 : 20 }"
+                class="fill-height"
+                color="transparent">
+                <v-lazy v-model="property.isActive" :options="{
+                    threshold: .5
+                  }"
+                  class="fill-height">
+                  <v-row>
+                    <v-col cols="12" md="4">
+                      <v-img
+                        height="200"
+                        src="https://picsum.photos/id/11/500/300"
+                        class="rounded-image">
+                      </v-img>
+                    </v-col>
+                    <v-col cols="12" md="8">
+                      <v-row>
+                        <v-col cols="8">
+                          <div>
+                            <div class="d-flex align-center">
+                              <h3>{{property.title}}</h3>
+                              <v-spacer></v-spacer>
+                              <v-btn icon color="black">
+                                <v-icon>mdi-eye-outline</v-icon>
+                              </v-btn>
+                              <v-btn icon color="black">
+                                <v-icon>mdi-heart-outline</v-icon>
+                              </v-btn>
+                            </div>
+                            <p>
+                              {{property.address.street}}<br>
+                              {{property.address.city + ',' + property.address.country}}
+                            </p>
+                            <p>
+                              {{property.capacity}}
+                            </p>
+                            <div>
+                              <v-btn small elevation="0" color="primary" class="mr-1 mb-1">
+                                <v-icon left>mdi-hammer</v-icon>
+                                CURRENT BID | $900
+                              </v-btn>
+                              <v-btn small elevation="0" color="secondary" class="mb-1">
+                                <v-icon left>mdi-hammer</v-icon>
+                                LEASE IT FOR $1000
+                              </v-btn>
+                            </div>
+                          </div>
+                        </v-col>
+                        <v-col cols="4" class="d-flex flex-column justify-space-between">
+                          <div class="compacted">
+                            <p>TAKING POST BIDS</p>
+                            <p>{{property.postbids}} days</p>
+                            <p>Ends {{property.postBidsEndingDate}}</p>
+                          </div>
+                          <div class="compacted">
+                            <p>Lease Start</p>
+                            <p>Starts {{property.leaseStartDate}}</p>
+                            <p>Lease End</p>
+                            <p>Ends {{property.leaseEndDate}}</p>
+                          </div>
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                  </v-row>
+                </v-lazy>
+              </v-sheet>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col v-if="!$vuetify.breakpoint.mobile">
+          <!-- Here it goes maps component -->
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
-
-<style>
-.room-summary {
-  padding: 5px;
-  border: solid 1px lightgray;
-}
-.lease-time {
-  border-style: solid;
-  border-width: 1px 0px 1px 0px;
-  border-color: lightgray;
-}
-.bid-number {
-  border: solid 1px lightgray;
-}
-.bid-price {
-  font-size: 24px;
-  border: solid 1px cyan;
-  color: black;
-  font-weight: bold;
-}
-</style>
 <script>
-import ImageGallery from "@/components/image.gallery";
-import { sampleProperties } from "@/data/properties";
-import moment from "moment";
+import { sampleProperties } from '../../../data/properties';
 
 export default {
-  name: "PropertiesListPage",
-  components: {
-    ImageGallery,
-  },
+  name: 'PropertiesPage',
+  title: 'Properties',
   data: () => ({
-    properties: sampleProperties,
-    endDate: new Date(2021, 4, 10),
-    now: moment(),
+    date: '',
+    datePickerMenu: false,
+    popularLocation: 'New York',
   }),
   computed: {
-    day() {
-      return moment(this.endDate).diff(this.now, "days");
+    dateRangeText() {
+      return '';
     },
-    hour() {
-      let h = moment(this.endDate).diff(this.now, "hours") % 24;
-      return h > 9 ? h : "0" + h;
+    properties() {
+      return sampleProperties.map((property) => {
+        let details = [];
+        details.push(this.stringHelpers.pluralize(property.accommodates, 'guest', 'guests'));
+        details.push(this.stringHelpers.pluralize(property.bedrooms, 'bedroom', 'bedrooms'));
+        details.push(this.stringHelpers.pluralize(property.bathrooms, 'bathroom', 'bathrooms'));
+        return {
+          ...property,
+          capacity: details.join('·')
+        }
+      });
     },
-    min() {
-      let m = moment(this.endDate).diff(this.now, "minutes") % 60;
-      return m > 9 ? m : "0" + m;
-    },
-    sec() {
-      let s = moment(this.endDate).diff(this.now, "seconds") % 60;
-      return s > 9 ? s : "0" + s;
-    },
+    propertyTypes() {
+      return [
+        'All',
+        'Apartment',
+        'House',
+        'More'
+      ]
+    }
   },
   methods: {
-    setupCountdown() {
-      setInterval(() => (this.now = moment()), 1000);
-    },
-  },
-  created() {
-    this.setupCountdown();
-  },
-};
-</script>
 
+  }
+}
+</script>
+<style scoped lang="scss">
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .compacted {
+    & > div:not(:first-child) {
+      padding-top: 0px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .rounded-image {
+    border-radius: 20px;
+  }
+</style>

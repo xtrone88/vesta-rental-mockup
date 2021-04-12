@@ -7,9 +7,11 @@ import router from './router';
 import store from './store/store';
 
 import titleMixin from './mixins/title.mixin';
+import helpers from './helpers';
 import './api'
 
 Vue.mixin(titleMixin);
+Vue.use(helpers);
 
 Vue.config.productionTip = false;
 

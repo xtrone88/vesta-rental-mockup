@@ -4,6 +4,7 @@ import HomePage from '../pages/public/home';
 import FAQPage from '../pages/public/faq';
 import ContactPage from '../pages/public/contact';
 import PropertiesListPage from '../pages/public/properties/properties.list';
+import PropertyDetailPage from '../pages/public/properties/property.detail';
 import TermsPage from '../pages/public/terms';
 import PrivacyPage from '../pages/public/privacy';
 
@@ -58,7 +59,12 @@ const routes = [
   {
     path: '/properties',
     name: 'Properties',
-    component: PropertiesListPage,
+    component: PropertiesListPage
+  },
+  {
+    path: '/properties/:propertyId',
+    name: 'Property Detail',
+    component: PropertyDetailPage
   },
   {
     path: '/about',

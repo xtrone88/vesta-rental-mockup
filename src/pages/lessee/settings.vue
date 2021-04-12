@@ -7,17 +7,14 @@
         </v-col>
       </v-row>
       <v-row class="text-start">
-        <v-col class="d-flex" align="stretch" cols="12" sm="4" md="3">
+        <v-col cols="12" md="3">
           <v-card
             :to="{ path: '/lessor/listings' }"
             rounded="xl"
             class="dashboard_card"
             elevation="4"
           >
-            <img
-              src="../../assets/paid/icon8/Personal_info.svg"
-              class="svg_icon"
-            />
+            <v-icon size="64" class="ml-2">mdi-view-list</v-icon>
             <v-card-title>
               Personal Info <v-icon>mdi-chevron-right</v-icon></v-card-title
             >
@@ -27,18 +24,14 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="4" md="3">
+        <v-col cols="12" md="3">
           <v-card
             :to="{ path: '/account/notifications/settings' }"
             rounded="xl"
             class="dashboard_card"
             elevation="4"
           >
-            <img
-              src="../../assets/paid/icon8/Notification.svg"
-              class="svg_icon"
-            />
-            <!-- <v-icon size="64" class="ml-2">mdi-calendar-check</v-icon> -->
+            <v-icon size="64" class="ml-2">mdi-calendar-check</v-icon>
 
             <v-card-title
               >Notification Settings
@@ -49,14 +42,14 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="4" md="3">
+        <v-col cols="12" md="3">
           <v-card
             :to="{ path: '/lessor/revenue' }"
             rounded="xl"
             class="dashboard_card"
             elevation="4"
           >
-            <img src="../../assets/paid/icon8/Payments.svg" class="svg_icon" />
+            <v-icon size="64" class="ml-2">mdi-file</v-icon>
 
             <v-card-title
               >Payments<v-icon>mdi-chevron-right</v-icon>
@@ -79,8 +72,9 @@ export default {
 
 
 <style >
-.v-card .svg_icon {
-  /* required to stop dumb radius thing */
-  padding: 20px;
+.dashboard_card {
+  height: 220px;
+  padding-top: 20px;
+  padding-left: 5px;
 }
 </style>

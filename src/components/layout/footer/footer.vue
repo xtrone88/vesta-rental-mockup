@@ -12,7 +12,7 @@
         <v-row
           class="text-center text-md-left"
           justify="space-around"
-          align="start"
+          align="center"
         >
           <v-col v-for="group in groups" md="2" :key="group.title">
             <!-- Links -->
@@ -25,6 +25,7 @@
               :to="item.to"
               link
               dense
+              inactive
               color="black"
             >
               <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -37,31 +38,14 @@
         <v-row justify="space-between">
           <v-col cols="8">
             <v-card-text class="pb-0">
-              <router-link
-                class="footer_bot_link"
-                style=""
-                :to="{ path: 'contact' }"
-              >
-                Contact US
-              </router-link>
-
-              |
-              <router-link class="footer_bot_link" :to="{ path: '/privacy' }"
-                >Privacy</router-link
-              >
-              |
-              <router-link class="footer_bot_link" :to="{ path: '/terms' }">
-                Terms
-              </router-link>
-
-              |
-              <router-link class="footer_bot_link" :to="{ path: '/faq' }">
-                FAQ
-              </router-link>
+              <a style="text-decoration: none; color: black;" href="#">Contact US</a> |
+              <a style="text-decoration: none; color: black;" href="#">Privacy</a> |
+              <a style="text-decoration: none; color: black;" href="#">Lessers Terms Of Use</a> |
+              <a style="text-decoration: none; color: black;" href="#">Lesses Terms of Use</a> |
+              <a style="text-decoration: none; color: black;" href="#">FAQ</a>
             </v-card-text>
             <v-card-text class="black--text">
-              Copyright @ {{ new Date().getFullYear() }} VestaLease.com. All
-              rights Reserved.
+              Copyright @ {{ new Date().getFullYear() }} VestaLease.com. All rights Reserved.
             </v-card-text>
           </v-col>
           <v-col cols="4">
@@ -90,24 +74,23 @@ export default {
     icons: ["mdi-facebook", "mdi-twitter", "mdi-instagram"],
     groups: [
       {
-        title: "VESTA LEASE",
+        title: "VESTALEASE",
         items: [
           {
             title: "About us",
-            to: { path: "/about" },
+            to: { name: "AboutUs" },
           },
           {
             title: "Careers",
-            to: { path: "/careers" },
+            to: { name: "Careers" },
           },
-
+          {
+            title: "Bidder/Site Terms of Use",
+            to: { name: "Bidder/Site Terms of Use" },
+          },
           {
             title: "Privacy Policy",
-            to: { path: "/privacy" },
-          },
-          {
-            title: "Terms",
-            to: { path: "/terms" },
+            to: { name: "Privacy Policy" },
           },
         ],
       },
@@ -116,19 +99,19 @@ export default {
         items: [
           {
             title: "Contact Us",
-            to: { path: "/contact" },
+            to: { name: "Contact Us" },
           },
           {
             title: "Lessors ",
-            to: { path: "/support/lessors  " },
+            to: { name: "Lessors  " },
           },
           {
             title: "Lessees",
-            to: { path: "/support/lessees" },
+            to: { name: "Lessees" },
           },
           {
             title: "Agents",
-            to: { path: "/support/agents" },
+            to: { name: "Agents" },
           },
         ],
       },
@@ -137,52 +120,44 @@ export default {
         items: [
           {
             title: "How to Bid",
-            to: { path: "/help/bid" },
+            to: { name: "How to Bid" },
           },
           {
             title: "How to Sell",
-            to: { path: "/help/sell" },
+            to: { name: "How to Sell" },
           },
           {
             title: "Common Questions",
-            to: { path: "/help/faq" },
+            to: { name: "Common Questions" },
           },
           {
             title: "Helpful Site Features",
-            to: { path: "/help/site" },
+            to: { name: "Helpful Site Features" },
           },
         ],
       },
-      // {
-      //   title: "OTHER LINKS",
-      //   items: [
-      //     {
-      //       title: "Link 1",
-      //       to: { name: "Link 1" },
-      //     },
-      //     {
-      //       title: "Link 2",
-      //       to: { name: "Link 2" },
-      //     },
-      //     {
-      //       title: "Link 3",
-      //       to: { name: "Link 3" },
-      //     },
-      //     {
-      //       title: "Link 4",
-      //       to: { name: "Link 4" },
-      //     },
-      //   ],
-      // },
+      {
+        title: "OTHER LINKS",
+        items: [
+          {
+            title: "Link 1",
+            to: { name: "Link 1" },
+          },
+          {
+            title: "Link 2",
+            to: { name: "Link 2" },
+          },
+          {
+            title: "Link 3",
+            to: { name: "Link 3" },
+          },
+          {
+            title: "Link 4",
+            to: { name: "Link 4" },
+          },
+        ],
+      },
     ],
   }),
 };
 </script>
-
-
-<style scoped>
-.footer_bot_link {
-  text-decoration: none;
-  color: black;
-}
-</style>

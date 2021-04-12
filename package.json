@@ -5,19 +5,19 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "deploy-s3": "yarn build && aws --region us-west-2 --profile vesta-lease-deployer s3 sync ./dist s3://vestalease-demo --delete"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@vue-stripe/vue-stripe": "^4.1.8",
-    "core-js": "^3.6.5",
     "axios": "^0.21.1",
     "axios-mock-adapter": "^1.19.0",
+    "core-js": "^3.6.5",
     "moment": "^2.29.1",
     "v-stripe-elements": "^1.2.0",
     "vue": "^2.6.11",
     "vue-gallery": "^2.0.1",
     "vue-router": "^3.5.1",
+    "vue-tel-input-vuetify": "^1.2.16",
     "vue2-google-maps": "^0.10.7",
     "vuetify": "^2.4.0",
     "vuex": "^3.6.2"

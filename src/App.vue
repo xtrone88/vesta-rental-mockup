@@ -35,7 +35,7 @@ i.v-icon.v-icon {
           </v-btn>
         </template>
         <v-list>
-          <v-list-item :to="{ path: '/account/sigup' }">
+          <v-list-item :to="{ path: '/account/signup' }">
             <v-list-item-title>Sign up</v-list-item-title>
           </v-list-item>
           <v-list-item :to="{ path: '/account/login' }">

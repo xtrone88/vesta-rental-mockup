@@ -6,8 +6,8 @@
           <h1 class="display-2 font-weight-bold mb-3">Settings</h1>
         </v-col>
       </v-row>
-      <v-row class="text-start">
-        <v-col cols="12" md="3">
+      <v-row align="stretch" class="text-start">
+        <v-col cols="12" sm="6" md="3">
           <v-card
             :to="{ path: '/lessor/listings' }"
             rounded="xl"
@@ -24,7 +24,7 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" md="3">
+        <v-col cols="12" sm="6" md="3">
           <v-card
             :to="{ path: '/account/notifications/settings' }"
             rounded="xl"
@@ -42,7 +42,7 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" md="3">
+        <v-col cols="12" sm="6" md="3">
           <v-card
             :to="{ path: '/lessor/revenue' }"
             rounded="xl"
@@ -72,9 +72,4 @@ export default {
 
 
 <style >
-.dashboard_card {
-  height: 220px;
-  padding-top: 20px;
-  padding-left: 5px;
-}
 </style>

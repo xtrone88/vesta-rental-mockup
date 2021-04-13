@@ -63,7 +63,7 @@ i.v-icon.v-icon {
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" app fixed>
+    <v-navigation-drawer v-model="drawer" floating app temporary>
       <v-list nav dense>
         <v-list-item-group active-class="indigo--text text--accent-4">
           <v-list-item :to="{ path: '/' }">
@@ -156,6 +156,12 @@ i.v-icon.v-icon {
             </v-list-item-icon>
             <v-list-item-title>Listings</v-list-item-title>
           </v-list-item>
+          <v-list-item :to="{ path: '/admin/bookings' }">
+            <v-list-item-icon>
+              <v-icon>mdi-calendar-check</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Bookings</v-list-item-title>
+          </v-list-item>
           <v-list-item :to="{ path: '/admin/lessors' }">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
@@ -167,24 +173,6 @@ i.v-icon.v-icon {
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Lessees</v-list-item-title>
-          </v-list-item>
-          <v-list-item :to="{ path: '/admin/watching' }">
-            <v-list-item-icon>
-              <v-icon>mdi-eye</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Watching</v-list-item-title>
-          </v-list-item>
-          <v-list-item :to="{ path: '/admin/favorites' }">
-            <v-list-item-icon>
-              <v-icon>mdi-heart</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Favorites</v-list-item-title>
-          </v-list-item>
-          <v-list-item :to="{ path: '/admin/bidding' }">
-            <v-list-item-icon>
-              <v-icon>mdi-gavel</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Bidding</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

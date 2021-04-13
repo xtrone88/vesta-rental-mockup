@@ -35,7 +35,7 @@ i.v-icon.v-icon {
           </v-btn>
         </template>
         <v-list>
-          <v-list-item :to="{ path: '/account/sigup' }">
+          <v-list-item :to="{ path: '/account/signup' }">
             <v-list-item-title>Sign up</v-list-item-title>
           </v-list-item>
           <v-list-item :to="{ path: '/account/login' }">
@@ -150,13 +150,24 @@ i.v-icon.v-icon {
             </v-list-item-icon>
             <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item>
-          <v-list-item :to="{ path: '/admin/transactions' }">
+          <v-list-item :to="{ path: '/admin/listings' }">
             <v-list-item-icon>
               <v-icon>mdi-compare-horizontal</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Listings</v-list-item-title>
           </v-list-item>
-
+          <v-list-item :to="{ path: '/admin/lessors' }">
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Lessors</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ path: '/admin/lessees' }">
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Lessees</v-list-item-title>
+          </v-list-item>
           <v-list-item :to="{ path: '/admin/watching' }">
             <v-list-item-icon>
               <v-icon>mdi-eye</v-icon>
@@ -174,12 +185,6 @@ i.v-icon.v-icon {
               <v-icon>mdi-gavel</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Bidding</v-list-item-title>
-          </v-list-item>
-          <v-list-item :to="{ path: '/properties' }">
-            <v-list-item-icon>
-              <v-icon>mdi-view-list</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Properties</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="Sidebar_drawer" absolute temporary>
+  <v-navigation-drawer v-model="Sidebar_drawer" app temporary>
     <v-list nav dense>
       <v-list-item-group
         v-model="group"

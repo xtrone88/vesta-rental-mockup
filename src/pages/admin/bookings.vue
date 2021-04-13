@@ -45,7 +45,7 @@ import moment from "moment";
 import { sampleBookings } from "../../data/bookings";
 
 export default {
-  name: "AdminBookingsPage",
+  name: "LessorBookingsPage",
   title: "Bookings",
 
   data: () => ({

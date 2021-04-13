@@ -1,10 +1,10 @@
 <template>
   <v-card>
-    <v-container fluid>
-      <v-row>
+    <v-container class="pa-0" fluid>
+      <v-row no-gutters>
         <v-col cols="6">
-          <v-row>
-            <v-col class="d-flex child-flex" cols="12">
+          <v-row no-gutters>
+            <v-col class="d-flex child-flex pa-1" cols="12">
               <v-card flat tile class="d-flex rounded-l-lg">
                 <v-img
                   v-if="pictures.length"
@@ -31,11 +31,11 @@
           </v-row>
         </v-col>
         <v-col cols="6">
-          <v-row>
+          <v-row no-gutters>
             <v-col
               v-for="(image, idx) in pictures.slice(1)"
               :key="idx"
-              class="d-flex child-flex"
+              class="d-flex child-flex pa-1"
               cols="6"
             >
               <v-card

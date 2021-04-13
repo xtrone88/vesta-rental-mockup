@@ -1,24 +1,22 @@
 <template>
   <div>
-    <v-container fluid>
+    <v-container class="pa-8" fluid>
       <v-row>
         <v-col>
           <v-row>
-            <v-col class="header">
+            <v-col class="d-flex align-center justify-space-between">
               <div class="d-flex align-baseline">
-                <h3 class="mr-1">Popular Destination</h3>
-                <span>{{popularLocation}}</span>
+                <h3 class="text-sm-h3">Popular Destination</h3>
+                <span class="text-sm-h5 ml-4 grey--text text--lighten-1">{{
+                  popularLocation
+                }}</span>
               </div>
-              <v-btn
-                v-if="$vuetify.breakpoint.mobile"
-                icon
-                color="black"
-                >
+              <v-btn v-if="$vuetify.breakpoint.mobile" icon color="black">
                 <v-icon>mdi-map</v-icon>
               </v-btn>
             </v-col>
           </v-row>
-          <v-row :class="{ compacted: $vuetify.breakpoint.mobile }">
+          <v-row>
             <v-col cols="12" md="6">
               <v-text-field
                 label="Location"
@@ -51,46 +49,60 @@
                     v-on="on"
                   />
                 </template>
-                <v-date-picker v-model="date" no-title @input="datePickerMenu = false" />
+                <v-date-picker
+                  v-model="date"
+                  no-title
+                  @input="datePickerMenu = false"
+                />
               </v-menu>
             </v-col>
           </v-row>
           <v-row v-if="!$vuetify.breakpoint.mobile">
             <v-col>
-              <v-chip-group
-                mandatory
-                active-class="primary--text">
+              <v-chip-group mandatory active-class="primary--text">
                 <v-chip
+                  class="sized-chip"
                   v-for="type in propertyTypes"
-                  :key="type">
-                  {{type}}
+                  :key="type"
+                  outlined
+                >
+                  {{ type }}
                 </v-chip>
               </v-chip-group>
             </v-col>
           </v-row>
-          <v-row v-if="properties.length" style="{height: '100%'}">
-            <v-col cols="12" v-for="property in properties" :key="property.id">
-              <v-sheet min-height="{ $vuetify.breakpoint.mobile ? 400 : 20 }"
-                class="fill-height"
-                color="transparent">
-                <v-lazy v-model="property.isActive" :options="{
-                    threshold: .5
+          <v-divider class="mb-4"></v-divider>
+          <v-row v-for="property in properties" :key="property.id">
+            <v-col cols="12">
+              <v-sheet
+                min-height="{ $vuetify.breakpoint.mobile ? 400 : 200 }"
+                class="mb-2 fill-height"
+                color="transparent"
+              >
+                <v-lazy
+                  v-model="property.isActive"
+                  :options="{
+                    threshold: 0.5,
                   }"
-                  class="fill-height">
-                  <v-row>
+                  class="fill-height"
+                >
+                  <v-row no-gutters>
                     <v-col cols="12" md="4">
                       <v-img
-                        height="200"
-                        src="https://picsum.photos/id/11/500/300"
-                        class="rounded-image">
+                        max-width="100%"
+                        height="100%"
+                        :src="property.picture.thumbnail"
+                        :aspect-ratio="3 / 2"
+                        class="rounded-xl"
+                      >
                       </v-img>
                     </v-col>
-                    <v-col cols="12" md="8">
-                      <v-row>
-                        <v-col cols="8">
+                    <v-col cols="12" md="8" class="pa-2">
+                      <v-row no-gutters>
+                        <v-col cols="8" class="pr-2">
                           <div>
                             <div class="d-flex align-center">
-                              <h3>{{property.title}}</h3>
+                              <h6 class="text-h6">{{ property.title }}</h6>
                               <v-spacer></v-spacer>
                               <v-btn icon color="black">
                                 <v-icon>mdi-eye-outline</v-icon>
@@ -99,19 +111,23 @@
                                 <v-icon>mdi-heart-outline</v-icon>
                               </v-btn>
                             </div>
-                            <p>
-                              {{property.address.street}}<br>
-                              {{property.address.city + ',' + property.address.country}}
-                            </p>
-                            <p>
-                              {{property.capacity}}
-                            </p>
-                            <template>
+                            <div class="text-body-2 mb-2">
+                              {{ property.address.street }}<br />
+                              {{
+                                property.address.city +
+                                "," +
+                                property.address.country
+                              }}
+                            </div>
+                            <div class="text-body-2 mb-2">
+                              {{ property.capacity }}
+                            </div>
+                            <div>
                               <v-btn small elevation="0" color="primary" class="mr-1 mb-1"  @click="dialog = true">
                                 <v-icon left>mdi-hammer</v-icon>
                                 CURRENT BID | $900
                               </v-btn>
-                              
+                                
                               <v-dialog
                                 v-model="dialog"
                                 transition="dialog-bottom-transition"
@@ -207,24 +223,35 @@
                                   <div style="flex: 1 1 auto;"></div>
                                 </v-card>
                               </v-dialog>
-                              <v-btn small elevation="0" color="secondary" class="mb-1">
-                                <v-icon left>mdi-hammer</v-icon>
+                              <v-btn
+                                small
+                                elevation="0"
+                                color="secondary"
+                                class="px-1 mb-1"
+                                :to="{name:'PropertyDetail'}"
+                              >
                                 LEASE IT FOR $1000
                               </v-btn>
-                            </template>
+                            </div>
                           </div>
                         </v-col>
-                        <v-col cols="4" class="d-flex flex-column justify-space-between">
-                          <div class="compacted">
-                            <p>TAKING POST BIDS</p>
-                            <p>{{property.postbids}} days</p>
-                            <p>Ends {{property.postBidsEndingDate}}</p>
+                        <v-col cols="4" class="pl-2">
+                          <div class="text-body-2 black--text">
+                            <div>TAKING POST BIDS</div>
+                            <div>
+                              <b>{{ property.postbids }} days</b>
+                            </div>
+                            <div>Ends {{ property.postBidsEndingDate }}</div>
                           </div>
-                          <div class="compacted">
-                            <p>Lease Start</p>
-                            <p>Starts {{property.leaseStartDate}}</p>
-                            <p>Lease End</p>
-                            <p>Ends {{property.leaseEndDate}}</p>
+                          <div class="text-body-2 black--text mt-2">
+                            <div>Lease Start</div>
+                            <div>
+                              <b>{{ property.leaseStartDate }}</b>
+                            </div>
+                            <div>Lease End</div>
+                            <div>
+                              <b>{{ property.leaseEndDate }}</b>
+                            </div>
                           </div>
                         </v-col>
                       </v-row>
@@ -232,6 +259,8 @@
                   </v-row>
                 </v-lazy>
               </v-sheet>
+
+              <v-divider></v-divider>
             </v-col>
           </v-row>
         </v-col>
@@ -243,79 +272,76 @@
   </div>
 </template>
 <script>
-import { sampleProperties } from '../../../data/properties';
+import { sampleProperties } from "../../../data/properties";
 
 export default {
-  name: 'PropertiesPage',
-  title: 'Properties',
+  name: "PropertiesPage",
+  title: "Properties",
   data: () => ({
-    dialog: false,
-    date: '',
+    date: "",
     datePickerMenu: false,
-    popularLocation: 'New York',
+    popularLocation: "New York",
+    dialog: false,
   }),
   computed: {
     dateRangeText() {
-      return '';
+      return "";
     },
     properties() {
       return sampleProperties.map((property) => {
         let details = [];
-        details.push(this.stringHelpers.pluralize(property.accommodates, 'guest', 'guests'));
-        details.push(this.stringHelpers.pluralize(property.bedrooms, 'bedroom', 'bedrooms'));
-        details.push(this.stringHelpers.pluralize(property.bathrooms, 'bathroom', 'bathrooms'));
+        details.push(
+          this.stringHelpers.pluralize(property.accommodates, "guest", "guests")
+        );
+        details.push(
+          this.stringHelpers.pluralize(property.bedrooms, "bedroom", "bedrooms")
+        );
+        details.push(
+          this.stringHelpers.pluralize(
+            property.bathrooms,
+            "bathroom",
+            "bathrooms"
+          )
+        );
+        property.picture.thumbnail = require("@/assets/property/property_200_300_" +
+          property.id +
+          ".png");
+        property.postbids = 3;
+        property.postBidsEndingDate = "Mar 11, 2021";
+        property.leaseStartDate = "Mar 24, 2021";
+        property.leaseEndDate = "Mar 30, 2021";
         return {
           ...property,
-          capacity: details.join('·')
-        }
+          capacity: details.join("·"),
+        };
       });
     },
     propertyTypes() {
-      return [
-        'All',
-        'Apartment',
-        'House',
-        'More'
-      ]
-    }
+      return ["All", "Apartment", "House", "More"];
+    },
   },
-  methods: {
-
-  }
-}
+  methods: {},
+};
 </script>
+
 <style scoped lang="scss">
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
+.sized-chip {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+}
 
-  .text-style-medium{
-    font-size: 16px;
-  }
+.text-style-medium{
+  font-size: 16px;
+}
 
-  .text-style-medium1{
-    font-size: 16px;
-    color: #25D848;
-    font-weight: bold;
-  }
+.text-style-medium1{
+  font-size: 16px;
+  color: #25D848;
+  font-weight: bold;
+}
 
-  .text-style-small {
-    font-size: 14px;
-  }
-
-  .compacted {
-    & > div:not(:first-child) {
-      padding-top: 0px;
-    }
-    p {
-      margin-bottom: 0;
-    }
-  }
-
-  .rounded-image {
-    border-radius: 20px;
-  }
+.text-style-small {
+  font-size: 14px;
+}
 </style>

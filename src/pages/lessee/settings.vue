@@ -9,7 +9,7 @@
       <v-row class="text-start">
         <v-col cols="12" md="3">
           <v-card
-            :to="{ path: '/lessor/listings' }"
+            :to="{ path: '/account/personalinfo' }"
             rounded="xl"
             class="dashboard_card"
             elevation="4"
@@ -44,7 +44,7 @@
         </v-col>
         <v-col cols="12" md="3">
           <v-card
-            :to="{ path: '/lessor/revenue' }"
+            :to="{ path: '/account/payments' }"
             rounded="xl"
             class="dashboard_card"
             elevation="4"

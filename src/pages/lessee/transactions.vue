@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-row class="text-center">
+    <v-row class="text-start">
       <v-container>
-        <v-col class="mb-4">
+        <v-col class="mb-2">
           <h1 class="display-2 font-weight-bold mb-3">Transactions Page</h1>
         </v-col>
 
-        <v-col class="mb-5" cols="12">
+        <v-col class="mb-1" cols="12" sm="6">
           <v-menu
             ref="menu1"
             v-model="menu1"
@@ -20,16 +20,15 @@
               <v-text-field
                 v-model="dateRangeText"
                 label="Date range"
-                prepend-inner-icon="mdi-calendar"
+                prepend-icon="mdi-calendar"
                 readonly
-                clearable
-                outlined
                 v-on="on"
               />
             </template>
             <v-date-picker v-model="dates" no-title @input="menu1 = false" />
           </v-menu>
-
+        </v-col>
+        <v-col class="mt-1" cols="12"> 
           <v-data-table
             :headers="headers"
             :items="transactions"
@@ -37,9 +36,10 @@
             class="elevation-1"
             :search="search"
             :custom-filter="filterOnlyCapsText"
+            hide-default-footer
           >
             <template v-slot:top>
-              <v-text-field v-model="search" label="Search" class="mx-4" />
+              <v-text-field v-model="search" label="Search" class="ma-4" append-icon="mdi-magnify" />
             </template>
           </v-data-table>
         </v-col>

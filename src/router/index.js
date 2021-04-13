@@ -21,6 +21,8 @@ import SignUpPage from '../pages/lessee/auth/signup';
 import TransactionsPage from '../pages/lessee/transactions';
 import SettingsDashboardPage from '../pages/lessee/settings';
 import LesseePage from '../pages/lessee/lessee';
+import PersonalInfo from '../pages/lessee/personalinfo';
+import PaymentsPage from '../pages/lessee/payments';
 
 // Lessor
 import LessorPage from '../pages/lessor/lessor';
@@ -137,6 +139,16 @@ const routes = [
         path: 'notifications/settings',
         name: 'NotificationSettings',
         component: NotificationSettingsPage,
+      },
+      {
+        path: 'personalinfo',
+        name: 'personalinfo',
+        component: PersonalInfo,
+      },
+      {
+        path: 'payments',
+        name: 'payments',
+        component: PaymentsPage,
       },
     ],
   },

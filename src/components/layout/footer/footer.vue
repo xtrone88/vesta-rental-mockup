@@ -12,7 +12,7 @@
         <v-row
           class="text-center text-md-left"
           justify="space-around"
-          align="center"
+          align="start"
         >
           <v-col v-for="group in groups" md="2" :key="group.title">
             <!-- Links -->
@@ -25,7 +25,6 @@
               :to="item.to"
               link
               dense
-              inactive
               color="black"
             >
               <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -38,14 +37,31 @@
         <v-row justify="space-between">
           <v-col cols="8">
             <v-card-text class="pb-0">
-              <a style="text-decoration: none; color: black;" href="#">Contact US</a> |
-              <a style="text-decoration: none; color: black;" href="#">Privacy</a> |
-              <a style="text-decoration: none; color: black;" href="#">Lessers Terms Of Use</a> |
-              <a style="text-decoration: none; color: black;" href="#">Lesses Terms of Use</a> |
-              <a style="text-decoration: none; color: black;" href="#">FAQ</a>
+              <router-link
+                class="footer_bot_link"
+                style=""
+                :to="{ path: 'contact' }"
+              >
+                Contact US
+              </router-link>
+
+              |
+              <router-link class="footer_bot_link" :to="{ path: '/privacy' }"
+                >Privacy</router-link
+              >
+              |
+              <router-link class="footer_bot_link" :to="{ path: '/terms' }">
+                Terms
+              </router-link>
+
+              |
+              <router-link class="footer_bot_link" :to="{ path: '/faq' }">
+                FAQ
+              </router-link>
             </v-card-text>
             <v-card-text class="black--text">
-              Copyright @ {{ new Date().getFullYear() }} VestaLease.com. All rights Reserved.
+              Copyright @ {{ new Date().getFullYear() }} VestaLease.com. All
+              rights Reserved.
             </v-card-text>
           </v-col>
           <v-col cols="4">
@@ -69,28 +85,27 @@
 <script>
 export default {
   name: "Footer",
-
   data: () => ({
     icons: ["mdi-facebook", "mdi-twitter", "mdi-instagram"],
     groups: [
       {
-        title: "VESTALEASE",
+        title: "VESTA LEASE",
         items: [
           {
             title: "About us",
-            to: { name: "AboutUs" },
+            to: { path: "/about" },
           },
           {
             title: "Careers",
-            to: { name: "Careers" },
-          },
-          {
-            title: "Bidder/Site Terms of Use",
-            to: { name: "Bidder/Site Terms of Use" },
+            to: { path: "/careers" },
           },
           {
             title: "Privacy Policy",
-            to: { name: "Privacy Policy" },
+            to: { path: "/privacy" },
+          },
+          {
+            title: "Terms",
+            to: { path: "/terms" },
           },
         ],
       },
@@ -99,19 +114,19 @@ export default {
         items: [
           {
             title: "Contact Us",
-            to: { name: "Contact Us" },
+            to: { path: "/contact" },
           },
           {
             title: "Lessors ",
-            to: { name: "Lessors  " },
+            to: { path: "/support/lessors  " },
           },
           {
             title: "Lessees",
-            to: { name: "Lessees" },
+            to: { path: "/support/lessees" },
           },
           {
             title: "Agents",
-            to: { name: "Agents" },
+            to: { path: "/support/agents" },
           },
         ],
       },
@@ -120,44 +135,52 @@ export default {
         items: [
           {
             title: "How to Bid",
-            to: { name: "How to Bid" },
+            to: { path: "/help/bid" },
           },
           {
             title: "How to Sell",
-            to: { name: "How to Sell" },
+            to: { path: "/help/sell" },
           },
           {
             title: "Common Questions",
-            to: { name: "Common Questions" },
+            to: { path: "/help/faq" },
           },
           {
             title: "Helpful Site Features",
-            to: { name: "Helpful Site Features" },
+            to: { path: "/help/site" },
           },
         ],
       },
-      {
-        title: "OTHER LINKS",
-        items: [
-          {
-            title: "Link 1",
-            to: { name: "Link 1" },
-          },
-          {
-            title: "Link 2",
-            to: { name: "Link 2" },
-          },
-          {
-            title: "Link 3",
-            to: { name: "Link 3" },
-          },
-          {
-            title: "Link 4",
-            to: { name: "Link 4" },
-          },
-        ],
-      },
+      // {
+      //   title: "OTHER LINKS",
+      //   items: [
+      //     {
+      //       title: "Link 1",
+      //       to: { name: "Link 1" },
+      //     },
+      //     {
+      //       title: "Link 2",
+      //       to: { name: "Link 2" },
+      //     },
+      //     {
+      //       title: "Link 3",
+      //       to: { name: "Link 3" },
+      //     },
+      //     {
+      //       title: "Link 4",
+      //       to: { name: "Link 4" },
+      //     },
+      //   ],
+      // },
     ],
   }),
 };
 </script>
+
+
+<style scoped>
+.footer_bot_link {
+  text-decoration: none;
+  color: black;
+}
+</style>

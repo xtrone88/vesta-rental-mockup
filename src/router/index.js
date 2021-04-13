@@ -22,6 +22,9 @@ import TransactionsPage from '../pages/lessee/transactions';
 import SettingsDashboardPage from '../pages/lessee/settings';
 import LesseePage from '../pages/lessee/lessee';
 
+// added by Malcom 4/14/2021
+import WonAuctionPage from '../pages/lessee/wonauction';
+
 // Lessor
 import LessorPage from '../pages/lessor/lessor';
 import LessorDashboardPage from '../pages/lessor/dashboard';
@@ -63,7 +66,7 @@ const routes = [
   },
   {
     path: '/properties/:propertyId',
-    name: 'Property Detail',
+    name: 'PropertyDetail',
     component: PropertyDetailPage
   },
   {
@@ -137,6 +140,11 @@ const routes = [
         path: 'notifications/settings',
         name: 'NotificationSettings',
         component: NotificationSettingsPage,
+      },
+      {
+        path: 'wonauction',
+        name: 'WonAuction',
+        component: WonAuctionPage,
       },
     ],
   },

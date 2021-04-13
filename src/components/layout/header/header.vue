@@ -35,6 +35,9 @@
           <v-list-item :to="{ name: 'Login' }">
             <v-list-item-title>Log in</v-list-item-title>
           </v-list-item>
+          <v-list-item href="https://www.privacypolicygenerator.info">
+            <v-list-item-title>Terms and privacy policy</v-list-item-title>
+          </v-list-item>
           <v-divider></v-divider>
           <v-list-item :to="{ name: 'NotificationSettings' }">
             <v-list-item-title>Notification Settings</v-list-item-title>

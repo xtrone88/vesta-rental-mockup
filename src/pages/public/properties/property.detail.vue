@@ -2,27 +2,37 @@
   <v-container>
     <v-row>
       <v-col xs="12" sm="12" md="10" offset-md="1">
-        <v-row>
+        <v-row class="mt-10">
           <v-col>
-            <div class="cyan--text">Online Auction - VL012</div>
-            <h2>
-              <div class="mr-3 d-inline-block">380 Brainard Street</div>
-              <div class="grey--text d-inline-block">
+            <h6 class="text-h6 cyan--text">Online Auction - VL012</h6>
+            <h5 class="text-h5">
+              <span class="d-inline-block font-weight-bold mr-3">380 Brainard Street</span>
+              <span class="d-inline-block text-h6 font-weight-regular grey--text">
                 Jefferson County, Watertown, NY 13601
-              </div>
-            </h2>
+              </span>
+            </h5>
             <div>Property ID <span class="font-weight-bold">718220</span></div>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="12">
-            <ImageGallery :pictures="properties[0].pictures" />
+            <ImageGallery :pictures="samplePictures" />
           </v-col>
         </v-row>
         <v-row class="flex-xl-row-reverse d-flex">
           <v-col md="7" xs="12" sm="12" order="xs12">
             <v-card class="mx-auto pa-6">
-              <v-card-title class="cyan--text"> Property Details </v-card-title>
+              <v-card-title class="cyan--text justify-space-between">
+                <div class="d-inline-block">Property Details</div>
+                <div class="d-inline-block">
+                  <v-btn icon color="black">
+                    <v-icon>mdi-eye-outline</v-icon>
+                  </v-btn>
+                  <v-btn icon color="black">
+                    <v-icon>mdi-heart-outline</v-icon>
+                  </v-btn>
+                </div>
+              </v-card-title>
               <v-card-subtitle class="font-weight-black">
                 Seller reserves the right to a final review of all bids
                 received. Seller my accept or reject any bid regardless of
@@ -103,12 +113,12 @@
                 </v-col>
               </v-row>
 
-              <v-card-title class="cyan--text text-center">
+              <v-card-title class="cyan--text justify-space-between">
                 OPENING BID
               </v-card-title>
               <v-card-text>
                 <div class="pa-2 mb-3 rounded bid-price">$10,000</div>
-                <div class="black--text">
+                <div class="black--text mt-6">
                   NUMBER OF BIDS :
                   <span class="rounded-circle pa-1 bid-number">20</span>
                 </div>
@@ -121,7 +131,9 @@
                 </v-btn>
               </v-card-text>
             </v-card>
-            <v-btn block class="mt-6 cyan white--text"> contact </v-btn>
+            <v-btn block class="mt-6 cyan white--text" :to="{name:'Contact'}">
+              Contact
+            </v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -180,6 +192,15 @@ export default {
       let s = moment(this.endDate).diff(this.now, "seconds") % 60;
       return s > 9 ? s : "0" + s;
     },
+    samplePictures() {
+      return [
+        require("@/assets/property/property_1.png"),
+        require("@/assets/property/property_1_01.png"),
+        require("@/assets/property/property_1_02.png"),
+        require("@/assets/property/property_1_03.png"),
+        require("@/assets/property/property_1_04.png"),
+      ]
+    }
   },
   methods: {
     setupCountdown() {

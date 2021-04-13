@@ -63,7 +63,7 @@ i.v-icon.v-icon {
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-model="drawer" app fixed>
       <v-list nav dense>
         <v-list-item-group active-class="indigo--text text--accent-4">
           <v-list-item :to="{ path: '/' }">

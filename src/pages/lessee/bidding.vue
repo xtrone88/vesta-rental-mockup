@@ -4,7 +4,7 @@
       <div class="d-flex align-center mb-16">
         <h3 class="text-h3">Bidding</h3>
         <v-spacer></v-spacer>
-        <v-icon color="grey" large>mdi-sort-variant</v-icon>
+        <v-icon color="dark" large>mdi-sort-variant</v-icon>
       </div>
       <v-divider class="mb-4"></v-divider>
 
@@ -22,7 +22,7 @@
                 </v-img>
               </v-col>
               <v-col cols="4" md="4">
-                <v-row no-gutters class="half-height">
+                <v-row no-gutters :class="{ 'half-height': !$vuetify.breakpoint.mobile }">
                   <v-col>
                     <div class="d-flex align-center">
                       <h6 class="text-h6">{{ bid.title }}</h6>
@@ -34,7 +34,7 @@
                     </div>
                   </v-col>
                 </v-row>
-                <v-row no-gutters class="half-height align-center">
+                <v-row no-gutters :class="{ 'half-height': !$vuetify.breakpoint.mobile, 'align-center' : true }">
                   <v-col>
                     <div class="text-body-2 mb-2">
                       {{ bid.guests }} guests · {{ bid.bedrooms }} bedroom ·
@@ -45,8 +45,8 @@
               </v-col>
               <v-col cols="4" md="2">
                 <v-row no-gutters class="half-height">
-                  <v-col>
-                    <div class="text-body-2 mb-2">
+                  <v-col class="text-center">
+                    <div class="text-body-2 font-weight-bold mb-2">
                       Your Bid: ${{ bid.price }}
                     </div>
                     <div>
@@ -59,10 +59,10 @@
                 </v-row>
                 <v-row no-gutters class="half-height align-center">
                   <v-col>
-                    <div class="mb-2">
+                    <div class="mb-2 text-center">
                       <v-chip
                         :class="`${bid.status} white--text justify-center`"
-                        style="width: 100px"
+                        :small="$vuetify.breakpoint.mobile"
                       >
                         {{ bid.status.toUpperCase() }}
                       </v-chip>
@@ -72,8 +72,8 @@
               </v-col>
               <v-col cols="4" md="3" :class="`bid ${bid.status}`">
                 <v-row no-gutters class="fill-height align-center">
-                  <v-col>
-                    <v-btn :class="`${bid.status} white--text`">
+                  <v-col class="text-center">
+                    <v-btn :class="`${bid.status} white--text`" :small="$vuetify.breakpoint.mobile">
                       Increse Bid
                     </v-btn>
                   </v-col>

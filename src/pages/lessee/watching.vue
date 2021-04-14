@@ -23,7 +23,7 @@
             <v-row>
               <v-col cols="12" md="3">
                 <v-img
-                  max-width="100%"
+                  height="100%"
                   :src="property.picture.thumbnail"
                   :aspect-ratio="3 / 2"
                   class="rounded-xl"

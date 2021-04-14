@@ -1,13 +1,17 @@
 <template>
-  <v-container>
+  <v-container :fluid="$vuetify.breakpoint.smAndDown">
     <v-row>
-      <v-col xs="12" sm="12" md="10" offset-md="1">
-        <v-row class="mt-10">
+      <v-col cols="12" md="10" offset-md="1">
+        <v-row v-if="!$vuetify.breakpoint.smAndDown" class="mt-10">
           <v-col>
             <h6 class="text-h6 cyan--text">Online Auction - VL012</h6>
             <h5 class="text-h5">
-              <span class="d-inline-block font-weight-bold mr-3">380 Brainard Street</span>
-              <span class="d-inline-block text-h6 font-weight-regular grey--text">
+              <span class="d-inline-block font-weight-bold mr-3"
+                >380 Brainard Street</span
+              >
+              <span
+                class="d-inline-block text-h6 font-weight-regular grey--text"
+              >
                 Jefferson County, Watertown, NY 13601
               </span>
             </h5>
@@ -15,13 +19,16 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="12">
+          <v-col cols="12" :class="{ 'pa-0': $vuetify.breakpoint.smAndDown }">
             <ImageGallery :pictures="samplePictures" />
           </v-col>
         </v-row>
         <v-row class="flex-xl-row-reverse d-flex">
-          <v-col md="7" xs="12" sm="12" order="xs12">
-            <v-card class="mx-auto pa-6">
+          <v-col md="7" cols="12" order="xs12">
+            <v-card
+              class="pa-2"
+              :elevation="$vuetify.breakpoint.smAndDown ? 0 : 1"
+            >
               <v-card-title class="cyan--text justify-space-between">
                 <div class="d-inline-block">Property Details</div>
                 <div class="d-inline-block">
@@ -93,7 +100,7 @@
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col md="5" xs="12" sm="12" order="xs1">
+          <v-col md="5" cols="12" order="xs1">
             <v-card class="mx-auto pa-6 text-center">
               <v-card-title class="cyan--text text-center">
                 AUCTION TIME LEFT
@@ -131,7 +138,11 @@
                 </v-btn>
               </v-card-text>
             </v-card>
-            <v-btn block class="mt-6 cyan white--text" :to="{name:'Contact'}">
+            <v-btn
+              block
+              class="mt-6 cyan white--text"
+              :to="{ name: 'Contact' }"
+            >
               Contact
             </v-btn>
           </v-col>
@@ -141,26 +152,6 @@
   </v-container>
 </template>
 
-<style>
-.room-summary {
-  padding: 5px;
-  border: solid 1px lightgray;
-}
-.lease-time {
-  border-style: solid;
-  border-width: 1px 0px 1px 0px;
-  border-color: lightgray;
-}
-.bid-number {
-  border: solid 1px lightgray;
-}
-.bid-price {
-  font-size: 24px;
-  border: solid 1px cyan;
-  color: black;
-  font-weight: bold;
-}
-</style>
 <script>
 import ImageGallery from "@/components/image.gallery";
 import { sampleProperties } from "@/data/properties";
@@ -199,8 +190,8 @@ export default {
         require("@/assets/property/property_1_02.png"),
         require("@/assets/property/property_1_03.png"),
         require("@/assets/property/property_1_04.png"),
-      ]
-    }
+      ];
+    },
   },
   methods: {
     setupCountdown() {
@@ -212,3 +203,24 @@ export default {
   },
 };
 </script>
+
+<style>
+.room-summary {
+  padding: 5px;
+  border: solid 1px lightgray;
+}
+.lease-time {
+  border-style: solid;
+  border-width: 1px 0px 1px 0px;
+  border-color: lightgray;
+}
+.bid-number {
+  border: solid 1px lightgray;
+}
+.bid-price {
+  font-size: 24px;
+  border: solid 1px cyan;
+  color: black;
+  font-weight: bold;
+}
+</style>

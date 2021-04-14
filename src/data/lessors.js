@@ -1,4 +1,4 @@
-export const sampleLessees = [
+export const sampleLessors = [
   {
     properties: ["59ac245d27cb310f0017afe3"],
     locale: "en-US",
@@ -31,8 +31,8 @@ export const sampleLessees = [
     workingCapital: 0,
     _id: "5e6b79c25f67330028bbbc20",
     accountId: "596f6fe706112710005d96ff",
-    firstName: "bob",
-    lastName: "smith",
+    firstName: "realtor",
+    lastName: "one",
     email: "test_test1@test.com",
     address: "test address",
     phone: "+380986410377",

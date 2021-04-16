@@ -262,7 +262,7 @@
               </v-row>
               <v-row>
                 <v-col align-self="center" cols="12" sm="4" xs="4">
-                  <img src="../../../assets/paid/icon8/Bids.svg"  class="mr-1" />
+                  <img src="../../../assets/unknown/Bids.svg"  class="mr-1" />
                   <span class="text-simple" > 100 </span>
                 </v-col>
                 <v-col align-self="bottom" cols="12" sm="6" xs="6">
@@ -287,9 +287,7 @@
 </template>
 <script>
 import "vuejs-google-maps/dist/vuejs-google-maps.css";
-
 import { sampleProperties } from "../../../data/properties";
-
 export default {
   name: "PropertiesPage",
   title: "Properties",

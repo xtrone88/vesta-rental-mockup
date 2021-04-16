@@ -130,7 +130,7 @@
                                 class="mr-1 mb-1"
                                 @click="dialog = true"
                               >
-                                <v-icon left>mdi-hammer</v-icon>
+                                <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                                 CURRENT BID | $900
                               </v-btn>
                               <v-btn
@@ -342,5 +342,8 @@ export default {
   display: inline-block;
   width: 100px;
   text-align: center;
+}
+.rotate-270 {
+  transform: rotate(270deg);
 }
 </style>

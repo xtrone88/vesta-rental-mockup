@@ -56,7 +56,7 @@
                     <div>
                       <v-btn small elevation="0" color="primary" class="px-6"
                         :to="{name:'PropertyDetail'}">
-                        <v-icon left>mdi-hammer</v-icon>
+                        <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                         BID NOW
                       </v-btn>
                     </div>
@@ -179,5 +179,8 @@ export default {
 <style lang="scss" scoped>
 .half-height {
   height: 50% !important;
+}
+.rotate-270 {
+  transform: rotate(270deg);
 }
 </style>

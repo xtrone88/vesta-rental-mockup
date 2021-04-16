@@ -195,7 +195,7 @@
       transition="dialog-bottom-transition"
       max-width="700"
     >
-      <v-card>
+      <v-card class="rounded-xl">
         <v-toolbar flat height="100">
           <v-row >
             <v-col cols="6" sm="6" offset-sm="3">

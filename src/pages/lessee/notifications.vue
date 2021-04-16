@@ -7,7 +7,7 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <v-card>
+        <v-card class="rounded-xl">
           <v-row 
             class="mb-4"
             v-bind:key="notif.id"

@@ -130,7 +130,7 @@
                                 class="mr-1 mb-1"
                                 @click="dialog = true"
                               >
-                                <v-icon left>mdi-hammer</v-icon>
+                                <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                                 CURRENT BID | $900
                               </v-btn>
                               <v-btn
@@ -262,7 +262,7 @@
               </v-row>
               <v-row>
                 <v-col align-self="center" cols="12" sm="4" xs="4">
-                  <img src="../../../assets/paid/icon8/Bids.svg"  class="mr-1" />
+                  <img src="../../../assets/unknown/Bids.svg"  class="mr-1" />
                   <span class="text-simple" > 100 </span>
                 </v-col>
                 <v-col align-self="bottom" cols="12" sm="6" xs="6">
@@ -287,9 +287,7 @@
 </template>
 <script>
 import "vuejs-google-maps/dist/vuejs-google-maps.css";
-
 import { sampleProperties } from "../../../data/properties";
-
 export default {
   name: "PropertiesPage",
   title: "Properties",
@@ -344,5 +342,8 @@ export default {
   display: inline-block;
   width: 100px;
   text-align: center;
+}
+.rotate-270 {
+  transform: rotate(270deg);
 }
 </style>

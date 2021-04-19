@@ -61,7 +61,7 @@
                       elevation="0"
                       color="primary"
                       class="px-6"
-                      :to="{ url: 'PropertyDetail/1' }"
+                      :to="{ path: `/properties/${property.id}` }"
                     >
                       <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                       BID NOW

@@ -7,7 +7,7 @@
         </v-col>
       </v-row>
       <v-row class="text-start">
-        <v-col class="d-flex" align="stretch" cols="12" sm="4" md="3">
+        <v-col class="d-flex" align="stretch" cols="12" sm="4" md="4" xs="4">
           <v-card
             :to="{ path: '/account/personalinfo' }"
             rounded="xl"
@@ -27,7 +27,7 @@
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="4" md="3">
+        <v-col cols="12" sm="4" md="4" xs="4">
           <v-card
             :to="{ path: '/account/notifications/settings' }"
             rounded="xl"
@@ -40,16 +40,13 @@
             />
             <!-- <v-icon size="64" class="ml-2">mdi-calendar-check</v-icon> -->
 
-            <v-card-title
-              >Notification Settings
-              <v-icon>mdi-chevron-right</v-icon></v-card-title
-            >
+            <v-card-title>Notification Settings<v-icon>mdi-chevron-right</v-icon></v-card-title>
             <v-card-text>
               Choose notification preferences and how you want to be contacted
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col cols="12" sm="4" md="3">
+        <v-col cols="12" sm="4" md="4" xs="4">
           <v-card
             :to="{ path: '/account/payments' }"
             rounded="xl"

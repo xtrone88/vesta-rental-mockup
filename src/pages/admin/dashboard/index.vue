@@ -34,7 +34,7 @@
             elevation="4"
           >
             <v-card-title>
-              246
+              246 <v-spacer></v-spacer>
               <v-icon size="64" class="ml-2">mdi-chart-box</v-icon>
             </v-card-title>
             <v-card-subtitle>Total Views </v-card-subtitle>
@@ -49,7 +49,8 @@
             elevation="4"
           >
             <v-card-title>
-              150 <v-icon size="64" class="ml-2">mdi-heart</v-icon>
+              150 <v-spacer></v-spacer
+              ><v-icon size="64" class="ml-2">mdi-heart</v-icon>
             </v-card-title>
             <v-card-subtitle>Favorites</v-card-subtitle>
             <v-card-text></v-card-text>
@@ -63,7 +64,8 @@
             elevation="4"
           >
             <v-card-title>
-              200 <v-icon size="64" class="ml-2">mdi-share</v-icon>
+              200 <v-spacer></v-spacer
+              ><v-icon size="64" class="ml-2">mdi-share</v-icon>
             </v-card-title>
             <v-card-subtitle>Shares</v-card-subtitle>
             <v-card-text></v-card-text>
@@ -71,7 +73,7 @@
         </v-col>
       </v-row>
       <v-row class="text-start">
-        <v-col cols="12" md="3">
+        <v-col cols="12">
           <v-card
             :to="{ path: '/lessor/bidding' }"
             rounded="md"
@@ -85,23 +87,50 @@
       </v-row>
       <v-row class="text-start">
         <v-col cols="12" sm="8">
-          <v-card
-            :to="{ path: '/lessor/bidding' }"
-            rounded="md"
-            class="dashboard_card"
-            elevation="4"
-          >
-            <v-card-title>Recent Property Listing </v-card-title>
-            <v-card-text> A datatable here </v-card-text>
+          <v-card rounded="md" class="dashboard_card" elevation="4">
+            <v-card-title
+              >Recent Property Listing <v-spacer></v-spacer>
+              <v-btn text :to="{ path: '/admin/listings' }"
+                >Show More</v-btn
+              ></v-card-title
+            >
+            <v-card-text>
+              <v-data-table
+                :headers="headers"
+                :items="properties"
+                item-key="name"
+                class="elevation-1"
+                :search="search"
+              >
+                <template v-slot:[`item.manager`]="{ item }">
+                  <div class="d-flex">
+                    <v-chip class="ma-2" color="primary" label>
+                      <v-icon left> mdi-account-circle-outline </v-icon>
+                      John Leider
+                    </v-chip>
+                    <v-btn
+                      @click="addManagerListing(item)"
+                      class="ma-2"
+                      x-small
+                      fab
+                      dark
+                      color="green"
+                    >
+                      <v-icon dark> mdi-plus </v-icon>
+                    </v-btn>
+                  </div>
+                </template>
+                <template v-slot:[`item.stats.views`]="{ item }">
+                  <v-chip color="red" dark>
+                    {{ item.stats.views }}
+                  </v-chip>
+                </template>
+              </v-data-table></v-card-text
+            >
           </v-card>
         </v-col>
         <v-col cols="12" sm="4">
-          <v-card
-            :to="{ path: '/lessor/bidding' }"
-            rounded="md"
-            class="dashboard_card"
-            elevation="4"
-          >
+          <v-card rounded="md" class="dashboard_card" elevation="4">
             <v-card-title>Top Locations </v-card-title>
             <v-card-text> <PieChart /></v-card-text>
           </v-card>
@@ -114,16 +143,27 @@
 <script>
 import LineChart from "./line.chart.vue";
 import PieChart from "./pie.chart.vue";
+import { sampleProperties } from "../../../data/properties";
 
 export default {
   title: "Dashboard",
   name: "AdminDashboardPage",
   components: {
     PieChart,
-
     LineChart,
   },
-  data: () => ({}),
+  data: () => ({
+    search: "",
+    properties: sampleProperties,
+    headers: [
+      { text: "Property Type", value: "propertyType" },
+      { text: "Property Title", value: "title" },
+      { text: "Base Price", value: "prices.basePrice" },
+      { text: "Views", value: "stats.views" },
+      { text: "Favorites", value: "stats.favorites" },
+      { text: "Shares", value: "stats.shares" },
+    ],
+  }),
 };
 </script>
 

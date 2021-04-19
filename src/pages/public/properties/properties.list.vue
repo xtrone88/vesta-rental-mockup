@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-container class="pa-8" fluid>
+    <v-container class="ma-0 pa-0" fluid>
       <v-row>
-        <v-col>
+        <v-col class="pa-8">
           <v-row>
             <v-col class="d-flex align-center justify-space-between">
               <div class="d-flex align-baseline">
@@ -123,112 +123,22 @@
                               {{ property.capacity }}
                             </div>
                             <div>
-                              <v-btn small elevation="0" color="primary" class="mr-1 mb-1"  @click="dialog = true">
-                                <v-icon left>mdi-hammer</v-icon>
+                              <v-btn
+                                small
+                                elevation="0"
+                                color="primary"
+                                class="mr-1 mb-1"
+                                @click="dialog = true"
+                              >
+                                <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                                 CURRENT BID | $900
                               </v-btn>
-                                
-                              <v-dialog
-                                v-model="dialog"
-                                transition="dialog-bottom-transition"
-                                max-width="700"
-                              >
-                                <v-card>
-                                  <v-toolbar
-                                    flat
-                                    height="100"
-                                  >
-                                    <v-row align="center">
-                                      <v-col cols="12" md="6" offset-md="3">
-                                        <h1 class="text-center font-weight-bold font-size-36">Place a Bid</h1>
-                                      </v-col>
-                                      <v-col cols="12" md="1" offset-md="2">
-                                        <v-btn
-                                          icon
-                                          @click="dialog = false"
-                                        >
-                                          <v-icon>mdi-close</v-icon>
-                                        </v-btn>
-                                      </v-col>
-                                    </v-row>                            
-                                  </v-toolbar>
-                                  <v-divider></v-divider>
-                                  <v-container>
-                                    <v-row>
-                                      <v-col
-                                        align-self="center"
-                                        cols="12"
-                                        sm="9"
-                                        offset-sm="1"
-                                      >
-                                        <v-text-field
-                                          v-model="title"
-                                          :rules="wordsRules"
-                                          counter="25"
-                                          hint="Minium of $ 5 Increment"
-                                          label="Your Bid Amount"
-                                        ></v-text-field>
-                                      </v-col>
-                                      <v-col cols="12"
-                                        sm="1" align-self="center">
-                                        <span>$</span>
-                                      </v-col>
-                                    </v-row>
-                                    <v-row>
-                                      <v-col align-self="center" cols="12" sm="10" offset-sm="1">
-                                        <img src="../../../assets/paid/icon8/Check.svg" class="mr-1"/>
-                                        <span class="text-style-medium1">Property not Reserved - Available for Auction</span>                              
-                                      </v-col>
-                                    </v-row>
-                                    <v-row>
-                                      <v-col cols="12" sm="4" offset-sm="1">
-                                        <v-row>
-                                          <v-col align-self="center">
-                                            <span class="text-style-medium font-weight-bold">Auction Remaining Time</span>
-                                          </v-col>
-                                        </v-row>
-                                        <v-row>
-                                          <v-col align-self="center">
-                                            <img src="../../../assets/paid/icon8/Clock.svg"  class="mr-1" />
-                                            <span class="text-simple">3d 23:26:32</span>
-                                          </v-col>
-                                        </v-row>
-                                      </v-col>
-                                      <v-col  cols="12" sm="5">
-                                        <v-row>
-                                          <v-col align-self="center">
-                                            <span class="font-weight-bold text-style-medium">Number of Bids</span>
-                                          </v-col>
-                                        </v-row>
-                                        <v-row>
-                                          <v-col align-self="center" cols="12" sm="4">
-                                            <img src="../../../assets/paid/icon8/Bids.svg"  class="mr-1" />
-                                            <span class="text-simple text-style-medium" > 100 </span>
-                                          </v-col>
-                                          <v-col align-self="bottom" cols="12" sm="6">
-                                            <span class="text-style-small" color="primary">View Bid History</span>
-                                          </v-col>
-                                        </v-row>
-                                      </v-col>
-                                    </v-row>
-                                    <v-row>
-                                      <v-col cols="12" md="4" offset-md="2">
-                                        <v-btn block class="mt-4 green white--text" @click="dialog = false"> BID </v-btn>
-                                      </v-col>
-                                      <v-col cols="12" md="4">
-                                        <v-btn block class="mt-4 cyan white--text" @click="dialog = false"> LEASE IT FOR $1299 </v-btn>
-                                      </v-col>
-                                    </v-row>
-                                  </v-container>
-                                  <div style="flex: 1 1 auto;"></div>
-                                </v-card>
-                              </v-dialog>
                               <v-btn
                                 small
                                 elevation="0"
                                 color="secondary"
                                 class="px-1 mb-1"
-                                :to="{name:'PropertyDetail'}"
+                                :to="{ name: 'PropertyDetail' }"
                               >
                                 LEASE IT FOR $1000
                               </v-btn>
@@ -266,14 +176,118 @@
         </v-col>
         <v-col v-if="!$vuetify.breakpoint.mobile">
           <!-- Here it goes maps component -->
+          <google-map id="map" ref="Map">
+            <google-map-marker
+              v-for="property in properties"
+              :position="{
+                lat: property.address.lat,
+                lng: property.address.lng,
+              }"
+              :key="property.id"
+            />
+          </google-map>
         </v-col>
       </v-row>
     </v-container>
+
+    <v-dialog
+      v-model="dialog"
+      transition="dialog-bottom-transition"
+      max-width="700"
+    >
+      <v-card class="rounded-xl">
+        <v-toolbar flat height="100">
+          <v-row >
+            <v-col cols="6" sm="6" offset-sm="3">
+              <h1 class="text-center text-md-h4 font-weight-bold">Place a Bid</h1>
+            </v-col>
+            <v-col cols="6" sm="1" xs="1" offset-sm="2">
+              <v-btn
+                icon
+                @click="dialog = false"
+              >
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>                            
+        </v-toolbar>
+        <v-divider></v-divider>
+        <v-container>
+          <v-row>
+            <v-col
+              align-self="center"
+              cols="6"
+              sm="9"
+              xs="3"
+              offset-sm="1"
+            >
+              <v-text-field
+                v-model="title"
+                :rules="wordsRules"
+                counter="25"
+                hint="Minium of $ 5 Increment"
+                label="Your Bid Amount"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="6"
+              sm="1" xs="1" align-self="center">
+              <span>$</span>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col align-self="center" cols="12" sm="10" xs="10" offset-sm="1">
+              <img src="../../../assets/paid/icon8/Check.svg" class="mr-1"/>
+              <span class="font-weight-bold light-green--text accent-3">Property not Reserved - Available for Auction</span>                              
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="4" xs="4" offset-sm="1">
+              <v-row>
+                <v-col align-self="center">
+                  <span class="font-weight-bold">Auction Remaining Time</span>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col align-self="center">
+                  <img src="../../../assets/paid/icon8/Clock.svg"  class="mr-1" />
+                  <span class="text-simple">3d 23:26:32</span>
+                </v-col>
+              </v-row>
+            </v-col>
+            <v-col  cols="12" sm="5" xs="5">
+              <v-row>
+                <v-col align-self="center">
+                  <span class="font-weight-bold">Number of Bids</span>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col align-self="center" cols="12" sm="4" xs="4">
+                  <img src="../../../assets/unknown/Bids.svg"  class="mr-1" />
+                  <span class="text-simple" > 100 </span>
+                </v-col>
+                <v-col align-self="bottom" cols="12" sm="6" xs="6">
+                  <a href="/" class="subtitle-2">View Bid History</a>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="4" xs="12" offset-sm="2">
+              <v-btn block class="mt-4 green white--text" @click="dialog = false"> BID </v-btn>
+            </v-col>
+            <v-col cols="12" sm="4" xs="12">
+              <v-btn block class="mt-4 cyan white--text" @click="dialog = false"> LEASE IT FOR $1299 </v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+        <div style="flex: 1 1 auto;"></div>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 <script>
+import "vuejs-google-maps/dist/vuejs-google-maps.css";
 import { sampleProperties } from "../../../data/properties";
-
 export default {
   name: "PropertiesPage",
   title: "Properties",
@@ -319,8 +333,7 @@ export default {
     propertyTypes() {
       return ["All", "Apartment", "House", "More"];
     },
-  },
-  methods: {},
+  }
 };
 </script>
 
@@ -330,18 +343,7 @@ export default {
   width: 100px;
   text-align: center;
 }
-
-.text-style-medium{
-  font-size: 16px;
-}
-
-.text-style-medium1{
-  font-size: 16px;
-  color: #25D848;
-  font-weight: bold;
-}
-
-.text-style-small {
-  font-size: 14px;
+.rotate-270 {
+  transform: rotate(270deg);
 }
 </style>

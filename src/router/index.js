@@ -25,7 +25,7 @@ import PersonalInfo from "../pages/lessee/personalinfo";
 import PaymentsPage from "../pages/lessee/payments";
 
 // added by Malcom 4/14/2021
-import WonAuctionPage from '../pages/lessee/wonauction';
+import WonAuctionPage from "../pages/lessee/wonauction";
 
 // Lessor
 import LessorPage from "../pages/lessor/lessor";
@@ -40,6 +40,8 @@ import AdminPage from "../pages/admin/admin";
 import AdminDashboardPage from "../pages/admin/dashboard";
 import AdminListingsPage from "../pages/admin/listings";
 import AdminBookingPage from "../pages/admin/bookings";
+import AdminLesseesPage from "../pages/admin/lessees";
+import AdminLessorsPage from "../pages/admin/lessors";
 
 Vue.use(VueRouter);
 
@@ -72,8 +74,8 @@ const routes = [
     component: PropertiesListPage
   },
   {
-    path: '/properties/:propertyId',
-    name: 'PropertyDetail',
+    path: "/properties/:propertyId",
+    name: "PropertyDetail",
     component: PropertyDetailPage
   },
   {
@@ -144,26 +146,26 @@ const routes = [
         component: NotificationsPage
       },
       {
-        path: 'notifications/settings',
-        name: 'NotificationSettings',
-        component: NotificationSettingsPage,
+        path: "notifications/settings",
+        name: "NotificationSettings",
+        component: NotificationSettingsPage
       },
       {
-        path: 'personalinfo',
-        name: 'personalinfo',
-        component: PersonalInfo,
+        path: "personalinfo",
+        name: "personalinfo",
+        component: PersonalInfo
       },
       {
-        path: 'payments',
-        name: 'payments',
-        component: PaymentsPage,
+        path: "payments",
+        name: "payments",
+        component: PaymentsPage
       },
       {
-        path: 'wonauction',
-        name: 'WonAuction',
-        component: WonAuctionPage,
-      },
-    ],
+        path: "wonauction",
+        name: "WonAuction",
+        component: WonAuctionPage
+      }
+    ]
   },
 
   // Lessor routes
@@ -221,6 +223,16 @@ const routes = [
         path: "bookings",
         name: "LessorBookings",
         component: AdminBookingPage
+      },
+      {
+        path: "lessees",
+        name: "AdminLessees",
+        component: AdminLesseesPage
+      },
+      {
+        path: "lessors",
+        name: "AdminLessors",
+        component: AdminLessorsPage
       }
     ]
   }
@@ -229,7 +241,15 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 };
+    }
+  }
 });
 
 export default router;

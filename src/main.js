@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import VueTelInputVuetify from 'vue-tel-input-vuetify/lib';
+import VueGoogleMap from 'vuejs-google-maps';
 
 import router from './router';
 import store from './store/store';
@@ -18,6 +19,11 @@ Vue.config.productionTip = false;
 Vue.use(VueTelInputVuetify, {
   vuetify,
 });
+Vue.use(VueGoogleMap, {
+  load: {
+      apiKey: 'AIzaSyA94jrtR5wymZKLsOaEP887-fiIKw07Bvc'
+  }
+})
 
 new Vue({
   vuetify,

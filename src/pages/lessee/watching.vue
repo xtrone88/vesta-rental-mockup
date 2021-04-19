@@ -23,7 +23,7 @@
             <v-row>
               <v-col cols="12" md="3">
                 <v-img
-                  max-width="100%"
+                  height="100%"
                   :src="property.picture.thumbnail"
                   :aspect-ratio="3 / 2"
                   class="rounded-xl"
@@ -56,7 +56,7 @@
                     <div>
                       <v-btn small elevation="0" color="primary" class="px-6"
                         :to="{name:'PropertyDetail'}">
-                        <v-icon left>mdi-hammer</v-icon>
+                        <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                         BID NOW
                       </v-btn>
                     </div>
@@ -179,5 +179,8 @@ export default {
 <style lang="scss" scoped>
 .half-height {
   height: 50% !important;
+}
+.rotate-270 {
+  transform: rotate(270deg);
 }
 </style>

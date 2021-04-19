@@ -207,27 +207,19 @@
           <v-divider></v-divider>
           <v-container>
             <v-row>
-              <v-col
-                align-self="center"
-                cols="10"
-                sm="9"
-                offset-sm="1"
-              >
-                <v-text-field
-                  v-model="title"
-                  :rules="wordsRules"
+              <v-col>
+                <div class="d-flex align-center">
+                  <v-text-field
                   counter="25"
                   hint="Minium of $ 5 Increment"
                   label="Your Bid Amount"
                 ></v-text-field>
-              </v-col>
-              <v-col cols="1"
-                sm="1" align-self="center">
                 <span>$</span>
+                </div>
               </v-col>
             </v-row>
             <v-row>
-              <v-col align-self="center" cols="12" sm="10" offset-sm="1">
+              <v-col cols="12" sm="10" offset-sm="1">
 <!--                <img src="../../../assets/paid/icon8/Check.svg" class="mr-1"/> -->
                 <span class="font-weight-bold light-green--text accent-3">Property not Reserved - Available for Auction</span>                              
               </v-col>
@@ -235,12 +227,12 @@
             <v-row>
               <v-col cols="12" sm="4" offset-sm="1">
                 <v-row>
-                  <v-col align-self="center" class="pt-1 pb-1">
+                  <v-col class="pt-1 pb-1">
                     <span class="font-weight-bold">Auction Remaining Time</span>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col align-self="center" class="pt-1 pb-1">
+                  <v-col class="pt-1 pb-1">
 <!--                    <img src="../../../assets/paid/icon8/Clock.svg"  class="mr-1" /> -->
                     <span class="text-simple">3d 23:26:32</span>
                   </v-col>
@@ -248,16 +240,16 @@
               </v-col>
               <v-col  cols="12" sm="5" class="pb-0">
                 <v-row>
-                  <v-col align-self="center" class="pt-1 pb-1">
+                  <v-col class="pt-1 pb-1">
                     <span class="font-weight-bold">Number of Bids</span>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col align-self="center" cols="12" sm="4" class="pt-1 pb-1">
+                  <v-col cols="12" sm="4" class="pt-1 pb-1">
 <!--                    <img src="../../../assets/unknown/Bids.svg"  class="mr-1" /> -->
                     <span class="text-simple" > 100 </span>
                   </v-col>
-                  <v-col align-self="bottom" cols="12" sm="6" class="pt-1 pb-1">
+                  <v-col cols="12" sm="6" class="pt-1 pb-1">
                     <a href="/" class="subtitle-2">View Bid History</a>
                   </v-col>
                 </v-row>

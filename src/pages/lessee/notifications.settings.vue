@@ -6,7 +6,7 @@
       </v-col>
     </v-row>
 
-    <v-card outlined class="mb-4 rounded-xl" elevation="2">
+    <v-card class="mb-4 rounded-xl" :elevation="$vuetify.breakpoint.smAndDown ? 0 : 1">
       <v-col cols="12" md="6" sm="6" offset-sm="3">
         <v-row>
           <v-col>
@@ -18,7 +18,7 @@
         </v-row>
         <v-divider></v-divider>
         <v-row align="center">
-          <v-col cols="10" sm="10">
+          <v-col cols="9" sm="10">
             <v-card-text class="font-weight-bold">Email</v-card-text>
             <v-spacer></v-spacer>
           </v-col>
@@ -28,7 +28,7 @@
         </v-row>
         <v-divider></v-divider>
         <v-row align="center">
-          <v-col cols="10" sm="10">
+          <v-col cols="9" sm="10">
             <v-card-text class="font-weight-bold">Text Messages</v-card-text>
           </v-col>
           <v-col cols="1" sm="1">
@@ -37,7 +37,7 @@
         </v-row>
         <v-divider></v-divider>
         <v-row align="center">
-          <v-col cols="10" sm="10">
+          <v-col cols="9" sm="10">
             <v-card-text class="font-weight-bold">Browser Notifications</v-card-text>
           </v-col>
           <v-col cols="1" sm="1">

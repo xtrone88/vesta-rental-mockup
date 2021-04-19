@@ -5,7 +5,7 @@
         <v-col class="mb-4">
           <h1 class="display-2 font-weight-bold mb-4">Personal Info</h1>
         </v-col>
-        <v-card outlined class="mx-auto pa-9 rounded-xl">
+        <v-card class="mx-auto pa-9 rounded-xl">
           <InfoForm field="First Name" valueEdit="John"/>
           <InfoForm field="Last Name" valueEdit="Smith"/>
           <InfoForm field="Gender" valueEdit="Male"/>

@@ -9,7 +9,7 @@
       <v-col cols="12">
         <v-card height="300" class="rounded-xl">
           <v-row>
-            <v-col cols="12" sm="6" offset-sm="3" align-self="center">
+            <v-col cols="12" sm="6" offset-sm="3" align-self="center" class="pt-9">
               <v-list-item two-line>
                 <v-list-item-avatar>
                   <v-icon>mdi-credit-card-check</v-icon>
@@ -41,7 +41,7 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12" sm="2" offset-sm="5">
+            <v-col cols="12" sm="2" offset-sm="5" class="pt-0">
               <v-btn block class="mt-6 cyan white--text" @click="dialog = true"> ADD PAYMENT </v-btn>
             </v-col>
           </v-row>

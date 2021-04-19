@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <v-container fluid>
       <v-row>
         <v-col>
@@ -188,94 +188,91 @@
         transition="dialog-bottom-transition"
         max-width="700"
       >
-        <v-card>
+        <v-card class="rounded-xl">
           <v-toolbar flat height="100">
-            <v-row>
-              <v-col cols="6" sm="6" offset-sm="3">
-                <h1 class="text-center text-md-h4 font-weight-bold">
-                  Place a Bid
-                </h1>
+            <v-row >
+              <v-col cols="10" sm="6" offset-sm="3">
+                <h1 class="text-center text-md-h4 font-weight-bold">Place a Bid</h1>
               </v-col>
-              <v-col cols="6" sm="1" xs="1" offset-sm="2">
-                <v-btn icon @click="dialog = false">
+              <v-col cols="1" sm="1" xs="1" offset-sm="2">
+                <v-btn
+                  icon
+                  @click="dialog = false"
+                >
                   <v-icon>mdi-close</v-icon>
                 </v-btn>
               </v-col>
-            </v-row>
+            </v-row>                            
           </v-toolbar>
           <v-divider></v-divider>
           <v-container>
             <v-row>
-              <v-col cols="6" sm="9" xs="3" offset-sm="1">
+              <v-col
+                align-self="center"
+                cols="10"
+                sm="9"
+                offset-sm="1"
+              >
                 <v-text-field
+                  v-model="title"
+                  :rules="wordsRules"
                   counter="25"
                   hint="Minium of $ 5 Increment"
                   label="Your Bid Amount"
                 ></v-text-field>
               </v-col>
-              <v-col cols="6" sm="1" xs="1">
+              <v-col cols="1"
+                sm="1" align-self="center">
                 <span>$</span>
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" sm="10" xs="10" offset-sm="1">
-                <span class="font-weight-bold light-green--text accent-3"
-                  >Property not Reserved - Available for Auction</span
-                >
+              <v-col align-self="center" cols="12" sm="10" offset-sm="1">
+<!--                <img src="../../../assets/paid/icon8/Check.svg" class="mr-1"/> -->
+                <span class="font-weight-bold light-green--text accent-3">Property not Reserved - Available for Auction</span>                              
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" sm="4" xs="4" offset-sm="1">
+              <v-col cols="12" sm="4" offset-sm="1">
                 <v-row>
-                  <v-col>
+                  <v-col align-self="center" class="pt-1 pb-1">
                     <span class="font-weight-bold">Auction Remaining Time</span>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col>
+                  <v-col align-self="center" class="pt-1 pb-1">
+<!--                    <img src="../../../assets/paid/icon8/Clock.svg"  class="mr-1" /> -->
                     <span class="text-simple">3d 23:26:32</span>
                   </v-col>
                 </v-row>
               </v-col>
-              <v-col cols="12" sm="5" xs="5">
+              <v-col  cols="12" sm="5" class="pb-0">
                 <v-row>
-                  <v-col>
+                  <v-col align-self="center" class="pt-1 pb-1">
                     <span class="font-weight-bold">Number of Bids</span>
                   </v-col>
                 </v-row>
                 <v-row>
-                  <v-col cols="12" sm="4" xs="4">
-                    <img src="../../../assets/unknown/Bids.svg" class="mr-1" />
-                    <span class="text-simple"> 100 </span>
+                  <v-col align-self="center" cols="12" sm="4" class="pt-1 pb-1">
+<!--                    <img src="../../../assets/unknown/Bids.svg"  class="mr-1" /> -->
+                    <span class="text-simple" > 100 </span>
                   </v-col>
-                  <v-col cols="12" sm="6" xs="6">
+                  <v-col align-self="bottom" cols="12" sm="6" class="pt-1 pb-1">
                     <a href="/" class="subtitle-2">View Bid History</a>
                   </v-col>
                 </v-row>
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" sm="4" xs="12" offset-sm="2">
-                <v-btn
-                  block
-                  class="mt-4 green white--text"
-                  @click="dialog = false"
-                >
-                  BID
-                </v-btn>
+              <v-col cols="12" sm="4" offset-sm="2" class="pt-0 pr-2 pl-2 pb-0">
+                <v-btn block class="mt-4 green white--text" @click="dialog = false"> BID </v-btn>
               </v-col>
-              <v-col cols="12" sm="4" xs="12">
-                <v-btn
-                  block
-                  class="mt-4 cyan white--text"
-                  @click="dialog = false"
-                >
-                  LEASE IT FOR $1299
-                </v-btn>
+              <v-col cols="12" sm="4" class="pt-0 pr-2 pl-2 pb-6">
+                <v-btn block class="mt-4 cyan white--text" @click="dialog = false"> LEASE IT FOR $1299 </v-btn>
               </v-col>
             </v-row>
           </v-container>
-          <div style="flex: 1 1 auto"></div>
+          <div style="flex: 1 1 auto;"></div>
         </v-card>
       </v-dialog>
     </v-container>

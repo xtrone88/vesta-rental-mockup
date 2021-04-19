@@ -22,7 +22,10 @@
                 </v-img>
               </v-col>
               <v-col cols="4" md="4">
-                <v-row no-gutters :class="{ 'half-height': !$vuetify.breakpoint.mobile }">
+                <v-row
+                  no-gutters
+                  :class="{ 'half-height': !$vuetify.breakpoint.mobile }"
+                >
                   <v-col>
                     <div class="d-flex align-center">
                       <h6 class="text-h6">{{ bid.title }}</h6>
@@ -34,7 +37,13 @@
                     </div>
                   </v-col>
                 </v-row>
-                <v-row no-gutters :class="{ 'half-height': !$vuetify.breakpoint.mobile, 'align-center' : true }">
+                <v-row
+                  no-gutters
+                  :class="{
+                    'half-height': !$vuetify.breakpoint.mobile,
+                    'align-center': true,
+                  }"
+                >
                   <v-col>
                     <div class="text-body-2 mb-2">
                       {{ bid.guests }} guests · {{ bid.bedrooms }} bedroom ·
@@ -73,8 +82,11 @@
               <v-col cols="4" md="3" :class="`bid ${bid.status}`">
                 <v-row no-gutters class="fill-height align-center">
                   <v-col class="text-center">
-                    <v-btn :class="`${bid.status} white--text`" :small="$vuetify.breakpoint.mobile">
-                      Increse Bid
+                    <v-btn
+                      :class="`${bid.status} white--text`"
+                      :small="$vuetify.breakpoint.mobile"
+                    >
+                      Increase Bid
                     </v-btn>
                   </v-col>
                 </v-row>

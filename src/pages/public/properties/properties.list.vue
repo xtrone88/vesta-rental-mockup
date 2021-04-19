@@ -198,7 +198,9 @@
                                         sm="10"
                                         offset-sm="1"
                                       >
-                                        <v-icon>mdi-check</v-icon>
+                                        <v-icon color="#12a7c6"
+                                          >mdi-check</v-icon
+                                        >
 
                                         <span class="text-style-medium1"
                                           >Property not Reserved - Available for
@@ -218,10 +220,9 @@
                                         </v-row>
                                         <v-row>
                                           <v-col align-self="center">
-                                            <img
-                                              src="../../../assets/paid/icon8/Clock.svg"
-                                              class="mr-1"
-                                            />
+                                            <v-icon color="#12a7c6"
+                                              >mdi-alarm</v-icon
+                                            >
                                             <span class="text-simple"
                                               >3d 23:26:32</span
                                             >

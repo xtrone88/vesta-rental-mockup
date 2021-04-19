@@ -7,7 +7,7 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <v-card height="300">
+        <v-card height="300" class="rounded-xl">
           <v-row>
             <v-col cols="12" sm="6" offset-sm="3" align-self="center">
               <v-list-item two-line>
@@ -80,7 +80,7 @@
         </v-row>
         <v-row class="ma-4 mt-2">
           <v-col cols="12" md="3">
-            <v-btn block class="mt-4 cyan white--text" @click="dialog = false"
+            <v-btn block class="mt-4 cyan white--text" :to="{ path: '/account/transactions' }"
             > SUBMIT </v-btn>
           </v-col>
         </v-row>

@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid>
+  <v-container :fluid="!$vuetify.breakpoint.mdAndUp">
     <v-row>
-      <v-col class="d-flex">
+      <v-col class="d-flex py-md-12">
         <span class="font-weight-bold text-md-h3 text-sm-h4 text-h5"
           >Watching</span
         >
@@ -21,14 +21,19 @@
           }"
         >
           <v-row no-gutters>
-            <v-col cols="12" lg="2" sm="3">
+            <v-col cols="12" lg="3" sm="3">
               <v-img
-                :src="property.picture.thumbnail"
+                :src="
+                  $vuetify.breakpoint.mobile
+                    ? property.pictures[0].thumb_750
+                    : property.pictures[0].thumb_500
+                "
                 class="fill-height rounded-xl"
+                :aspect-ratio="3 / 2"
               >
               </v-img>
             </v-col>
-            <v-col class="pl-sm-4" cols="7" sm="4">
+            <v-col class="pl-sm-4" cols="7" sm="3">
               <div class="d-flex fill-height flex-column">
                 <div>
                   <div
@@ -56,7 +61,7 @@
                       elevation="0"
                       color="primary"
                       class="px-6"
-                      :to="{ name: 'PropertyDetail' }"
+                      :to="{ url: 'PropertyDetail/1' }"
                     >
                       <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                       BID NOW
@@ -177,9 +182,7 @@ export default {
             "bathrooms"
           )
         );
-        property.picture.thumbnail = require("@/assets/property/property_200_300_" +
-          property.id +
-          ".png");
+
         property.postbids = 3;
         property.postBidsEndingDate = "Mar 11, 2021";
         property.leaseStartDate = "Mar 24, 2021";

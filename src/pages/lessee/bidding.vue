@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid>
+  <v-container :fluid="!$vuetify.breakpoint.mdAndUp">
     <v-row>
-      <v-col class="d-flex">
+      <v-col class="d-flex py-md-12">
         <span class="font-weight-bold text-md-h3 text-sm-h4 text-h5"
           >Bidding</span
         >
@@ -20,8 +20,8 @@
           }"
         >
           <v-row no-gutters>
-            <v-col cols="12" lg="2" md="3" sm="3">
-              <v-img :src="`${bid.image}`" class="rounded-xl fill-height">
+            <v-col cols="12" lg="3" md="3" sm="3">
+              <v-img :src="`${bid.image}`" class="rounded-xl fill-height" :aspect-ratio="3/2">
               </v-img>
             </v-col>
             <v-col class="pl-sm-4" cols="7" lg="5" md="5" sm="4">
@@ -43,7 +43,7 @@
                 </div>
               </div>
             </v-col>
-            <v-col cols="5" lg="5" md="4" :class="`bid ${bid.status}`">
+            <v-col cols="5" lg="4" md="4" :class="`bid ${bid.status}`">
               <v-row class="fill-height">
                 <v-col cols="12" sm="6">
                   <div class="d-flex fill-height flex-column align-center">
@@ -74,7 +74,7 @@
                       :class="`${bid.status} white--text`"
                       :small="$vuetify.breakpoint.mobile"
                     >
-                      Increse Bid
+                      Increase Bid
                     </v-btn>
                   </div>
                 </v-col>

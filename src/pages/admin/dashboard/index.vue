@@ -3,7 +3,7 @@
   color: white;
   .v-icon {
     color: white;
-    align-self: end;
+    align-self: flex-end;
   }
   .v-card__title {
     font-size: 64px;

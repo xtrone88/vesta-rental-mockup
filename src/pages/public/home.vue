@@ -84,12 +84,9 @@
   <div>
     <v-container class="bg-black" fluid>
       <v-card class="home-intro">
-        <v-img
-          src="@/assets/home/slider1.png"
-          class="full-width"
-        ></v-img>
+        <v-img src="@/assets/home/slider1.png" class="full-width"></v-img>
         <div class="text-center">
-          <div class="search-bar" style="height:100%">
+          <div class="search-bar" style="height: 100%">
             <div class="d-flex align-center">
               <v-icon left dark>mdi-crosshairs-gps</v-icon>
               <v-text-field
@@ -109,27 +106,25 @@
     </v-container>
     <v-container fluid>
       <div class="rent-way">
-        <h1>
-          The New Way of Renting Properties
-        </h1>
-        <h6>New online auction-based application for booking rental properties</h6>
+        <h1>The New Way of Renting Properties</h1>
+        <h6>
+          New online auction-based application for booking rental properties
+        </h6>
         <v-img src="@/assets/home/rent-way.png"></v-img>
       </div>
     </v-container>
     <v-container fluid>
-      <div class="popular-destination">
+      <div class="popular-destination mb-6">
         <h4>Popular Destination</h4>
         <v-row class="city-rows">
-          <v-col md="3"
-            v-for="(city, i) in cities"
-            :key="i">
+          <v-col md="3" v-for="(city, i) in cities" :key="i">
             <div class="d-flex align-center">
-              <img :src="city.img"/>
+              <img :src="city.img" />
               <div class="ml-4">
-                  <p class="city-name">
-                    {{city.city}} <br>
-                    <span class="state-name">{{city.state}}</span>
-                  </p>
+                <p class="city-name">
+                  {{ city.city }} <br />
+                  <span class="state-name">{{ city.state }}</span>
+                </p>
               </div>
             </div>
           </v-col>
@@ -145,16 +140,48 @@ export default {
   name: "HomePage",
   data: () => ({
     publicPath: process.env.BASE_URL,
-    'cities': [
-      {city:"New York", state:"New York", img:require("@/assets/home/dest_newyork.png")},
-      {city:"San Francisco", state:"California", img:require("@/assets/home/dest_sanfrancisco.png")},
-      {city:"Austin", state:"Texas", img:require("@/assets/home/dest_austin.png")},
-      {city:"Lake Anna", state:"Virginia", img:require("@/assets/home/dest_lakeanna.png")},
-      {city:"Los Angeles", state:"Californiat", img:require("@/assets/home/dest_losangels.png")},
-      {city:"San Diego", state:"California", img:require("@/assets/home/dest_sandiego.png")},
-      {city:"Houston", state:"Texas", img:require("@/assets/home/dest_houston.png")},
-      {city:"Seattle", state:"Washington", img:require("@/assets/home/dest_seattle.png")}
-    ]
+    cities: [
+      {
+        city: "New York",
+        state: "New York",
+        img: require("@/assets/home/dest_newyork.png"),
+      },
+      {
+        city: "San Francisco",
+        state: "California",
+        img: require("@/assets/home/dest_sanfrancisco.png"),
+      },
+      {
+        city: "Austin",
+        state: "Texas",
+        img: require("@/assets/home/dest_austin.png"),
+      },
+      {
+        city: "Lake Anna",
+        state: "Virginia",
+        img: require("@/assets/home/dest_lakeanna.png"),
+      },
+      {
+        city: "Los Angeles",
+        state: "Californiat",
+        img: require("@/assets/home/dest_losangels.png"),
+      },
+      {
+        city: "San Diego",
+        state: "California",
+        img: require("@/assets/home/dest_sandiego.png"),
+      },
+      {
+        city: "Houston",
+        state: "Texas",
+        img: require("@/assets/home/dest_houston.png"),
+      },
+      {
+        city: "Seattle",
+        state: "Washington",
+        img: require("@/assets/home/dest_seattle.png"),
+      },
+    ],
   }),
 };
 </script>

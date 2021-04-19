@@ -23,8 +23,8 @@
             <ImageGallery :pictures="samplePictures" />
           </v-col>
         </v-row>
-        <v-row class="flex-xl-row-reverse d-flex">
-          <v-col md="7" cols="12" order="xs12">
+        <v-row>
+          <v-col md="7" cols="12" order-sm="1" order="2">
             <v-card
               class="pa-2"
               :elevation="$vuetify.breakpoint.smAndDown ? 0 : 1"
@@ -100,7 +100,7 @@
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col md="5" cols="12" order="xs1">
+          <v-col md="5" cols="12" order-sm="2" order="1">
             <v-card class="mx-auto pa-6 text-center">
               <v-card-title class="cyan--text text-center">
                 AUCTION TIME LEFT

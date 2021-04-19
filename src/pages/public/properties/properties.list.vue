@@ -220,7 +220,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" sm="10" offset-sm="1">
-<!--                <img src="../../../assets/paid/icon8/Check.svg" class="mr-1"/> -->
+                <v-icon color="green">mdi-check</v-icon>
                 <span class="font-weight-bold light-green--text accent-3">Property not Reserved - Available for Auction</span>                              
               </v-col>
             </v-row>
@@ -233,7 +233,7 @@
                 </v-row>
                 <v-row>
                   <v-col class="pt-1 pb-1">
-<!--                    <img src="../../../assets/paid/icon8/Clock.svg"  class="mr-1" /> -->
+                    <v-icon class="pr-2" color="primary">mdi-clock</v-icon>
                     <span class="text-simple">3d 23:26:32</span>
                   </v-col>
                 </v-row>
@@ -246,7 +246,8 @@
                 </v-row>
                 <v-row>
                   <v-col cols="12" sm="4" class="pt-1 pb-1">
-<!--                    <img src="../../../assets/unknown/Bids.svg"  class="mr-1" /> -->
+                    <v-icon color="primary" class="rotate-270" left
+                                  >mdi-hammer</v-icon>
                     <span class="text-simple" > 100 </span>
                   </v-col>
                   <v-col cols="12" sm="6" class="pt-1 pb-1">

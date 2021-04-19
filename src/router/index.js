@@ -216,12 +216,12 @@ const routes = [
       },
       {
         path: "listings",
-        name: "LessorListings",
+        name: "AdminListings",
         component: AdminListingsPage
       },
       {
         path: "bookings",
-        name: "LessorBookings",
+        name: "AdminBookings",
         component: AdminBookingPage
       },
       {

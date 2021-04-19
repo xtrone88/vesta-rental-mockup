@@ -1,91 +1,91 @@
 <template>
-  <div class="container">
-    <v-container class="pa-4 my-10">
-      <div class="d-flex align-center mb-16">
-        <h3 class="text-h3">Bidding</h3>
+  <v-container fluid>
+    <v-row>
+      <v-col class="d-flex">
+        <span class="font-weight-bold text-md-h3 text-sm-h4 text-h5"
+          >Bidding</span
+        >
         <v-spacer></v-spacer>
-        <v-icon color="dark" large>mdi-sort-variant</v-icon>
-      </div>
-      <v-divider class="mb-4"></v-divider>
-
-      <v-row v-for="bid in bids" :key="bid.id">
-        <v-col cols="12">
-          <v-sheet class="mb-4">
-            <v-row>
-              <v-col cols="12" md="3">
-                <v-img
-                  max-width="100%"
-                  :src="`${bid.image}`"
-                  :aspect-ratio="3 / 2"
-                  class="rounded-xl"
-                >
-                </v-img>
-              </v-col>
-              <v-col cols="4" md="4">
-                <v-row no-gutters :class="{ 'half-height': !$vuetify.breakpoint.mobile }">
-                  <v-col>
-                    <div class="d-flex align-center">
-                      <h6 class="text-h6">{{ bid.title }}</h6>
-                      <v-spacer></v-spacer>
-                    </div>
-                    <div class="text-body-2 mb-2">
-                      {{ bid.address1 }}<br />
-                      {{ bid.address2 }}
-                    </div>
-                  </v-col>
-                </v-row>
-                <v-row no-gutters :class="{ 'half-height': !$vuetify.breakpoint.mobile, 'align-center' : true }">
-                  <v-col>
-                    <div class="text-body-2 mb-2">
-                      {{ bid.guests }} guests · {{ bid.bedrooms }} bedroom ·
-                      {{ bid.beds }} bed · {{ bid.baths }} bath
-                    </div>
-                  </v-col>
-                </v-row>
-              </v-col>
-              <v-col cols="4" md="2">
-                <v-row no-gutters class="half-height">
-                  <v-col class="text-center">
-                    <div class="text-body-2 font-weight-bold mb-2">
-                      Your Bid: ${{ bid.price }}
-                    </div>
-                    <div>
-                      <v-icon color="cyan">mdi-alarm-check</v-icon>
-                      <span class="text-body-2 ml-2"
-                        >{{ bid.hoursLeft }} Hrs Left</span
-                      >
-                    </div>
-                  </v-col>
-                </v-row>
-                <v-row no-gutters class="half-height align-center">
-                  <v-col>
-                    <div class="mb-2 text-center">
-                      <v-chip
-                        :class="`${bid.status} white--text justify-center`"
-                        :small="$vuetify.breakpoint.mobile"
-                      >
-                        {{ bid.status.toUpperCase() }}
-                      </v-chip>
-                    </div>
-                  </v-col>
-                </v-row>
-              </v-col>
-              <v-col cols="4" md="3" :class="`bid ${bid.status}`">
-                <v-row no-gutters class="fill-height align-center">
-                  <v-col class="text-center">
-                    <v-btn :class="`${bid.status} white--text`" :small="$vuetify.breakpoint.mobile">
+        <v-icon class="flip-y" color="dark" :large="!$vuetify.breakpoint.xs"
+          >mdi-sort-variant</v-icon
+        >
+      </v-col>
+    </v-row>
+    <v-row v-for="bid in bids" :key="bid.id">
+      <v-col cols="12">
+        <v-lazy
+          v-model="bid.isActive"
+          :options="{
+            threshold: 0.5,
+          }"
+        >
+          <v-row no-gutters>
+            <v-col cols="12" lg="2" md="3" sm="3">
+              <v-img :src="`${bid.image}`" class="rounded-xl fill-height">
+              </v-img>
+            </v-col>
+            <v-col class="pl-sm-4" cols="7" lg="5" md="5" sm="4">
+              <div class="d-flex fill-height flex-column">
+                <div>
+                  <div class="font-weight-bold text-md-h5 text-sm-h6 text-subtitle-1">
+                    {{ bid.title }}
+                  </div>
+                  <div class="font-weight-regular text-lg-h6 text-md-body-1 text-sm-body-2 text-caption">
+                    {{ bid.address1 }}<br />
+                    {{ bid.address2 }}
+                  </div>
+                </div>
+                <div class="mt-auto">
+                  <div class="font-weight-regular text-lg-h6 text-md-body-1 text-sm-body-2 text-caption">
+                    {{ bid.guests }} guests · {{ bid.bedrooms }} bedroom ·
+                    {{ bid.beds }} bed · {{ bid.baths }} bath
+                  </div>
+                </div>
+              </div>
+            </v-col>
+            <v-col cols="5" lg="5" md="4" :class="`bid ${bid.status}`">
+              <v-row class="fill-height">
+                <v-col cols="12" sm="6">
+                  <div class="d-flex fill-height flex-column align-center">
+                      <div>
+                        <div class="font-weight-bold text-lg-h6 text-md-subtitle-1 text-sm-body-2 text-caption">
+                          Your Bid: ${{ bid.price }}
+                        </div>
+                        <div>
+                          <v-icon color="cyan">mdi-alarm-check</v-icon>
+                          <span class="font-weight-regular text-lg-h6 text-md-body-1 text-sm-body-2 text-caption"
+                            >{{ bid.hoursLeft }} Hrs Left</span
+                          >
+                        </div>
+                      </div>
+                      <div class="mt-auto">
+                        <v-chip
+                          :class="`${bid.status} white--text`"
+                          :small="$vuetify.breakpoint.mobile"
+                        >
+                          {{ bid.status.toUpperCase() }}
+                        </v-chip>
+                      </div>
+                  </div>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <div class="d-flex fill-height align-center justify-center">
+                    <v-btn
+                      :class="`${bid.status} white--text`"
+                      :small="$vuetify.breakpoint.mobile"
+                    >
                       Increse Bid
                     </v-btn>
-                  </v-col>
-                </v-row>
-              </v-col>
-            </v-row>
-          </v-sheet>
-          <v-divider></v-divider>
-        </v-col>
-      </v-row>
-    </v-container>
-  </div>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
+        </v-lazy>
+        <v-divider class="mt-4"></v-divider>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -110,7 +110,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .bid.winning {
   border-right: 4px solid #68b73e;
 }
@@ -129,7 +129,7 @@ export default {
 .v-btn.losing {
   background: #12a7c6 !important;
 }
-.half-height {
-  height: 50% !important;
+.flip-y {
+  transform: rotateY(180deg);
 }
 </style>

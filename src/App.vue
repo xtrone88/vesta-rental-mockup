@@ -1,8 +1,3 @@
-<style lang="scss">
-i.v-icon.v-icon {
-  color: black;
-}
-</style>
 <template>
   <v-app>
     <v-app-bar app :color="appBarColor" dark>
@@ -209,3 +204,9 @@ export default {
   }),
 };
 </script>
+
+<style lang="scss">
+i.v-icon.v-icon {
+  color: black;
+}
+</style>

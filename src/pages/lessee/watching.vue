@@ -9,10 +9,7 @@
 
     <v-row v-for="property in properties" :key="property.id">
       <v-col cols="12">
-        <v-sheet
-          class="mb-4 fill-height"
-          color="transparent"
-        >
+        <v-sheet class="mb-4 fill-height" color="transparent">
           <v-lazy
             v-model="property.isActive"
             :options="{
@@ -24,7 +21,7 @@
               <v-col cols="12" md="3">
                 <v-img
                   height="100%"
-                  :src="property.picture.thumbnail"
+                  :src="property.pictures[0].thumb_500"
                   :aspect-ratio="3 / 2"
                   class="rounded-xl"
                 >
@@ -54,8 +51,13 @@
                       {{ property.capacity }}
                     </div>
                     <div>
-                      <v-btn small elevation="0" color="primary" class="px-6"
-                        :to="{name:'PropertyDetail'}">
+                      <v-btn
+                        small
+                        elevation="0"
+                        color="primary"
+                        class="px-6"
+                        :to="{ name: 'PropertyDetail' }"
+                      >
                         <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                         BID NOW
                       </v-btn>
@@ -159,9 +161,7 @@ export default {
             "bathrooms"
           )
         );
-        property.picture.thumbnail = require("@/assets/property/property_200_300_" +
-          property.id +
-          ".png");
+
         property.postbids = 3;
         property.postBidsEndingDate = "Mar 11, 2021";
         property.leaseStartDate = "Mar 24, 2021";

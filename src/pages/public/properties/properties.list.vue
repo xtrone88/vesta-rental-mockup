@@ -198,10 +198,8 @@
                                         sm="10"
                                         offset-sm="1"
                                       >
-                                        <img
-                                          src="../../../assets/paid/icon8/Check.svg"
-                                          class="mr-1"
-                                        />
+                                        <v-icon>mdi-check</v-icon>
+
                                         <span class="text-style-medium1"
                                           >Property not Reserved - Available for
                                           Auction</span

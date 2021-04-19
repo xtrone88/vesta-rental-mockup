@@ -176,8 +176,6 @@
                                         offset-sm="1"
                                       >
                                         <v-text-field
-                                          v-model="title"
-                                          :rules="wordsRules"
                                           counter="25"
                                           hint="Minium of $ 5 Increment"
                                           label="Your Bid Amount"
@@ -254,11 +252,7 @@
                                               100
                                             </span>
                                           </v-col>
-                                          <v-col
-                                            align-self="bottom"
-                                            cols="12"
-                                            sm="6"
-                                          >
+                                          <v-col cols="12" sm="6">
                                             <span
                                               class="text-style-small"
                                               color="primary"
@@ -297,7 +291,7 @@
                                 elevation="0"
                                 color="secondary"
                                 class="px-1 mb-1"
-                                :to="{ name: 'PropertyDetail' }"
+                                :to="{ path: `/properties/${property.id}` }"
                               >
                                 LEASE IT FOR $1000
                               </v-btn>

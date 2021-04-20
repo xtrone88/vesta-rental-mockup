@@ -100,12 +100,12 @@
 </style>
 
 <template>
-  <div>
-    <v-container class="bg-black pa-4 my-10" fluid>
+  <div class="pa-0">
+    <v-container class="bg-black my-10" :class="!$vuetify.breakpoint.xs ? 'pa-20' : 'pa-0'" fluid>
       <v-card class="home-intro">
         <v-img
           src="@/assets/home/slider1.png"
-          class="full-width"
+          class="full-width pt-0"
         ></v-img>
         <div class="text-center">
           <div class="search-bar" style="height:100%">
@@ -135,30 +135,13 @@
         <v-img src="@/assets/home/rent-way.png"></v-img>
       </div>
     </v-container>
-    <v-container class="pa-4 my-10" fluid>
+    <v-container class="my-10" :class="!$vuetify.breakpoint.xs ? 'pa-20' : 'pa-0'" fluid>
       <div class="popular-destination">
         <h4>Popular Destination</h4>
-        <v-row v-if="!$vuetify.breakpoint.mobile" class="city-rows">
-          <v-col cols="3"
+        <v-row class="city-rows" :class="$vuetify.breakpoint.xs?'scrolling-wrapper-flexbox':''">
+          <v-col :cols="$vuetify.breakpoint.xs?'12':'3'"
             v-for="(city, i) in cities"
-            :key="i"
-            class="card">
-            <div class="d-flex align-center">
-              <img :src="city.img"/>
-              <div class="ml-4">
-                <p class="city-name">
-                  {{city.city}} <br>
-                  <span class="state-name">{{city.state}}</span>
-                </p>
-              </div>
-            </div>
-          </v-col>
-        </v-row>
-        <v-row v-if="$vuetify.breakpoint.mobile" class="scrolling-wrapper-flexbox city-rows">
-          <v-col cols="12"
-            v-for="(city, i) in cities"
-            :key="i"
-            class="card">
+            :key="i">
             <div class="d-flex align-center">
               <img :src="city.img"/>
               <div class="ml-4">
@@ -172,7 +155,7 @@
         </v-row>
       </div>
     </v-container>
-    <v-container class="bg-black pa-4 my-10" fluid>
+    <v-container class="bg-black my-10" :class="!$vuetify.breakpoint.xs ? 'pa-20' : 'pa-0'" fluid>
       <div>
         <v-row class="pt-12 pb-12">
           <v-col cols="12" md="auto" class="mr-auto">
@@ -213,7 +196,7 @@
         </v-row>
       </div>
     </v-container>
-    <v-container class="pa-4 my-10" fluid>
+    <v-container class="my-10" :class="!$vuetify.breakpoint.xs ? 'pa-20' : 'pa-0'" fluid>
       <div>
         <v-row class="pt-12 pb-12" align="center">
           <v-col cols="12" md="auto">
@@ -246,7 +229,7 @@
         </v-row>
       </div>
     </v-container>
-    <v-container class="bg-grey pa-4 my-10" fluid>
+    <v-container class="bg-grey my-10" :class="!$vuetify.breakpoint.xs ? 'pa-20' : 'pa-0'" fluid>
       <div>
         <v-row class="pt-12 pb-12">
           <v-col cols="12" md="auto" class="mr-auto">
@@ -287,7 +270,7 @@
         </v-row>
       </div>
     </v-container>
-    <v-container class="pt-12 pb-9 pa-4 my-10" fluid>
+    <v-container class="my-10" :class="!$vuetify.breakpoint.xs ? 'pt-12 pb-9 pr-20 pl-20' : 'pa-0'" fluid>
       <div>
         <v-card color="black" class="rounded-xl mx-auto pa-0" height="500px">
           <v-row align="center">

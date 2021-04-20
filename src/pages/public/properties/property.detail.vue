@@ -4,23 +4,23 @@
       <v-col cols="12" md="10" offset-md="1">
         <v-row v-if="!$vuetify.breakpoint.smAndDown" class="mt-10">
           <v-col>
-            <h6 class="text-h6 cyan--text">Online Auction - VL012</h6>
+            <h6 class="text-h6 cyan--text">{{property.title}}</h6>
             <h5 class="text-h5">
               <span class="d-inline-block font-weight-bold mr-3"
-                >380 Brainard Street</span
+                >{{property.address.street}}</span
               >
               <span
                 class="d-inline-block text-h6 font-weight-regular grey--text"
               >
-                Jefferson County, Watertown, NY 13601
+                {{property.address.city}}, {{property.address.country}}
               </span>
             </h5>
-            <div>Property ID <span class="font-weight-bold">718220</span></div>
+            <div>Property ID <span class="font-weight-bold">{{property.id}}</span></div>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="12" :class="{ 'pa-0': $vuetify.breakpoint.smAndDown }">
-            <ImageGallery :pictures="samplePictures" />
+            <ImageGallery :pictures="property.pictures" />
           </v-col>
         </v-row>
         <v-row>
@@ -141,7 +141,7 @@
             <v-btn
               block
               class="mt-6 cyan white--text"
-              :to="{ name: 'Contact' }"
+              :to="{ path: '/contact/' + property.id }"
             >
               Contact
             </v-btn>
@@ -163,7 +163,7 @@ export default {
     ImageGallery,
   },
   data: () => ({
-    properties: sampleProperties,
+    property: null,
     endDate: new Date(2021, 4, 10),
     now: moment(),
   }),
@@ -182,16 +182,7 @@ export default {
     sec() {
       let s = moment(this.endDate).diff(this.now, "seconds") % 60;
       return s > 9 ? s : "0" + s;
-    },
-    samplePictures() {
-      return [
-        require("@/assets/property/property_1.png"),
-        require("@/assets/property/property_1_01.png"),
-        require("@/assets/property/property_1_02.png"),
-        require("@/assets/property/property_1_03.png"),
-        require("@/assets/property/property_1_04.png"),
-      ];
-    },
+    }
   },
   methods: {
     setupCountdown() {
@@ -200,6 +191,14 @@ export default {
   },
   created() {
     this.setupCountdown();
+    let propertyId = this.$route.params.propertyId;
+    let property = sampleProperties[0];
+    sampleProperties.forEach(function(p) {
+        if (propertyId == p.id) {
+          property = p;
+        }
+    });
+    this.property = property;
   },
 };
 </script>

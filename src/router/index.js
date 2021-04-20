@@ -54,7 +54,7 @@ const routes = [
     nested: true
   },
   {
-    path: "/contact",
+    path: "/contact/:propertyId",
     name: "Contact",
     component: ContactPage
   },
@@ -161,7 +161,7 @@ const routes = [
         component: PaymentsPage
       },
       {
-        path: "wonauction",
+        path: "wonauction/:propertyId",
         name: "WonAuction",
         component: WonAuctionPage
       }

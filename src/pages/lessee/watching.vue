@@ -12,7 +12,7 @@
       </v-col>
     </v-row>
 
-    <v-row v-for="property in properties" :key="property.id">
+    <v-row v-for="(property, i) in properties" :key="property.id">
       <v-col cols="12">
         <v-lazy
           v-model="property.isActive"
@@ -22,16 +22,18 @@
         >
           <v-row no-gutters>
             <v-col cols="12" lg="3" sm="3">
-              <v-img
-                :src="
-                  $vuetify.breakpoint.mobile
-                    ? property.pictures[0].thumb_750
-                    : property.pictures[0].thumb_500
-                "
-                class="fill-height rounded-xl"
-                :aspect-ratio="3 / 2"
-              >
-              </v-img>
+              <router-link :to="{ path: '/properties/' + property.id }">
+                <v-img
+                  :src="
+                    $vuetify.breakpoint.mobile
+                      ? property.pictures[0].thumb_750
+                      : property.pictures[0].thumb_500
+                  "
+                  class="fill-height rounded-xl"
+                  :aspect-ratio="3 / 2"
+                >
+                </v-img>
+              </router-link>
             </v-col>
             <v-col class="pl-sm-4" cols="7" sm="3">
               <div class="d-flex fill-height flex-column">
@@ -39,8 +41,10 @@
                   <div
                     class="font-weight-bold text-md-h5 text-sm-h6 text-subtitle-1"
                   >
-                    {{ property.title }}
-                    <v-icon color="cyan">mdi-eye-outline</v-icon>
+                    <router-link :to="{ path: '/properties/' + property.id }">
+                      {{ property.title }}
+                    </router-link>
+                    <v-icon v-on:click="toggleWatch(i)">mdi-eye-outline</v-icon>
                   </div>
                   <div
                     class="font-weight-regular text-lg-h6 text-md-body-1 text-sm-body-2 text-caption"
@@ -146,11 +150,26 @@
                 </v-col>
               </v-row>
             </v-col>
+            <v-col cols="12">
+              <v-divider class="mt-sm-4"></v-divider>
+            </v-col>
           </v-row>
         </v-lazy>
-        <v-divider class="mt-sm-4"></v-divider>
       </v-col>
     </v-row>
+
+    <v-snackbar v-model="watched"
+      :timeout="1000"
+      :top="true"
+      color="primary"
+      elevation="4">
+      You have watched.
+      <template v-slot:action="{ attrs }">
+        <v-btn color="white" text v-bind="attrs" @click="watched = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -160,39 +179,47 @@ import { sampleProperties } from "../../data/properties";
 export default {
   name: "TransactionsPage",
 
-  data: () => ({}),
+  data: () => ({
+    properties: [],
+    watched: false,
+  }),
 
-  computed: {
-    minWidth() {
-      return this.$vuetify.breakpoint.width <= 400 ? true : false;
+  methods: {
+    toggleWatch: function (index) {
+      let property = this.properties[index];
+      property.stats.views++;
+      if (property.stats.views >= 0) {
+        this.watched = true;
+      }
     },
-    properties() {
-      return sampleProperties.map((property) => {
-        let details = [];
-        details.push(
-          this.stringHelpers.pluralize(property.accommodates, "guest", "guests")
-        );
-        details.push(
-          this.stringHelpers.pluralize(property.bedrooms, "bedroom", "bedrooms")
-        );
-        details.push(
-          this.stringHelpers.pluralize(
-            property.bathrooms,
-            "bathroom",
-            "bathrooms"
-          )
-        );
+  },
 
-        property.postbids = 3;
-        property.postBidsEndingDate = "Mar 11, 2021";
-        property.leaseStartDate = "Mar 24, 2021";
-        property.leaseEndDate = "Mar 30, 2021";
-        return {
-          ...property,
-          capacity: details.join("·"),
-        };
-      });
-    },
+  created() {
+    this.properties = sampleProperties.map((property) => {
+      let details = [];
+      details.push(
+        this.stringHelpers.pluralize(property.accommodates, "guest", "guests")
+      );
+      details.push(
+        this.stringHelpers.pluralize(property.bedrooms, "bedroom", "bedrooms")
+      );
+      details.push(
+        this.stringHelpers.pluralize(
+          property.bathrooms,
+          "bathroom",
+          "bathrooms"
+        )
+      );
+
+      property.postbids = 3;
+      property.postBidsEndingDate = "Mar 11, 2021";
+      property.leaseStartDate = "Mar 24, 2021";
+      property.leaseEndDate = "Mar 30, 2021";
+      return {
+        ...property,
+        capacity: details.join("·"),
+      };
+    });
   },
 };
 </script>

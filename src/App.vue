@@ -169,6 +169,16 @@
             </v-list-item-icon>
             <v-list-item-title>Lessees</v-list-item-title>
           </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Example</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ path: '/account/wonauction' }">
+            <v-list-item-icon>
+              <v-icon>mdi-ab-testing</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Auction Won Page</v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>

@@ -36,23 +36,25 @@
       font-style: italic;
     }
   }
-  & div.search-bar {
-    display: inline-block;
-    padding: 24px 4px 24px 21px;
-    max-width: 870px;
-    width: 100%;
-    height: 80px;
-    background-color: white;
-    border-radius: 4px;
-    transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    -webkit-transform: translate(0, -50%);
-    & i.v-icon {
-      font-size: 32px;
-      color: rgba(#000000, 0.54);
-    }
+}
+
+.search-bar {
+  display: inline-block;
+  padding: 24px 4px 24px 21px;
+  max-width: 870px;
+  width: 100%;
+  height: 20px;
+  background-color: white;
+  border-radius: 4px;
+  transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  & i.v-icon {
+    font-size: 32px;
+    color: rgba(#000000, 0.54);
   }
 }
+
 .rent-way {
   padding: 0px 80px;
   margin-top: 119px;
@@ -69,7 +71,7 @@
   }
 }
 .popular-destination {
-  margin-top: 112px;
+  margin-top: 72px;
   h4 {
     font-size: 32px;
   }
@@ -79,6 +81,28 @@
   & p.city-name {
     font-weight: bold;
     font-size: 28px;
+    line-height: 1;
+  }
+  & span.state-name {
+    font-weight: normal;
+    font-size: 20px;
+  }
+  & img.img-city {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.popular-destination-mobile {
+  h4 {
+    font-size: 24px;
+  }
+  & div.city-rows {
+    margin-top: 12px;
+  }
+  & p.city-name {
+    font-weight: bold;
+    font-size: 24px;
     line-height: 1;
   }
   & span.state-name {
@@ -97,25 +121,34 @@
   }
 }
 
+#view-on-photo {
+  position: absolute;
+  top:20px;
+  left:20px;
+  color: white;
+  border-top-right-radius:16px !important;
+  border-bottom-right-radius:16px !important;
+}
+
 </style>
 
 <template>
   <div>
-    <v-container class="bg-black pa-4 my-10" fluid>
-      <v-card class="home-intro">
+    <v-container :class="$vuetify.breakpoint.smAndDown?'pa-0':'bg-black pa-10'" fluid>
+      <v-card :class="$vuetify.breakpoint.smAndDown?'':'home-intro'" elevation="0">
         <v-img
           src="@/assets/home/slider1.png"
           class="full-width"
         ></v-img>
         <div class="text-center">
-          <div class="search-bar" style="height:100%">
+          <div class="search-bar" :class="$vuetify.breakpoint.smAndDown?'pa-0':'pa-4'" style="height:100%">
             <div class="d-flex align-center">
-              <v-icon left dark>mdi-crosshairs-gps</v-icon>
               <v-text-field
                 label="Enter an address, neighborhood, city or ZIP code"
+                prepend-inner-icon="mdi-crosshairs-gps"
+                append-icon="mdi-magnify"
                 reqired
               ></v-text-field>
-              <v-icon right dark>mdi-magnify</v-icon>
             </div>
           </div>
         </div>
@@ -126,7 +159,7 @@
         </h2>
       </v-card>
     </v-container>
-    <v-container v-if="!$vuetify.breakpoint.mobile" class="pa-4 my-10" fluid>
+    <v-container v-if="!$vuetify.breakpoint.mobile" class="pa-4" fluid>
       <div class="rent-way">
         <h1>
           The New Way of Renting Properties
@@ -135,32 +168,16 @@
         <v-img src="@/assets/home/rent-way.png"></v-img>
       </div>
     </v-container>
-    <v-container class="pa-4 my-10" fluid>
-      <div class="popular-destination">
+    <v-container :class="$vuetify.breakpoint.smAndDown?'pl-4 pr-0':'pa-10'" fluid>
+      <div :class="$vuetify.breakpoint.smAndDown?'popular-destination-mobile':'popular-destination'">
         <h4>Popular Destination</h4>
-        <v-row v-if="!$vuetify.breakpoint.mobile" class="city-rows">
-          <v-col cols="3"
+        <v-row :class="$vuetify.breakpoint.msAndDown?'city-rows':'city-rows scrolling-wrapper-flexbox'">
+          <v-col :cols="$vuetify.breakpoint.msAndDown?'3':'12'"
             v-for="(city, i) in cities"
             :key="i"
             class="card">
             <div class="d-flex align-center">
-              <img :src="city.img"/>
-              <div class="ml-4">
-                <p class="city-name">
-                  {{city.city}} <br>
-                  <span class="state-name">{{city.state}}</span>
-                </p>
-              </div>
-            </div>
-          </v-col>
-        </v-row>
-        <v-row v-if="$vuetify.breakpoint.mobile" class="scrolling-wrapper-flexbox city-rows">
-          <v-col cols="12"
-            v-for="(city, i) in cities"
-            :key="i"
-            class="card">
-            <div class="d-flex align-center">
-              <img :src="city.img"/>
+              <img class="img-city" :src="city.img"/>
               <div class="ml-4">
                 <p class="city-name">
                   {{city.city}} <br>
@@ -172,7 +189,7 @@
         </v-row>
       </div>
     </v-container>
-    <v-container class="bg-black pa-4 my-10" fluid>
+    <v-container class="bg-black pa-10 my-10" fluid>
       <div>
         <v-row class="pt-12 pb-12">
           <v-col cols="12" md="auto" class="mr-auto">
@@ -213,7 +230,7 @@
         </v-row>
       </div>
     </v-container>
-    <v-container class="pa-4 my-10" fluid>
+    <v-container class="pa-10 my-10" fluid>
       <div>
         <v-row class="pt-12 pb-12" align="center">
           <v-col cols="12" md="auto">
@@ -246,7 +263,7 @@
         </v-row>
       </div>
     </v-container>
-    <v-container class="bg-grey pa-4 my-10" fluid>
+    <v-container class="bg-grey pa-10 my-10" fluid>
       <div>
         <v-row class="pt-12 pb-12">
           <v-col cols="12" md="auto" class="mr-auto">
@@ -288,20 +305,14 @@
       </div>
     </v-container>
     <v-container class="pt-12 pb-9 pa-4 my-10" fluid>
-      <div>
-        <v-card color="black" class="rounded-xl mx-auto pa-0" height="500px">
-          <v-row align="center">
-            <v-col md="6" class="white--text pa-15">
-              <h2>Find Properties to Rent Near You</h2>
-              <p>Explore our interactive map to search for your ideal home or Apartment. 
-                When you find the ones you like, bid your price and get the deal.</p>
-              <v-btn color="primary">FIND IT NOW</v-btn>
-            </v-col>
-            <v-col md="6">
-              <v-img class="rounded-xl" :src="require('../../assets/home/back_find_property.png')"/>
-            </v-col>
-          </v-row>
-        </v-card>
+      <div class="v-overlay__content">
+        <v-img class="rounded-xl" :src="require('../../assets/home/back_find_property.png')"/>
+        <div id="view-on-photo">
+          <h2>Find Properties to Rent Near You</h2>
+          <p>Explore our interactive map to search for your ideal home or Apartment.<br> 
+            When you find the ones you like, bid your price and get the deal.</p>
+          <v-btn color="primary">FIND IT NOW</v-btn>
+        </div>
       </div>
     </v-container>
   </div>

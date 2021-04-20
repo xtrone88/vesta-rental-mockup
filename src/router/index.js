@@ -42,6 +42,7 @@ import AdminListingsPage from "../pages/admin/listings";
 import AdminBookingPage from "../pages/admin/bookings";
 import AdminLesseesPage from "../pages/admin/lessees";
 import AdminLessorsPage from "../pages/admin/lessors";
+import NotFoundPage from "../pages/notfound";
 
 Vue.use(VueRouter);
 
@@ -235,7 +236,12 @@ const routes = [
         component: AdminLessorsPage
       }
     ]
-  }
+  },
+  {
+    path: "*",
+    name: "Not Found",
+    component: NotFoundPage
+  },
 ];
 
 const router = new VueRouter({

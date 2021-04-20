@@ -25,7 +25,7 @@
                 v-on="on"
               />
             </template>
-            <v-date-picker v-model="dates" no-title @input="menu1 = false" />
+            <v-date-picker v-model="dates" range no-title @input="menu1 = false" />
           </v-menu>
         </v-col>
         <v-col class="mt-1" cols="12"> 
@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import moment from "moment";
 import { sampleTransactions } from "../../data/transactions";
 
 export default {
@@ -65,9 +64,7 @@ export default {
 
   computed: {
     dateRangeText() {
-      return `${moment(this.dates[0]).format("MMM Do")} to ${moment(
-        this.dates[1]
-      ).format("MMM Do")}`;
+      return this.dates.join(' ~ ');
     },
     headers() {
       return [

@@ -3,11 +3,11 @@
     <v-card
       flat
       tile
-      class="grey lighten-4 black--text text-center"
+      class="grey lighten-4 black--text text-start"
       width="100%"
     >
       <!-- Footer Links -->
-      <v-container>
+      <v-container v-if="$vuetify.breakpoint.mdAndUp">
         <!-- Grid row -->
         <v-row
           class="text-center text-md-left"
@@ -42,7 +42,7 @@
                 style=""
                 :to="{ path: 'contact' }"
               >
-                Contact US
+                Contact
               </router-link>
 
               |

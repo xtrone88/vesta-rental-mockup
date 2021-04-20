@@ -25,10 +25,15 @@
                 v-on="on"
               />
             </template>
-            <v-date-picker v-model="dates" no-title @input="menu1 = false" />
+            <v-date-picker
+              color="#12a7c6"
+              v-model="dates"
+              no-title
+              @input="menu1 = false"
+            />
           </v-menu>
         </v-col>
-        <v-col class="mt-1" cols="12"> 
+        <v-col class="mt-1" cols="12">
           <v-data-table
             :headers="headers"
             :items="transactions"
@@ -39,7 +44,12 @@
             hide-default-footer
           >
             <template v-slot:top>
-              <v-text-field v-model="search" label="Search" class="ma-4" append-icon="mdi-magnify" />
+              <v-text-field
+                v-model="search"
+                label="Search"
+                class="ma-4"
+                append-icon="mdi-magnify"
+              />
             </template>
           </v-data-table>
         </v-col>

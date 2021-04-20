@@ -18,7 +18,7 @@
 
       <v-spacer></v-spacer>
       <v-btn :to="{ path: '/account/notifications' }" text>
-        <v-badge overlap color="green" content="6">
+        <v-badge overlap color="#12a7c6" content="6">
           <v-icon>mdi-bell</v-icon>
         </v-badge>
       </v-btn>

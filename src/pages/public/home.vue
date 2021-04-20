@@ -154,17 +154,17 @@
         </div>
         <h2 v-if="!$vuetify.breakpoint.mobile">
           We Believe that the
-          <span class="text-size-42">VestaLease</span> platform is a
+          <span class="text-size-42">Vesta Lease</span> platform is a
           <span class="bold-italic">WIN – WIN – WIN</span>
         </h2>
       </v-card>
     </v-container>
     <v-container v-if="!$vuetify.breakpoint.mobile" class="pa-4" fluid>
       <div class="rent-way">
-        <h1>
-          The New Way of Renting Properties
-        </h1>
-        <h6>New online auction-based application for booking rental properties</h6>
+        <h1>The New Way of Renting Properties</h1>
+        <h6>
+          New online auction-based application for booking rental properties
+        </h6>
         <v-img src="@/assets/home/rent-way.png"></v-img>
       </div>
     </v-container>
@@ -180,8 +180,8 @@
               <img class="img-city" :src="city.img"/>
               <div class="ml-4">
                 <p class="city-name">
-                  {{city.city}} <br>
-                  <span class="state-name">{{city.state}}</span>
+                  {{ city.city }} <br />
+                  <span class="state-name">{{ city.state }}</span>
                 </p>
               </div>
             </div>
@@ -200,13 +200,9 @@
           </v-col>
         </v-row>
         <v-row class="scrolling-wrapper-flexbox pb-12">
-          <v-col 
-            v-for="(feature, i) in features"
-            :key="i"
-            md="3"
-          >
+          <v-col v-for="(feature, i) in features" :key="i" md="3">
             <v-card class="rounded-xl mx-auto pa-0">
-              <v-img class="rounded-xl" :src="feature.img"/>
+              <v-img class="rounded-xl" :src="feature.img" />
               <v-row align="center">
                 <v-col>
                   <v-card-text>
@@ -214,9 +210,9 @@
                   </v-card-text>
 
                   <v-card-text class="text--primary">
-                    <div> {{ feature.desc }} </div>
+                    <div>{{ feature.desc }}</div>
 
-                    <div> {{ feature.city }} </div>
+                    <div>{{ feature.city }}</div>
                   </v-card-text>
                 </v-col>
                 <v-col align="center" align-self="center">
@@ -238,13 +234,9 @@
           </v-col>
         </v-row>
         <v-row class="scrolling-wrapper-flexbox pb-12">
-          <v-col 
-            v-for="(spotlight, i) in spotlights"
-            :key="i"
-            md="4"
-          >
+          <v-col v-for="(spotlight, i) in spotlights" :key="i" md="4">
             <v-card class="rounded-xl mx-auto pa-0">
-              <v-img class="rounded-xl" :src="spotlight.img"/>
+              <v-img class="rounded-xl" :src="spotlight.img" />
               <v-row align="center">
                 <v-col>
                   <v-card-title>
@@ -252,9 +244,9 @@
                   </v-card-title>
 
                   <v-card-text class="text--primary">
-                    <div> Baldwin Country, Daphine, AL 36526 </div>
+                    <div>Baldwin Country, Daphine, AL 36526</div>
 
-                    <div> <strong>Auction Date</strong> Mar 21,2021 </div>
+                    <div><strong>Auction Date</strong> Mar 21,2021</div>
                   </v-card-text>
                 </v-col>
               </v-row>
@@ -274,13 +266,9 @@
           </v-col>
         </v-row>
         <v-row class="scrolling-wrapper-flexbox pb-12">
-          <v-col 
-            v-for="(feature, i) in features"
-            :key="i"
-            md="3"
-          >
+          <v-col v-for="(feature, i) in features" :key="i" md="3">
             <v-card class="rounded-xl mx-auto pa-0">
-              <v-img class="rounded-xl" :src="feature.img"/>
+              <v-img class="rounded-xl" :src="feature.img" />
               <v-row align="center">
                 <v-col>
                   <v-card-text>
@@ -288,9 +276,9 @@
                   </v-card-text>
 
                   <v-card-text class="text--primary">
-                    <div> {{ feature.desc }} </div>
+                    <div>{{ feature.desc }}</div>
 
-                    <div> {{ feature.city }} </div>
+                    <div>{{ feature.city }}</div>
                   </v-card-text>
                 </v-col>
                 <v-col align="center" align-self="center">
@@ -319,33 +307,93 @@
 </template>
 
 <script>
-
 export default {
   title: "Vesta Leese",
   name: "HomePage",
   data: () => ({
     publicPath: process.env.BASE_URL,
-    'cities': [
-      {city:"New York", state:"New York", img:require("@/assets/home/dest_newyork.png")},
-      {city:"San Francisco", state:"California", img:require("@/assets/home/dest_sanfrancisco.png")},
-      {city:"Austin", state:"Texas", img:require("@/assets/home/dest_austin.png")},
-      {city:"Lake Anna", state:"Virginia", img:require("@/assets/home/dest_lakeanna.png")},
-      {city:"Los Angeles", state:"Californiat", img:require("@/assets/home/dest_losangels.png")},
-      {city:"San Diego", state:"California", img:require("@/assets/home/dest_sandiego.png")},
-      {city:"Houston", state:"Texas", img:require("@/assets/home/dest_houston.png")},
-      {city:"Seattle", state:"Washington", img:require("@/assets/home/dest_seattle.png")}
+    cities: [
+      {
+        city: "New York",
+        state: "New York",
+        img: require("@/assets/home/dest_newyork.png"),
+      },
+      {
+        city: "San Francisco",
+        state: "California",
+        img: require("@/assets/home/dest_sanfrancisco.png"),
+      },
+      {
+        city: "Austin",
+        state: "Texas",
+        img: require("@/assets/home/dest_austin.png"),
+      },
+      {
+        city: "Lake Anna",
+        state: "Virginia",
+        img: require("@/assets/home/dest_lakeanna.png"),
+      },
+      {
+        city: "Los Angeles",
+        state: "Californiat",
+        img: require("@/assets/home/dest_losangels.png"),
+      },
+      {
+        city: "San Diego",
+        state: "California",
+        img: require("@/assets/home/dest_sandiego.png"),
+      },
+      {
+        city: "Houston",
+        state: "Texas",
+        img: require("@/assets/home/dest_houston.png"),
+      },
+      {
+        city: "Seattle",
+        state: "Washington",
+        img: require("@/assets/home/dest_seattle.png"),
+      },
     ],
-    'features': [
-      {title:"Apartment for Rent", desc:"222 Hallec St", city:"San Fransisco", img:require("@/assets/home/featured_1.png")},
-      {title:"Apartment for Rent", desc:"222 Hallec St", city:"San Fransisco", img:require("@/assets/home/featured_2.png")},
-      {title:"Apartment for Rent", desc:"222 Hallec St", city:"San Fransisco", img:require("@/assets/home/featured_3.png")},
-      {title:"Apartment for Rent", desc:"222 Hallec St", city:"San Fransisco", img:require("@/assets/home/featured_4.png")},
+    features: [
+      {
+        title: "Apartment for Rent",
+        desc: "222 Hallec St",
+        city: "San Fransisco",
+        img: require("@/assets/home/featured_1.png"),
+      },
+      {
+        title: "Apartment for Rent",
+        desc: "222 Hallec St",
+        city: "San Fransisco",
+        img: require("@/assets/home/featured_2.png"),
+      },
+      {
+        title: "Apartment for Rent",
+        desc: "222 Hallec St",
+        city: "San Fransisco",
+        img: require("@/assets/home/featured_3.png"),
+      },
+      {
+        title: "Apartment for Rent",
+        desc: "222 Hallec St",
+        city: "San Fransisco",
+        img: require("@/assets/home/featured_4.png"),
+      },
     ],
-    'spotlights': [
-      {title:"258 Montclair Loop", img:require("@/assets/home/spotlight_1.png")},
-      {title:"258 Montclair Loop", img:require("@/assets/home/spotlight_2.png")},
-      {title:"258 Montclair Loop", img:require("@/assets/home/spotlight_3.png")},
-    ]
+    spotlights: [
+      {
+        title: "258 Montclair Loop",
+        img: require("@/assets/home/spotlight_1.png"),
+      },
+      {
+        title: "258 Montclair Loop",
+        img: require("@/assets/home/spotlight_2.png"),
+      },
+      {
+        title: "258 Montclair Loop",
+        img: require("@/assets/home/spotlight_3.png"),
+      },
+    ],
   }),
 };
 </script>

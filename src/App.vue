@@ -18,7 +18,7 @@
 
       <v-spacer></v-spacer>
       <v-btn :to="{ path: '/account/notifications' }" text>
-        <v-badge overlap color="green" content="6">
+        <v-badge overlap color="#12a7c6" content="6">
           <v-icon>mdi-bell</v-icon>
         </v-badge>
       </v-btn>
@@ -168,6 +168,16 @@
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Lessees</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Example</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ path: '/account/wonauction' }">
+            <v-list-item-icon>
+              <v-icon>mdi-ab-testing</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Auction Won Page</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

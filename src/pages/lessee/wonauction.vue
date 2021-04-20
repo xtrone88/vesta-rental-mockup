@@ -8,7 +8,7 @@
       </v-col>
       <v-col cols="12" :class="{'pa-0':$vuetify.breakpoint.smAndDown}">
         <div class="v-overlay__content">
-          <ImageGallery :pictures="samplePictures" />
+          <ImageGallery :pictures="property.pictures" />
           <v-chip
             v-if="!$vuetify.breakpoint.smAndDown"
             id="view-all-photos"
@@ -34,11 +34,11 @@
             <v-col cols="12">
               <v-row class="align-center mb-2 justify-space-between" no-gutters>
                 <v-col cols="12" md="auto" order="0" class="text-center pr-md-4">
-                  <span class="text-h4 font-weight-bold"> 380 Brainard Street </span>
+                  <span class="text-h4 font-weight-bold"> {{property.address.street}} </span>
                 </v-col>
                 <v-col cols="12" md="auto" order-lg="1" order-md="4" class="text-center">
                   <span class="text-h6 grey--text">
-                    Jefferson County, Watertown, NY 13601
+                    {{property.address.city}}, {{property.address.country}}
                   </span>
                 </v-col>
                 <v-col v-if="!$vuetify.breakpoint.smAndDown" md="auto" order-lg="3" order-md="2">
@@ -55,7 +55,7 @@
                 </v-col>
                 <v-col cols="12" order="5" :class="{'text-center':$vuetify.breakpoint.smAndDown}">
                   <span class="text-h6 mr-2">Property ID</span>
-                  <span class="text-h5 font-weight-bold">10469</span>
+                  <span class="text-h5 font-weight-bold">{{property.id}}</span>
                 </v-col>
               </v-row>
               <p>
@@ -64,7 +64,7 @@
               </p>
               <p>
                   <v-icon class="mr-4" color="cyan">mdi-directions-fork</v-icon>
-                  <span class="text-subtitle-1">Jefferson County, Watertown, NY 13601</span>
+                  <span class="text-subtitle-1">{{property.address.full}}</span>
               </p>
             </v-col>
           </v-row>
@@ -115,20 +115,19 @@ export default {
   },
 
   data: () => ({
-    properties: sampleProperties,
+    property: null
   }),
 
-  computed: {
-    samplePictures() {
-      return [
-        require("@/assets/property/property_1.png"),
-        require("@/assets/property/property_1_01.png"),
-        require("@/assets/property/property_1_02.png"),
-        require("@/assets/property/property_1_03.png"),
-        require("@/assets/property/property_1_04.png"),
-      ];
-    },
-  },
+  created() {
+    let propertyId = this.$route.params.propertyId;
+    let property = sampleProperties[0];
+    sampleProperties.forEach(function(p) {
+        if (propertyId == p.id) {
+          property = p;
+        }
+    });
+    this.property = property;
+  }
 };
 </script>
 

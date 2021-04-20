@@ -39,7 +39,7 @@
         </v-menu>
       </v-row>
       <v-row>
-        <v-col cols="12" sm="2">
+        <v-col cols="12" sm="12">
           <v-btn v-on:click="save" v-show="showFlag" big color="cyan" class="white--text">Save</v-btn>
         </v-col>
       </v-row>
@@ -84,7 +84,6 @@ export default {
         if(this.type == "text") {
           this.showText = "Edit";
           this.showFlag = false;
-          this.$refs["edit"].readonly = true;
         }
         else{
           this.showText = "Edit";
@@ -100,7 +99,6 @@ export default {
       if(this.type == "text") {
         this.showText = "Edit";
         this.showFlag = false;
-        this.$refs["edit"].readonly = true;
       }
       else{
         this.showText = "Edit";

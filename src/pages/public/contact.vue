@@ -1,20 +1,20 @@
 <template>
   <v-container class="grey lighten-4" fluid>
     <v-container>
-      <h3 class="text-h3 my-16">Contact</h3>
-      <v-card class="pa-16 rounded-xl">
+      <div class="font-weight-bold text-md-h3 text-sm-h4 text-h5 my-md-16 mb-4">Contact</div>
+      <v-card :class="['pa-md-16', 'pa-3', !$vuetify.breakpoint.smAndDown ? 'rounded-xl' : '']">
         <v-row>
-          <v-col cols="12" md="auto" class="mr-auto">
-            <h5 class="text-h5">
+          <v-col order="2" order-md="31" cols="12" md="auto" class="mr-auto">
+            <div class="text-md-h5 text-h6">
               Property Lease
-            </h5>
-            <p class="text-body-1">
-              <b>3345 Edson Ave,</b><br>
-              <span class="text-caption">Bronx County, Bronx, NY 10469</span>
+            </div>
+            <p class="text-sm-subtitle-1 text-caption">
+              <b>{{property.address.street}}</b><br>
+              <span class="font-weight-regular text-sm-subtitle-2 text-caption">{{property.address.city}}, {{property.address.country}}</span>
             </p>
           </v-col>
-          <v-col cols="12" md="auto">
-            <p class="text-body-1">Auction Remaining Time</p>
+          <v-col order="3" order-md="2" cols="12" md="auto">
+            <p class="text-sm-body-1 text-caption">Auction Remaining Time</p>
             <p class="text-body-2">
               <v-icon
                 color="cyan"
@@ -24,12 +24,14 @@
               <span class="ml-4">3d 24:26:32</span>
             </p>
           </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12">
+          <v-col order="4" order-md="3" cols="12">
+            <v-divider></v-divider>
+          </v-col>
+          <v-col order="1" order-md="4" cols="12" :class="{'pa-0':$vuetify.breakpoint.smAndDown}">
             <div class="v-overlay__content">
-              <ImageGallery :pictures="samplePictures" />
+              <ImageGallery :pictures="property.pictures" />
               <v-chip
+                v-if="!$vuetify.breakpoint.smAndDown"
                 id="view-all-photos"
                 color="grey lighten-5"
                 label
@@ -97,7 +99,7 @@ export default {
   },
 
   data: () => ({
-    properties: sampleProperties,
+    property: null,
     endTime: new Date(2021, 4, 10),
 
     valid: false,
@@ -115,16 +117,15 @@ export default {
     message: '',
   }),
 
-  computed: {
-    samplePictures() {
-      return [
-        require("@/assets/property/property_1.png"),
-        require("@/assets/property/property_1_01.png"),
-        require("@/assets/property/property_1_02.png"),
-        require("@/assets/property/property_1_03.png"),
-        require("@/assets/property/property_1_04.png"),
-      ]
-    }
+  created() {
+    let propertyId = this.$route.params.propertyId;
+    let property = sampleProperties[0];
+    sampleProperties.forEach(function(p) {
+        if (propertyId == p.id) {
+          property = p;
+        }
+    });
+    this.property = property;
   }
 };
 </script>

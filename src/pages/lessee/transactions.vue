@@ -28,7 +28,7 @@
             <v-date-picker v-model="dates" range no-title @input="menu1 = false" />
           </v-menu>
         </v-col>
-        <v-col class="mt-1" cols="12"> 
+        <v-col class="mt-1" cols="12">
           <v-data-table
             :headers="headers"
             :items="transactions"
@@ -39,7 +39,12 @@
             hide-default-footer
           >
             <template v-slot:top>
-              <v-text-field v-model="search" label="Search" class="ma-4" append-icon="mdi-magnify" />
+              <v-text-field
+                v-model="search"
+                label="Search"
+                class="ma-4"
+                append-icon="mdi-magnify"
+              />
             </template>
           </v-data-table>
         </v-col>

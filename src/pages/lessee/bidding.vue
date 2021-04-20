@@ -11,7 +11,7 @@
         >
       </v-col>
     </v-row>
-    <v-row v-for="bid in bids" :key="bid.id">
+    <v-row v-for="(bid, i) in bids" :key="bid.id">
       <v-col cols="12">
         <v-lazy
           v-model="bid.isActive"
@@ -21,8 +21,10 @@
         >
           <v-row no-gutters>
             <v-col cols="12" lg="3" md="3" sm="3">
-              <v-img :src="`${bid.image}`" class="rounded-xl fill-height" :aspect-ratio="3/2">
-              </v-img>
+              <router-link :to="{path:'/properties/' + bid.id}">
+                <v-img :src="`${bid.image}`" class="rounded-xl fill-height" :aspect-ratio="3/2">
+                </v-img>
+              </router-link>
             </v-col>
             <v-col class="pl-sm-4" cols="7" lg="5" md="5" sm="4">
               <div class="d-flex fill-height flex-column">
@@ -73,6 +75,7 @@
                     <v-btn
                       :class="`${bid.status} white--text`"
                       :small="$vuetify.breakpoint.mobile"
+                      v-on:click="increaseBid(i)"
                     >
                       Increase Bid
                     </v-btn>
@@ -80,9 +83,11 @@
                 </v-col>
               </v-row>
             </v-col>
+            <v-col cols="12">
+              <v-divider class="mt-sm-4"></v-divider>
+            </v-col>
           </v-row>
         </v-lazy>
-        <v-divider class="mt-4"></v-divider>
       </v-col>
     </v-row>
   </v-container>
@@ -96,6 +101,12 @@ export default {
     return {
       bids: null,
     };
+  },
+
+  methods: {
+      increaseBid : function(index) {
+        this.bids[index].price += 1000;
+      }
   },
 
   async created() {
@@ -131,5 +142,8 @@ export default {
 }
 .flip-y {
   transform: rotateY(180deg);
+}
+.v-size--small {
+  font-size: 10px !important;
 }
 </style>

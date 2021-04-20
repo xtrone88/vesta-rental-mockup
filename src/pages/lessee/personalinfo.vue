@@ -5,14 +5,14 @@
         <v-col class="mb-4">
           <h1 class="display-2 font-weight-bold mb-4">Personal Info</h1>
         </v-col>
-        <v-card class="mx-auto pa-16 rounded-xl">
-          <InfoForm class="pr-16 pl-16" field="First Name" valueEdit="John" type="text"/>
-          <InfoForm class="pr-16 pl-16" field="Last Name" valueEdit="Smith" type="text"/>
-          <InfoForm class="pr-16 pl-16" field="Gender" valueEdit="Male" type="text"/>
-          <InfoForm class="pr-16 pl-16" field="Email" valueEdit="johnsmith@mail.com" type="text"/>
-          <InfoForm class="pr-16 pl-16" field="Phone" valueEdit="1 202 555 0191" type="text"/>
-          <InfoForm class="pr-16 pl-16" field="Birthday date" valueEdit="1990-12-10" type="date"/>
-          <InfoForm class="pr-16 pl-16" field="Zip" valueEdit="91752" type="text"/>
+        <v-card class="mx-auto rounded-xl" :class="$vuetify.breakpoint.smAndDown?'pa-8':'pa-16' ">
+          <InfoForm field="First Name" valueEdit="John" type="text"/>
+          <InfoForm field="Last Name" valueEdit="Smith" type="text"/>
+          <InfoForm field="Gender" valueEdit="Male" type="text"/>
+          <InfoForm field="Email" valueEdit="johnsmith@mail.com" type="text"/>
+          <InfoForm field="Phone" valueEdit="1 202 555 0191" type="text"/>
+          <InfoForm field="Birthday date" valueEdit="1990-12-10" type="date"/>
+          <InfoForm field="Zip" valueEdit="91752" type="text"/>
         </v-card>
       </v-container>
     </v-row>

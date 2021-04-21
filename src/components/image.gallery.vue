@@ -4,8 +4,19 @@
       <v-row no-gutters>
         <v-col cols="12" md="6">
           <v-row no-gutters>
-            <v-col class="d-flex child-flex" cols="12" :class="$vuetify.breakpoint.smAndDown?'pa-0':'pa-1'">
-              <v-card flat tile :class="['d-flex', !$vuetify.breakpoint.smAndDown ? 'rounded-l-lg' : '']">
+            <v-col
+              class="d-flex child-flex"
+              cols="12"
+              :class="$vuetify.breakpoint.smAndDown ? 'pa-0' : 'pa-1'"
+            >
+              <v-card
+                flat
+                tile
+                :class="[
+                  'd-flex',
+                  !$vuetify.breakpoint.smAndDown ? 'rounded-l-lg' : '',
+                ]"
+              >
                 <v-img
                   v-if="gallery.length"
                   :src="gallery[0]"
@@ -85,15 +96,17 @@ export default {
   data: () => ({
     index: null,
     gallery: [],
-    slider: []
+    slider: [],
   }),
   created() {
     for (let i = 0; i < 5 && i < this.pictures.length; i++) {
-      this.gallery.push(i == 0 ? this.pictures[i].thumb_750 : this.pictures[i].thumb_250);
+      this.gallery.push(
+        i == 0 ? this.pictures[i].fullsize : this.pictures[i].thumb_500
+      );
     }
     for (let i = 0; i < this.pictures.length; i++) {
       this.slider.push(this.pictures[i].fullsize);
     }
-  }
+  },
 };
 </script>

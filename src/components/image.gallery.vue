@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card :elevation="0">
     <v-container class="pa-0" fluid>
       <v-row no-gutters>
         <v-col cols="12" md="6">
@@ -89,7 +89,7 @@ export default {
   }),
   created() {
     for (let i = 0; i < 5 && i < this.pictures.length; i++) {
-      this.gallery.push(i == 0 ? this.pictures[i].thumb_750 : this.pictures[i].thumb_250);
+      this.gallery.push(i == 0 ? this.pictures[i].thumb_750 : this.pictures[i].thumb_500);
     }
     for (let i = 0; i < this.pictures.length; i++) {
       this.slider.push(this.pictures[i].fullsize);

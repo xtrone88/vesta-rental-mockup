@@ -70,14 +70,27 @@
           </v-row>
           <v-row>
             <v-col>
-              <google-map id="map" ref="Map" style="height:250px">
-                <google-map-marker
-                  :position="{
-                    lat: 30.11,
-                    lng: 21.22,
-                  }"
-                />
-              </google-map>
+              <GmapMap
+                :center="property.address"
+                :zoom="12"
+                :options="{
+                  zoomControl: false,
+                  mapTypeControl: false,
+                  scaleControl: false,
+                  streetViewControl: false,
+                  rotateControl: false,
+                  fullscreenControl: false,
+                  disableDefaultUI: false
+                }"
+                style="width: 100%; height: 200px"
+              >
+                <GmapMarker
+                  :position="property.address"
+                  :clickable="true"
+                  :draggable="true"
+                >
+                </GmapMarker>
+              </GmapMap>
             </v-col>
           </v-row>
         </v-card>

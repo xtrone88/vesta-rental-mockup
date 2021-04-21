@@ -164,7 +164,7 @@ export const sampleProperties = [
 
     address: {
       full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8202173,
+      lng: 34.8602173,
       lat: 32.0695525,
       street: "Kaplan Street 2",
       city: "Ramat Gan",
@@ -344,8 +344,8 @@ export const sampleProperties = [
 
     address: {
       full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8202173,
-      lat: 32.0695525,
+      lng: 34.8302173,
+      lat: 32.0795525,
       street: "Kaplan Street 2",
       city: "Ramat Gan",
       country: "Israel"
@@ -563,8 +563,8 @@ export const sampleProperties = [
     ],
     address: {
       full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8202173,
-      lat: 32.0695525,
+      lng: 34.8102173,
+      lat: 32.0595525,
       street: "Kaplan Street 2",
       city: "Ramat Gan",
       country: "Israel"
@@ -782,7 +782,7 @@ export const sampleProperties = [
     ],
     address: {
       full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8202173,
+      lng: 34.8102173,
       lat: 32.0695525,
       street: "Kaplan Street 2",
       city: "Ramat Gan",
@@ -1013,7 +1013,7 @@ export const sampleProperties = [
     address: {
       full: "Kaplan St 2, Ramat Gan, Israel",
       lng: 34.8202173,
-      lat: 32.0695525,
+      lat: 32.0895525,
       street: "Kaplan Street 2",
       city: "Ramat Gan",
       country: "Israel"

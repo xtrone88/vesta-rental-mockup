@@ -32,10 +32,10 @@
               <v-card-title class="cyan--text justify-space-between">
                 <div class="d-inline-block">Property Details</div>
                 <div class="d-inline-block">
-                  <v-btn icon color="black">
+                  <v-btn icon color="black" @click="toggleWatch()">
                     <v-icon>mdi-eye-outline</v-icon>
                   </v-btn>
-                  <v-btn icon color="black">
+                  <v-btn icon color="black" @click="toggleFavorite()">
                     <v-icon>mdi-heart-outline</v-icon>
                   </v-btn>
                 </div>
@@ -149,6 +149,33 @@
         </v-row>
       </v-col>
     </v-row>
+
+    <v-snackbar v-model="watched"
+      :timeout="1000"
+      :top="true"
+      color="success"
+      elevation="4">
+      You have watched.
+      <template v-slot:action="{ attrs }">
+        <v-btn color="white" text v-bind="attrs" @click="watched = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+    
+    <v-snackbar v-model="favorite"
+      :timeout="1000"
+      :top="true"
+      color="secondary"
+      elevation="4">
+      You have favorite.
+      <template v-slot:action="{ attrs }">
+        <v-btn color="white" text v-bind="attrs" @click="favorite = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
   </v-container>
 </template>
 
@@ -166,6 +193,9 @@ export default {
     property: null,
     endDate: new Date(2021, 4, 10),
     now: moment(),
+
+    watched: false,
+    favorite: false,
   }),
   computed: {
     day() {
@@ -188,6 +218,20 @@ export default {
     setupCountdown() {
       setInterval(() => (this.now = moment()), 1000);
     },
+
+    toggleWatch: function () {
+      this.property.stats.views++;
+      if (this.property.stats.views >= 0) {
+        this.watched = true;
+      }
+    },
+
+    toggleFavorite: function () {
+      this.property.stats.favorites++;
+      if (this.property.stats.favorites >= 0) {
+        this.favorite = true;
+      }
+    },
   },
   created() {
     this.setupCountdown();
@@ -203,7 +247,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .room-summary {
   padding: 5px;
   border: solid 1px lightgray;

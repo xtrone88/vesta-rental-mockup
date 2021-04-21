@@ -173,7 +173,7 @@
           <v-list-item>
             <v-list-item-title>Example</v-list-item-title>
           </v-list-item>
-          <v-list-item :to="{ path: '/account/wonauction' }">
+          <v-list-item :to="{ path: '/account/wonauction/1' }">
             <v-list-item-icon>
               <v-icon>mdi-ab-testing</v-icon>
             </v-list-item-icon>

@@ -1,33 +1,20 @@
-<style lang="scss" scoped>
-
-.scrolling-wrapper-flexbox {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-y: auto;
-
-  .card {
-    flex: 0 0 auto;
-  }
-}
-
-#view-on-photo {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 50px;
-  top: 50px;
-  color: white;
-}
-
-</style>
-
 <template>
   <div>
     <v-container class="pa-0" fluid>
-      <v-col :style="$vuetify.breakpoint.smAndDown?{background:'#222'}:{background:'#000'}" :class="[!$vuetify.breakpoint.xs ? 'pa-16' : 'pa-0']">
-        <v-img src="@/assets/home/slider1.png" class="full-width"/>
+      <v-col :style="!$vuetify.breakpoint.xs?'background:#222':'background:#ffffff'" :class="[!$vuetify.breakpoint.xs ? 'pa-12' : 'pa-0']">
+        <v-img src="@/assets/home/slider1.png" class="full-width">
+          <div v-if="$vuetify.breakpoint.xs" class="d-flex fill-height align-center">
+            <v-col>
+              <h3 class="white--text">
+                We Believe that the <br>
+                <span class="text-size-42">Vesta Lease</span> platform is a<br>
+                <span class="bold-italic">WIN – WIN – WIN</span>
+              </h3>
+            </v-col>
+          </div>
+        </v-img>
         <div class="d-flex align-center"
-            style="width: 70%;transform: translate(20%, -30%);-ms-transform: translate(20%, -30%);-webkit-transform: translate(20%, -30%);">
+            :style="!$vuetify.breakpoint.xs?'width: 70%;transform: translate(20%, -30%);-ms-transform: translate(20%, -30%);-webkit-transform: translate(20%, -30%);':''">
           <v-text-field
             label="Enter an address, neighborhood, city or ZIP code"
             background-color="white"
@@ -37,49 +24,52 @@
             reqired
           ></v-text-field>
         </div>
-        <h2 class="text-center white--text">
+        <h2 v-if="!$vuetify.breakpoint.xs" class="text-center white--text">
           We Believe that the
           <span class="text-size-42">Vesta Lease</span> platform is a
           <span class="bold-italic">WIN – WIN – WIN</span>
         </h2>
       </v-col>
-      <div>
+      <v-col v-if="!$vuetify.breakpoint.xs" :class="['text-center', !$vuetify.breakpoint.xs ? 'pa-12' : 'pa-0']">
         <h1>The New Way of Renting Properties</h1>
-        <h6>
+        <p class="text-body1">
           New online auction-based application for booking rental properties
-        </h6>
+        </p>
         <v-img src="@/assets/home/rent-way.png"></v-img>
-      </div>
-      <div>
-        <h1>Popular Destination</h1>
-        <v-row :class="$vuetify.breakpoint.mobile?'pa-8':''">
-          <v-col :cols="3"
+      </v-col>
+      <v-col :class="[!$vuetify.breakpoint.xs ? 'pr-12 pl-12' : 'pa-4']">
+        <h2>Popular Destination</h2>
+        <v-row class="pt-8"
+          :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
+        >
+          <v-col :cols="$vuetify.breakpoint.xs ? 12 : 3" sm="6" md="3" lg="3" 
             v-for="(city, i) in cities"
-            :key="i"
-            class="card">
+            :key="i">
             <div class="d-flex align-center">
-              <img class="img-city" :src="city.img"/>
+              <img class="img-city" :src="city.img" width="100px" height="100px"/>
               <div class="ml-4">
-                <p class="city-name">
-                  {{ city.city }} <br />
+                <p>
+                  <strong><h3>{{ city.city }}</h3></strong> <br />
                   <span class="state-name">{{ city.state }}</span>
                 </p>
               </div>
             </div>
           </v-col>
         </v-row>
-      </div>
-      <div>
-        <v-row class="pt-12 pb-12">
-          <v-col cols="12" md="auto" class="mr-auto">
-            <h1>Featured Deals</h1>
+      </v-col>
+      <v-col style="background:#222" :class="[!$vuetify.breakpoint.xs ? 'pa-12' : 'pa-4']">
+        <v-row align="center">
+          <v-col cols="10" class="mr-auto white--text">
+            <h2>Featured Deals</h2>
           </v-col>
-          <v-col cols="12" md="auto" v-if="!$vuetify.breakpoint.mobile">
+          <v-col cols="2" v-if="!$vuetify.breakpoint.xs">
             <a href="">VIEW ALL</a>
           </v-col>
         </v-row>
-        <v-row class="scrolling-wrapper-flexbox pb-12">
-          <v-col v-for="(feature, i) in features" :key="i" md="3">
+        <v-row class="pt-8"
+          :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
+        >
+          <v-col v-for="(feature, i) in features" :key="i" sm="6" md="3" lg="3">
             <v-card class="rounded-xl mx-auto pa-0">
               <v-img class="rounded-xl" :src="feature.img" />
               <v-row align="center">
@@ -103,15 +93,17 @@
             </v-card>
           </v-col>
         </v-row>
-      </div>
-      <div>
-        <v-row class="pt-12 pb-12" align="center">
+      </v-col>
+      <v-col :class="!$vuetify.breakpoint.xs?'pa-12':'pa-4'">
+        <v-row>
           <v-col cols="12" md="auto">
-            <h1>Property Spotlight</h1>
+            <h1 class="text-center">Property Spotlight</h1>
           </v-col>
         </v-row>
-        <v-row class="scrolling-wrapper-flexbox pb-12">
-          <v-col v-for="(spotlight, i) in spotlights" :key="i" md="4">
+        <v-row class="pt-8"
+          :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
+        >
+          <v-col v-for="(spotlight, i) in spotlights" :key="i" sm="6" md="4" lg="4">
             <v-card class="rounded-xl mx-auto pa-0">
               <v-img class="rounded-xl" :src="spotlight.img" />
               <v-row align="center">
@@ -130,18 +122,20 @@
             </v-card>
           </v-col>
         </v-row>
-      </div>
-      <div>
-        <v-row class="pt-12 pb-12">
-          <v-col cols="12" md="auto" class="mr-auto">
+      </v-col>
+      <v-col style="background:#f0f0f0" :class="[!$vuetify.breakpoint.xs ? 'pa-12' : 'pa-4']">
+        <v-row align="center">
+          <v-col cols="10" class="mr-auto">
             <h1>Ending Soon</h1>
           </v-col>
-          <v-col cols="12" md="auto" v-if="!$vuetify.breakpoint.mobile">
+          <v-col cols="2" v-if="!$vuetify.breakpoint.xs">
             <a href="">VIEW ALL</a>
           </v-col>
         </v-row>
-        <v-row class="scrolling-wrapper-flexbox pb-12">
-          <v-col v-for="(feature, i) in features" :key="i" md="3">
+        <v-row class="pt-8"
+          :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"  
+        >
+          <v-col v-for="(feature, i) in features" :key="i" sm="6" md="3" lg="3">
             <v-card class="rounded-xl mx-auto pa-0">
               <v-img class="rounded-xl" :src="feature.img" />
               <v-row align="center">
@@ -165,16 +159,20 @@
             </v-card>
           </v-col>
         </v-row>
-      </div>
-      <div class="v-overlay__content">
-        <v-img class="rounded-xl" :src="require('../../assets/home/back_find_property.png')"/>
-        <div id="view-on-photo">
-          <h2>Find Properties to Rent Near You</h2>
-          <p>Explore our interactive map to search for your ideal home or Apartment.<br> 
-            When you find the ones you like, bid your price and get the deal.</p>
-          <v-btn color="primary">FIND IT NOW</v-btn>
-        </div>
-      </div>
+      </v-col>
+      <v-col :class="$vuetify.breakpoint.xs?'pa-0':'pa-12'">
+        <v-img :class="!$vuetify.breakpoint.xs?'rounded-xl':''" :src="require('../../assets/home/back_find_property.png')">
+          <div class="d-flex fill-height align-center pa-4">
+            <v-col>
+              <h2 class="white--text" :style="$vuetify.breakpoint.xs?'font-size: 14px':''" >Find Properties to Rent Near You</h2>
+              <p class="white--text" :style="$vuetify.breakpoint.xs?'font-size: 8px':''" >Explore our interactive map to search for your ideal home or Apartment.<br> 
+                When you find the ones you like, bid your price and get the deal.</p>
+              <v-btn color="primary" :small="$vuetify.breakpoint.xs">FIND IT NOW</v-btn>
+            </v-col>
+          </div>
+        </v-img>
+        
+      </v-col>
     </v-container>
   </div>
 </template>
@@ -270,3 +268,9 @@ export default {
   }),
 };
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
+-->

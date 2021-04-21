@@ -19,7 +19,7 @@
             <template v-slot:activator="{ on }">
               <v-text-field
                 v-model="dateRangeText"
-                label="Date range"
+                label="Select Date"
                 prepend-icon="mdi-calendar"
                 readonly
                 v-on="on"
@@ -45,6 +45,11 @@
                 class="ma-4"
                 append-icon="mdi-magnify"
               />
+            </template>
+            <template v-slot:[`item.status`]="{ item }">
+              <span class="green--text" dark>
+                {{ item.status }}
+              </span>
             </template>
           </v-data-table>
         </v-col>
@@ -73,7 +78,6 @@ export default {
     },
     headers() {
       return [
-        { text: "ID", value: "id" },
         { text: "Date", value: "createdAt" },
         { text: "Property Type", value: "propertyType" },
         { text: "Property Description", value: "propertyDescription" },

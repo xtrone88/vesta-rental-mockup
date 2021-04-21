@@ -1,120 +1,9 @@
 <style lang="scss" scoped>
-.container {
-  padding: 0px 120px;
-}
-.container.bg-black {
-  background-color: black;
-  color: white;
-  & > .v-card {
-    background-color: black;
-    color: white;
-  }
-}
-.container.bg-grey {
-  background-color: grey;
-  color: white;
-  & > .v-card {
-    background-color: grey;
-    color: white;
-  }
-}
-.home-intro {
-  padding-top: 119px;
-  padding-bottom: 67px;
-  & > .v-img {
-    border-radius: 20px;
-  }
-  & > h2 {
-    margin-top: 81px;
-    font-size: 32px;
-    text-align: center;
-    & .text-size-42 {
-      font-size: 42px;
-    }
-    & .bold-italic {
-      font-weight: bold;
-      font-style: italic;
-    }
-  }
-}
-
-.search-bar {
-  display: inline-block;
-  padding: 24px 4px 24px 21px;
-  max-width: 870px;
-  width: 100%;
-  height: 20px;
-  background-color: white;
-  border-radius: 4px;
-  transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  -webkit-transform: translate(0, -50%);
-  & i.v-icon {
-    font-size: 32px;
-    color: rgba(#000000, 0.54);
-  }
-}
-
-.rent-way {
-  padding: 0px 80px;
-  margin-top: 119px;
-  & h1 {
-    font-size: 50px;
-    text-align: center;
-  }
-  & h6 {
-    margin-top: 20px;
-    margin-bottom: 96px;
-    font-weight: normal;
-    font-size: 20px;
-    text-align: center;
-  }
-}
-.popular-destination {
-  margin-top: 72px;
-  h4 {
-    font-size: 32px;
-  }
-  & div.city-rows {
-    margin-top: 66px;
-  }
-  & p.city-name {
-    font-weight: bold;
-    font-size: 28px;
-    line-height: 1;
-  }
-  & span.state-name {
-    font-weight: normal;
-    font-size: 20px;
-  }
-  & img.img-city {
-    width: 90px;
-    height: 90px;
-  }
-}
-
-.popular-destination-mobile {
-  h4 {
-    font-size: 24px;
-  }
-  & div.city-rows {
-    margin-top: 12px;
-  }
-  & p.city-name {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 1;
-  }
-  & span.state-name {
-    font-weight: normal;
-    font-size: 20px;
-  }
-}
 
 .scrolling-wrapper-flexbox {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-y: auto;
 
   .card {
     flex: 0 0 auto;
@@ -123,7 +12,7 @@
 
 #view-on-photo {
   position: absolute;
-  top:20px;
+  top:120px;
   left:20px;
   color: white;
   border-top-right-radius:16px !important;
@@ -134,14 +23,14 @@
 
 <template>
   <div>
-    <v-container :class="$vuetify.breakpoint.smAndDown?'pa-0':'bg-black pa-10'" fluid>
-      <v-card :class="$vuetify.breakpoint.smAndDown?'':'home-intro'" elevation="0">
+    <v-container :class="$vuetify.breakpoint.smAndDown?'pa-0':'pa-10'"  fluid>
+      <v-card :class="$vuetify.breakpoint.smAndDown?'':'home-intro'" elevation="0" class="rounded-xl">
         <v-img
           src="@/assets/home/slider1.png"
           class="full-width"
         ></v-img>
         <div class="text-center">
-          <div class="search-bar" :class="$vuetify.breakpoint.smAndDown?'pa-0':'pa-4'" style="height:100%">
+          <div :class="$vuetify.breakpoint.smAndDown?'pa-0':'pa-4'" style="height:100%">
             <div class="d-flex align-center">
               <v-text-field
                 label="Enter an address, neighborhood, city or ZIP code"
@@ -152,27 +41,23 @@
             </div>
           </div>
         </div>
-        <h2 v-if="!$vuetify.breakpoint.mobile">
+        <h2 v-if="!$vuetify.breakpoint.msAndDown" class="text-center">
           We Believe that the
           <span class="text-size-42">Vesta Lease</span> platform is a
           <span class="bold-italic">WIN – WIN – WIN</span>
         </h2>
       </v-card>
-    </v-container>
-    <v-container v-if="!$vuetify.breakpoint.mobile" class="pa-4" fluid>
-      <div class="rent-way">
+      <div>
         <h1>The New Way of Renting Properties</h1>
         <h6>
           New online auction-based application for booking rental properties
         </h6>
         <v-img src="@/assets/home/rent-way.png"></v-img>
       </div>
-    </v-container>
-    <v-container :class="$vuetify.breakpoint.smAndDown?'pl-4 pr-0':'pa-10'" fluid>
-      <div :class="$vuetify.breakpoint.smAndDown?'popular-destination-mobile':'popular-destination'">
-        <h4>Popular Destination</h4>
-        <v-row :class="$vuetify.breakpoint.msAndDown?'city-rows':'city-rows scrolling-wrapper-flexbox'">
-          <v-col :cols="$vuetify.breakpoint.msAndDown?'3':'12'"
+      <div>
+        <h1>Popular Destination</h1>
+        <v-row :class="$vuetify.breakpoint.mobile?'pa-8':''">
+          <v-col :cols="3"
             v-for="(city, i) in cities"
             :key="i"
             class="card">
@@ -188,8 +73,6 @@
           </v-col>
         </v-row>
       </div>
-    </v-container>
-    <v-container class="bg-black pa-10 my-10" fluid>
       <div>
         <v-row class="pt-12 pb-12">
           <v-col cols="12" md="auto" class="mr-auto">
@@ -225,8 +108,6 @@
           </v-col>
         </v-row>
       </div>
-    </v-container>
-    <v-container class="pa-10 my-10" fluid>
       <div>
         <v-row class="pt-12 pb-12" align="center">
           <v-col cols="12" md="auto">
@@ -254,8 +135,6 @@
           </v-col>
         </v-row>
       </div>
-    </v-container>
-    <v-container class="bg-grey pa-10 my-10" fluid>
       <div>
         <v-row class="pt-12 pb-12">
           <v-col cols="12" md="auto" class="mr-auto">
@@ -291,8 +170,6 @@
           </v-col>
         </v-row>
       </div>
-    </v-container>
-    <v-container class="pt-12 pb-9 pa-4 my-10" fluid>
       <div class="v-overlay__content">
         <v-img class="rounded-xl" :src="require('../../assets/home/back_find_property.png')"/>
         <div id="view-on-photo">

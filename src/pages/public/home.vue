@@ -12,41 +12,37 @@
 
 #view-on-photo {
   position: absolute;
-  top:120px;
-  left:20px;
+  width: 100%;
+  height: 100%;
+  left: 50px;
+  top: 50px;
   color: white;
-  border-top-right-radius:16px !important;
-  border-bottom-right-radius:16px !important;
 }
 
 </style>
 
 <template>
   <div>
-    <v-container :class="$vuetify.breakpoint.smAndDown?'pa-0':'pa-10'"  fluid>
-      <v-card :class="$vuetify.breakpoint.smAndDown?'':'home-intro'" elevation="0" class="rounded-xl">
-        <v-img
-          src="@/assets/home/slider1.png"
-          class="full-width"
-        ></v-img>
-        <div class="text-center">
-          <div :class="$vuetify.breakpoint.smAndDown?'pa-0':'pa-4'" style="height:100%">
-            <div class="d-flex align-center">
-              <v-text-field
-                label="Enter an address, neighborhood, city or ZIP code"
-                prepend-inner-icon="mdi-crosshairs-gps"
-                append-icon="mdi-magnify"
-                reqired
-              ></v-text-field>
-            </div>
-          </div>
+    <v-container class="pa-0" fluid>
+      <v-col :style="$vuetify.breakpoint.smAndDown?{background:'#222'}:{background:'#000'}" :class="[!$vuetify.breakpoint.xs ? 'pa-16' : 'pa-0']">
+        <v-img src="@/assets/home/slider1.png" class="full-width"/>
+        <div class="d-flex align-center"
+            style="width: 70%;transform: translate(20%, -30%);-ms-transform: translate(20%, -30%);-webkit-transform: translate(20%, -30%);">
+          <v-text-field
+            label="Enter an address, neighborhood, city or ZIP code"
+            background-color="white"
+            outlined
+            prepend-inner-icon="mdi-crosshairs-gps"
+            append-icon="mdi-magnify"
+            reqired
+          ></v-text-field>
         </div>
-        <h2 v-if="!$vuetify.breakpoint.msAndDown" class="text-center">
+        <h2 class="text-center white--text">
           We Believe that the
           <span class="text-size-42">Vesta Lease</span> platform is a
           <span class="bold-italic">WIN – WIN – WIN</span>
         </h2>
-      </v-card>
+      </v-col>
       <div>
         <h1>The New Way of Renting Properties</h1>
         <h6>

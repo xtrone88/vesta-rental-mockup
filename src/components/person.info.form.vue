@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-col class="mb-5" cols="12">
+    <v-col :class="mb-5" cols="12">
       <v-row>
         <p> {{ field }} </p>
         <v-spacer></v-spacer>

@@ -7,10 +7,10 @@
         <a v-on:click="change" color="primary">{{ showText }}</a>
       </v-row>
       <v-row>
-        <v-text-field v-if="type!='date'"
+        <v-text-field v-if="type=='text'"
           ref="edit"
           :value= "valueEdit" 
-          :readonly="!showFlag"
+          :readonly="!btnShowFlag"
         ></v-text-field>
         <v-menu v-if="type=='date'"
           ref="menu"
@@ -29,7 +29,7 @@
             ></v-text-field>
           </template>
           <v-date-picker
-            v-show="showFlag"
+            v-show="btnShowFlag"
             ref="picker"
             v-model="date"
             :max="new Date().toISOString().substr(0, 10)"
@@ -40,7 +40,7 @@
       </v-row>
       <v-row>
         <v-col cols="12" sm="12">
-          <v-btn v-on:click="save" v-show="showFlag" big color="cyan" class="white--text">Save</v-btn>
+          <v-btn v-on:click="save" v-show="btnShowFlag" big color="cyan" class="white--text">Save</v-btn>
         </v-col>
       </v-row>
     </v-col>
@@ -58,7 +58,7 @@ export default {
   data: () => ({
     index: null,
     showText: "Edit",
-    showFlag: false,
+    btnShowFlag: false,
     date: "1998-10-15",
     menu: false,
   }),
@@ -72,22 +72,22 @@ export default {
       if(this.showText == "Edit") {
         if(this.type == "text") {
           this.showText = "Cancel";
-          this.showFlag = true;
+          this.btnShowFlag = true;
           this.$refs["edit"].focus();
         }
         else{
           this.showText = "Cancel";
-          this.showFlag = true;
+          this.btnShowFlag = true;
         }
       }
       else {
         if(this.type == "text") {
           this.showText = "Edit";
-          this.showFlag = false;
+          this.btnShowFlag = false;
         }
         else{
           this.showText = "Edit";
-          this.showFlag = false;
+          this.btnShowFlag = false;
         }
       }
     },
@@ -98,11 +98,11 @@ export default {
     save: function() {
       if(this.type == "text") {
         this.showText = "Edit";
-        this.showFlag = false;
+        this.btnShowFlag = false;
       }
       else{
         this.showText = "Edit";
-        this.showFlag = false;
+        this.btnShowFlag = false;
       }
     }
   }

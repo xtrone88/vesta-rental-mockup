@@ -7,26 +7,29 @@
         </v-col>
 
         <v-col class="mb-1" cols="12" sm="6">
-          <v-menu
-            ref="menu1"
-            v-model="menu1"
-            :close-on-content-click="false"
-            transition="scale-transition"
-            offset-y
-            max-width="290px"
-            min-width="auto"
+          <v-dialog
+            ref="dialog"
+            v-model="modal"
+            :return-value.sync="date"
+            persistent
+            width="290px"
           >
-            <template v-slot:activator="{ on }">
+            <template v-slot:activator="{ on, attrs }">
               <v-text-field
                 v-model="dateRangeText"
                 label="Select Date"
                 prepend-icon="mdi-calendar"
                 readonly
+                v-bind="attrs"
                 v-on="on"
-              />
+              ></v-text-field>
             </template>
-            <v-date-picker v-model="dates" range no-title @input="menu1 = false" />
-          </v-menu>
+            <v-date-picker v-model="dates" range no-title scrollable>
+              <v-spacer></v-spacer>
+              <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
+              <v-btn text color="primary" @click="$refs.dialog.save(dates)">OK</v-btn>
+            </v-date-picker>
+          </v-dialog>
         </v-col>
         <v-col class="mt-1" cols="12">
           <v-data-table

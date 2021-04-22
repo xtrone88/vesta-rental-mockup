@@ -26,11 +26,11 @@
           <v-col>
             <div class="d-flex align-center">
               <v-text-field
-              counter="25"
-              hint="Minium of $ 5 Increment"
-              label="Your Bid Amount"
-            ></v-text-field>
-            <span>$</span>
+                counter="25"
+                hint="Minium of $ 5 Increment"
+                label="Your Bid Amount"
+              ></v-text-field>
+              <span>$</span>
             </div>
           </v-col>
         </v-row>

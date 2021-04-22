@@ -9,8 +9,7 @@
         <v-col class="mb-1" cols="12" sm="6">
           <v-dialog
             ref="dialog"
-            v-model="modal"
-            :return-value.sync="date"
+            :return-value.sync="dates"
             persistent
             width="290px"
           >

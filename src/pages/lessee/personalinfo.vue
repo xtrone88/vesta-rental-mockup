@@ -145,8 +145,8 @@ export default {
     
   },
   methods: {
-    save () {
-//      this.$refs.menu.save(date);
+    save (date) {
+      this.$refs.menu.save(date);
     },
   },
 };

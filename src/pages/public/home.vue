@@ -42,7 +42,7 @@
         <v-row class="pt-8"
           :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
         >
-          <v-col :cols="$vuetify.breakpoint.xs ? 12 : 3" sm="6" md="3" lg="3" 
+          <v-col :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="3" lg="3" 
             v-for="(city, i) in cities"
             :key="i">
             <div class="d-flex align-center">
@@ -69,7 +69,8 @@
         <v-row class="pt-8"
           :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
         >
-          <v-col v-for="(feature, i) in features" :key="i" sm="6" md="3" lg="3">
+          <v-col  :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="3" lg="3" 
+            v-for="(feature, i) in features" :key="i">
             <v-card class="rounded-xl mx-auto pa-0">
               <v-img class="rounded-xl" :src="feature.img" />
               <v-row align="center">
@@ -103,7 +104,8 @@
         <v-row class="pt-8"
           :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
         >
-          <v-col v-for="(spotlight, i) in spotlights" :key="i" sm="6" md="4" lg="4">
+          <v-col :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="4" lg="4" 
+            v-for="(spotlight, i) in spotlights" :key="i">
             <v-card class="rounded-xl mx-auto pa-0">
               <v-img class="rounded-xl" :src="spotlight.img" />
               <v-row align="center">
@@ -135,7 +137,8 @@
         <v-row class="pt-8"
           :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"  
         >
-          <v-col v-for="(feature, i) in features" :key="i" sm="6" md="3" lg="3">
+          <v-col :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="3" lg="3" 
+            v-for="(feature, i) in features" :key="i">
             <v-card class="rounded-xl mx-auto pa-0">
               <v-img class="rounded-xl" :src="feature.img" />
               <v-row align="center">

@@ -7,12 +7,15 @@
         </v-col>
 
         <v-col class="mb-1" cols="12" sm="6">
-          <v-dialog
+          <v-menu
             ref="dialog"
-            v-model="modal"
-            :return-value.sync="date"
-            persistent
-            width="290px"
+            v-model="dateModal"
+            :return-value.sync="dates"
+            :close-on-content-click="false"
+            transition="scale-transition"
+            offset-y
+            max-width="290px"
+            min-width="auto"
           >
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
@@ -24,12 +27,22 @@
                 v-on="on"
               ></v-text-field>
             </template>
-            <v-date-picker v-model="dates" range no-title scrollable>
+            <v-date-picker
+              v-model="dates"
+              range
+              no-title
+              scrollable
+              color="primary"
+            >
               <v-spacer></v-spacer>
-              <v-btn text color="primary" @click="modal = false">Cancel</v-btn>
-              <v-btn text color="primary" @click="$refs.dialog.save(dates)">OK</v-btn>
+              <v-btn text color="primary" @click="dateModal = false"
+                >Cancel</v-btn
+              >
+              <v-btn text color="primary" @click="$refs.dialog.save(dates)"
+                >OK</v-btn
+              >
             </v-date-picker>
-          </v-dialog>
+          </v-menu>
         </v-col>
         <v-col class="mt-1" cols="12">
           <v-data-table
@@ -48,6 +61,9 @@
                 class="ma-4"
                 append-icon="mdi-magnify"
               />
+            </template>
+            <template v-slot:[`item.createdAt`]="{ item }">
+              {{ item.createdAt | formatDateTime }}
             </template>
             <template v-slot:[`item.status`]="{ item }">
               <span class="green--text" dark>
@@ -69,6 +85,7 @@ export default {
   title: "Transactions",
 
   data: () => ({
+    dateModal: false,
     dates: ["2019-09-10", "2019-09-20"],
     search: "",
     menu1: false,
@@ -77,7 +94,7 @@ export default {
 
   computed: {
     dateRangeText() {
-      return this.dates.join(' ~ ');
+      return this.dates.join(" ~ ");
     },
     headers() {
       return [

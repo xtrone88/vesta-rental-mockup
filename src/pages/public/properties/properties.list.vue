@@ -13,7 +13,12 @@
                 >{{ popularLocation }}</span
               >
             </div>
-            <v-btn v-if="$vuetify.breakpoint.mobile" icon color="black" @click="mapDialog = true">
+            <v-btn
+              v-if="$vuetify.breakpoint.mobile"
+              icon
+              color="black"
+              @click="mapDialog = true"
+            >
               <v-icon>mdi-map</v-icon>
             </v-btn>
           </v-col>
@@ -206,7 +211,7 @@
       transition="dialog-bottom-transition"
     >
       <v-card class="d-flex align-stretch">
-        <div style="position:relative;width:100%">
+        <div style="position: relative; width: 100%">
           <GmapMap
             :center="center || defaultCenter"
             :zoom="12"
@@ -231,8 +236,15 @@
             >
             </GmapMarker>
           </GmapMap>
-          <v-btn icon dark x-small color="red" outlined @click="mapDialog = false"
-            style="position:absolute;left:5px;top:5px;">
+          <v-btn
+            icon
+            dark
+            x-small
+            color="red"
+            outlined
+            @click="mapDialog = false"
+            style="position: absolute; left: 5px; top: 5px"
+          >
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </div>
@@ -251,7 +263,7 @@ export default {
     center: null,
     dates: ["2019-09-10", "2019-09-20"],
     datePickerMenu: false,
-    popularLocation: "New York",
+    popularLocation: "New Orleans",
     dialog: false,
     mapDialog: false,
     address: '',

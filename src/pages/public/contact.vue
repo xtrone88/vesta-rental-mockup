@@ -29,8 +29,9 @@
           </v-col>
           <v-col order="1" order-md="4" cols="12" :class="{'pa-0':$vuetify.breakpoint.smAndDown}">
             <div class="v-overlay__content">
-              <ImageGallery :pictures="property.pictures" />
+              <ImageGallery ref="gallery" :pictures="property.pictures" />
               <v-chip
+                @click="viewAllPhotos"
                 v-if="!$vuetify.breakpoint.smAndDown"
                 id="view-all-photos"
                 color="grey lighten-5"
@@ -117,6 +118,12 @@ export default {
     message: '',
   }),
 
+  methods: {
+    viewAllPhotos: function() {
+      this.$refs.gallery.index = 0;
+    }
+  },
+
   created() {
     let propertyId = this.$route.params.propertyId;
     let property = sampleProperties[0];
@@ -136,5 +143,6 @@ export default {
     bottom:20px;
     border-top-right-radius:16px !important;
     border-bottom-right-radius:16px !important;
+    z-index: 1000;
   }
 </style>

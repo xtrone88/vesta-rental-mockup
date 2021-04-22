@@ -8663,6 +8663,11 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-photo-grid@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vue-photo-grid/-/vue-photo-grid-1.0.2.tgz#e68693c367faa3698cab4cfc9b1d85273d737fc5"
+  integrity sha1-5oaTw2f6o2mMq0z8mx2FJz1zf8U=
+
 vue-router@^3.5.1:
   version "3.5.1"
   resolved "https://registry.npmjs.org/vue-router/-/vue-router-3.5.1.tgz"

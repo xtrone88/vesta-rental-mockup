@@ -13,7 +13,7 @@
                 >{{ popularLocation }}</span
               >
             </div>
-            <v-btn v-if="$vuetify.breakpoint.mobile" icon color="black">
+            <v-btn v-if="$vuetify.breakpoint.mobile" icon color="black" @click="mapDialog = true">
               <v-icon>mdi-map</v-icon>
             </v-btn>
           </v-col>
@@ -175,11 +175,73 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col v-if="!$vuetify.breakpoint.mobile">
-        <!-- Here it goes maps component -->
+      <v-col class="pa-0" v-if="!$vuetify.breakpoint.mobile">
+        <GmapMap
+          :center="center || defaultCenter"
+          :zoom="12"
+          :options="{
+            zoomControl: false,
+            mapTypeControl: false,
+            scaleControl: false,
+            streetViewControl: false,
+            rotateControl: false,
+            fullscreenControl: false,
+            disableDefaultUI: false,
+          }"
+          style="width: 100%; height: 100%"
+        >
+          <GmapMarker
+            :key="i"
+            v-for="(m, i) in properties"
+            :position="m.address"
+            :clickable="true"
+            :draggable="true"
+            @click="center = m.address"
+          >
+          </GmapMarker>
+        </GmapMap>
       </v-col>
     </v-row>
     <BiddingDialog v-model="dialog" />
+    <v-dialog
+      v-model="mapDialog"
+      fullscreen
+      hide-overlay
+      transition="dialog-bottom-transition"
+    >
+      <v-card class="d-flex align-stretch">
+        <div style="position:relative;width:100%">
+          <GmapMap
+            :center="center || defaultCenter"
+            :zoom="12"
+            :options="{
+              zoomControl: false,
+              mapTypeControl: false,
+              scaleControl: false,
+              streetViewControl: false,
+              rotateControl: false,
+              fullscreenControl: false,
+              disableDefaultUI: false,
+            }"
+            style="width: 100%; height: 100%"
+          >
+            <GmapMarker
+              :key="i"
+              v-for="(m, i) in properties"
+              :position="m.address"
+              :clickable="true"
+              :draggable="true"
+              @click="center = m.address"
+            >
+            </GmapMarker>
+          </GmapMap>
+          <v-btn icon dark x-small color="red" outlined @click="mapDialog = false"
+            style="position:absolute;left:5px;top:5px;">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 <script>
@@ -190,15 +252,20 @@ export default {
   name: "PropertiesPage",
   title: "Properties",
   data: () => ({
+    center: null,
     date: "",
     datePickerMenu: false,
     popularLocation: "New York",
     dialog: false,
+    mapDialog: false,
   }),
   components: {
     BiddingDialog,
   },
   computed: {
+    defaultCenter() {
+      return sampleProperties[0].address;
+    },
     dateRangeText() {
       return "";
     },
@@ -236,24 +303,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .sized-chip {
   display: inline-block;
   width: 100px;
   text-align: center;
-}
-
-.text-style-medium {
-  font-size: 16px;
-}
-
-.text-style-medium1 {
-  font-size: 16px;
-  color: #25d848;
-  font-weight: bold;
-}
-
-.text-style-small {
-  font-size: 14px;
 }
 </style>

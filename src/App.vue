@@ -219,4 +219,7 @@ export default {
 i.v-icon.v-icon {
   color: black;
 }
+.gm-style a, .gmnoprint, .gm-style-cc {
+  display: none !important;
+}
 </style>

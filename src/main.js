@@ -2,7 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
 import VueTelInputVuetify from "vue-tel-input-vuetify/lib";
-import VueGoogleMap from "vuejs-google-maps";
+
+import * as VueGoogleMaps from "vue2-google-maps";
 
 import router from "./router";
 import store from "./store/store";
@@ -19,10 +20,13 @@ Vue.config.productionTip = false;
 Vue.use(VueTelInputVuetify, {
   vuetify
 });
-Vue.use(VueGoogleMap, {
+
+Vue.use(VueGoogleMaps, {
   load: {
-    apiKey: process.env.VUE_APP_GOOGLE_MAPS_TOKEN
-  }
+    key: process.env.VUE_APP_GOOGLE_MAPS_TOKEN,
+    libraries: "places"
+  },
+  installComponents: true
 });
 
 new Vue({

@@ -8,8 +8,9 @@
       </v-col>
       <v-col cols="12" :class="{'pa-0':$vuetify.breakpoint.smAndDown}">
         <div class="v-overlay__content">
-          <ImageGallery :pictures="property.pictures" />
+          <ImageGallery ref="gallery" :pictures="property.pictures" />
           <v-chip
+            @click="viewAllPhotos"
             v-if="!$vuetify.breakpoint.smAndDown"
             id="view-all-photos"
             color="grey lighten-5"
@@ -70,14 +71,27 @@
           </v-row>
           <v-row>
             <v-col>
-              <google-map id="map" ref="Map" style="height:250px">
-                <google-map-marker
-                  :position="{
-                    lat: 30.11,
-                    lng: 21.22,
-                  }"
-                />
-              </google-map>
+              <GmapMap
+                :center="property.address"
+                :zoom="12"
+                :options="{
+                  zoomControl: false,
+                  mapTypeControl: false,
+                  scaleControl: false,
+                  streetViewControl: false,
+                  rotateControl: false,
+                  fullscreenControl: false,
+                  disableDefaultUI: false
+                }"
+                style="width: 100%; height: 200px"
+              >
+                <GmapMarker
+                  :position="property.address"
+                  :clickable="true"
+                  :draggable="true"
+                >
+                </GmapMarker>
+              </GmapMap>
             </v-col>
           </v-row>
         </v-card>
@@ -118,6 +132,12 @@ export default {
     property: null
   }),
 
+  methods: {
+    viewAllPhotos: function() {
+      this.$refs.gallery.index = 0;
+    }
+  },
+
   created() {
     let propertyId = this.$route.params.propertyId;
     let property = sampleProperties[0];
@@ -137,12 +157,14 @@ export default {
   bottom: 20px;
   border-top-right-radius: 16px !important;
   border-bottom-right-radius: 16px !important;
+  z-index: 1000;
 }
 #won-auction {
   position: absolute;
   top: -40px;
   left: 50px;
   font-size: 80px;
+  z-index: 1000;
 }
 #won-auction.on-mobile{
   left: 50%;

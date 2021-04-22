@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card :elevation="0">
     <v-container class="pa-0" fluid>
       <v-row no-gutters>
         <v-col cols="12" md="6">
@@ -9,35 +9,49 @@
               cols="12"
               :class="$vuetify.breakpoint.smAndDown ? 'pa-0' : 'pa-1'"
             >
-              <v-card
-                flat
-                tile
-                :class="[
-                  'd-flex',
-                  !$vuetify.breakpoint.smAndDown ? 'rounded-l-lg' : '',
-                ]"
-              >
-                <v-img
-                  v-if="gallery.length"
-                  :src="gallery[0]"
-                  :aspect-ratio="$vuetify.breakpoint.smAndDown ? 2 : 1"
-                  class="grey lighten-2"
-                  @click="index = 0"
+              <v-hover v-slot="{ hover }">
+                <v-card
+                  @click="showAll = 0"
+                  :hover="true"
+                  flat
+                  tile
+                  :class="[
+                    'd-flex',
+                    !$vuetify.breakpoint.smAndDown ? 'rounded-l-lg' : '',
+                  ]"
                 >
-                  <template v-slot:placeholder>
-                    <v-row
-                      class="fill-height ma-0"
-                      align="center"
-                      justify="center"
+                  <v-img
+                    v-if="gallery.length"
+                    :src="gallery[0]"
+                    :aspect-ratio="$vuetify.breakpoint.smAndDown ? 2 : 1"
+                    class="grey lighten-2"
+                  >
+                    <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                      >
+                        <v-progress-circular
+                          indeterminate
+                          color="grey lighten-5"
+                        ></v-progress-circular>
+                      </v-row>
+                    </template>
+                  </v-img>
+                  <v-fade-transition>
+                    <v-overlay
+                      v-if="hover"
+                      absolute
+                      color="#036358"
+                      :class="[
+                        !$vuetify.breakpoint.smAndDown ? 'rounded-l-lg' : '',
+                      ]"
                     >
-                      <v-progress-circular
-                        indeterminate
-                        color="grey lighten-5"
-                      ></v-progress-circular>
-                    </v-row>
-                  </template>
-                </v-img>
-              </v-card>
+                    </v-overlay>
+                  </v-fade-transition>
+                </v-card>
+              </v-hover>
             </v-col>
           </v-row>
         </v-col>
@@ -49,52 +63,91 @@
               class="d-flex child-flex pa-1"
               cols="6"
             >
-              <v-card
-                flat
-                tile
-                :class="`d-flex ${
-                  idx == 1 ? 'rounded-tr-lg' : idx == 3 ? 'rounded-br-lg' : ''
-                }`"
-              >
-                <v-img
-                  :src="image"
-                  aspect-ratio="1"
-                  class="grey lighten-2"
-                  @click="index = idx + 1"
+              <v-hover v-slot="{ hover }">
+                <v-card
+                  @click="showAll = idx + 1"
+                  :hover="true"
+                  flat
+                  tile
+                  :class="`d-flex ${
+                    idx == 1 ? 'rounded-tr-lg' : idx == 3 ? 'rounded-br-lg' : ''
+                  }`"
                 >
-                  <template v-slot:placeholder>
-                    <v-row
-                      class="fill-height ma-0"
-                      align="center"
-                      justify="center"
+                  <v-img
+                    :src="image"
+                    aspect-ratio="1"
+                    class="grey lighten-2"
+                  >
+                    <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                      >
+                        <v-progress-circular
+                          indeterminate
+                          color="grey lighten-5"
+                        ></v-progress-circular>
+                      </v-row>
+                    </template>
+                  </v-img>
+
+                  <v-fade-transition>
+                    <v-overlay
+                      v-if="hover"
+                      absolute
+                      color="#036358"
+                      :class="`${
+                        idx == 1
+                          ? 'rounded-tr-lg'
+                          : idx == 3
+                          ? 'rounded-br-lg'
+                          : ''
+                      }`"
                     >
-                      <v-progress-circular
-                        indeterminate
-                        color="grey lighten-5"
-                      ></v-progress-circular>
-                    </v-row>
-                  </template>
-                </v-img>
-              </v-card>
+                    </v-overlay>
+                  </v-fade-transition>
+                </v-card>
+              </v-hover>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
     </v-container>
-    <gallery :images="slider" :index="index" @close="index = null" />
+    <gallery :images="slider" :index="index" @close="index = null" v-if="!$vuetify.breakpoint.smAndDown" />
+    <picture-grid :pictures="pictures" v-model="grid" @close="grid = false" v-if="$vuetify.breakpoint.smAndDown" />
   </v-card>
 </template>
+
 <script>
 import VueGallery from "vue-gallery";
+import PictureGrid from "./image.grid.vue";
 
 export default {
   name: "ImageGallery",
   props: ["pictures"],
   components: {
-    gallery: VueGallery,
+    'gallery': VueGallery,
+    'picture-grid': PictureGrid,
+  },
+  computed: {
+    showAll: {
+      get() {
+        return this.index;
+      },
+      set(index) {
+        if (this.$vuetify.breakpoint.smAndDown) {
+          this.index = null;
+          this.grid = true;
+        } else {
+          this.index = index;
+        }
+      }
+    }
   },
   data: () => ({
     index: null,
+    grid: false,
     gallery: [],
     slider: [],
   }),

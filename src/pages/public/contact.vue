@@ -91,6 +91,7 @@
 <script>
 import ImageGallery from "@/components/image.gallery";
 import { sampleProperties } from "@/data/properties";
+import { sampleProperty } from "@/data/fallback";
 
 export default {
   name: 'ContactPage',
@@ -125,8 +126,8 @@ export default {
   },
 
   created() {
+    let property = sampleProperty;
     let propertyId = this.$route.params.propertyId;
-    let property = sampleProperties[0];
     sampleProperties.forEach(function(p) {
         if (propertyId == p.id) {
           property = p;

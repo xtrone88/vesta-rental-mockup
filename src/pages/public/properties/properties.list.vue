@@ -28,7 +28,7 @@
             <vuetify-google-autocomplete
                 id="map"
                 ref="address"
-                append-icon="mdi-target"
+                prepend-icon="mdi-target"
                 placeholder="Location"
                 v-on:placechanged="getAddressData"
             >

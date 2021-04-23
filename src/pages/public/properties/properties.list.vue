@@ -23,7 +23,7 @@
             </v-btn>
           </v-col>
         </v-row>
-        <v-row class="align-baseline">
+        <v-row no-gutters class="align-baseline">
           <v-col cols="12" sm="6">
             <vuetify-google-autocomplete
                 id="location"
@@ -98,7 +98,7 @@
                     </v-img>
                   </router-link>
                 </v-col>
-                <v-col cols="12" lg="8" md="9" sm="8" class="pl-4">
+                <v-col cols="12" lg="8" md="9" sm="8" class="pl-sm-4">
                   <v-row no-gutters>
                     <v-col cols="8">
                       <div class="font-weight-bold text-sm-h6 text-subtitle-1">
@@ -316,6 +316,9 @@ export default {
   },
   mounted() {
     let gmap = document.querySelector("#googleMap");
+    if (gmap == null) {
+      return;
+    }
     let rect = gmap.getBoundingClientRect();
     gmap.style.position = "fixed";
     gmap.style.top = rect.top;

@@ -175,6 +175,9 @@ export default {
   methods: {
     getAddressData: function (addressData/*, placeResultData, id*/) {
       this.$router.push({path:'/properties/' + addressData.name});
+    },
+    changeLimit_feature: function(){
+      this.showlimit = this.properties.length();
     }
   },
   data: () => ({
@@ -182,13 +185,7 @@ export default {
     properties: sampleProperties,
     cities: citiesOfProperties,
     showlimit: 4,
-  }),
-
-  methods: {
-    changeLimit_feature: function(){
-      this.showlimit = this.properties.length();
-    }
-  }
+  })
 };
 </script>
 

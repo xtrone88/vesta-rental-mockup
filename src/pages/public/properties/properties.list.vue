@@ -1,5 +1,5 @@
 ﻿<template>
-  <v-container fluid>
+  <v-container ref="el" fluid>
     <v-row>
       <v-col>
         <v-row>
@@ -26,8 +26,8 @@
         <v-row class="align-baseline">
           <v-col cols="12" sm="6">
             <vuetify-google-autocomplete
-                id="map"
-                ref="address"
+                id="location"
+                v-model="address"
                 prepend-icon="mdi-target"
                 placeholder="Location"
                 v-on:placechanged="getAddressData"
@@ -189,7 +189,7 @@
             fullscreenControl: false,
             disableDefaultUI: false,
           }"
-          style="width: 100%; height: 100%"
+          id="googleMap"
         >
           <GmapMarker
             :key="i"
@@ -263,18 +263,17 @@ export default {
     center: null,
     dates: ["2019-09-10", "2019-09-20"],
     datePickerMenu: false,
-    popularLocation: "New Orleans",
+    address: "",
+    popularLocation: "",
     dialog: false,
-    mapDialog: false,
-    address: '',
+    mapDialog: false
   }),
   components: {
     BiddingDialog,
   },
   methods: {
-    getAddressData: function (addressData, placeResultData, id) {
-        this.address = addressData;
-        console.log(placeResultData, id);
+    getAddressData: function (addressData/*, placeResultData, id*/) {
+      this.popularLocation = addressData.name;
     }
   },
   computed: {
@@ -315,6 +314,16 @@ export default {
       return ["All", "Apartment", "House", "More"];
     },
   },
+  mounted() {
+    let gmap = document.querySelector("#googleMap");
+    let rect = gmap.getBoundingClientRect();
+    gmap.style.position = "fixed";
+    gmap.style.top = rect.top;
+    gmap.style.width = gmap.parentNode.clientWidth + "px";
+    gmap.style.height = (window.innerHeight - rect.top) + "px";
+
+    this.address = this.popularLocation = this.$route.params.address;
+  }
 };
 </script>
 

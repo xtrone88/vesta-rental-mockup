@@ -81,6 +81,11 @@ const routes = [
     component: PropertiesListPage
   },
   {
+    path: "/properties/:address",
+    name: "Properties2",
+    component: PropertiesListPage
+  },
+  {
     path: "/properties/:propertyId",
     name: "PropertyDetail",
     component: PropertyDetailPage

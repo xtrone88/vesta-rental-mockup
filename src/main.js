@@ -5,6 +5,7 @@ import VueTelInputVuetify from "vue-tel-input-vuetify/lib";
 import moment from "moment";
 
 import * as VueGoogleMaps from "vue2-google-maps";
+import VuetifyGoogleAutocomplete from 'vuetify-google-autocomplete';
 
 import router from "./router";
 import store from "./store/store";
@@ -40,6 +41,10 @@ Vue.use(VueGoogleMaps, {
     libraries: "places"
   },
   installComponents: true
+});
+
+Vue.use(VuetifyGoogleAutocomplete, {
+  vueGoogleMapsCompatibility: true,
 });
 
 new Vue({

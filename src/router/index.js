@@ -5,6 +5,7 @@ import FAQPage from "../pages/public/faq";
 import ContactPage from "../pages/public/contact";
 import PropertiesListPage from "../pages/public/properties/properties.list";
 import PropertyDetailPage from "../pages/public/properties/property.detail";
+import BidHistoryPage from "../pages/public/properties/bid.history";
 import TermsPage from "../pages/public/terms";
 import PrivacyPage from "../pages/public/privacy";
 
@@ -60,6 +61,11 @@ const routes = [
     component: ContactPage
   },
   {
+    path: "/contact",
+    name: "ContactAny",
+    component: ContactPage
+  },
+  {
     path: "/terms",
     name: "Terms",
     component: TermsPage
@@ -75,9 +81,19 @@ const routes = [
     component: PropertiesListPage
   },
   {
+    path: "/properties/:address",
+    name: "Properties2",
+    component: PropertiesListPage
+  },
+  {
     path: "/properties/:propertyId",
     name: "PropertyDetail",
     component: PropertyDetailPage
+  },
+  {
+    path: "/bidhistory/:propertyId",
+    name: "BidHistory",
+    component: BidHistoryPage
   },
   {
     path: "/about",

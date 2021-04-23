@@ -15,15 +15,16 @@
         </v-img>
         <div class="d-flex align-center"
             :style="!$vuetify.breakpoint.xs?'width: 70%;transform: translate(20%, -30%);-ms-transform: translate(20%, -30%);-webkit-transform: translate(20%, -30%);':''">
-          <v-text-field
-            label="Enter an address, neighborhood, city or ZIP code"
-            background-color="white"
-            prepend-inner-icon="mdi-crosshairs-gps"
-            append-icon="mdi-magnify"
-            single-line
-            solo
-            reqired
-          ></v-text-field>
+          <v-card class="pa-2" style="width:100%">
+            <vuetify-google-autocomplete
+                id="map"
+                ref="address"
+                prepend-icon="mdi-crosshairs-gps"
+                placeholder="Enter an address, neighborhood, city or ZIP code"
+                v-on:placechanged="getAddressData"
+            >
+            </vuetify-google-autocomplete>
+          </v-card>
         </div>
         <h2 v-if="!$vuetify.breakpoint.xs" class="text-center white--text">
           We Believe that the
@@ -171,6 +172,11 @@ import { citiesOfProperties } from "../../data/cities";
 export default {
   title: "Vesta Leese",
   name: "HomePage",
+  methods: {
+    getAddressData: function (addressData/*, placeResultData, id*/) {
+      this.$router.push({path:'/properties/' + addressData.name});
+    }
+  },
   data: () => ({
     publicPath: process.env.BASE_URL,
     properties: sampleProperties,

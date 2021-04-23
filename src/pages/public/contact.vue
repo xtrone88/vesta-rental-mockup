@@ -1,33 +1,23 @@
 <template>
   <v-container class="grey lighten-4" fluid>
     <v-container>
-      <div class="font-weight-bold text-md-h3 text-sm-h4 text-h5 my-md-16 mb-4">Contact</div>
-      <v-card :class="['pa-md-16', 'pa-3', !$vuetify.breakpoint.smAndDown ? 'rounded-xl' : '']">
+      <div class="font-weight-bold text-md-h3 text-sm-h4 text-h5 my-md-16 mb-4">
+        Contact
+      </div>
+      <v-card
+        :class="[
+          'pa-md-16',
+          'pa-3',
+          !$vuetify.breakpoint.smAndDown ? 'rounded-xl' : '',
+        ]"
+      >
         <v-row>
-          <v-col order="2" order-md="31" cols="12" md="auto" class="mr-auto">
-            <div class="text-md-h5 text-h6">
-              Property Lease
-            </div>
-            <p class="text-sm-subtitle-1 text-caption">
-              <b>{{property.address.street}}</b><br>
-              <span class="font-weight-regular text-sm-subtitle-2 text-caption">{{property.address.city}}, {{property.address.country}}</span>
-            </p>
-          </v-col>
-          <v-col order="3" order-md="2" cols="12" md="auto">
-            <p class="text-sm-body-1 text-caption">Auction Remaining Time</p>
-            <p class="text-body-2">
-              <v-icon
-                color="cyan"
-              >
-                mdi-alarm
-              </v-icon>
-              <span class="ml-4">3d 24:26:32</span>
-            </p>
-          </v-col>
-          <v-col order="4" order-md="3" cols="12">
-            <v-divider></v-divider>
-          </v-col>
-          <v-col order="1" order-md="4" cols="12" :class="{'pa-0':$vuetify.breakpoint.smAndDown}">
+          <v-col
+            order="1"
+            order-md="4"
+            cols="12"
+            :class="{ 'pa-0': $vuetify.breakpoint.smAndDown }"
+          >
             <div class="v-overlay__content">
               <ImageGallery ref="gallery" :pictures="property.pictures" />
               <v-chip
@@ -38,9 +28,7 @@
                 label
                 text-color="black"
               >
-                <v-icon left>
-                  mdi-image
-                </v-icon>
+                <v-icon left> mdi-image </v-icon>
                 View all Photos
               </v-chip>
             </div>
@@ -67,7 +55,7 @@
                 ></v-text-field>
               </div>
               <div class="d-flex flex-column">
-                  <vue-tel-input-vuetify></vue-tel-input-vuetify>
+                <vue-tel-input-vuetify></vue-tel-input-vuetify>
               </div>
               <div class="d-flex flex-column">
                 <v-textarea
@@ -91,9 +79,10 @@
 <script>
 import ImageGallery from "@/components/image.gallery";
 import { sampleProperties } from "@/data/properties";
+import { sampleProperty } from "@/data/fallback";
 
 export default {
-  name: 'ContactPage',
+  name: "ContactPage",
 
   components: {
     ImageGallery,
@@ -104,45 +93,45 @@ export default {
     endTime: new Date(2021, 4, 10),
 
     valid: false,
-    fullname: '',
+    fullname: "",
     nameRules: [
-      v => !!v || 'Name is required',
-      v => v.length <= 20 || 'Name must be less than 20 characters',
+      (v) => !!v || "Name is required",
+      (v) => v.length <= 20 || "Name must be less than 20 characters",
     ],
-    email: '',
+    email: "",
     emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+/.test(v) || 'E-mail must be valid',
+      (v) => !!v || "E-mail is required",
+      (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
-    mobile: '',
-    message: '',
+    mobile: "",
+    message: "",
   }),
 
   methods: {
-    viewAllPhotos: function() {
+    viewAllPhotos: function () {
       this.$refs.gallery.index = 0;
-    }
+    },
   },
 
   created() {
+    let property = sampleProperty;
     let propertyId = this.$route.params.propertyId;
-    let property = sampleProperties[0];
-    sampleProperties.forEach(function(p) {
-        if (propertyId == p.id) {
-          property = p;
-        }
+    sampleProperties.forEach(function (p) {
+      if (propertyId == p.id) {
+        property = p;
+      }
     });
     this.property = property;
-  }
+  },
 };
 </script>
 
 <style scoped>
-  #view-all-photos {
-    position: absolute;
-    bottom:20px;
-    border-top-right-radius:16px !important;
-    border-bottom-right-radius:16px !important;
-    z-index: 1000;
-  }
+#view-all-photos {
+  position: absolute;
+  bottom: 20px;
+  border-top-right-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+  z-index: 1000;
+}
 </style>

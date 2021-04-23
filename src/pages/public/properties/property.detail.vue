@@ -4,18 +4,21 @@
       <v-col cols="12" md="10" offset-md="1">
         <v-row v-if="!$vuetify.breakpoint.smAndDown" class="mt-10">
           <v-col>
-            <h6 class="text-h6 cyan--text">{{property.title}}</h6>
+            <h6 class="text-h6 cyan--text">{{ property.title }}</h6>
             <h5 class="text-h5">
-              <span class="d-inline-block font-weight-bold mr-3"
-                >{{property.address.street}}</span
-              >
+              <span class="d-inline-block font-weight-bold mr-3">{{
+                property.address.street
+              }}</span>
               <span
                 class="d-inline-block text-h6 font-weight-regular grey--text"
               >
-                {{property.address.city}}, {{property.address.country}}
+                {{ property.address.city }}, {{ property.address.country }}
               </span>
             </h5>
-            <div>Property ID <span class="font-weight-bold">{{property.id}}</span></div>
+            <div>
+              Property ID
+              <span class="font-weight-bold">{{ property.id }}</span>
+            </div>
           </v-col>
         </v-row>
         <v-row>
@@ -133,7 +136,11 @@
                 <v-btn block class="mt-6 cyan white--text">
                   LEASE IT NOW FOR $11,000
                 </v-btn>
-                <v-btn text class="mt-6 cyan--text text-capitalize">
+                <v-btn
+                  text
+                  class="mt-6 cyan--text text-capitalize"
+                  :to="{ path: '/bidhistory/' + property.id }"
+                >
                   Bid History
                 </v-btn>
               </v-card-text>
@@ -150,11 +157,13 @@
       </v-col>
     </v-row>
 
-    <v-snackbar v-model="watched"
+    <v-snackbar
+      v-model="watched"
       :timeout="1000"
       :top="true"
       color="success"
-      elevation="4">
+      elevation="4"
+    >
       You have watched.
       <template v-slot:action="{ attrs }">
         <v-btn color="white" text v-bind="attrs" @click="watched = false">
@@ -162,12 +171,14 @@
         </v-btn>
       </template>
     </v-snackbar>
-    
-    <v-snackbar v-model="favorite"
+
+    <v-snackbar
+      v-model="favorite"
       :timeout="1000"
       :top="true"
       color="secondary"
-      elevation="4">
+      elevation="4"
+    >
       You have favorite.
       <template v-slot:action="{ attrs }">
         <v-btn color="white" text v-bind="attrs" @click="favorite = false">
@@ -175,7 +186,6 @@
         </v-btn>
       </template>
     </v-snackbar>
-
   </v-container>
 </template>
 
@@ -212,7 +222,7 @@ export default {
     sec() {
       let s = moment(this.endDate).diff(this.now, "seconds") % 60;
       return s > 9 ? s : "0" + s;
-    }
+    },
   },
   methods: {
     setupCountdown() {
@@ -237,10 +247,10 @@ export default {
     this.setupCountdown();
     let propertyId = this.$route.params.propertyId;
     let property = sampleProperties[0];
-    sampleProperties.forEach(function(p) {
-        if (propertyId == p.id) {
-          property = p;
-        }
+    sampleProperties.forEach(function (p) {
+      if (propertyId == p.id) {
+        property = p;
+      }
     });
     this.property = property;
   },

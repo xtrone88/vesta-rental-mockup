@@ -40,7 +40,7 @@
               <router-link
                 class="footer_bot_link"
                 style=""
-                :to="{ path: '/contact/0' }"
+                :to="{ path: '/contact' }"
               >
                 Contact
               </router-link>
@@ -114,7 +114,7 @@ export default {
         items: [
           {
             title: "Contact Us",
-            to: { path: "/contact/0" },
+            to: { path: "/contact" },
           },
           {
             title: "Lessors ",

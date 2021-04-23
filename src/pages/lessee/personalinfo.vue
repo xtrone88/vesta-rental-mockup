@@ -2,9 +2,7 @@
   <div>
     <v-row class="text-start">
       <v-container class="pa-4">
-        <!-- <v-col class="mb-4">
-          <h1 class="display-2 font-weight-bold mb-4">Personal Info</h1>
-        </v-col> -->
+        
         <v-card class="mx-auto rounded-xl" :class="$vuetify.breakpoint.xs?'pa-8':'pa-16'"
           :elevation="$vuetify.breakpoint.xs?0:2"
         >
@@ -17,11 +15,6 @@
             </v-avatar>
           </div>          
           <v-form v-model="valid">
-            <div class="d-flex flex-column">
-                <v-divider class="mb-2"></v-divider>
-                <center>User Info</center>
-                <v-divider class="mt-2"></v-divider>
-            </div>
             <div class="d-flex flex-column">
               <v-text-field
                 :rules="nameRules"
@@ -39,6 +32,31 @@
                 :value="info.lastname"
                 required
               ></v-text-field>
+            </div>
+            <div class="d-flex flex-column">
+              <v-text-field
+                :rules="emailRules"
+                label="Email"
+                :value="info.email"
+                required
+              ></v-text-field>
+            </div>
+            <div>
+              <v-divider></v-divider>
+              <div class="font-weight-bold text-h8 my-2"> Personal Info </div>
+              <v-divider></v-divider>
+            </div>
+            <div class="d-flex flex-column">
+              <vue-tel-input-vuetify></vue-tel-input-vuetify>
+            </div>
+            <div class="d-flex flex-column mb-4">
+              <v-text-field 
+                v-on:click="changeContent"
+                :value = "gender"
+                :prepend-inner-icon="genderIcon"
+                readonly
+              >
+              </v-text-field>
             </div>
             <div class="d-flex flex-column mb-4">
               <v-menu
@@ -66,36 +84,6 @@
                   min="1950-01-01"
                 ></v-date-picker>
               </v-menu>
-            </div>
-            <div class="d-flex flex-column">
-                <v-divider class="mb-2"></v-divider>
-                <center>Personal Info</center>
-                <v-divider class="mt-2"></v-divider>
-            </div>
-            <div class="d-flex flex-column">
-              <v-text-field
-                :rules="emailRules"
-                label="Email"
-                :value="info.email"
-                required
-              ></v-text-field>
-            </div>
-            <div class="d-flex flex-column">
-              <vue-tel-input-vuetify></vue-tel-input-vuetify>
-            </div>
-            <div class="d-flex flex-column mb-4">
-              <v-text-field 
-                v-on:click="changeContent"
-                :value = "gender"
-                :prepend-inner-icon="genderIcon"
-                readonly
-              >
-              </v-text-field>
-            </div>
-            <div class="d-flex flex-column">
-                <v-divider class="mb-2"></v-divider>
-                <center>Other Info</center>
-                <v-divider class="mt-2"></v-divider>
             </div>
             <div class="d-flex flex-column">
               <v-text-field

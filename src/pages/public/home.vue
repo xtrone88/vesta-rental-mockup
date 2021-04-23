@@ -31,24 +31,24 @@
           <span><i><b>WIN – WIN – WIN</b></i></span>
         </h2>
       </v-col>
-      <v-col v-if="!$vuetify.breakpoint.xs" :class="['text-center', !$vuetify.breakpoint.xs ? 'pa-12' : 'pa-0']">
+      <v-col v-if="!$vuetify.breakpoint.xs" :class="['text-center', !$vuetify.breakpoint.xs ? 'pa-12' : 'pa-0 ma-0']">
         <h1>The New Way of Renting Properties</h1>
         <p style="font-size: 14px">
           New online auction-based application for booking rental properties
         </p>
         <v-img src="@/assets/home/rent-way.png"></v-img>
       </v-col>
-      <v-col :class="[!$vuetify.breakpoint.xs ? 'pr-12 pl-12' : 'pa-4']">
+      <v-col :class="[!$vuetify.breakpoint.xs ? 'pr-12 pl-12' : 'pl-4 pr-4 pt-0 mt-0 pb-0 mb-0']">
         <h2>Popular Destination</h2>
-        <v-row class="pt-8 mb-4"
+        <v-row class="pt-8 mb-0"
           :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
         >
-          <v-col :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="3" lg="3" 
+          <v-col :cols="$vuetify.breakpoint.xs ? 5 : 3" sm="6" md="3" lg="3" 
             v-for="(city, i) in cities"
             :key="i">
-            <div class="d-flex align-center">
-              <img class="img-city" :src="city.img" width="100px" height="100px"/>
-              <div class="ml-4">
+            <div class="mx-auto pa-0 ma-0" elevation="0">
+              <div align="center">
+                <img :width="$vuetify.breakpoint.xs?'100':'150'" class="rounded-xl" :src="city.img"/>
                 <p>
                   <strong><h3>{{ city.city }}</h3></strong>
                   <span style="font-size: 14px">{{ city.state }}</span>
@@ -64,32 +64,45 @@
             <div class="d-flex align-center mt-6">
               <h2>Featured Deals</h2>
               <v-spacer></v-spacer>
-              <a class="white--text" v-if="!$vuetify.breakpoint.xs" href="">VIEW ALL</a>
+              <p class="white--text" v-if="!$vuetify.breakpoint.xs" href="" v-on:click="changeLimit_feature">VIEW ALL</p>
             </div>
           </v-col>
         </v-row>
         <v-row class="mt-6 mb-6"
           :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
         >
-          <v-col  :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="3" lg="3" 
-            v-for="(feature, i) in features" :key="i">
-            <v-card class="rounded-xl mx-auto pa-0">
-              <v-img class="rounded-xl" :src="feature.img"/>
-              <v-row align="center">
-                <v-col class="pr-0 pl-8" cols="8">
-                  <div class="mt-4 mb-0 pb-0 card-title">
-                    <strong>{{ feature.title }}</strong>
+          <v-col  :cols="$vuetify.breakpoint.xs ? 9 : 3" sm="6" md="3" lg="3" 
+            v-for="property in properties" :key="property.id" v-show="property.id < 5">
+            <v-card class="rounded-xl">
+              <v-row no-gutters>
+                <v-col>
+                  <router-link :to="{ path: `/properties/${property.id}` }">
+                    <v-img
+                      :src="property.pictures[0].thumb_500"
+                      :aspect-ratio="1"
+                      class="rounded-xl fill-height"
+                    >
+                    </v-img>
+                  </router-link>
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col cols="8" class="pl-2 pb-2">
+                  <div class="font-weight-bold card-title">
+                    Apartment for Rent
                   </div>
-
-                  <div class="text--primary pt-0 mt-2">
-                    <div class="card-subtitle-g">{{ feature.desc }}</div>
-                    <div class="card-subtitle-g">{{ feature.city }}</div>
+                  <div class="text--primary card-subtitle-g">
+                    {{ property.address.full }}
                   </div>
                 </v-col>
-                <v-col align="center" align-self="center" class="pl-0 pr-4" cols="4">
-                  <v-icon color="black" class="pa-0 mt-3" left>mdi-hammer</v-icon>
-                  <div class="pa-0 card-text-b"><strong>Bid Now</strong></div>
-                  <div class="pa-0 card-text-g mt-2">20 Hours Left</div>
+                <v-col cols="4" class="pr-2 pb-2 d-flex align-center justify-end">
+                  <div>
+                    <div class="d-flex align-center justify-end text-caption">
+                      <v-icon small class="flip-y" color="black">mdi-hammer</v-icon>
+                      <span class="font-weight-bold">Bid Now</span>
+                    </div>
+                    <div class="text-caption text-grey text-center">20hrs Left</div>
+                  </div>
                 </v-col>
               </v-row>
             </v-card>
@@ -109,25 +122,38 @@
         <v-row class="mt-4"
           :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"  
         >
-          <v-col :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="3" lg="3" 
-            v-for="(feature, i) in features" :key="i">
-            <v-card class="rounded-xl mx-auto pa-0">
-              <v-img class="rounded-xl" :src="feature.img" />
-              <v-row align="center">
-                <v-col class="pr-0 pl-8" cols="8">
-                  <div class="mt-4 mb-0 pb-0 card-title">
-                    <strong>{{ feature.title }}</strong>
+          <v-col  :cols="$vuetify.breakpoint.xs ? 9 : 3" sm="6" md="3" lg="3" 
+            v-for="property in properties" :key="property.id" v-show="property.id < 5">
+            <v-card class="rounded-xl">
+              <v-row no-gutters>
+                <v-col>
+                  <router-link :to="{ path: `/properties/${property.id}` }">
+                    <v-img
+                      :src="property.pictures[0].thumb_500"
+                      :aspect-ratio="1"
+                      class="rounded-xl fill-height"
+                    >
+                    </v-img>
+                  </router-link>
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col cols="8" class="pl-2 pb-2">
+                  <div class="font-weight-bold card-title">
+                    Apartment for Rent
                   </div>
-
-                  <div class="text--primary pt-0 mt-2">
-                    <div class="card-subtitle-g">{{ feature.desc }}</div>
-                    <div class="card-subtitle-g">{{ feature.city }}</div>
+                  <div class="text--primary card-subtitle-g">
+                    {{ property.address.full }}
                   </div>
                 </v-col>
-                <v-col align="center" align-self="center" class="pl-0 pr-4" cols="4">
-                  <v-icon color="black" class="pa-0 mt-3" left>mdi-hammer</v-icon>
-                  <div class="pa-0 card-text-b"><strong>Bid Now</strong></div>
-                  <div class="pa-0 card-text-r mt-2">20 Hours Left</div>
+                <v-col cols="4" class="pr-2 pb-2 d-flex align-center justify-end">
+                  <div>
+                    <div class="d-flex align-center justify-end text-caption">
+                      <v-icon small class="flip-y" color="black">mdi-hammer</v-icon>
+                      <span class="font-weight-bold">Bid Now</span>
+                    </div>
+                    <div class="text-caption text-grey text-center">20hrs Left</div>
+                  </div>
                 </v-col>
               </v-row>
             </v-card>
@@ -139,8 +165,7 @@
 </template>
 
 <script>
-import { featuresOfProperties } from "../../data/features";
-import { spotlightsOfProperties } from "../../data/spotlights";
+import { sampleProperties } from "../../data/properties";
 import { citiesOfProperties } from "../../data/cities";
 
 export default {
@@ -148,10 +173,16 @@ export default {
   name: "HomePage",
   data: () => ({
     publicPath: process.env.BASE_URL,
+    properties: sampleProperties,
     cities: citiesOfProperties,
-    features: featuresOfProperties,
-    spotlights: spotlightsOfProperties,
+    showlimit: 4,
   }),
+
+  methods: {
+    changeLimit_feature: function(){
+      this.showlimit = this.properties.length();
+    }
+  }
 };
 </script>
 
@@ -176,6 +207,9 @@ export default {
 .card-text-r {
   font-size: 10px;
   color: red;
+}
+.flip-y {
+  transform: rotateY(180deg);
 }
 </style>
 

@@ -163,12 +163,12 @@ export const sampleProperties = [
     ],
 
     address: {
-      full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8602173,
-      lat: 32.0695525,
-      street: "Kaplan Street 2",
-      city: "Ramat Gan",
-      country: "Israel"
+      full: "700 Bourbon St. New Orleans, LA",
+      lng: -90.065285,
+      lat: 29.959021,
+      street: "700 Bourbon St",
+      city: "New Orleans",
+      country: "United States"
     },
     tags: [],
     pendingTasks: [],
@@ -343,12 +343,12 @@ export const sampleProperties = [
     ],
 
     address: {
-      full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8302173,
-      lat: 32.0795525,
-      street: "Kaplan Street 2",
-      city: "Ramat Gan",
-      country: "Israel"
+      full: "1200 Bourbon St. New Orleans, LA",
+      lng: -90.0620027,
+      lat: 29.9627222,
+      street: "1200 Bourbon St",
+      city: "New Orleans",
+      country: "United States"
     },
     tags: [],
     pendingTasks: [],
@@ -562,12 +562,13 @@ export const sampleProperties = [
       }
     ],
     address: {
-      full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8102173,
-      lat: 32.0595525,
-      street: "Kaplan Street 2",
-      city: "Ramat Gan",
-      country: "Israel"
+      full: "800 Bourbon St. New Orleans, LA",
+      lng: -90.064677,
+      lat: 29.959544,
+
+      street: "800 Bourbon St",
+      city: "New Orleans",
+      country: "United States"
     },
     tags: [],
     pendingTasks: [],
@@ -781,12 +782,12 @@ export const sampleProperties = [
       }
     ],
     address: {
-      full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8102173,
-      lat: 32.0695525,
-      street: "Kaplan Street 2",
-      city: "Ramat Gan",
-      country: "Israel"
+      full: "300 Bourbon St. New Orleans, LA",
+      lng: -90.067791,
+      lat: 29.955715,
+      street: "300 Bourbon St",
+      city: "New Orleans",
+      country: "United States"
     },
     tags: [],
     pendingTasks: [],
@@ -1011,12 +1012,12 @@ export const sampleProperties = [
     ],
 
     address: {
-      full: "Kaplan St 2, Ramat Gan, Israel",
-      lng: 34.8202173,
-      lat: 32.0895525,
-      street: "Kaplan Street 2",
-      city: "Ramat Gan",
-      country: "Israel"
+      full: "500 Bourbon St. New Orleans, LA",
+      lng: -90.066779,
+      lat: 29.956994,
+      street: "500 Bourbon St",
+      city: "New Orleans",
+      country: "United States"
     },
     tags: [],
     pendingTasks: [],

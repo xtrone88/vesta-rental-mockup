@@ -74,7 +74,7 @@
           <v-col  :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="3" lg="3" 
             v-for="(feature, i) in features" :key="i">
             <v-card class="rounded-xl mx-auto pa-0">
-              <v-img class="rounded-xl" :src="feature.img" />
+              <v-img class="rounded-xl" :src="feature.img"/>
               <v-row align="center">
                 <v-col class="pr-0 pl-8" cols="8">
                   <div class="mt-4 mb-0 pb-0 card-title">
@@ -93,24 +93,6 @@
                 </v-col>
               </v-row>
             </v-card>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-col :class="!$vuetify.breakpoint.xs?'pa-12':'pa-4'">
-          <h1 class="text-center" :style="$vuetify.breakpoint.xs?'font-size:24px':''">Property Spotlight</h1>
-        <v-row class="mt-4 pl-0"
-          :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
-        >
-          <v-col :cols="$vuetify.breakpoint.xs ? 8 : 3" sm="6" md="4" lg="4" 
-            v-for="(spotlight, i) in spotlights" :key="i">
-            <v-img class="rounded-xl" :src="spotlight.img" />
-            <v-row>
-              <v-col class="mt-4 mb-4">
-                <div><b>{{ spotlight.title }}</b></div>
-                <div>Baldwin Country, Daphine, AL 36526</div>
-                <div><strong>Auction Date</strong> Mar 21,2021</div>
-              </v-col>
-            </v-row>
           </v-col>
         </v-row>
       </v-col>
@@ -152,110 +134,23 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col :class="$vuetify.breakpoint.xs?'pa-0':'pa-12'">
-        <v-img :class="!$vuetify.breakpoint.xs?'rounded-xl':''" :src="require('../../assets/home/back_find_property.png')">
-          <div class="d-flex fill-height align-center pa-4">
-            <v-col>
-              <h2 class="white--text mb-1" :style="$vuetify.breakpoint.xs?'font-size: 14px':''" >Find Properties to Rent Near You</h2>
-              <p class="white--text mb-4" :style="$vuetify.breakpoint.xs?'font-size: 8px':''" >Explore our interactive map to search for your ideal home or Apartment.<br> 
-                When you find the ones you like, bid your price and get the deal.</p>
-              <v-btn color="primary" :small="$vuetify.breakpoint.xs">FIND IT NOW</v-btn>
-            </v-col>
-          </div>
-        </v-img>
-      </v-col>
     </v-container>
   </div>
 </template>
 
 <script>
+import { featuresOfProperties } from "../../data/features";
+import { spotlightsOfProperties } from "../../data/spotlights";
+import { citiesOfProperties } from "../../data/cities";
+
 export default {
   title: "Vesta Leese",
   name: "HomePage",
   data: () => ({
     publicPath: process.env.BASE_URL,
-    cities: [
-      {
-        city: "New York",
-        state: "New York",
-        img: require("@/assets/home/dest_newyork.png"),
-      },
-      {
-        city: "San Francisco",
-        state: "California",
-        img: require("@/assets/home/dest_sanfrancisco.png"),
-      },
-      {
-        city: "Austin",
-        state: "Texas",
-        img: require("@/assets/home/dest_austin.png"),
-      },
-      {
-        city: "Lake Anna",
-        state: "Virginia",
-        img: require("@/assets/home/dest_lakeanna.png"),
-      },
-      {
-        city: "Los Angeles",
-        state: "Californiat",
-        img: require("@/assets/home/dest_losangels.png"),
-      },
-      {
-        city: "San Diego",
-        state: "California",
-        img: require("@/assets/home/dest_sandiego.png"),
-      },
-      {
-        city: "Houston",
-        state: "Texas",
-        img: require("@/assets/home/dest_houston.png"),
-      },
-      {
-        city: "Seattle",
-        state: "Washington",
-        img: require("@/assets/home/dest_seattle.png"),
-      },
-    ],
-    features: [
-      {
-        title: "Apartment for Rent",
-        desc: "222 Hallec St",
-        city: "San Fransisco",
-        img: require("@/assets/home/featured_1.png"),
-      },
-      {
-        title: "Apartment for Rent",
-        desc: "222 Hallec St",
-        city: "San Fransisco",
-        img: require("@/assets/home/featured_2.png"),
-      },
-      {
-        title: "Apartment for Rent",
-        desc: "222 Hallec St",
-        city: "San Fransisco",
-        img: require("@/assets/home/featured_3.png"),
-      },
-      {
-        title: "Apartment for Rent",
-        desc: "222 Hallec St",
-        city: "San Fransisco",
-        img: require("@/assets/home/featured_4.png"),
-      },
-    ],
-    spotlights: [
-      {
-        title: "258 Montclair Loop",
-        img: require("@/assets/home/spotlight_1.png"),
-      },
-      {
-        title: "258 Montclair Loop",
-        img: require("@/assets/home/spotlight_2.png"),
-      },
-      {
-        title: "258 Montclair Loop",
-        img: require("@/assets/home/spotlight_3.png"),
-      },
-    ],
+    cities: citiesOfProperties,
+    features: featuresOfProperties,
+    spotlights: spotlightsOfProperties,
   }),
 };
 </script>

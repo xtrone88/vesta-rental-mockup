@@ -315,6 +315,8 @@ export default {
     },
   },
   mounted() {
+    this.address = this.popularLocation = this.$route.params.address;
+
     let gmap = document.querySelector("#googleMap");
     if (gmap == null) {
       return;
@@ -324,8 +326,6 @@ export default {
     gmap.style.top = rect.top;
     gmap.style.width = gmap.parentNode.clientWidth + "px";
     gmap.style.height = (window.innerHeight - rect.top) + "px";
-
-    this.address = this.popularLocation = this.$route.params.address;
   }
 };
 </script>

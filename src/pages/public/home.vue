@@ -174,7 +174,7 @@ export default {
   name: "HomePage",
   methods: {
     getAddressData: function (addressData/*, placeResultData, id*/) {
-      this.$router.push({path:'/properties/' + addressData.name});
+      this.$router.push({path:'/locations/' + addressData.name});
     },
   },
   data: () => ({

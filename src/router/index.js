@@ -81,8 +81,8 @@ const routes = [
     component: PropertiesListPage
   },
   {
-    path: "/properties/:address",
-    name: "Properties2",
+    path: "/locations/:address",
+    name: "Locations",
     component: PropertiesListPage
   },
   {

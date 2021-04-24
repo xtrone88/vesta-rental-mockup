@@ -15,7 +15,7 @@
         </v-img>
         <div class="d-flex align-center"
             :style="!$vuetify.breakpoint.xs?'width: 70%;transform: translate(20%, -30%);-ms-transform: translate(20%, -30%);-webkit-transform: translate(20%, -30%);':''">
-          <v-card class="pa-2" style="width:100%">
+          <v-card :class="[!$vuetify.breakpoint.xs ? 'pa-2' : 'pa-0']" elevation="0" style="width:100%">
             <vuetify-google-autocomplete
                 id="map"
                 ref="address"
@@ -65,11 +65,11 @@
             <div class="d-flex align-center mt-6">
               <h2>Featured Deals</h2>
               <v-spacer></v-spacer>
-              <p class="white--text" v-if="!$vuetify.breakpoint.xs" href="" v-on:click="changeLimit_feature">VIEW ALL</p>
+              <p class="white--text" v-if="!$vuetify.breakpoint.xs" href="">VIEW ALL</p>
             </div>
           </v-col>
         </v-row>
-        <v-row class="mt-6 mb-6"
+        <v-row class="mt-6"
           :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
         >
           <v-col  :cols="$vuetify.breakpoint.xs ? 9 : 3" sm="6" md="3" lg="3" 
@@ -176,9 +176,6 @@ export default {
     getAddressData: function (addressData/*, placeResultData, id*/) {
       this.$router.push({path:'/properties/' + addressData.name});
     },
-    changeLimit_feature: function(){
-      this.showlimit = this.properties.length();
-    }
   },
   data: () => ({
     publicPath: process.env.BASE_URL,

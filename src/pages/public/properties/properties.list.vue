@@ -1,5 +1,5 @@
 ﻿<template>
-  <v-container fluid>
+  <v-container ref="el" fluid>
     <v-row>
       <v-col>
         <v-row>
@@ -23,45 +23,41 @@
             </v-btn>
           </v-col>
         </v-row>
-        <v-row>
+        <v-row no-gutters class="align-baseline">
           <v-col cols="12" sm="6">
-            <v-text-field
-              label="Location"
-              prepend-inner-icon="mdi-target"
-              dense
-              outlined
-              hide-details="auto"
-            />
+            <vuetify-google-autocomplete
+                id="location"
+                v-model="address"
+                prepend-icon="mdi-target"
+                placeholder="Location"
+                v-on:placechanged="getAddressData"
+            >
+            </vuetify-google-autocomplete>
           </v-col>
           <v-col cols="12" sm="6">
-            <v-menu
-              ref="menu"
+            <v-dialog
+              ref="dateDialog"
               v-model="datePickerMenu"
-              :close-on-content-click="false"
-              transition="scale-transition"
-              offset-y
-              max-width="290px"
-              min-width="auto"
+              :return-value.sync="dates"
+              persistent
+              width="290px"
             >
-              <template v-slot:activator="{ on }">
+              <template v-slot:activator="{ on, attrs }">
                 <v-text-field
                   v-model="dateRangeText"
                   label="Select Date"
-                  prepend-inner-icon="mdi-calendar"
+                  prepend-icon="mdi-calendar"
                   readonly
-                  dense
-                  clearable
-                  outlined
-                  hide-details="auto"
+                  v-bind="attrs"
                   v-on="on"
-                />
+                ></v-text-field>
               </template>
-              <v-date-picker
-                v-model="date"
-                no-title
-                @input="datePickerMenu = false"
-              />
-            </v-menu>
+              <v-date-picker v-model="dates" range no-title scrollable>
+                <v-spacer></v-spacer>
+                <v-btn text color="primary" @click="datePickerMenu = false">Cancel</v-btn>
+                <v-btn text color="primary" @click="$refs.dateDialog.save(dates)">OK</v-btn>
+              </v-date-picker>
+            </v-dialog>
           </v-col>
         </v-row>
         <v-row v-if="!$vuetify.breakpoint.xs">
@@ -102,7 +98,7 @@
                     </v-img>
                   </router-link>
                 </v-col>
-                <v-col cols="12" lg="8" md="9" sm="8" class="pl-4">
+                <v-col cols="12" lg="8" md="9" sm="8" class="pl-sm-4">
                   <v-row no-gutters>
                     <v-col cols="8">
                       <div class="font-weight-bold text-sm-h6 text-subtitle-1">
@@ -193,7 +189,7 @@
             fullscreenControl: false,
             disableDefaultUI: false,
           }"
-          style="width: 100%; height: 100%"
+          id="googleMap"
         >
           <GmapMarker
             :key="i"
@@ -267,19 +263,25 @@ export default {
     center: null,
     dates: [],
     datePickerMenu: false,
-    popularLocation: "New Orleans",
+    address: "",
+    popularLocation: "",
     dialog: false,
-    mapDialog: false,
+    mapDialog: false
   }),
   components: {
     BiddingDialog,
   },
+  methods: {
+    getAddressData: function (addressData/*, placeResultData, id*/) {
+      this.popularLocation = addressData.name;
+    }
+  },
   computed: {
+    dateRangeText() {
+      return this.dates.join(' ~ ');
+    },
     defaultCenter() {
       return sampleProperties[0].address;
-    },
-    dateRangeText() {
-      return "";
     },
     properties() {
       return sampleProperties.map((property) => {
@@ -314,7 +316,7 @@ export default {
   },
   mounted() {
     let param = this.$route.params.address;
-    if (param == undefined || param == "" || param == "All") {
+    if (param == "All" || param == undefined || param == "") {
       param = "";
     } else {
       this.address = this.popularLocation = param;

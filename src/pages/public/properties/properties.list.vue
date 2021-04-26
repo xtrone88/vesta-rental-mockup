@@ -261,7 +261,7 @@ export default {
   title: "Properties",
   data: () => ({
     center: null,
-    dates: ["2019-09-10", "2019-09-20"],
+    dates: [],
     datePickerMenu: false,
     address: "",
     popularLocation: "",
@@ -316,7 +316,9 @@ export default {
   },
   mounted() {
     this.address = this.popularLocation = this.$route.params.address;
-
+    if (this.popularLocation == undefined || this.popularLocation == "") {
+      this.popularLocation = sampleProperties[0].address.city;
+    }
     let gmap = document.querySelector("#googleMap");
     if (gmap == null) {
       return;

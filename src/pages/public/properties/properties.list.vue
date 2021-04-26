@@ -265,7 +265,7 @@ export default {
   title: "Properties",
   data: () => ({
     center: null,
-    date: "",
+    dates: [],
     datePickerMenu: false,
     popularLocation: "New Orleans",
     dialog: false,
@@ -312,6 +312,21 @@ export default {
       return ["All", "Apartment", "House", "More"];
     },
   },
+  mounted() {
+    this.address = this.popularLocation = this.$route.params.address;
+    if (this.popularLocation == undefined || this.popularLocation == "") {
+      this.popularLocation = sampleProperties[0].address.city;
+    }
+    let gmap = document.querySelector("#googleMap");
+    if (gmap == null) {
+      return;
+    }
+    let rect = gmap.getBoundingClientRect();
+    gmap.style.position = "fixed";
+    gmap.style.top = rect.top;
+    gmap.style.width = gmap.parentNode.clientWidth + "px";
+    gmap.style.height = (window.innerHeight - rect.top) + "px";
+  }
 };
 </script>
 

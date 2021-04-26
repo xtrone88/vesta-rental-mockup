@@ -315,10 +315,13 @@ export default {
     },
   },
   mounted() {
-    this.address = this.popularLocation = this.$route.params.address;
-    if (this.popularLocation == undefined || this.popularLocation == "") {
-      this.popularLocation = sampleProperties[0].address.city;
+    let param = this.$route.params.address;
+    if (param == undefined || param == "" || param == "All") {
+      param = "";
+    } else {
+      this.address = this.popularLocation = param;
     }
+
     let gmap = document.querySelector("#googleMap");
     if (gmap == null) {
       return;

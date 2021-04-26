@@ -76,9 +76,12 @@ const routes = [
     component: PrivacyPage
   },
   {
+    // path: "/properties",
+    // name: "Properties",
+    // component: PropertiesListPage
     path: "/properties",
     name: "Properties",
-    component: PropertiesListPage
+    redirect: "/locations/New%20Orleans",
   },
   {
     path: "/locations/:address",

@@ -42,12 +42,15 @@
               ></v-text-field>
             </div>
             <div>
-              <v-divider></v-divider>
+              <!--<v-divider color="black"></v-divider>-->
               <div class="font-weight-bold text-h8 my-2"> Personal Info </div>
-              <v-divider></v-divider>
+              <v-divider color="black"></v-divider>
             </div>
-            <div class="d-flex flex-column">
-              <vue-tel-input-vuetify></vue-tel-input-vuetify>
+            <div class="d-flex flex-column mt-3">
+              <VuePhoneNumberInput
+                v-model="phoneNumber"
+                clearable
+              />
             </div>
             <div class="d-flex flex-column mb-4">
               <v-text-field 
@@ -60,28 +63,26 @@
             </div>
             <div class="d-flex flex-column mb-4">
               <v-menu
-                ref="menu"
                 v-model="menu"
                 :close-on-content-click="false"
+                :nudge-right="40"
                 transition="scale-transition"
                 offset-y
                 min-width="auto"
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    readonly
                     v-model="date"
+                    label="Picker without buttons"
+                    prepend-icon="mdi-calendar"
+                    readonly
                     v-bind="attrs"
-                    label="Date of Birth"
                     v-on="on"
                   ></v-text-field>
                 </template>
                 <v-date-picker
-                  v-show="menu"
-                  ref="picker"
                   v-model="date"
-                  :max="new Date().toISOString().substr(0, 10)"
-                  min="1950-01-01"
+                  @input="menu = false"
                 ></v-date-picker>
               </v-menu>
             </div>
@@ -123,6 +124,9 @@
 
 <script>
 
+import VuePhoneNumberInput from 'vue-phone-number-input';
+import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+
 export default {
   name: "LessorBiddingPage",
   title: "Bidding",
@@ -137,6 +141,8 @@ export default {
       v => !!v || 'Name is required',
       v => v.length <= 10 || 'Name must be less than 10 characters',
     ],
+
+    phoneNumber: null,
 
     email: '',
     emailRules: [
@@ -158,9 +164,11 @@ export default {
       zip: "91752",
     }
   }),
+  components: {
+    VuePhoneNumberInput,
+  },
   watch: {
-    menu (val) {
-      val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
+    menu () {
     },
   },
   computed: {

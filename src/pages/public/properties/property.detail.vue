@@ -38,9 +38,6 @@
                   <v-btn icon color="black" @click="toggleWatch()">
                     <v-icon>mdi-eye-outline</v-icon>
                   </v-btn>
-                  <v-btn icon color="black" @click="toggleFavorite()">
-                    <v-icon>mdi-heart-outline</v-icon>
-                  </v-btn>
                 </div>
               </v-card-title>
               <v-card-subtitle class="font-weight-black">

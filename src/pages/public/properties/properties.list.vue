@@ -1,5 +1,5 @@
 ﻿<template>
-  <v-container ref="el" fluid>
+  <v-container fluid>
     <v-row>
       <v-col>
         <v-row>
@@ -23,41 +23,45 @@
             </v-btn>
           </v-col>
         </v-row>
-        <v-row no-gutters class="align-baseline">
+        <v-row>
           <v-col cols="12" sm="6">
-            <vuetify-google-autocomplete
-                id="location"
-                v-model="address"
-                prepend-icon="mdi-target"
-                placeholder="Location"
-                v-on:placechanged="getAddressData"
-            >
-            </vuetify-google-autocomplete>
+            <v-text-field
+              label="Location"
+              prepend-inner-icon="mdi-target"
+              dense
+              outlined
+              hide-details="auto"
+            />
           </v-col>
           <v-col cols="12" sm="6">
-            <v-dialog
-              ref="dateDialog"
+            <v-menu
+              ref="menu"
               v-model="datePickerMenu"
-              :return-value.sync="dates"
-              persistent
-              width="290px"
+              :close-on-content-click="false"
+              transition="scale-transition"
+              offset-y
+              max-width="290px"
+              min-width="auto"
             >
-              <template v-slot:activator="{ on, attrs }">
+              <template v-slot:activator="{ on }">
                 <v-text-field
                   v-model="dateRangeText"
                   label="Select Date"
-                  prepend-icon="mdi-calendar"
+                  prepend-inner-icon="mdi-calendar"
                   readonly
-                  v-bind="attrs"
+                  dense
+                  clearable
+                  outlined
+                  hide-details="auto"
                   v-on="on"
-                ></v-text-field>
+                />
               </template>
-              <v-date-picker v-model="dates" range no-title scrollable>
-                <v-spacer></v-spacer>
-                <v-btn text color="primary" @click="datePickerMenu = false">Cancel</v-btn>
-                <v-btn text color="primary" @click="$refs.dateDialog.save(dates)">OK</v-btn>
-              </v-date-picker>
-            </v-dialog>
+              <v-date-picker
+                v-model="date"
+                no-title
+                @input="datePickerMenu = false"
+              />
+            </v-menu>
           </v-col>
         </v-row>
         <v-row v-if="!$vuetify.breakpoint.xs">
@@ -98,7 +102,7 @@
                     </v-img>
                   </router-link>
                 </v-col>
-                <v-col cols="12" lg="8" md="9" sm="8" class="pl-sm-4">
+                <v-col cols="12" lg="8" md="9" sm="8" class="pl-4">
                   <v-row no-gutters>
                     <v-col cols="8">
                       <div class="font-weight-bold text-sm-h6 text-subtitle-1">
@@ -189,7 +193,7 @@
             fullscreenControl: false,
             disableDefaultUI: false,
           }"
-          id="googleMap"
+          style="width: 100%; height: 100%"
         >
           <GmapMarker
             :key="i"
@@ -261,27 +265,21 @@ export default {
   title: "Properties",
   data: () => ({
     center: null,
-    dates: ["2019-09-10", "2019-09-20"],
+    date: "",
     datePickerMenu: false,
-    address: "",
-    popularLocation: "",
+    popularLocation: "New Orleans",
     dialog: false,
-    mapDialog: false
+    mapDialog: false,
   }),
   components: {
     BiddingDialog,
   },
-  methods: {
-    getAddressData: function (addressData/*, placeResultData, id*/) {
-      this.popularLocation = addressData.name;
-    }
-  },
   computed: {
-    dateRangeText() {
-      return this.dates.join(' ~ ');
-    },
     defaultCenter() {
       return sampleProperties[0].address;
+    },
+    dateRangeText() {
+      return "";
     },
     properties() {
       return sampleProperties.map((property) => {
@@ -314,19 +312,6 @@ export default {
       return ["All", "Apartment", "House", "More"];
     },
   },
-  mounted() {
-    this.address = this.popularLocation = this.$route.params.address;
-
-    let gmap = document.querySelector("#googleMap");
-    if (gmap == null) {
-      return;
-    }
-    let rect = gmap.getBoundingClientRect();
-    gmap.style.position = "fixed";
-    gmap.style.top = rect.top;
-    gmap.style.width = gmap.parentNode.clientWidth + "px";
-    gmap.style.height = (window.innerHeight - rect.top) + "px";
-  }
 };
 </script>
 

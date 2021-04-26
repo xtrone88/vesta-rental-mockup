@@ -8,7 +8,7 @@
               <h3 class="white--text">
                 We Believe that the <br>
                 <span>Vesta Lease</span> platform is a<br>
-                <span><b>WIN – WIN – WIN</b></span>
+                <span class="font-weight-bold">WIN – WIN – WIN</span>
               </h3>
             </v-col>
           </div>
@@ -62,9 +62,8 @@
       <v-col style="background:#222" :class="[!$vuetify.breakpoint.xs ? 'pa-12' : 'pa-4']">
         <v-row align="center">
           <v-col class="mr-auto white--text">
-            <div class="d-flex align-center mt-6">
+            <div class="d-flex align-center justify-space-between mt-6">
               <h2>Featured Deals</h2>
-              <v-spacer></v-spacer>
               <p class="white--text" v-if="!$vuetify.breakpoint.xs" href="">VIEW ALL</p>
             </div>
           </v-col>
@@ -79,7 +78,7 @@
                 <v-col>
                   <router-link :to="{ path: `/properties/${property.id}` }">
                     <v-img
-                      :src="property.pictures[0].thumb_500"
+                      :src="property.pictures[0].thumb_750"
                       :aspect-ratio="1"
                       class="rounded-xl fill-height"
                     >
@@ -88,7 +87,7 @@
                 </v-col>
               </v-row>
               <v-row no-gutters>
-                <v-col cols="8" class="pl-2 pb-2">
+                <v-col cols="8" class="pl-4 pb-2">
                   <div class="font-weight-bold card-title">
                     Apartment for Rent
                   </div>
@@ -96,13 +95,13 @@
                     {{ property.address.full }}
                   </div>
                 </v-col>
-                <v-col cols="4" class="pr-2 pb-2 d-flex align-center justify-end">
+                <v-col cols="4" class="pr-4 pb-2 d-flex align-center justify-end">
                   <div>
                     <div class="d-flex align-center justify-end text-caption">
                       <v-icon small class="flip-y" color="black">mdi-hammer</v-icon>
                       <span class="font-weight-bold">Bid Now</span>
                     </div>
-                    <div class="text-caption text-grey text-center">20hrs Left</div>
+                    <div class="text-caption grey--text text-center">20Hrs Left</div>
                   </div>
                 </v-col>
               </v-row>
@@ -113,9 +112,8 @@
       <v-col style="background:#f0f0f0" :class="[!$vuetify.breakpoint.xs ? 'pa-12' : 'pa-4']">
         <v-row align="center">
           <v-col class="mr-auto">
-            <div class="d-flex align-center mt-4">
+            <div class="d-flex align-center justify-space-between mt-4">
               <h2>Ending Soon</h2>
-              <v-spacer></v-spacer>
               <a class="black--text" v-if="!$vuetify.breakpoint.xs" href="">VIEW ALL</a>
             </div>
           </v-col>
@@ -130,7 +128,7 @@
                 <v-col>
                   <router-link :to="{ path: `/properties/${property.id}` }">
                     <v-img
-                      :src="property.pictures[0].thumb_500"
+                      :src="property.pictures[0].thumb_750"
                       :aspect-ratio="1"
                       class="rounded-xl fill-height"
                     >
@@ -139,7 +137,7 @@
                 </v-col>
               </v-row>
               <v-row no-gutters>
-                <v-col cols="8" class="pl-2 pb-2">
+                <v-col cols="8" :class="['pb-2', !$vuetify.breakpoint.xs?'pl-4':'pl-2']">
                   <div class="font-weight-bold card-title">
                     Apartment for Rent
                   </div>
@@ -147,13 +145,13 @@
                     {{ property.address.full }}
                   </div>
                 </v-col>
-                <v-col cols="4" class="pr-2 pb-2 d-flex align-center justify-end">
+                <v-col cols="4" class="pr-4 pb-2 d-flex align-center justify-end">
                   <div>
                     <div class="d-flex align-center justify-end text-caption">
                       <v-icon small class="flip-y" color="black">mdi-hammer</v-icon>
                       <span class="font-weight-bold">Bid Now</span>
                     </div>
-                    <div class="text-caption text-grey text-center">20hrs Left</div>
+                    <div class="text-caption red--text text-center">20Hrs Left</div>
                   </div>
                 </v-col>
               </v-row>
@@ -174,7 +172,7 @@ export default {
   name: "HomePage",
   methods: {
     getAddressData: function (addressData/*, placeResultData, id*/) {
-      this.$router.push({path:'/locations/' + addressData.name});
+      this.$router.push({path:'/properties/' + addressData.name});
     },
   },
   data: () => ({
@@ -188,29 +186,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.card-title {
-  font-size: 14px;
-}
-
-.card-subtitle-g {
-  font-size: 12px;
-  color: grey;
-}
-
-.card-text-g {
-  font-size: 10px;
-  color: grey;
-}
-.card-text-b {
-  font-size: 10px;
-}
-.card-text-r {
-  font-size: 10px;
-  color: red;
-}
 .flip-y {
   transform: rotateY(180deg);
 }
 </style>
-
--->

@@ -1,5 +1,5 @@
 <template>
-    <v-col :style="!$vuetify.breakpoint.xs?'background:#222':'background:#ffffff'" :class="[!$vuetify.breakpoint.xs ? 'pa-12' : 'pa-0']">
+    <v-col :class="[!$vuetify.breakpoint.xs ? 'pa-12 dark-backcolor' : 'pa-0 light-backcolor']">
         <v-img src="@/assets/home/slider1.png" class="full-width">
           <div v-if="$vuetify.breakpoint.xs" class="d-flex fill-height pl-4">
             <v-col>
@@ -47,7 +47,18 @@ export default {
   },
 
   methods: {
-
+    getAddressData: function (addressData/*, placeResultData, id*/) {
+      this.$router.push({path:'/properties/' + addressData.name});
+    },
   },
 };
 </script>
+
+<style scoped>
+.dark-backcolor{
+  background-color: #222;
+}
+.light-backcolor{
+  background-color: #ffffff;
+}
+</style>

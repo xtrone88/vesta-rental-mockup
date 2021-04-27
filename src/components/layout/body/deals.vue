@@ -8,9 +8,7 @@
         </div>
       </v-col>
     </v-row>
-    <v-row class="mt-6"
-      :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
-    >
+    <v-row :class="['mt-6', $vuetify.breakpoint.xs?'flex-card':'']">
       <v-col  :cols="$vuetify.breakpoint.xs ? 9 : 3" sm="6" md="3" lg="3" 
         v-for="property in properties" :key="property.id" v-show="property.id < 5">
         <v-card class="rounded-xl">
@@ -82,3 +80,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.flip-y {
+  transform: rotateY(180deg);
+}
+.flex-card{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+}
+</style>

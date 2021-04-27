@@ -1,9 +1,7 @@
 <template>
   <v-col :class="[!$vuetify.breakpoint.xs ? 'pr-12 pl-12' : 'pl-4 pr-4']">
     <h2>Popular Destination</h2>
-    <v-row class="pt-8 mb-0"
-      :style="$vuetify.breakpoint.xs?'display: flex;flex-wrap: nowrap;overflow-y: auto;':''"
-    >
+    <v-row :class="['pt-8 mb-0', $vuetify.breakpoint.xs?'flex-card':'']">
       <v-col :cols="$vuetify.breakpoint.xs ? 5 : 3" sm="6" md="3" lg="3" 
         v-for="(city, i) in cities"
         :key="i">
@@ -42,3 +40,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.flex-card{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+}
+</style>

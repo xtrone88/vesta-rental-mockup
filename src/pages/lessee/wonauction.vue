@@ -116,8 +116,6 @@
 </template>
 
 <script>
-import "vuejs-google-maps/dist/vuejs-google-maps.css";
-
 import ImageGallery from "@/components/image.gallery";
 import { sampleProperties } from "@/data/properties";
 

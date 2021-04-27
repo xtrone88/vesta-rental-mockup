@@ -50,7 +50,7 @@
               <VuePhoneNumberInput
                 v-model="phoneNumber"
                 clearable
-                @update="onUpdate"
+                @update="inputPhone"
               />
             </div>
             <div class="d-flex flex-column mb-4">
@@ -188,6 +188,9 @@ export default {
         this.genderIcon = "mdi-human-male";
       }
     },
+    inputPhone: function() {
+      
+    }
   },
 };
 </script>

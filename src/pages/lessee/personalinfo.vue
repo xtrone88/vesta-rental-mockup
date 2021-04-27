@@ -46,10 +46,11 @@
               <div class="font-weight-bold text-h8 my-2"> Personal Info </div>
               <v-divider color="black"></v-divider>
             </div>
-            <div class="d-flex flex-column mt-3">
+            <div class="d-flex flex-column">
               <VuePhoneNumberInput
                 v-model="phoneNumber"
                 clearable
+                @update="onUpdate"
               />
             </div>
             <div class="d-flex flex-column mb-4">
@@ -165,7 +166,7 @@ export default {
     }
   }),
   components: {
-    VuePhoneNumberInput,
+    VuePhoneNumberInput
   },
   watch: {
     menu () {

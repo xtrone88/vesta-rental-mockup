@@ -215,7 +215,7 @@
 
 <script>
 export default {
-  title: "Vesta Leese",
+  title: "Vesta Lease",
   name: "PrivacyPage",
   data: () => ({}),
 };

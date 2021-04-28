@@ -6,7 +6,7 @@
         <v-btn :to="{ name: 'Home' }" plain>
           <v-img
             :to="{ name: 'Home' }"
-            alt="vesta leese"
+            alt="Vesta Lease"
             class="mt-1"
             contain
             min-width="100"
@@ -219,11 +219,13 @@ export default {
 i.v-icon.v-icon {
   color: black;
 }
-.gm-style a, .gmnoprint, .gm-style-cc {
+.gm-style a,
+.gmnoprint,
+.gm-style-cc {
   display: none !important;
 }
 .pac-container:after {
-    background-image: none !important;
-    height: 0px;
+  background-image: none !important;
+  height: 0px;
 }
 </style>

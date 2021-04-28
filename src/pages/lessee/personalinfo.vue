@@ -13,7 +13,7 @@
                 alt="John"
               >
             </v-avatar>
-          </div>          
+          </div>
           <v-form v-model="valid">
             <div class="d-flex flex-column">
               <v-text-field
@@ -42,7 +42,6 @@
               ></v-text-field>
             </div>
             <div>
-              <!--<v-divider color="black"></v-divider>-->
               <div class="font-weight-bold text-h8 my-2"> Personal Info </div>
               <v-divider color="black"></v-divider>
             </div>
@@ -50,8 +49,7 @@
               <VuePhoneNumberInput
                 v-model="phoneNumber"
                 clearable
-                @update="onUpdate"
-              />
+              />  
             </div>
             <div class="d-flex flex-column mb-4">
               <v-text-field 
@@ -64,9 +62,9 @@
             </div>
             <div class="d-flex flex-column mb-4">
               <v-menu
+                ref="menu"
                 v-model="menu"
                 :close-on-content-click="false"
-                :nudge-right="40"
                 transition="scale-transition"
                 offset-y
                 min-width="auto"
@@ -74,16 +72,19 @@
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
                     v-model="date"
-                    label="Picker without buttons"
-                    prepend-icon="mdi-calendar"
+                    label="Birthday date"
+                    prepend-inner-icon="mdi-calendar"
                     readonly
                     v-bind="attrs"
                     v-on="on"
                   ></v-text-field>
                 </template>
                 <v-date-picker
+                  ref="picker"
                   v-model="date"
-                  @input="menu = false"
+                  :max="new Date().toISOString().substr(0, 10)"
+                  min="1950-01-01"
+                  @change="save"
                 ></v-date-picker>
               </v-menu>
             </div>
@@ -133,7 +134,7 @@ export default {
   title: "Bidding",
 
   data: () => ({
-    date: "1998-10-15",
+    date: null,
     menu: false,
     valid: false,
     firstname: '',
@@ -169,7 +170,8 @@ export default {
     VuePhoneNumberInput
   },
   watch: {
-    menu () {
+    menu (val) {
+      val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
     },
   },
   computed: {

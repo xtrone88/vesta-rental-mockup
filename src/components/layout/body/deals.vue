@@ -4,7 +4,18 @@
       <v-col>
         <div class="d-flex align-center justify-space-between mt-6">
           <h2 :class="titleColor"> {{ name }} </h2>
-          <p :class="titleColor" v-if="!$vuetify.breakpoint.xs" href="">VIEW ALL</p>
+          
+          <v-hover
+            v-slot="{ hover }"
+          >
+            <button 
+              :class="titleColor"
+              v-if="!$vuetify.breakpoint.xs"
+            >
+              <p :class="hover?'cyan--text':''">VIEW ALL</p>
+            </button>
+          </v-hover>
+          
         </div>
       </v-col>
     </v-row>

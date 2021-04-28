@@ -13,18 +13,15 @@
 <script>
 
 
-import Slider from "../../components/layout/body/slider";
-import Renting from "../../components/layout/body/renting";
-import Destination from "../../components/layout/body/destination";
-import Deals from "../../components/layout/body/deals";
+import Slider from "@/components/layout/body/slider";
+import Renting from "@/components/layout/body/renting";
+import Destination from "@/components/layout/body/destination";
+import Deals from "@/components/layout/body/deals";
 
 export default {
   title: "Vesta Leese",
   name: "HomePage",
   methods: {
-    getAddressData: function (addressData/*, placeResultData, id*/) {
-      this.$router.push({path:'/properties/' + addressData.name});
-    },
   },
   components: {
     Slider,
@@ -40,8 +37,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.flip-y {
-  transform: rotateY(180deg);
-}
 </style>

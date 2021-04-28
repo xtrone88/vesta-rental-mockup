@@ -1,6 +1,8 @@
 1. Public APIs
    1. Property listings
       1. should include date search from start
+      2. preferable to include pre-sized images especially one size around 1000w x 1000h and another around 500w x 500h (we can maintain original aspect ratio if needed or already done, likely with width taking preference).
+
    1. Property detail
    1. Contact API
 2. Authenticated Lessee APIs

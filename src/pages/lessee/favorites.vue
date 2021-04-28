@@ -1,103 +1,236 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Favorites
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
+  <v-container :fluid="!$vuetify.breakpoint.mdAndUp">
+    <v-row>
+      <v-col class="d-flex py-md-12">
+        <span class="font-weight-bold text-md-h3 text-sm-h4 text-h5"
+          >Favorites</span
+        >
+        <v-spacer></v-spacer>
+        <v-icon class="flip-y" color="dark" :large="!$vuetify.breakpoint.xs"
+          >mdi-sort-variant</v-icon
+        >
       </v-col>
     </v-row>
+
+    <v-row v-for="property in properties" :key="property.id">
+      <v-col cols="12">
+        <v-lazy
+          v-model="property.isActive"
+          :options="{
+            threshold: 0.5,
+          }"
+        >
+          <v-row no-gutters>
+            <v-col cols="12" lg="3" sm="3">
+              <router-link :to="{ path: '/properties/' + property.id }">
+                <v-img
+                  :src="
+                    $vuetify.breakpoint.mobile
+                      ? property.pictures[0].thumb_750
+                      : property.pictures[0].thumb_500
+                  "
+                  class="fill-height rounded-xl"
+                  :aspect-ratio="3 / 2"
+                >
+                </v-img>
+              </router-link>
+            </v-col>
+            <v-col class="pl-sm-4" cols="7" sm="3">
+              <div class="d-flex fill-height flex-column">
+                <div>
+                  <div
+                    class="font-weight-bold text-md-h5 text-sm-h6 text-subtitle-1"
+                  >
+                    <router-link :to="{ path: '/properties/' + property.id }">
+                      {{ property.title }}
+                    </router-link>
+                  </div>
+                  <div
+                    class="font-weight-regular text-lg-h6 text-md-body-1 text-sm-body-2 text-caption"
+                  >
+                    {{ property.address.street }}<br />
+                    {{ property.address.city + "," + property.address.country }}
+                  </div>
+                </div>
+                <div class="mt-auto">
+                  <div
+                    class="font-weight-regular text-lg-h6 text-md-body-1 text-sm-body-2 text-caption mb-2"
+                  >
+                    {{ property.capacity }}
+                  </div>
+                  <div>
+                    <v-btn
+                      small
+                      elevation="0"
+                      color="pink"
+                      class="px-6 white--text"
+                      :to="{ path: `/properties/${property.id}` }"
+                    >
+                      <v-icon class="rotate-270" left>mdi-hammer</v-icon>
+                      BID NOW
+                    </v-btn>
+                  </div>
+                </div>
+              </div>
+            </v-col>
+            <v-col class="d-none d-sm-flex" cols="3" sm="3">
+              <div class="d-flex fill-height flex-column align-baseline">
+                <div class="d-inline-block text-center">
+                  <div
+                    class="font-weight-bold text-lg-h6 text-md-subtitle-1 text-sm-body-2 text-caption"
+                  >
+                    Current Bid
+                  </div>
+                  <v-chip
+                    class="d-inlie-block justify-center"
+                    style="width: 100px"
+                    color="cyan"
+                    outlined
+                    label
+                  >
+                    $1,000
+                  </v-chip>
+                </div>
+                <div class="mt-auto mb-4 d-inline-block text-center">
+                  <div
+                    class="font-weight-bold text-lg-h6 text-md-subtitle-1 text-sm-body-2 text-caption"
+                  >
+                    Total Bids
+                  </div>
+                  <v-chip
+                    class="d-inlie-block justify-center"
+                    style="width: 100px"
+                    color="cyan"
+                    outlined
+                    label
+                  >
+                    20
+                  </v-chip>
+                </div>
+              </div>
+            </v-col>
+            <v-col cols="5" sm="2">
+              <div class="d-flex fill-height flex-column align-baseline">
+                <div class="text-md-subtitle-1 text-sm-body-2 text-caption">
+                  <div>TAKING POST BIDS</div>
+                  <div class="font-weight-bold">
+                    {{ property.postbids }} days
+                  </div>
+                  <div>Ends {{ property.postBidsEndingDate }}</div>
+                </div>
+                <div
+                  class="mt-2 text-md-subtitle-1 text-sm-body-2 text-caption"
+                >
+                  <div>Lease Start</div>
+                  <div class="font-weight-bold">
+                    {{ property.leaseStartDate }}
+                  </div>
+                  <div>Lease End</div>
+                  <div class="font-weight-bold">
+                    {{ property.leaseEndDate }}
+                  </div>
+                </div>
+              </div>
+            </v-col>
+            <v-col class="d-flex d-sm-none mt-2" cols="12">
+              <v-row no-gutters>
+                <v-col cols="6" class="border-top">
+                  <div class="text-subtitle-2 text-center">
+                    <span class="cyan--text">Current Bid</span><br />
+                    $1,000
+                  </div>
+                </v-col>
+                <v-divider :vertical="true"></v-divider>
+                <v-col cols="6" class="border-top">
+                  <div class="text-subtitle-2 text-center">
+                    <span class="cyan--text">Total Bids</span><br />
+                    20
+                  </div>
+                </v-col>
+              </v-row>
+            </v-col>
+            <v-col cols="12">
+              <v-divider class="mt-sm-4"></v-divider>
+            </v-col>
+          </v-row>
+        </v-lazy>
+      </v-col>
+    </v-row>
+
+    <v-snackbar v-model="watched"
+      :timeout="1000"
+      :top="true"
+      color="primary"
+      elevation="4">
+      You have watched.
+      <template v-slot:action="{ attrs }">
+        <v-btn color="white" text v-bind="attrs" @click="watched = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
 <script>
-export default {
+import { sampleProperties } from "../../data/properties";
 
-  name: 'FavoritesPage',
+export default {
+  name: "TransactionsPage",
 
   data: () => ({
-
+    properties: [],
+    watched: false,
   }),
+
+  methods: {
+    toggleWatch: function (index) {
+      let property = this.properties[index];
+      property.stats.views++;
+      if (property.stats.views >= 0) {
+        this.watched = true;
+      }
+    },
+  },
+
+  created() {
+    this.properties = sampleProperties.map((property) => {
+      let details = [];
+      details.push(
+        this.stringHelpers.pluralize(property.accommodates, "guest", "guests")
+      );
+      details.push(
+        this.stringHelpers.pluralize(property.bedrooms, "bedroom", "bedrooms")
+      );
+      details.push(
+        this.stringHelpers.pluralize(
+          property.bathrooms,
+          "bathroom",
+          "bathrooms"
+        )
+      );
+
+      property.postbids = 3;
+      property.postBidsEndingDate = "Mar 11, 2021";
+      property.leaseStartDate = "Mar 24, 2021";
+      property.leaseEndDate = "Mar 30, 2021";
+      return {
+        ...property,
+        capacity: details.join("·"),
+      };
+    });
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.rotate-270 {
+  transform: rotate(270deg);
+}
+.flip-y {
+  transform: rotateY(180deg);
+}
+.border-top {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+</style>

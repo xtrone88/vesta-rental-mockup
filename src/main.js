@@ -1,7 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
-import VueTelInputVuetify from "vue-tel-input-vuetify/lib";
 import moment from "moment";
 
 import * as VueGoogleMaps from "vue2-google-maps";
@@ -30,10 +29,6 @@ Vue.filter("formatDateTime", function(value) {
 Vue.config.productionTip = false;
 
 Vue.use(helpers);
-
-Vue.use(VueTelInputVuetify, {
-  vuetify
-});
 
 Vue.use(VueGoogleMaps, {
   load: {

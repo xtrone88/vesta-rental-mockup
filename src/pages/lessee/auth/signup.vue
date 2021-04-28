@@ -39,7 +39,11 @@
                 ></v-text-field>
               </div>
               <div class="d-flex flex-column">
-                  <vue-tel-input-vuetify></vue-tel-input-vuetify>
+                  <VuePhoneNumberInput
+                    v-model="phone"
+                    clearable
+                    @update="inputPhone"
+                  />
               </div>
               <div class="d-flex flex-column">
                 <v-text-field
@@ -74,9 +78,13 @@
 </template>
 
 <script>
+import VuePhoneNumberInput from 'vue-phone-number-input';
+
 export default {
   name: "SignupPage",
-
+  components: {
+    VuePhoneNumberInput
+  },
   data: () => ({
     valid: false,
     firstname: '',
@@ -90,6 +98,12 @@ export default {
       v => !!v || 'E-mail is required',
       v => /.+@.+/.test(v) || 'E-mail must be valid',
     ],
+    phone: ''
   }),
+  methods: {
+    inputPhone: function() {
+
+    }
+  }
 };
 </script>

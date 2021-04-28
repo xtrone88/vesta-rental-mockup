@@ -2267,11 +2267,6 @@ autoprefixer@^9.6.1, autoprefixer@^9.8.6:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-awesome-phonenumber@^2.15.0:
-  version "2.49.0"
-  resolved "https://registry.yarnpkg.com/awesome-phonenumber/-/awesome-phonenumber-2.49.0.tgz#6924dffcfbda969a11b7986c3ee0ce39d745819d"
-  integrity sha512-XI5AtK8aEIhp4tcSYbqAkyZ6kfudR0FN544MR3ewQ/kqnHOCU2ZwiYRMmTYApXGuTD1Ph33tvR9D/wmxxzeE0Q==
-
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
@@ -10555,15 +10550,6 @@ vue-style-loader@^4.1.0, vue-style-loader@^4.1.2, vue-style-loader@^4.1.3:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-tel-input-vuetify@^1.2.16:
-  version "1.2.16"
-  resolved "https://registry.yarnpkg.com/vue-tel-input-vuetify/-/vue-tel-input-vuetify-1.2.16.tgz#fb29fe2f23232fefab6f24c4874c3031e303b1f6"
-  integrity sha512-7Q66iTZZszvJpun+NKxoncYoxF0Yyv5oOIFSVg3HHzszzYpKfbBozddpshVVhBVqvvvrhHGnJf3nQHXtHFQ4XQ==
-  dependencies:
-    awesome-phonenumber "^2.15.0"
-    vuetify "^2.2.11"
-    whatwg-fetch "^3.2.0"
-
 vue-template-compiler@^2.6.11, vue-template-compiler@^2.6.12:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.6.12.tgz#947ed7196744c8a5285ebe1233fe960437fcc57e"
@@ -10599,13 +10585,6 @@ vue@^2.6.11, vue@^2.6.12:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
 
-vuejs-google-maps@^0.0.13:
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/vuejs-google-maps/-/vuejs-google-maps-0.0.13.tgz#2db45cab7b2f1562b6790aa2eea8f52dcb7057d8"
-  integrity sha512-i5wtZlLvLIST9aQncEXa3ODYi2NzRf7GMLgm28OwwnZDQpXV/1ytgCv6teowbK9c9ql5N29IydNfNbJ9ufAP2Q==
-  dependencies:
-    vue "^2.6.12"
-
 vuetify-google-autocomplete@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/vuetify-google-autocomplete/-/vuetify-google-autocomplete-2.0.4.tgz#40bd1db95be76f69e85cce1dd7c36ed312dd88dd"
@@ -10622,7 +10601,7 @@ vuetify-loader@^1.7.0:
     file-loader "^6.2.0"
     loader-utils "^2.0.0"
 
-vuetify@^2.2.11, vuetify@^2.3.4, vuetify@^2.4.0:
+vuetify@^2.3.4, vuetify@^2.4.0:
   version "2.4.11"
   resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.4.11.tgz#3aba19a32cd89c5dce523260f589cf95d90e2dce"
   integrity sha512-xFNwr95tFRfbyGNg5DBuUkWaKazMBr+ptzoSSL4PGrI0qItY5Vuusxh+ETPtjUXxwz76v5zVtGvF5rWvGQjy7A==
@@ -10862,11 +10841,6 @@ websocket-extensions@>=0.1.1:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
-
-whatwg-fetch@^3.2.0:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
-  integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"

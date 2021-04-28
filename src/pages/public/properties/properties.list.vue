@@ -256,12 +256,26 @@
 import { sampleProperties } from "../../../data/properties";
 import BiddingDialog from "../../../components/dialog.bidding";
 
+Date.prototype.yyyymmdd = function() {
+  var mm = this.getMonth() + 1;
+  var dd = this.getDate();
+
+  return [this.getFullYear(),
+          (mm>9 ? '' : '0') + mm,
+          (dd>9 ? '' : '0') + dd
+         ].join('-');
+};
+
+var startDate = new Date();
+var endDate = new Date();
+startDate.setDate(1);
+
 export default {
   name: "PropertiesPage",
   title: "Properties",
   data: () => ({
     center: null,
-    dates: [],
+    dates: [startDate.yyyymmdd(), endDate.yyyymmdd()],
     datePickerMenu: false,
     address: "",
     popularLocation: "",

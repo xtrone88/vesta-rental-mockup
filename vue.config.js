@@ -1,6 +1,6 @@
 module.exports = {
   // lintOnSave: process.env.NODE_ENV !== 'production',
-  transpileDependencies: ["vuetify", "vue-tel-input-vuetify"]
+  transpileDependencies: ["vuetify"]
   //   devServer: {
   //     overlay: {
   //       warnings: true,

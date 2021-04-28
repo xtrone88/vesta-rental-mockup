@@ -190,6 +190,9 @@ export default {
         this.genderIcon = "mdi-human-male";
       }
     },
+    inputPhone: function() {
+      
+    }
   },
 };
 </script>

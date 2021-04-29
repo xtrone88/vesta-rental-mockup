@@ -9,16 +9,17 @@
       <!-- Footer Links -->
       <v-container v-if="$vuetify.breakpoint.mdAndUp">
         <!-- Grid row -->
-        <v-row
-          class="text-center text-md-left"
-          justify="space-around"
-          align="start"
-        >
-          <v-col v-for="group in groups" md="2" :key="group.title">
+        <v-row class="text-start" justify="space-around" align="start">
+          <v-col
+            v-for="group in groups"
+            md="4"
+            :key="group.title"
+            class="text-start"
+          >
             <!-- Links -->
-            <h5 class="font-weight-bold text-uppercase mt-3 mb-4 ml-4">
+            <h4 class="font-weight-bold text-uppercase mt-3 mb-4 ml-4">
               {{ group.title }}
-            </h5>
+            </h4>
             <v-list-item
               v-for="item in group.items"
               :key="item.title"
@@ -27,7 +28,9 @@
               dense
               color="black"
             >
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title class="font-weight-regular">{{
+                item.title
+              }}</v-list-item-title>
             </v-list-item>
           </v-col>
         </v-row>
@@ -59,7 +62,7 @@
                 FAQ
               </router-link>
             </v-card-text>
-            <v-card-text class="black--text">
+            <v-card-text class="black--text font-weight-light">
               Copyright @ {{ new Date().getFullYear() }} VestaLease.com. All
               rights Reserved.
             </v-card-text>

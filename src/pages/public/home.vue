@@ -2,6 +2,8 @@
   <div>
     <v-container class="pa-0" fluid>
       <Slider />
+    </v-container>
+    <v-container class="pa-0">
       <Renting />
       <Destination />
       <Deals

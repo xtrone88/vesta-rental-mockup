@@ -2,14 +2,22 @@
   <div>
     <v-container class="pa-0" fluid>
       <Slider />
+    </v-container>
+    <v-container class="pa-0">
       <Renting />
+    </v-container>
+    <v-container class="pa-0" fluid>
       <Destination />
+    </v-container>
+    <v-container background="#222" class="pa-0 ma-0" fluid>
       <Deals
         name="Featured Deals"
         background="#222"
         tColor="white--text"
         bColor="grey--text"
       />
+    </v-container>
+    <v-container background="#f0f0f0" class="pa-0 ma-0" fluid>
       <Deals
         name="Ending Soon"
         background="#f0f0f0"

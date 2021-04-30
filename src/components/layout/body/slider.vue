@@ -21,7 +21,7 @@
         :class="[
           'd-flex-column',
           'align-center',
-          !$vuetify.breakpoint.xs ? 'search-position' : '',
+          !$vuetify.breakpoint.xs ? 'search-position' : 'search-position-mobile',
         ]"
       >
         <h2 v-if="!$vuetify.breakpoint.xs" class="text-center white--text">
@@ -32,10 +32,11 @@
           >
         </h2>
 
-        <div :class="[!$vuetify.breakpoint.xs ? 'pa-2 white--text' : 'pa-5']">
+        <div :class="[!$vuetify.breakpoint.xs ? 'white--text pa-2' : 'px-5']">
           <vuetify-google-autocomplete
             id="map"
             ref="address"
+            class="pa-0 mb-0"
             prepend-icon="mdi-crosshairs-gps"
             placeholder="Enter an address, neighborhood, city or ZIP code"
             v-on:placechanged="getAddressData"
@@ -84,6 +85,9 @@ export default {
   -ms-transform: translate(-50%, -30%);
   -webkit-transform: translate(-50%, -30%);
   background-color: #7f7f7f44;
+}
+.search-position-mobile {
+  background-color: white;
 }
 </style>
 

@@ -54,9 +54,15 @@ export default {
 
   components: {},
 
-  data: () => ({}),
+  data: () => ({
+    
+  }),
 
   computed: {},
+
+  watch: {
+    
+  },
 
   methods: {
     getAddressData: function (addressData /*, placeResultData, id*/) {

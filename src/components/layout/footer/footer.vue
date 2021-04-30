@@ -38,8 +38,8 @@
       <v-divider></v-divider>
       <v-container class="pa-4">
         <v-row justify="space-between">
-          <v-col cols="8">
-            <v-card-text class="pb-0">
+          <v-col cols="12" sm="8">
+            <v-card-text class="pa-xs-0">
               <router-link
                 class="footer_bot_link"
                 style=""
@@ -62,13 +62,13 @@
                 FAQ
               </router-link>
             </v-card-text>
-            <v-card-text class="black--text font-weight-light">
+            <v-card-text class="black--text font-weight-light px-xs-0 py-0">
               Copyright @ {{ new Date().getFullYear() }} VestaLease.com. All
               rights Reserved.
             </v-card-text>
           </v-col>
-          <v-col cols="4">
-            <v-card-text>
+          <v-col cols="12" sm="4" :class="[$vuetify.breakpoint.xs?'text-right':'']">
+            <v-card-text class="px-0">
               <v-btn
                 v-for="icon in icons"
                 :key="icon"

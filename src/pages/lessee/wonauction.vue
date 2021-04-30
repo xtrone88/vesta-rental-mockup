@@ -162,14 +162,31 @@ export default {
   top: -40px;
   left: 50px;
   font-size: 80px;
-  z-index: 1000;
+  z-index: 2;
 }
-#won-auction.on-mobile{
+#won-auction::after {
+  left: 50%;
+  top: 50%;
+  margin-top: -22px;
+  margin-left: -22px;
+  width: 44px;
+  height: 44px;
+  opacity: unset;
+  background-color: white;
+  z-index: -1;
+}
+#won-auction.on-mobile {
   left: 50%;
   top: unset;
   bottom: -25px;
   margin-left: -25px;
   font-size: 50px;
+}
+#won-auction.on-mobile::after {
+  margin-top: -14px;
+  margin-left: -14px;
+  width: 28px;
+  height: 28px;
 }
 .border-top-bottom {
   border-top: 1px solid rgba(0, 0, 0, 0.12);

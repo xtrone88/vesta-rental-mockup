@@ -1,33 +1,34 @@
 <template>
-  <v-col :style="bkColor" :class="[!$vuetify.breakpoint.xs ? 'pa-12' : 'pa-4']">
-    <v-row align="center">
-      <v-col>
-        <div class="d-flex align-center justify-space-between mt-6">
-          <h2 :class="titleColor">{{ name }}</h2>
+  <v-col :style="bkColor" class="pa-0">
+    <v-container>
+      <v-row align="center">
+        <v-col>
+          <div class="d-flex align-center justify-space-between mt-6">
+            <h2 :class="titleColor">{{ name }}</h2>
 
-          <v-hover v-slot="{ hover }">
-            <button :class="titleColor" v-if="!$vuetify.breakpoint.xs">
-              <p :class="hover ? 'cyan--text' : ''">VIEW ALL</p>
-            </button>
-          </v-hover>
-        </div>
-      </v-col>
-    </v-row>
-    <v-row :class="['mt-6', $vuetify.breakpoint.xs ? 'flex-card' : '']">
-      <v-col
-        cols="9"
-        sm="6"
-        md="3"
-        lg="3"
-        v-for="property in properties"
-        :key="property.id"
-        v-show="property.id < 5"
-      >
-        <v-card class="rounded-xl fill-height">
+            <!-- <v-hover v-slot="{ hover }">
+              <button :class="titleColor" v-if="!$vuetify.breakpoint.xs">
+                <p :class="hover ? 'cyan--text' : ''">VIEW ALL</p>
+              </button>
+            </v-hover> -->
+          </div>
+        </v-col>
+      </v-row>
+      <v-row class="mt-3 flex-nowrap pb-3 pl-3" style="overflow-x: auto">
+        <v-card
+          class="rounded-xl fill-height mr-6 my-2"
+          width="250px"
+          min-width="250px"
+          max-width="250px"
+          v-for="property in properties"
+          :key="property.id"
+          v-show="property.id < 5"
+        >
           <v-row no-gutters>
             <v-col>
               <router-link :to="{ path: `/properties/${property.id}` }">
                 <v-img
+                  height="250"
                   :src="property.pictures[0].thumb_750"
                   :aspect-ratio="1"
                   class="rounded-xl fill-height"
@@ -56,8 +57,8 @@
             </v-col>
           </v-row>
         </v-card>
-      </v-col>
-    </v-row>
+      </v-row>
+    </v-container>
   </v-col>
 </template>
 

@@ -32,7 +32,7 @@
           >
         </h2>
 
-        <div :class="[!$vuetify.breakpoint.xs ? 'pa-2 white--text' : 'pa-0']">
+        <div :class="[!$vuetify.breakpoint.xs ? 'pa-2 white--text' : 'pa-5']">
           <vuetify-google-autocomplete
             id="map"
             ref="address"
@@ -85,7 +85,7 @@ export default {
   position: absolute;
   top: 40%;
   left: 50%;
-  width: 70%;
+  width: 50%;
   transform: translate(-50%, -30%);
   -ms-transform: translate(-50%, -30%);
   -webkit-transform: translate(-50%, -30%);

@@ -1,10 +1,10 @@
 ﻿<template>
   <v-container ref="el" fluid>
     <v-row>
-      <v-col>
+      <v-col md="5">
         <v-row>
           <v-col class="d-flex align-center justify-space-between">
-            <div class="d-flex align-baseline">
+            <div class="d-flex align-baseline pt-2">
               <span class="font-weight-bold text-md-h3 text-sm-h4 text-h6 mr-2"
                 >Popular Destination</span
               >
@@ -26,11 +26,11 @@
         <v-row no-gutters class="align-baseline">
           <v-col cols="12" sm="6">
             <vuetify-google-autocomplete
-                id="location"
-                v-model="address"
-                prepend-icon="mdi-target"
-                placeholder="Location"
-                v-on:placechanged="getAddressData"
+              id="location"
+              v-model="address"
+              prepend-icon="mdi-target"
+              placeholder="Location"
+              v-on:placechanged="getAddressData"
             >
             </vuetify-google-autocomplete>
           </v-col>
@@ -54,8 +54,15 @@
               </template>
               <v-date-picker v-model="dates" range no-title scrollable>
                 <v-spacer></v-spacer>
-                <v-btn text color="primary" @click="datePickerMenu = false">Cancel</v-btn>
-                <v-btn text color="primary" @click="$refs.dateDialog.save(dates)">OK</v-btn>
+                <v-btn text color="primary" @click="datePickerMenu = false"
+                  >Cancel</v-btn
+                >
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.dateDialog.save(dates)"
+                  >OK</v-btn
+                >
               </v-date-picker>
             </v-dialog>
           </v-col>
@@ -176,7 +183,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col class="pa-0" v-if="!$vuetify.breakpoint.mobile">
+      <v-col md="7" class="pa-0" v-if="!$vuetify.breakpoint.mobile">
         <GmapMap
           :center="center || defaultCenter"
           :zoom="12"
@@ -256,14 +263,15 @@
 import { sampleProperties } from "../../../data/properties";
 import BiddingDialog from "../../../components/dialog.bidding";
 
-Date.prototype.yyyymmdd = function() {
+Date.prototype.yyyymmdd = function () {
   var mm = this.getMonth() + 1;
   var dd = this.getDate();
 
-  return [this.getFullYear(),
-          (mm>9 ? '' : '0') + mm,
-          (dd>9 ? '' : '0') + dd
-         ].join('-');
+  return [
+    this.getFullYear(),
+    (mm > 9 ? "" : "0") + mm,
+    (dd > 9 ? "" : "0") + dd,
+  ].join("-");
 };
 
 var startDate = new Date();
@@ -280,19 +288,19 @@ export default {
     address: "",
     popularLocation: "",
     dialog: false,
-    mapDialog: false
+    mapDialog: false,
   }),
   components: {
     BiddingDialog,
   },
   methods: {
-    getAddressData: function (addressData/*, placeResultData, id*/) {
+    getAddressData: function (addressData /*, placeResultData, id*/) {
       this.popularLocation = addressData.name;
-    }
+    },
   },
   computed: {
     dateRangeText() {
-      return this.dates.join(' ~ ');
+      return this.dates.join(" ~ ");
     },
     defaultCenter() {
       return sampleProperties[0].address;
@@ -344,8 +352,8 @@ export default {
     gmap.style.position = "fixed";
     gmap.style.top = rect.top;
     gmap.style.width = gmap.parentNode.clientWidth + "px";
-    gmap.style.height = (window.innerHeight - rect.top) + "px";
-  }
+    gmap.style.height = window.innerHeight - rect.top + "px";
+  },
 };
 </script>
 

@@ -6,9 +6,9 @@
     <v-container class="pa-0">
       <Renting />
     </v-container>
-    <v-container class="pa-0" fluid>
+    <!-- <v-container class="pa-0" fluid>
       <Destination />
-    </v-container>
+    </v-container> -->
     <v-container background="#222" class="pa-0 ma-0" fluid>
       <Deals
         name="Featured Deals"
@@ -31,7 +31,7 @@
 <script>
 import Slider from "@/components/layout/body/slider";
 import Renting from "@/components/layout/body/renting";
-import Destination from "@/components/layout/body/destination";
+// import Destination from "@/components/layout/body/destination";
 import Deals from "@/components/layout/body/deals";
 
 export default {
@@ -41,7 +41,7 @@ export default {
   components: {
     Slider,
     Renting,
-    Destination,
+    // Destination,
     Deals,
   },
   data: () => ({

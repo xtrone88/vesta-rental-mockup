@@ -15,7 +15,7 @@
     </v-row>
     <v-row :class="['mt-6', $vuetify.breakpoint.xs ? 'flex-card' : '']">
       <v-col
-        :cols="$vuetify.breakpoint.xs ? 9 : 3"
+        cols="9"
         sm="6"
         md="3"
         lg="3"

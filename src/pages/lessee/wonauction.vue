@@ -162,7 +162,7 @@ export default {
   top: -40px;
   left: 50px;
   font-size: 80px;
-  z-index: 10;
+  z-index: 2;
 }
 #won-auction::after {
   left: 50%;

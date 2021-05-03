@@ -6,26 +6,18 @@
           Payments
         </div>
         <v-card class="rounded-xl pb-4" outlined>
-          <v-list-item two-line>
-            <v-list-item-avatar>
-              <v-icon>mdi-credit-card-check</v-icon>
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title>Visa *** 1316</v-list-item-title>
-              <v-list-item-subtitle> Expiration: 06/2023 </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-divider></v-divider>
-          <v-list-item two-line>
-            <v-list-item-avatar>
-              <v-icon>mdi-credit-card-check</v-icon>
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title>MasterCard **** 1010</v-list-item-title>
-              <v-list-item-subtitle> Expiration: 01/2022 </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-divider></v-divider>
+          <div  v-bind:key="pay.id" v-for="pay in payments">
+            <v-list-item two-line >
+              <v-list-item-avatar>
+                <v-icon>mdi-credit-card-check</v-icon>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title>{{ pay.title }}</v-list-item-title>
+                <v-list-item-subtitle> Expiration: {{ pay.date }} </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider></v-divider>
+          </div>
           <div class="text-center">
             <v-btn class="mt-6 cyan white--text" @click="dialog = true">
               ADD PAYMENT
@@ -78,6 +70,7 @@
 
 <script>
 import { sampleNotifications } from "../../data/notifications";
+import store from '../../store/store';
 
 export default {
   name: "PaymentPage",
@@ -85,6 +78,7 @@ export default {
   data: () => ({
     notifications: sampleNotifications,
     dialog: false,
+    payments: store.getters.payments,
   }),
 };
 </script>

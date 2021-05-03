@@ -36,6 +36,9 @@ export default new Vuex.Store({
     },
     user_info(state) {
       return state.user_info
+    },
+    paymentInfo(state) {
+      return state.payments
     }
   }
 });

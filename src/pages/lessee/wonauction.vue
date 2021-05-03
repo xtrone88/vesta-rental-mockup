@@ -2,7 +2,7 @@
   <v-container :fluid="$vuetify.breakpoint.smAndDown">
     <v-row :class="{'flex-column-reverse':$vuetify.breakpoint.smAndDown}">
       <v-col cols="12">
-        <h4 class="text-h4 mt-4 my-lg-8 light-green--text text-center">
+        <h4 class="text-h4 my-lg-8 light-green--text text-center">
           You have won this auction
         </h4>    
       </v-col>

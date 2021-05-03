@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="page-wrapper">
     <div class="privacy-policy">
       <h1>Privacy Policy</h1>
 

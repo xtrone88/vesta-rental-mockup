@@ -1,7 +1,7 @@
 <template>
-  <v-container class="grey lighten-4" fluid>
+  <v-container class="page-wrapper grey lighten-4" fluid>
     <v-container>
-      <div class="font-weight-bold text-md-h3 text-sm-h4 text-h5 my-md-16 mb-4">
+      <div class="font-weight-bold text-md-h3 text-sm-h4 text-h5 mb-4">
         Contact
       </div>
       <v-card

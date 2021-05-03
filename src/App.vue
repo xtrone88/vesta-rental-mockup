@@ -216,6 +216,26 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~vuetify/src/styles/settings/_variables";
+
+@media #{map-get($display-breakpoints, 'sm-and-up')} {
+  .v-main__wrap .page-wrapper {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+  }
+}
+
+@media #{map-get($display-breakpoints, 'sm-only')} {
+  .v-main__wrap .page-wrapper {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
 i.v-icon.v-icon {
   color: black;
 }

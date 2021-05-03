@@ -1,8 +1,8 @@
 <template>
-  <v-container :fluid="$vuetify.breakpoint.smAndDown">
+  <v-container class="page-wrapper" :fluid="$vuetify.breakpoint.smAndDown">
     <v-row>
       <v-col cols="12" md="10" offset-md="1">
-        <v-row v-if="!$vuetify.breakpoint.smAndDown" class="mt-10">
+        <v-row v-if="!$vuetify.breakpoint.smAndDown">
           <v-col>
             <h6 class="text-h6 cyan--text">{{ property.title }}</h6>
             <h5 class="text-h5">

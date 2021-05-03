@@ -1,5 +1,5 @@
 ﻿<template>
-  <v-container ref="el" fluid>
+  <v-container class="page-wrapper" ref="el" fluid>
     <v-row>
       <v-col md="5">
         <v-row>
@@ -350,9 +350,9 @@ export default {
     }
     let rect = gmap.getBoundingClientRect();
     gmap.style.position = "fixed";
-    gmap.style.top = rect.top;
+    let top = gmap.style.top = rect.top - gmap.parentNode.getBoundingClientRect().top;
     gmap.style.width = gmap.parentNode.clientWidth + "px";
-    gmap.style.height = window.innerHeight - rect.top + "px";
+    gmap.style.height = window.innerHeight - top + "px";
   },
 };
 </script>

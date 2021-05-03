@@ -43,8 +43,6 @@ Vue.use(VuetifyGoogleAutocomplete, {
   vueGoogleMapsCompatibility: true,
 });
 
-Vue.use(VueSimpleAlert);
-
 new Vue({
   vuetify,
   store,

@@ -2,7 +2,6 @@
   <div>
     <v-row class="text-start">
       <v-container class="pa-4">
-        
         <v-card class="mx-auto rounded-xl" :class="$vuetify.breakpoint.xs?'pa-8':'pa-16'"
           :elevation="$vuetify.breakpoint.xs?0:2"
         >
@@ -14,13 +13,13 @@
               >
             </v-avatar>
           </div>
-          <v-form v-model="valid">
+          <v-form v-model="valid" @submit.prevent="saveAllUserInfo()">
             <div class="d-flex flex-column">
               <v-text-field
                 :rules="nameRules"
                 :counter="10"
                 label="First name"
-                :value="info.firstname"
+                v-model="info.firstname"
                 required
               ></v-text-field>
             </div>
@@ -29,7 +28,7 @@
                 :rules="nameRules"
                 :counter="10"
                 label="Last name"
-                :value="info.lastname"
+                v-model="info.lastname"
                 required
               ></v-text-field>
             </div>
@@ -37,7 +36,7 @@
               <v-text-field
                 :rules="emailRules"
                 label="Email"
-                :value="info.email"
+                v-model="info.email"
                 required
               ></v-text-field>
             </div>
@@ -47,7 +46,7 @@
             </div>
             <div class="d-flex flex-column">
               <VuePhoneNumberInput
-                v-model="phoneNumber"
+                v-model="info.phone"
                 clearable
               />  
             </div>
@@ -71,7 +70,7 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="date"
+                    v-model="info.birthday"
                     label="Birthday date"
                     prepend-inner-icon="mdi-calendar"
                     readonly
@@ -91,32 +90,32 @@
             <div class="d-flex flex-column">
               <v-text-field
                 label="Address"
-                :value="info.address"
+                v-model="info.address"
                 required
               ></v-text-field>
             </div>
             <div class="d-flex flex-column">
               <v-text-field
                 label="City"
-                :value="info.city"
+                v-model="info.city"
                 required
               ></v-text-field>
             </div>
             <div class="d-flex flex-column">
               <v-text-field
                 label="State"
-                :value="info.state"
+                v-model="info.state"
                 required
               ></v-text-field>
             </div>
             <div class="d-flex flex-column">
               <v-text-field
                 label="Zip"
-                :value="info.zip"
+                v-model="info.zip"
                 required
               ></v-text-field>
             </div>
-            <v-btn block color="primary" width="212" height="52">Save Change</v-btn>
+            <v-btn block color="primary" type="submit">Save Change</v-btn>
           </v-form>
         </v-card>
       </v-container>
@@ -128,6 +127,7 @@
 
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+import store from '../../store/store';
 
 export default {
   name: "LessorBiddingPage",
@@ -144,27 +144,13 @@ export default {
       v => v.length <= 10 || 'Name must be less than 10 characters',
     ],
 
-    phoneNumber: null,
-
-    email: '',
     emailRules: [
       v => !!v || 'E-mail is required',
       v => /.+@.+/.test(v) || 'E-mail must be valid',
     ],
     gender: 'Male',
     genderIcon: 'mdi-human-male',
-    info: {
-      firstname: "John",
-      lastname: "Smith",
-      gender: "Male",
-      email: "johnsmith@mail.com",
-      phone: "1 202 555 0191",
-      birthdate: "1990-12-10",
-      address: "222 Hallec St",
-      city: "San Francisco",
-      state: "California",
-      zip: "91752",
-    }
+    info: store.getters.user_info
   }),
   components: {
     VuePhoneNumberInput
@@ -173,8 +159,6 @@ export default {
     menu (val) {
       val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
     },
-  },
-  computed: {
   },
   methods: {
     save (date) {
@@ -192,6 +176,9 @@ export default {
     },
     inputPhone: function() {
       
+    },
+    saveAllUserInfo() {
+      store.commit('setUserInfo', this.info)
     }
   },
 };

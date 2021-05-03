@@ -53,7 +53,7 @@
           <h1 class="login-title">Log In</h1>
           <v-card class="login-panel" elevation="1" outlined>
             <div class="login-buttons mx-auto">
-              <v-btn class="login-button" color="primary" block elevation="1">
+              <v-btn class="login-button" color="primary" v-on:click="setInfo" block elevation="1">
                 <v-icon left dark>mdi-phone</v-icon>
                 SIGN IN WITH PHONE
               </v-btn>
@@ -88,9 +88,20 @@
 </template>
 
 <script>
+import {user_info} from "../../../data/user_info";
+import store from "../../../store/store";
+
 export default {
   name: "LoginPage",
 
-  data: () => ({}),
+  data: () => ({
+    info: user_info
+  }),
+
+  methods: {
+    setInfo() {
+      store.dispatch('setUserInfo', this.info)
+    }
+  }
 };
 </script>

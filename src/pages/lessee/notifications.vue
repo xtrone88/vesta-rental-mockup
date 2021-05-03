@@ -23,7 +23,7 @@
                 <v-list-item-content>
                   <v-list-item-title>{{ notif.title }}</v-list-item-title>
                   <v-list-item-subtitle>
-                    {{notif.body}}
+                    {{notif.content}}
                   </v-list-item-subtitle>
                   <v-list-item-subtitle>
                     {{notif.date}}
@@ -41,13 +41,19 @@
 </template>
 
 <script>
-import { sampleNotifications } from "../../data/notifications";
+import store from '../../store/store';
 
 export default {
   name: "BiddingPage",
 
   data: () => ({
-    notifications: sampleNotifications,
   }),
+
+  computed: {
+    notifications() {
+      return store.getters.notifications
+    },
+    
+  }
 };
 </script>

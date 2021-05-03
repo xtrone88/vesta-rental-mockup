@@ -18,7 +18,7 @@
 
       <v-spacer></v-spacer>
       <v-btn :to="{ path: '/account/notifications' }" text>
-        <v-badge overlap color="#12a7c6" content="6">
+        <v-badge overlap color="#12a7c6" :content="notifCount">
           <v-icon>mdi-bell</v-icon>
         </v-badge>
       </v-btn>
@@ -193,6 +193,7 @@
 // import Header from "./components/layout/header/header";
 // import Sidebar from "./components/layout/sidebar/sidebar";
 import Footer from "./components/layout/footer/footer";
+import store from './store/store';
 import "./assets/css/main.css";
 export default {
   name: "App",
@@ -205,6 +206,9 @@ export default {
       }
       return "#242424";
     },
+    notifCount: function() {
+      return store.getters.notifCount
+    }
   },
   components: {
     Footer,

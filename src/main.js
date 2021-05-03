@@ -12,7 +12,6 @@ import store from "./store/store";
 import titleMixin from "./mixins/title.mixin";
 import helpers from "./helpers";
 import "./api";
-import VueSimpleAlert from "vue-simple-alert";
 
 // Mixins
 // If this continues to grow move it out of here

@@ -1,21 +1,22 @@
 <template>
-  <v-container>
-    <v-row class="text-start">
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">Notifications</h1>
-      </v-col>
-    </v-row>
+  <v-container class="page-wrapper">
     <v-row>
-      <v-col cols="12">
-        <v-card class="rounded-xl">
-          <v-row 
+      <v-col cols="12" sm="6" offset-sm="3">
+        <div class="font-weight-bold text-md-h3 text-sm-h4 text-h5 mb-4">
+          Notifications
+        </div>
+        <v-card
+          class="rounded-xl"
+          :elevation="$vuetify.breakpoint.xs ? 0 : 1"
+          :outlined="!$vuetify.breakpoint.xs"
+        >
+          <v-row
             class="mb-4"
             v-bind:key="notif.id"
-            v-for="notif in notifications"
+            v-for="(notif, i) in notifications"
             elevation="2"
           >
-            <v-col cols="12" sm="6" offset-sm="3" align-self="center">
-              
+            <v-col align-self="center">
               <v-list-item three-line>
                 <v-list-item-avatar>
                   <v-icon>mdi-cellphone-arrow-down</v-icon>
@@ -26,17 +27,16 @@
                     {{notif.content}}
                   </v-list-item-subtitle>
                   <v-list-item-subtitle>
-                    {{notif.date}}
+                    {{ notif.date }}
                   </v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
-              <v-divider></v-divider>
+              <v-divider v-if="i != notifications.length - 1"></v-divider>
             </v-col>
-            
           </v-row>
         </v-card>
       </v-col>
-    </v-row>    
+    </v-row>
   </v-container>
 </template>
 
@@ -53,7 +53,6 @@ export default {
     notifications() {
       return store.getters.notifications
     },
-    
   }
 };
 </script>

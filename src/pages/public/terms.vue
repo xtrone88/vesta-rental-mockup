@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="page-wrapper">
     <div class="terms-of-service">
       <h1>Terms of Service</h1>
 

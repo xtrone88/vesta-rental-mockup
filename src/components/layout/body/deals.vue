@@ -3,7 +3,7 @@
     <v-container>
       <v-row align="center">
         <v-col>
-          <div class="d-flex align-center justify-space-between mt-6">
+          <div class="d-flex align-center justify-space-between">
             <h2 :class="titleColor">{{ name }}</h2>
 
             <!-- <v-hover v-slot="{ hover }">

@@ -67,7 +67,7 @@
               rights Reserved.
             </v-card-text>
           </v-col>
-          <v-col cols="12" sm="4" :class="[$vuetify.breakpoint.xs?'text-right':'']">
+          <v-col cols="12" sm="4" :class="[$vuetify.breakpoint.xs?'text-center':'']">
             <v-card-text class="px-0">
               <v-btn
                 v-for="icon in icons"

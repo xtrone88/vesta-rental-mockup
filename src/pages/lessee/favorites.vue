@@ -1,7 +1,7 @@
 <template>
-  <v-container :fluid="!$vuetify.breakpoint.mdAndUp">
+  <v-container class="page-wrapper" :fluid="!$vuetify.breakpoint.mdAndUp">
     <v-row>
-      <v-col class="d-flex py-md-12">
+      <v-col class="d-flex">
         <span class="font-weight-bold text-md-h3 text-sm-h4 text-h5"
           >Favorites</span
         >

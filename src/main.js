@@ -4,7 +4,7 @@ import vuetify from "./plugins/vuetify";
 import moment from "moment";
 
 import * as VueGoogleMaps from "vue2-google-maps";
-import VuetifyGoogleAutocomplete from 'vuetify-google-autocomplete';
+import VuetifyGoogleAutocomplete from "vuetify-google-autocomplete";
 
 import router from "./router";
 import store from "./store/store";
@@ -12,6 +12,15 @@ import store from "./store/store";
 import titleMixin from "./mixins/title.mixin";
 import helpers from "./helpers";
 import "./api";
+
+import Amplify from "aws-amplify";
+import aws_exports from "./aws-exports";
+import { applyPolyfills, defineCustomElements } from "@aws-amplify/ui-components/loader";
+
+Amplify.configure(aws_exports);
+applyPolyfills().then(() => {
+  defineCustomElements(window);
+});
 
 // Mixins
 // If this continues to grow move it out of here
@@ -39,7 +48,7 @@ Vue.use(VueGoogleMaps, {
 });
 
 Vue.use(VuetifyGoogleAutocomplete, {
-  vueGoogleMapsCompatibility: true,
+  vueGoogleMapsCompatibility: true
 });
 
 new Vue({

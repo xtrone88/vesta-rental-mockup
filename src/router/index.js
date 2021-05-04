@@ -21,6 +21,8 @@ import LoginPage from "../pages/lessee/auth/login";
 import SignUpPage from "../pages/lessee/auth/signup";
 import TransactionsPage from "../pages/lessee/transactions";
 import SettingsDashboardPage from "../pages/lessee/settings";
+import TestAuth from "../pages/lessee/test.auth";
+
 import LesseePage from "../pages/lessee/lessee";
 import PersonalInfo from "../pages/lessee/personalinfo";
 import PaymentsPage from "../pages/lessee/payments";
@@ -81,7 +83,7 @@ const routes = [
     // component: PropertiesListPage
     path: "/properties",
     name: "Properties",
-    redirect: "/locations/New%20Orleans",
+    redirect: "/locations/New%20Orleans"
   },
   {
     path: "/locations/:address",
@@ -120,6 +122,13 @@ const routes = [
     component: LesseePage,
 
     children: [
+      //test
+      {
+        path: "test",
+        name: "Test Amplify Page",
+        component: TestAuth
+      },
+      // main
       {
         path: "settings",
         name: "SettingsDashboardPage",
@@ -222,7 +231,7 @@ const routes = [
       }
     ]
   },
-  // Lessor routes
+  // Admin routes
   {
     path: "/admin",
     name: "Admin",
@@ -260,7 +269,7 @@ const routes = [
     path: "*",
     name: "Not Found",
     component: NotFoundPage
-  },
+  }
 ];
 
 const router = new VueRouter({

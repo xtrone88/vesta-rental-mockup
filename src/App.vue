@@ -179,6 +179,13 @@
             </v-list-item-icon>
             <v-list-item-title>Auction Won Page</v-list-item-title>
           </v-list-item>
+
+          <v-list-item :to="{ path: '/account/test' }">
+            <v-list-item-icon>
+              <v-icon>mdi-ab-testing</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Amplify Testing Page</v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -193,7 +200,7 @@
 // import Header from "./components/layout/header/header";
 // import Sidebar from "./components/layout/sidebar/sidebar";
 import Footer from "./components/layout/footer/footer";
-import store from './store/store';
+import store from "./store/store";
 import "./assets/css/main.css";
 export default {
   name: "App",
@@ -206,9 +213,9 @@ export default {
       }
       return "#242424";
     },
-    notifCount: function() {
-      return store.getters.notifCount
-    }
+    notifCount: function () {
+      return store.getters.notifCount;
+    },
   },
   components: {
     Footer,

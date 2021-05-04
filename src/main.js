@@ -13,14 +13,15 @@ import titleMixin from "./mixins/title.mixin";
 import helpers from "./helpers";
 import "./api";
 
+import "@aws-amplify/ui-vue";
 import Amplify from "aws-amplify";
 import aws_exports from "./aws-exports";
-import { applyPolyfills, defineCustomElements } from "@aws-amplify/ui-components/loader";
+// import { applyPolyfills, defineCustomElements } from "@aws-amplify/ui-components/loader";
 
 Amplify.configure(aws_exports);
-applyPolyfills().then(() => {
-  defineCustomElements(window);
-});
+// applyPolyfills().then(() => {
+//   defineCustomElements(window);
+// });
 
 // Mixins
 // If this continues to grow move it out of here

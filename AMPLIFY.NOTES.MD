@@ -8,6 +8,12 @@ One of the trickier things to test here will be uploading of avatars as it must 
 
 https://github.com/aws-amplify/amplify-js is where to search for issues related to the problems you are experiencing, might be worthwhile to search "amplify vue \${my_problem}"
 
+https://docs.amplify.aws/lib/auth/getting-started/q/platform/js
+
+https://docs.amplify.aws/lib/graphqlapi/getting-started/q/platform/js
+
+If not able to use amplify console, obtain a copy of aws-exports.js for the environment you are working on
+
 ```
 amplify update api
 ```

@@ -1,0 +1,66 @@
+type Watch @model @auth(rules: [{allow: groups, groups: ["Lessee"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Lessor"], operations: [read, create, update, delete]}]) {
+  id: ID!
+  User: User @connection
+  Auction: Auction @connection
+}
+
+type Property @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [create, update, delete, read]}, {allow: groups, groups: ["Lessor"], operations: [create, update, read]}, {allow: groups, groups: ["Lessee"], operations: [read]}]) {
+  id: ID!
+  bedrooms: String
+  baths: String
+  address1: String
+  address2: String
+  zip: String
+  city: String
+  state: String
+  apiData: AWSJSON
+  description: String
+  amenities: AWSJSON
+  PropertyUsers: [PropertyUser] @connection(keyName: "byProperty", fields: ["id"])
+}
+
+type User @model @auth(rules: [{allow: owner, operations: [create, read, update]}]) {
+  id: ID!
+  email: AWSEmail
+  firstname: String
+  lastname: String
+  address1: String
+  address2: String
+  postalCode: String
+  city: String
+  state: String
+  phone: AWSPhone
+  Bids: [Bid] @connection(keyName: "byUser", fields: ["id"])
+  propertys: [PropertyUser] @connection(keyName: "byUser", fields: ["id"])
+}
+
+type Bid @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [create, update, delete]}, {allow: groups, groups: ["Lessee"], operations: [create, update]}]) @key(name: "byAuction", fields: ["auctionID"]) @key(name: "byUser", fields: ["userID"]) {
+  id: ID!
+  amount: Float!
+  auctionID: ID!
+  userID: ID
+  User: User @connection
+}
+
+type Auction @model @auth(rules: [{allow: groups, groups: ["Lessor"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Lessee"], operations: [read]}, {allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}]) {
+  id: ID!
+  title: String!
+  startsAt: AWSDateTime!
+  endsAt: AWSDateTime!
+  bookingStartDate: AWSDate
+  bookingEndDate: AWSDate
+  status: String
+  highestBid: Float
+  views: Int
+  Bids: [Bid] @connection(keyName: "byAuction", fields: ["id"])
+  Property: Property @connection
+}
+
+type PropertyUser @model(queries: null) @key(name: "byProperty", fields: ["propertyID", "userID"]) @key(name: "byUser", fields: ["userID", "propertyID"]) @auth(rules: [{allow: private}, {allow: private}]) {
+  id: ID!
+  propertyID: ID!
+  userID: ID!
+  property: Property! @connection(fields: ["propertyID"])
+  user: User! @connection(fields: ["userID"])
+}
+ 

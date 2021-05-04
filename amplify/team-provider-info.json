@@ -1,0 +1,21 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vesta-staging-21321-authRole",
+      "UnauthRoleArn": "arn:aws:iam::081760431338:role/amplify-vesta-staging-21321-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::081760431338:role/amplify-vesta-staging-21321-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-vesta-staging-21321-deployment",
+      "UnauthRoleName": "amplify-vesta-staging-21321-unauthRole",
+      "StackName": "amplify-vesta-staging-21321",
+      "StackId": "arn:aws:cloudformation:us-east-1:081760431338:stack/amplify-vesta-staging-21321/30464ee0-8146-11eb-8ef1-0ac49251e793",
+      "AmplifyAppId": "d59dmwv7bt3os"
+    },
+    "categories": {
+      "auth": {
+        "vesta": {},
+        "userPoolGroups": {}
+      }
+    }
+  }
+}

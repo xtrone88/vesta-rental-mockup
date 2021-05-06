@@ -357,6 +357,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .sized-chip {
   display: inline-block;

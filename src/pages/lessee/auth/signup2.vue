@@ -1,71 +1,33 @@
 <style lang="scss" scoped>
-.title {
-  height: 10px;
-}
-.login-title {
+.signup-title {
   text-align: center;
   font-size: 50px;
-  margin-top: 150px;
+  margin-top: 49px;
 }
-.login-panel {
-  margin-top: 79px;
-  margin-bottom: 113px;
+.signup-panel {
+  margin-top: 69px;
+  margin-bottom: 65px;
   border-radius: 36px;
-  padding: 138px 36px 88px 36px;
+  padding: 36px;
 }
-.login-buttons {
-  min-width: 300px;
-  max-width: 550px;
-}
-.login-button {
-  &.v-size--default {
-    padding: 17px 21px;
-    margin-bottom: 30px;
-  }
-  &.v-btn--outlined {
-    border: thin solid #707070;
-  }
-  i.v-icon--left {
-    position: absolute;
-    left: 0px;
-    font-size: 24px;
-  }
-}
-.bar-text {
-  border-top: 1px solid rgba(112, 112, 112, 0.3);
-  margin-top: 55px;
-  margin-bottom: 25px;
-  text-align: center;
-  > span {
-    display: inline-block;
-    padding: 0px 10px;
-    font-size: 16px;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    background-color: white;
-  }
-}
-
 </style>
 
 <template>
   <v-container class="pa-0" fluid>
     <v-row no-gutters>
-      <v-col md="6">
+      <v-col md="6" class="text-center">
         <div>
-          <div class="title">
-            <h1 class="login-title">Log In</h1>
+          <div class="title pa-16">
+            <h1 class="login-title">Registration</h1>
           </div>
-          <amplify-authenticator></amplify-authenticator>
+          <amplify-sign-up></amplify-sign-up>
         </div>
       </v-col>
       <v-col md="6" class="hidden-sm-and-down">
-        <v-img src="@/assets/login/intro.png" height="100%"></v-img>
+        <v-img src="@/assets/register/intro.png" style="height:100%"></v-img>
       </v-col>
     </v-row>
   </v-container>
-
 </template>
 
 <script>
@@ -74,7 +36,7 @@ import { API } from "aws-amplify";
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 
 export default {
-  name: "Login2",
+  name: "SignUp2",
 
   data: () => ({
     properties: null,

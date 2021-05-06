@@ -9,3 +9,15 @@
 
   text-decoration: none;
 }
+
+amplify-authenticator{
+  --amplify-primary-color: #4BA4C2;
+  --amplify-primary-tint: #00A3C2;
+  --amplify-primary-shade: #11ABC2;
+}
+
+amplify-sign-up{
+  --amplify-primary-color: #4BA4C2;
+  --amplify-primary-tint: #00A3C2;
+  --amplify-primary-shade: #11ABC2;
+}

@@ -19,6 +19,7 @@ import NotificationSettingsPage from "../pages/lessee/notifications.settings";
 import LogoutPage from "../pages/lessee/auth/logout";
 import LoginPage from "../pages/lessee/auth/login";
 import SignUpPage from "../pages/lessee/auth/signup";
+import SignUpPage2 from "../pages/lessee/auth/signup2";
 import TransactionsPage from "../pages/lessee/transactions";
 import SettingsDashboardPage from "../pages/lessee/settings";
 import TestAuth from "../pages/lessee/test.auth";
@@ -154,6 +155,11 @@ const routes = [
         path: "signup",
         name: "SignUp",
         component: SignUpPage
+      },
+      {
+        path: "signup2",
+        name: "SignUp2",
+        component: SignUpPage2
       },
       {
         path: "logout",

@@ -26,6 +26,7 @@ import TestAuth from "../pages/lessee/test.auth";
 import LesseePage from "../pages/lessee/lessee";
 import PersonalInfo from "../pages/lessee/personalinfo";
 import PaymentsPage from "../pages/lessee/payments";
+import LoginPage2 from "../pages/lessee/auth/login2";
 
 // added by Malcom 4/14/2021
 import WonAuctionPage from "../pages/lessee/wonauction";
@@ -143,6 +144,11 @@ const routes = [
         path: "login",
         name: "Login",
         component: LoginPage
+      },
+      {
+        path: "login2",
+        name: "Login2",
+        component: LoginPage2
       },
       {
         path: "signup",

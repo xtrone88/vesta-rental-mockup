@@ -20,6 +20,9 @@ export default new Vuex.Store({
   mutations: {
     setUserInfo(state, data){
       state.user_info = data
+    },
+    setPaymentsInfo(state, data) {
+      state.payments = data
     }
   },
   actions: {

@@ -1,10 +1,10 @@
 ﻿<template>
   <v-container class="page-wrapper" ref="el" fluid>
-    <v-row>
+    <v-row no-gutters>
       <v-col md="5">
-        <v-row>
+        <v-row no-gutters>
           <v-col class="d-flex align-center justify-space-between">
-            <div class="d-flex align-baseline pt-2">
+            <div class="d-flex align-baseline">
               <span class="font-weight-bold text-md-h3 text-sm-h4 text-h6 mr-2"
                 >Popular Destination</span
               >
@@ -356,6 +356,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 .sized-chip {

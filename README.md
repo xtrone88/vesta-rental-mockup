@@ -22,6 +22,9 @@ The designs currently only explicitly show Desktop views, but the site must be m
 yarn install
 ```
 
+1. obtain aws-exports.js and place it at root avoid checking it into this repo.
+1. setup .env file
+
 ### Compiles and hot-reloads for development
 
 ```

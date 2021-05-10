@@ -60,7 +60,7 @@
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" floating app temporary>
       <v-list nav dense>
-        <v-list-item-group active-class="indigo--text text--accent-4">
+        <v-list-item-group active-class="primary--text text--accent-4">
           <v-list-item :to="{ path: '/' }">
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
@@ -135,6 +135,7 @@
             </v-list-item-icon>
             <v-list-item-title>Bidding</v-list-item-title>
           </v-list-item>
+          <v-divider></v-divider>
 
           <v-list-item>
             <v-list-item-title>Admin</v-list-item-title>
@@ -169,6 +170,7 @@
             </v-list-item-icon>
             <v-list-item-title>Lessees</v-list-item-title>
           </v-list-item>
+          <v-divider></v-divider>
 
           <v-list-item>
             <v-list-item-title>Example</v-list-item-title>
@@ -185,6 +187,24 @@
               <v-icon>mdi-ab-testing</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Amplify Testing Page</v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+
+          <v-list-item>
+            <v-list-item-title>To Delete</v-list-item-title>
+          </v-list-item>
+          <v-list-item :to="{ path: '/account/login_old' }">
+            <v-list-item-icon>
+              <v-icon>mdi-ab-testing</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Old Login</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item :to="{ path: '/account/signup_old' }">
+            <v-list-item-icon>
+              <v-icon>mdi-ab-testing</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Old Signup</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>

@@ -18,18 +18,19 @@
         <v-card
           class="rounded-xl fill-height mr-6 my-2"
           width="250px"
+          height="384px"
           min-width="250px"
           max-width="250px"
-          v-for="property in properties"
-          :key="property.id"
-          v-show="property.id < 5"
+          v-for="(property, i) in properties"
+          :key="i"
+          v-show="i < 4"
         >
           <v-row no-gutters>
             <v-col>
-              <router-link :to="{ path: `/properties/${property.id}` }">
+              <router-link :to="{ path: `/properties/${property._id}` }">
                 <v-img
                   height="250"
-                  :src="property.pictures[0].thumb_750"
+                  :src="property.pictures[0].original"
                   :aspect-ratio="1"
                   class="rounded-xl fill-height"
                 >
@@ -63,7 +64,8 @@
 </template>
 
 <script>
-import { sampleProperties } from "../../../data/properties";
+// import { sampleProperties } from "@/data/properties";
+import guestyProperties from "@/data/guesty.json";
 
 export default {
   name: "Deals",
@@ -73,7 +75,7 @@ export default {
   components: {},
 
   data: () => ({
-    properties: sampleProperties,
+    properties: guestyProperties.results,
   }),
 
   computed: {

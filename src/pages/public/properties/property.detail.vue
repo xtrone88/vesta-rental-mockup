@@ -55,7 +55,7 @@
               <v-card-title class="cyan--text"> Amentities </v-card-title>
               <v-card-text>
                 <v-row align="center" justify="space-between">
-                  <v-col cols="3" v-for="(amenity,i) in amenities" :key="i">
+                  <v-col class="text-center" cols="3" v-for="(amenity,i) in amenities" :key="i">
                     <v-icon large color="black">{{amenity.icon}}</v-icon>
                     <br />
                     {{amenity.amenity}}

@@ -1,93 +1,10 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBid = /* GraphQL */ `
-  subscription OnCreateBid {
-    onCreateBid {
-      id
-      amount
-      auctionID
-      userID
-      createdAt
-      updatedAt
-      User {
-        id
-        email
-        firstname
-        lastname
-        address1
-        address2
-        postalCode
-        city
-        state
-        phone
-        createdAt
-        updatedAt
-        owner
-      }
-    }
-  }
-`;
-export const onUpdateBid = /* GraphQL */ `
-  subscription OnUpdateBid {
-    onUpdateBid {
-      id
-      amount
-      auctionID
-      userID
-      createdAt
-      updatedAt
-      User {
-        id
-        email
-        firstname
-        lastname
-        address1
-        address2
-        postalCode
-        city
-        state
-        phone
-        createdAt
-        updatedAt
-        owner
-      }
-    }
-  }
-`;
-export const onDeleteBid = /* GraphQL */ `
-  subscription OnDeleteBid {
-    onDeleteBid {
-      id
-      amount
-      auctionID
-      userID
-      createdAt
-      updatedAt
-      User {
-        id
-        email
-        firstname
-        lastname
-        address1
-        address2
-        postalCode
-        city
-        state
-        phone
-        createdAt
-        updatedAt
-        owner
-      }
-    }
-  }
-`;
 export const onCreateWatch = /* GraphQL */ `
   subscription OnCreateWatch {
     onCreateWatch {
       id
-      createdAt
-      updatedAt
       User {
         id
         email
@@ -101,7 +18,6 @@ export const onCreateWatch = /* GraphQL */ `
         phone
         createdAt
         updatedAt
-        owner
       }
       Auction {
         id
@@ -116,6 +32,8 @@ export const onCreateWatch = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -123,8 +41,6 @@ export const onUpdateWatch = /* GraphQL */ `
   subscription OnUpdateWatch {
     onUpdateWatch {
       id
-      createdAt
-      updatedAt
       User {
         id
         email
@@ -138,7 +54,6 @@ export const onUpdateWatch = /* GraphQL */ `
         phone
         createdAt
         updatedAt
-        owner
       }
       Auction {
         id
@@ -153,6 +68,8 @@ export const onUpdateWatch = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -160,8 +77,6 @@ export const onDeleteWatch = /* GraphQL */ `
   subscription OnDeleteWatch {
     onDeleteWatch {
       id
-      createdAt
-      updatedAt
       User {
         id
         email
@@ -175,7 +90,6 @@ export const onDeleteWatch = /* GraphQL */ `
         phone
         createdAt
         updatedAt
-        owner
       }
       Auction {
         id
@@ -190,6 +104,8 @@ export const onDeleteWatch = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -207,11 +123,11 @@ export const onCreateProperty = /* GraphQL */ `
       apiData
       description
       amenities
-      createdAt
-      updatedAt
       PropertyUsers {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -229,11 +145,11 @@ export const onUpdateProperty = /* GraphQL */ `
       apiData
       description
       amenities
-      createdAt
-      updatedAt
       PropertyUsers {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -251,17 +167,17 @@ export const onDeleteProperty = /* GraphQL */ `
       apiData
       description
       amenities
-      createdAt
-      updatedAt
       PropertyUsers {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
 export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser($owner: String) {
-    onCreateUser(owner: $owner) {
+  subscription OnCreateUser {
+    onCreateUser {
       id
       email
       firstname
@@ -275,18 +191,17 @@ export const onCreateUser = /* GraphQL */ `
       Bids {
         nextToken
       }
-      createdAt
-      updatedAt
-      owner
       propertys {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
 export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser($owner: String) {
-    onUpdateUser(owner: $owner) {
+  subscription OnUpdateUser {
+    onUpdateUser {
       id
       email
       firstname
@@ -300,18 +215,17 @@ export const onUpdateUser = /* GraphQL */ `
       Bids {
         nextToken
       }
-      createdAt
-      updatedAt
-      owner
       propertys {
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
 export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser($owner: String) {
-    onDeleteUser(owner: $owner) {
+  subscription OnDeleteUser {
+    onDeleteUser {
       id
       email
       firstname
@@ -325,12 +239,89 @@ export const onDeleteUser = /* GraphQL */ `
       Bids {
         nextToken
       }
-      createdAt
-      updatedAt
-      owner
       propertys {
         nextToken
       }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateBid = /* GraphQL */ `
+  subscription OnCreateBid {
+    onCreateBid {
+      id
+      amount
+      auctionID
+      userID
+      User {
+        id
+        email
+        firstname
+        lastname
+        address1
+        address2
+        postalCode
+        city
+        state
+        phone
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateBid = /* GraphQL */ `
+  subscription OnUpdateBid {
+    onUpdateBid {
+      id
+      amount
+      auctionID
+      userID
+      User {
+        id
+        email
+        firstname
+        lastname
+        address1
+        address2
+        postalCode
+        city
+        state
+        phone
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteBid = /* GraphQL */ `
+  subscription OnDeleteBid {
+    onDeleteBid {
+      id
+      amount
+      auctionID
+      userID
+      User {
+        id
+        email
+        firstname
+        lastname
+        address1
+        address2
+        postalCode
+        city
+        state
+        phone
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -349,8 +340,6 @@ export const onCreateAuction = /* GraphQL */ `
       Bids {
         nextToken
       }
-      createdAt
-      updatedAt
       Property {
         id
         bedrooms
@@ -366,6 +355,8 @@ export const onCreateAuction = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -384,8 +375,6 @@ export const onUpdateAuction = /* GraphQL */ `
       Bids {
         nextToken
       }
-      createdAt
-      updatedAt
       Property {
         id
         bedrooms
@@ -401,6 +390,8 @@ export const onUpdateAuction = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -419,8 +410,6 @@ export const onDeleteAuction = /* GraphQL */ `
       Bids {
         nextToken
       }
-      createdAt
-      updatedAt
       Property {
         id
         bedrooms
@@ -436,6 +425,8 @@ export const onDeleteAuction = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -445,8 +436,6 @@ export const onCreatePropertyUser = /* GraphQL */ `
       id
       propertyID
       userID
-      createdAt
-      updatedAt
       property {
         id
         bedrooms
@@ -475,8 +464,9 @@ export const onCreatePropertyUser = /* GraphQL */ `
         phone
         createdAt
         updatedAt
-        owner
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -486,8 +476,6 @@ export const onUpdatePropertyUser = /* GraphQL */ `
       id
       propertyID
       userID
-      createdAt
-      updatedAt
       property {
         id
         bedrooms
@@ -516,8 +504,9 @@ export const onUpdatePropertyUser = /* GraphQL */ `
         phone
         createdAt
         updatedAt
-        owner
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -527,8 +516,6 @@ export const onDeletePropertyUser = /* GraphQL */ `
       id
       propertyID
       userID
-      createdAt
-      updatedAt
       property {
         id
         bedrooms
@@ -557,8 +544,9 @@ export const onDeletePropertyUser = /* GraphQL */ `
         phone
         createdAt
         updatedAt
-        owner
       }
+      createdAt
+      updatedAt
     }
   }
 `;

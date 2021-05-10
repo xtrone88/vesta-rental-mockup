@@ -1,6 +1,6 @@
 projects:
-  vestaApi:
-    schemaPath: amplify/backend/api/vestaApi/build/schema.graphql
+  vestastarter:
+    schemaPath: amplify/backend/api/vestastarter/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:

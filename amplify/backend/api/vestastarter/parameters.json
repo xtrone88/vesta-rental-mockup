@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "vestaApi",
+  "AppSyncApiName": "vestastarter",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authvesta",
+      "authvestastarter41439301",
       "Outputs.UserPoolId"
     ]
   }

@@ -14,6 +14,10 @@ https://docs.amplify.aws/lib/graphqlapi/getting-started/q/platform/js
 
 If not able to use amplify console, obtain a copy of aws-exports.js for the environment you are working on
 
+```
+amplify pull --appId d27a5laqg34j5p --envName dev
+```
+
 ##
 
 Amplify Admin url: https://us-east-1.admin.amplifyapp.com/admin/login?appId=d59dmwv7bt3os&backendEnvironmentName=staging

@@ -55,8 +55,10 @@
               <v-card-title class="cyan--text"> Amentities </v-card-title>
               <v-card-text>
                 <v-row align="center" justify="space-between">
-                  <v-col cols="3" v-for="(amenity,i) in property.amenities" :key="i">
-                    {{amenity}}
+                  <v-col cols="3" v-for="(amenity,i) in amenities" :key="i">
+                    <v-icon large color="black">{{amenity.icon}}</v-icon>
+                    <br />
+                    {{amenity.amenity}}
                   </v-col>
                 </v-row>
               </v-card-text>
@@ -156,6 +158,7 @@
 import ImageGallery from "@/components/image.gallery";
 // import { sampleProperties } from "@/data/properties";
 import guestyProperties from "@/data/guesty.json";
+import amenityIcons from "@/data/amenity.json";
 import moment from "moment";
 
 export default {
@@ -187,25 +190,32 @@ export default {
       let s = moment(this.endDate).diff(this.now, "seconds") % 60;
       return s > 9 ? s : "0" + s;
     },
+    amenities() {
+      return this.property.amenities.reduce((a, amenity) => {
+        let icon = amenityIcons[amenity];
+        if (icon != undefined && icon != null) {
+          a.push({icon, amenity});
+        }
+        return a;
+      }, []);
+    }
   },
   methods: {
     setupCountdown() {
       setInterval(() => (this.now = moment()), 1000);
     },
-
     toggleWatch: function () {
       this.property.stats.views++;
       if (this.property.stats.views >= 0) {
         this.watched = true;
       }
     },
-
     toggleFavorite: function () {
       this.property.stats.favorites++;
       if (this.property.stats.favorites >= 0) {
         this.favorite = true;
       }
-    },
+    }
   },
   created() {
     this.setupCountdown();

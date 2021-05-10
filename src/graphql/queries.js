@@ -1,58 +1,10 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getBid = /* GraphQL */ `
-  query GetBid($id: ID!) {
-    getBid(id: $id) {
-      id
-      amount
-      auctionID
-      userID
-      createdAt
-      updatedAt
-      User {
-        id
-        email
-        firstname
-        lastname
-        address1
-        address2
-        postalCode
-        city
-        state
-        phone
-        createdAt
-        updatedAt
-        owner
-      }
-    }
-  }
-`;
-export const listBids = /* GraphQL */ `
-  query ListBids(
-    $filter: ModelBidFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listBids(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        amount
-        auctionID
-        userID
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
 export const getWatch = /* GraphQL */ `
   query GetWatch($id: ID!) {
     getWatch(id: $id) {
       id
-      createdAt
-      updatedAt
       User {
         id
         email
@@ -66,7 +18,6 @@ export const getWatch = /* GraphQL */ `
         phone
         createdAt
         updatedAt
-        owner
       }
       Auction {
         id
@@ -81,6 +32,8 @@ export const getWatch = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -97,6 +50,28 @@ export const listWatchs = /* GraphQL */ `
         updatedAt
       }
       nextToken
+    }
+  }
+`;
+export const getProperty = /* GraphQL */ `
+  query GetProperty($id: ID!) {
+    getProperty(id: $id) {
+      id
+      bedrooms
+      baths
+      address1
+      address2
+      zip
+      city
+      state
+      apiData
+      description
+      amenities
+      PropertyUsers {
+        nextToken
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -126,25 +101,27 @@ export const listPropertys = /* GraphQL */ `
     }
   }
 `;
-export const getProperty = /* GraphQL */ `
-  query GetProperty($id: ID!) {
-    getProperty(id: $id) {
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
       id
-      bedrooms
-      baths
+      email
+      firstname
+      lastname
       address1
       address2
-      zip
+      postalCode
       city
       state
-      apiData
-      description
-      amenities
-      createdAt
-      updatedAt
-      PropertyUsers {
+      phone
+      Bids {
         nextToken
       }
+      propertys {
+        nextToken
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -168,34 +145,88 @@ export const listUsers = /* GraphQL */ `
         phone
         createdAt
         updatedAt
-        owner
       }
       nextToken
     }
   }
 `;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
+export const getBid = /* GraphQL */ `
+  query GetBid($id: ID!) {
+    getBid(id: $id) {
       id
-      email
-      firstname
-      lastname
-      address1
-      address2
-      postalCode
-      city
-      state
-      phone
-      Bids {
-        nextToken
+      amount
+      auctionID
+      userID
+      User {
+        id
+        email
+        firstname
+        lastname
+        address1
+        address2
+        postalCode
+        city
+        state
+        phone
+        createdAt
+        updatedAt
       }
       createdAt
       updatedAt
-      owner
-      propertys {
+    }
+  }
+`;
+export const listBids = /* GraphQL */ `
+  query ListBids(
+    $filter: ModelBidFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBids(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        amount
+        auctionID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAuction = /* GraphQL */ `
+  query GetAuction($id: ID!) {
+    getAuction(id: $id) {
+      id
+      title
+      startsAt
+      endsAt
+      bookingStartDate
+      bookingEndDate
+      status
+      highestBid
+      views
+      Bids {
         nextToken
       }
+      Property {
+        id
+        bedrooms
+        baths
+        address1
+        address2
+        zip
+        city
+        state
+        apiData
+        description
+        amenities
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -220,41 +251,6 @@ export const listAuctions = /* GraphQL */ `
         updatedAt
       }
       nextToken
-    }
-  }
-`;
-export const getAuction = /* GraphQL */ `
-  query GetAuction($id: ID!) {
-    getAuction(id: $id) {
-      id
-      title
-      startsAt
-      endsAt
-      bookingStartDate
-      bookingEndDate
-      status
-      highestBid
-      views
-      Bids {
-        nextToken
-      }
-      createdAt
-      updatedAt
-      Property {
-        id
-        bedrooms
-        baths
-        address1
-        address2
-        zip
-        city
-        state
-        apiData
-        description
-        amenities
-        createdAt
-        updatedAt
-      }
     }
   }
 `;

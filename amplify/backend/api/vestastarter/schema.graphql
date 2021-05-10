@@ -1,0 +1,66 @@
+type Watch @model {
+  id: ID!
+  User: User @connection
+  Auction: Auction @connection
+}
+
+type Property @model {
+  id: ID!
+  bedrooms: String
+  baths: String
+  address1: String
+  address2: String
+  zip: String
+  city: String
+  state: String
+  apiData: AWSJSON
+  description: String
+  amenities: AWSJSON
+  PropertyUsers: [PropertyUser] @connection(keyName: "byProperty", fields: ["id"])
+}
+
+type User @model {
+  id: ID!
+  email: AWSEmail
+  firstname: String
+  lastname: String
+  address1: String
+  address2: String
+  postalCode: String
+  city: String
+  state: String
+  phone: AWSPhone
+  Bids: [Bid] @connection(keyName: "byUser", fields: ["id"])
+  propertys: [PropertyUser] @connection(keyName: "byUser", fields: ["id"])
+}
+
+type Bid @model @key(name: "byAuction", fields: ["auctionID"]) @key(name: "byUser", fields: ["userID"]) {
+  id: ID!
+  amount: Float!
+  auctionID: ID!
+  userID: ID
+  User: User @connection
+}
+
+type Auction @model {
+  id: ID!
+  title: String!
+  startsAt: AWSDateTime!
+  endsAt: AWSDateTime!
+  bookingStartDate: AWSDate
+  bookingEndDate: AWSDate
+  status: String
+  highestBid: Float
+  views: Int
+  Bids: [Bid] @connection(keyName: "byAuction", fields: ["id"])
+  Property: Property @connection
+}
+
+type PropertyUser @model(queries: null) @key(name: "byProperty", fields: ["propertyID", "userID"]) @key(name: "byUser", fields: ["userID", "propertyID"])  {
+  id: ID!
+  propertyID: ID!
+  userID: ID!
+  property: Property! @connection(fields: ["propertyID"])
+  user: User! @connection(fields: ["userID"])
+}
+ 

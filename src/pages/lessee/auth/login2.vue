@@ -57,7 +57,12 @@
           <div class="title">
             <h1 class="login-title">Log In</h1>
           </div>
-          <amplify-authenticator></amplify-authenticator>
+          <amplify-authenticator>
+            <div v-if="authState === 'signedin' && user">
+              <div>You are already logged in.</div>
+            </div>
+            <amplify-sign-out button-text="Sign Out"></amplify-sign-out>
+          </amplify-authenticator>
         </div>
       </v-col>
       <v-col md="6" class="hidden-sm-and-down">

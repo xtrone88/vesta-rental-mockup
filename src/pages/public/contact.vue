@@ -55,7 +55,11 @@
                 ></v-text-field>
               </div>
               <div class="d-flex flex-column">
-                <vue-tel-input-vuetify></vue-tel-input-vuetify>
+                <VuePhoneNumberInput
+                  v-model="mobile"
+                  clearable
+                  @update="inputPhone"
+                />
               </div>
               <div class="d-flex flex-column">
                 <v-textarea
@@ -78,7 +82,9 @@
 
 <script>
 import ImageGallery from "@/components/image.gallery";
-import { sampleProperties } from "@/data/properties";
+import VuePhoneNumberInput from 'vue-phone-number-input';
+// import { sampleProperties } from "@/data/properties";
+import guestyProperties from "@/data/guesty.json";
 import { sampleProperty } from "@/data/fallback";
 
 export default {
@@ -86,6 +92,7 @@ export default {
 
   components: {
     ImageGallery,
+    VuePhoneNumberInput
   },
 
   data: () => ({
@@ -111,13 +118,16 @@ export default {
     viewAllPhotos: function () {
       this.$refs.gallery.index = 0;
     },
+    inputPhone: function() {
+
+    }
   },
 
   created() {
     let property = sampleProperty;
     let propertyId = this.$route.params.propertyId;
-    sampleProperties.forEach(function (p) {
-      if (propertyId == p.id) {
+    guestyProperties.results.forEach(function (p) {
+      if (propertyId == p._id) {
         property = p;
       }
     });

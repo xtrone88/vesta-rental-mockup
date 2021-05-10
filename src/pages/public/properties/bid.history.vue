@@ -60,7 +60,7 @@
           <v-row no-gutters>
             <v-col cols="12">
               <v-img
-                :src="property.pictures[0].thumb_500"
+                :src="property.pictures[0].original"
                 :aspect-ratio="3 / 2"
                 class="rounded-xl fill-height"
               >
@@ -77,7 +77,7 @@
             </v-col>
             <v-col cols="6">
               <span class="font-weight-bold text-subtitle-1">{{
-                property.id
+                property._id
               }}</span>
             </v-col>
             <v-col cols="6">
@@ -112,7 +112,8 @@
 </template>
 
 <script>
-import { sampleProperties } from "@/data/properties";
+// import { sampleProperties } from "@/data/properties";
+import guestyProperties from "@/data/guesty.json";
 
 export default {
   name: "BidHistoryPage",
@@ -137,9 +138,9 @@ export default {
 
   created() {
     let propertyId = this.$route.params.propertyId;
-    let property = sampleProperties[0];
-    sampleProperties.forEach(function (p) {
-      if (propertyId == p.id) {
+    let property = guestyProperties.results[0];
+    guestyProperties.results.forEach(function (p) {
+      if (propertyId == p._id) {
         property = p;
       }
     });

@@ -17,7 +17,7 @@
             </h5>
             <div>
               Property ID
-              <span class="font-weight-bold">{{ property.id }}</span>
+              <span class="font-weight-bold">{{ property._id }}</span>
             </div>
           </v-col>
         </v-row>
@@ -41,62 +41,28 @@
                 </div>
               </v-card-title>
               <v-card-subtitle class="font-weight-black">
-                Seller reserves the right to a final review of all bids
-                received. Seller my accept or reject any bid regardless of
-                whether or not the reserve price has been met.
+                {{property.publicDescription.summary}}
               </v-card-subtitle>
               <v-card-text>
                 <v-card outlined class="rounded text-center pa-2 black--text">
-                  3 guests · 1 bedrooms · 1 beds · 1 baths
+                  {{this.stringHelpers.pluralize(property.accommodates, "guest", "guests")}} ·
+                  {{this.stringHelpers.pluralize(property.bedrooms, "bedroom", "bedrooms")}} ·
+                  {{this.stringHelpers.pluralize(property.beds, "bed", "beds")}} ·
+                  {{this.stringHelpers.pluralize(property.bathrooms, "bath", "baths")}}
                 </v-card>
               </v-card-text>
               <v-divider class="mx-4" />
               <v-card-title class="cyan--text"> Amentities </v-card-title>
               <v-card-text>
-                <v-row justify="space-between">
-                  <v-col>
-                    <v-icon large color="black"> mdi-domain </v-icon>
-                    <br />
-                    HotHub
-                  </v-col>
-                  <v-col>
-                    <v-icon large color="black"> mdi-dialpad </v-icon>
-                    <br />
-                    HotHub
-                  </v-col>
-                  <v-col>
-                    <v-icon large color="black"> mdi-message-text </v-icon>
-                    <br />
-                    HotHub
-                  </v-col>
-                  <v-col>
-                    <v-icon large color="black"> mdi-email </v-icon>
-                    <br />
-                    HotHub
+                <v-row align="center" justify="space-between">
+                  <v-col cols="3" v-for="(amenity,i) in property.amenities" :key="i">
+                    {{amenity}}
                   </v-col>
                 </v-row>
               </v-card-text>
               <v-divider class="mx-4" />
               <v-card-text>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-                penatibus et magnis dis parturient montes, nascetur ridiculus
-                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim. Donec pede justo,
-                fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
-                rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
-                felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
-                Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-                enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
-                tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque
-                rutrum. Aenean imperdiet. imperdiet a, venenatis vitae, justo.
-                Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-                Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
-                eleifend tellus. Aenean leo ligula, porttitor eu, consequat
-                vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                viverra quis, feugiat a, tellus. Phasellus viverra nulla ut
-                metus varius laoreet. Quisque rutrum. Aenean imperdiet.
+                {{property.publicDescription.notes}}
               </v-card-text>
             </v-card>
           </v-col>
@@ -136,7 +102,7 @@
                 <v-btn
                   text
                   class="mt-6 cyan--text text-capitalize"
-                  :to="{ path: '/bidhistory/' + property.id }"
+                  :to="{ path: '/bidhistory/' + property._id }"
                 >
                   Bid History
                 </v-btn>
@@ -145,7 +111,7 @@
             <v-btn
               block
               class="mt-6 cyan white--text"
-              :to="{ path: '/contact/' + property.id }"
+              :to="{ path: '/contact/' + property._id }"
             >
               Contact
             </v-btn>
@@ -188,7 +154,8 @@
 
 <script>
 import ImageGallery from "@/components/image.gallery";
-import { sampleProperties } from "@/data/properties";
+// import { sampleProperties } from "@/data/properties";
+import guestyProperties from "@/data/guesty.json";
 import moment from "moment";
 
 export default {
@@ -243,9 +210,9 @@ export default {
   created() {
     this.setupCountdown();
     let propertyId = this.$route.params.propertyId;
-    let property = sampleProperties[0];
-    sampleProperties.forEach(function (p) {
-      if (propertyId == p.id) {
+    let property = guestyProperties.results[0];
+    guestyProperties.results.forEach(function (p) {
+      if (propertyId == p._id) {
         property = p;
       }
     });

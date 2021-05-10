@@ -91,73 +91,59 @@ export const sampleProperty =
     ],
     pictures: [
         {
-            fullsize:
+            large:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/4d5fe227-5fa0-4992-92dd-ccd2f407362a.webp",
-            thumb_250:
-                "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/4d5fe227-5fa0-4992-92dd-ccd2f407362a.250.webp",
-            thumb_500:
+            thumb:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/4d5fe227-5fa0-4992-92dd-ccd2f407362a.500.webp",
-            thumb_750:
+            original:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/4d5fe227-5fa0-4992-92dd-ccd2f407362a.750.webp"
         },
         {
-            fullsize:
+            large:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/b7579cf1-cd7f-468a-931d-12479022a046.webp",
-            thumb_250:
-                "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/b7579cf1-cd7f-468a-931d-12479022a046.250.webp",
-            thumb_500:
+            thumb:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/b7579cf1-cd7f-468a-931d-12479022a046.500.webp",
-            thumb_750:
+            original:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/b7579cf1-cd7f-468a-931d-12479022a046.750.webp"
         },
         {
-            fullsize:
+            large:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/0fca1118-97fc-47ba-ad4e-00f914693f94.webp",
-            thumb_250:
-                "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/0fca1118-97fc-47ba-ad4e-00f914693f94.250.webp",
-            thumb_500:
+            thumb:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/0fca1118-97fc-47ba-ad4e-00f914693f94.500.webp",
-            thumb_750:
+            original:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/0fca1118-97fc-47ba-ad4e-00f914693f94.750.webp"
         },
         {
-            fullsize:
+            large:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/48723da9-881c-479d-9ec2-664b47f08f2f.webp",
-            thumb_250:
-                "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/48723da9-881c-479d-9ec2-664b47f08f2f.250.webp",
-            thumb_500:
+            thumb:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/48723da9-881c-479d-9ec2-664b47f08f2f.500.webp",
-            thumb_750:
+            original:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/48723da9-881c-479d-9ec2-664b47f08f2f.750.webp"
         },
         {
-            fullsize:
+            large:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/72418270-7316-491a-9427-0c159aff85c2.webp",
-            thumb_250:
-                "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/72418270-7316-491a-9427-0c159aff85c2.250.webp",
-            thumb_500:
+            thumb:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/72418270-7316-491a-9427-0c159aff85c2.500.webp",
-            thumb_750:
+            original:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/72418270-7316-491a-9427-0c159aff85c2.750.webp"
         },
         {
-            fullsize:
+            large:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/9ecbce33-f4f1-436d-bcc8-46a7efc9a820.webp",
-            thumb_250:
-                "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/9ecbce33-f4f1-436d-bcc8-46a7efc9a820.250.webp",
-            thumb_500:
+            thumb:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/9ecbce33-f4f1-436d-bcc8-46a7efc9a820.500.webp",
-            thumb_750:
+            original:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/9ecbce33-f4f1-436d-bcc8-46a7efc9a820.750.webp"
         },
         {
-            fullsize:
+            large:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/2038ce4a-f587-426f-9db2-76ffaa0c9887.webp",
-            thumb_250:
-                "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/2038ce4a-f587-426f-9db2-76ffaa0c9887.250.webp",
-            thumb_500:
+            thumb:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/2038ce4a-f587-426f-9db2-76ffaa0c9887.500.webp",
-            thumb_750:
+            original:
                 "http://vestalease-images.s3-website-us-east-1.amazonaws.com/airbnb/1/thumbs/2038ce4a-f587-426f-9db2-76ffaa0c9887.750.webp"
         }
     ],

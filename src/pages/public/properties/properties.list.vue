@@ -82,7 +82,7 @@
           </v-col>
         </v-row>
         <v-divider class="mb-4"></v-divider>
-        <v-row v-for="property in properties" :key="property.id">
+        <v-row v-for="property in properties" :key="property._id">
           <v-col cols="12">
             <v-lazy
               v-model="property.isActive"
@@ -92,13 +92,9 @@
             >
               <v-row no-gutters>
                 <v-col cols="12" lg="4" md="3" sm="4">
-                  <router-link :to="{ path: `/properties/${property.id}` }">
+                  <router-link :to="{ path: `/properties/${property._id}` }">
                     <v-img
-                      :src="
-                        $vuetify.breakpoint.mobile
-                          ? property.pictures[0].thumb_750
-                          : property.pictures[0].thumb_500
-                      "
+                      :src="property.pictures[0].original"
                       :aspect-ratio="3 / 2"
                       class="rounded-xl fill-height"
                     >
@@ -110,7 +106,7 @@
                     <v-col cols="8">
                       <div class="font-weight-bold text-sm-h6 text-subtitle-1">
                         <router-link
-                          :to="{ path: `/properties/${property.id}` }"
+                          :to="{ path: `/properties/${property._id}` }"
                         >
                           <span class="mr-4">{{ property.title }}</span>
                         </router-link>
@@ -156,7 +152,7 @@
                             elevation="0"
                             color="secondary"
                             class="px-1 mb-1"
-                            :to="{ path: `/properties/${property.id}` }"
+                            :to="{ path: `/properties/${property._id}` }"
                           >
                             LEASE IT FOR $1000
                           </v-btn>
@@ -260,8 +256,9 @@
   </v-container>
 </template>
 <script>
-import { sampleProperties } from "../../../data/properties";
-import BiddingDialog from "../../../components/dialog.bidding";
+// import { sampleProperties } from "@/data/properties";
+import guestyProperties from "@/data/guesty.json";
+import BiddingDialog from "@/components/dialog.bidding";
 
 Date.prototype.yyyymmdd = function () {
   var mm = this.getMonth() + 1;
@@ -294,7 +291,7 @@ export default {
     BiddingDialog,
   },
   methods: {
-    getAddressData: function (addressData /*, placeResultData, id*/) {
+    getAddressData: function (addressData/*, placeResultData, id*/) {
       this.popularLocation = addressData.name;
     },
   },
@@ -303,10 +300,10 @@ export default {
       return this.dates.join(" ~ ");
     },
     defaultCenter() {
-      return sampleProperties[0].address;
+      return guestyProperties.results[0].address;
     },
     properties() {
-      return sampleProperties.map((property) => {
+      return guestyProperties.results.map((property) => {
         let details = [];
         details.push(
           this.stringHelpers.pluralize(property.accommodates, "guest", "guests")
@@ -356,7 +353,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .sized-chip {

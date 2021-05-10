@@ -12,7 +12,7 @@
       </v-col>
     </v-row>
 
-    <v-row v-for="property in properties" :key="property.id">
+    <v-row v-for="property in properties" :key="property._id">
       <v-col cols="12">
         <v-lazy
           v-model="property.isActive"
@@ -22,13 +22,9 @@
         >
           <v-row no-gutters>
             <v-col cols="12" lg="3" sm="3">
-              <router-link :to="{ path: '/properties/' + property.id }">
+              <router-link :to="{ path: '/properties/' + property._id }">
                 <v-img
-                  :src="
-                    $vuetify.breakpoint.mobile
-                      ? property.pictures[0].thumb_750
-                      : property.pictures[0].thumb_500
-                  "
+                  :src="property.pictures[0].original"
                   class="fill-height rounded-xl"
                   :aspect-ratio="3 / 2"
                 >
@@ -41,7 +37,7 @@
                   <div
                     class="font-weight-bold text-md-h5 text-sm-h6 text-subtitle-1"
                   >
-                    <router-link :to="{ path: '/properties/' + property.id }">
+                    <router-link :to="{ path: '/properties/' + property._id }">
                       {{ property.title }}
                     </router-link>
                   </div>
@@ -64,7 +60,7 @@
                       elevation="0"
                       color="pink"
                       class="px-6 white--text"
-                      :to="{ path: `/properties/${property.id}` }"
+                      :to="{ path: `/properties/${property._id}` }"
                     >
                       <v-icon class="rotate-270" left>mdi-hammer</v-icon>
                       BID NOW
@@ -173,7 +169,8 @@
 </template>
 
 <script>
-import { sampleProperties } from "../../data/properties";
+// import { sampleProperties } from "../../data/properties";
+import guestyProperties from "@/data/guesty.json";
 
 export default {
   name: "TransactionsPage",
@@ -194,7 +191,7 @@ export default {
   },
 
   created() {
-    this.properties = sampleProperties.map((property) => {
+    this.properties = guestyProperties.results.map((property) => {
       let details = [];
       details.push(
         this.stringHelpers.pluralize(property.accommodates, "guest", "guests")

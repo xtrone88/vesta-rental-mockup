@@ -56,11 +56,13 @@
           <div class="title">
             <h1 class="login-title">Log In</h1>
           </div>
+          
           <amplify-authenticator>
             <div v-if="authState === 'signedin' && user">
-              <div>You are already logged in.</div>
+              <div class="pa-12">
+                <center><h2>{{user.username}} is already logged in.</h2></center>
+              </div>
             </div>
-            <amplify-sign-out button-text="Sign Out"></amplify-sign-out>
           </amplify-authenticator>
         </div>
       </v-col>
@@ -73,6 +75,7 @@
 
 <script>
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
+import store from '../../../store/store';
 
 export default {
   name: "Login",
@@ -82,12 +85,22 @@ export default {
     user: undefined,
     authState: undefined,
     unsubscribeAuth: undefined,
+    logVal: store.getters.loginStatus,
   }),
 
   async created() {
     this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
       this.authState = authState;
       this.user = authData;
+
+      if(this.authState === 'signedin' && this.user)
+      {
+        store.commit('setUserLogInfo', true);
+      }
+      else if(this.authState === 'signedout')
+      {
+        store.commit('setUserLogInfo', false);
+      }
     });
   },
 };

@@ -31,10 +31,10 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item :to="{ name: 'SignUp' }">
+        <v-list-item v-show="!loginState" :to="{ name: 'SignUp' }">
           <v-list-item-title>Sign up</v-list-item-title>
         </v-list-item>
-        <v-list-item :to="{ name: 'Login' }">
+        <v-list-item v-show="!loginState" :to="{ name: 'Login' }">
           <v-list-item-title>Log in</v-list-item-title>
         </v-list-item>
         <v-list-item href="https://www.privacypolicygenerator.info">
@@ -64,6 +64,7 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import store from '../../../store/store';
 
 export default {
   name: "Header",
@@ -89,6 +90,9 @@ export default {
 
   computed: {
     ...mapState(["Sidebar_drawer"]),
+    loginState() {
+      return store.getters.loginState;
+    }
   },
 
   methods: {

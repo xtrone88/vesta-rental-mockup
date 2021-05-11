@@ -15,7 +15,8 @@ export default new Vuex.Store({
       {title:"Visa *** 1316", date:"06/2023"},
       {title:"MasterCard **** 1010", date:"01/2022"}
     ],
-    user_info: {firstname:"", lastname:"", email:"", phone:"", male: null, birthday: "", address:"", city:"", state:"", zip:""}
+    user_info: {firstname:"", lastname:"", email:"", phone:"", male: null, birthday: "", address:"", city:"", state:"", zip:""},
+    user_log: false,
   },
   mutations: {
     setUserInfo(state, data){
@@ -23,12 +24,15 @@ export default new Vuex.Store({
     },
     setPaymentsInfo(state, data) {
       state.payments = data
-    }
+    },
+    setUserLogInfo(state, log){
+      state.user_log = log
+    },
   },
   actions: {
     setUserInfo({commit}, data) {
       commit('setUserInfo', data)
-    }
+    },
   },
   getters: {
     notifications(state) {
@@ -42,6 +46,9 @@ export default new Vuex.Store({
     },
     paymentInfo(state) {
       return state.payments
+    },
+    loginStatus(state) {
+      return state.user_log
     }
   }
 });

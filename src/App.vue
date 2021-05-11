@@ -26,15 +26,21 @@
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" text>
-            <v-icon>mdi-account-circle</v-icon>
+            <v-icon v-show="!loggedin">mdi-account-circle</v-icon>
+            <v-avatar v-show="loggedin" width="30px" height="30px">
+              <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+            </v-avatar>
           </v-btn>
         </template>
         <v-list>
-          <v-list-item :to="{ path: '/account/signup' }">
+          <v-list-item v-show="!loggedin" :to="{ path: '/account/signup' }">
             <v-list-item-title>Sign up</v-list-item-title>
           </v-list-item>
-          <v-list-item :to="{ path: '/account/login' }">
+          <v-list-item v-show="!loggedin" :to="{ path: '/account/login' }">
             <v-list-item-title>Log in</v-list-item-title>
+          </v-list-item>
+          <v-list-item v-show="loggedin" v-on:click="logout">
+            <v-list-item-title>Log out</v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
           <v-list-item :to="{ path: '/account/notifications/settings' }">
@@ -42,9 +48,6 @@
           </v-list-item>
           <v-list-item :to="{ path: '/account/settings' }">
             <v-list-item-title>Account Settings</v-list-item-title>
-          </v-list-item>
-          <v-list-item :to="{ path: '/account/logout' }">
-            <v-list-item-title>Log out</v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
           <v-list-item :to="{ path: '/help' }">
@@ -222,6 +225,8 @@
 import Footer from "./components/layout/footer/footer";
 import store from "./store/store";
 import "./assets/css/main.css";
+import Amplify from 'aws-amplify';
+
 export default {
   name: "App",
   computed: {
@@ -236,6 +241,9 @@ export default {
     notifCount: function () {
       return store.getters.notifCount;
     },
+    loggedin: function () {
+      return store.getters.loginStatus;
+    }
   },
   components: {
     Footer,
@@ -243,6 +251,12 @@ export default {
   data: () => ({
     drawer: false,
   }),
+  methods: {
+    logout() {
+      store.commit('setUserLogInfo', false);
+      Amplify.Auth.signOut();
+    }
+  }
 };
 </script>
 

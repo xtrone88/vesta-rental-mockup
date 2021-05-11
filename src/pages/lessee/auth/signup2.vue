@@ -21,11 +21,11 @@
             <h1 class="login-title">Registration</h1>
           </div>
           <amplify-authenticator>
-            <amplify-sign-up>
-              <div v-if="authState === 'signedup' && user">
-                <div>New Account successfuly created.</div>
-              </div>
-            </amplify-sign-up>
+          <amplify-sign-up
+            slot="sign-up"
+            username-alias="email"
+            :form-fields.prop="formFields"
+          ></amplify-sign-up>
           </amplify-authenticator>
         </div>
       </v-col>
@@ -49,6 +49,38 @@ export default {
     user: undefined,
     authState: undefined,
     unsubscribeAuth: undefined,
+    formFields: [
+      {
+        type: 'name',
+        label: 'Username',
+        placeholder: 'Username',
+        required: true,
+      },
+      {
+        type: 'password',
+        label: 'Password',
+        placeholder: 'Password.',
+        required: true,
+      },
+      {
+        type: 'email',
+        label: 'Email',
+        placeholder: 'Email.',
+        required: false,
+      },
+      {
+        type: 'birthdate',
+        label: 'Date of Birth',
+        placeholder: 'Enter your date of birth.',
+        required: true,
+      },
+      {
+        type: 'phone_number',
+        label: 'Phone Number',
+        placeholder: 'Enter your phone number.',
+        required: true,
+      },
+    ]
   }),
 
   async created() {

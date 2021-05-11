@@ -1,8 +1,11 @@
 <style lang="scss" scoped>
+.title {
+  height: 10px;
+}
 .login-title {
   text-align: center;
   font-size: 50px;
-  margin-top: 131px;
+  margin-top: 150px;
 }
 .login-panel {
   margin-top: 79px;
@@ -43,41 +46,23 @@
     background-color: white;
   }
 }
+
 </style>
 
 <template>
   <v-container class="pa-0" fluid>
     <v-row no-gutters>
       <v-col md="6">
-        <div class="mx-16">
-          <h1 class="login-title">Log In</h1>
-          <v-card class="login-panel" elevation="1" outlined>
-            <div class="login-buttons mx-auto">
-              <v-btn class="login-button" color="primary" v-on:click="setInfo" block elevation="1">
-                <v-icon left dark>mdi-phone</v-icon>
-                SIGN IN WITH PHONE
-              </v-btn>
-
-              <v-btn class="login-button" block outlined>
-                <v-icon left dark>mdi-email</v-icon>
-                SIGN IN WITH EMAIL
-              </v-btn>
-
-              <div class="bar-text">
-                <span>or</span>
-              </div>
-
-              <v-btn class="login-button" color="error" block elevation="1">
-                <v-icon left dark>mdi-google</v-icon>
-                SIGN IN WITH GOOGLE
-              </v-btn>
-
-              <v-btn class="login-button" color="secondary" block elevation="1">
-                <v-icon left dark>mdi-facebook</v-icon>
-                SIGN IN WITH FACEBOOK
-              </v-btn>
+        <div>
+          <div class="title">
+            <h1 class="login-title">Log In</h1>
+          </div>
+          <amplify-authenticator>
+            <div v-if="authState === 'signedin' && user">
+              <div>You are already logged in.</div>
             </div>
-          </v-card>
+            <amplify-sign-out button-text="Sign Out"></amplify-sign-out>
+          </amplify-authenticator>
         </div>
       </v-col>
       <v-col md="6" class="hidden-sm-and-down">
@@ -85,23 +70,34 @@
       </v-col>
     </v-row>
   </v-container>
+
 </template>
 
 <script>
-import {user_info} from "../../../data/user_info";
-import store from "../../../store/store";
+import { listPropertys } from "../../../graphql/queries";
+import { API } from "aws-amplify";
+import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 
 export default {
-  name: "LoginPage",
+  name: "Login2",
 
   data: () => ({
-    info: user_info
+    properties: null,
+    user: undefined,
+    authState: undefined,
+    unsubscribeAuth: undefined,
   }),
 
-  methods: {
-    setInfo() {
-      store.dispatch('setUserInfo', this.info)
-    }
-  }
+  async created() {
+    this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
+      this.authState = authState;
+      this.user = authData;
+      console.log(JSON.parse(JSON.stringify(this.user)));
+    });
+    const allProperties = await API.graphql({ query: listPropertys });
+    console.log(allProperties);
+    console.log(JSON.parse(JSON.stringify(allProperties)));
+    this.properties = allProperties;
+  },
 };
 </script>

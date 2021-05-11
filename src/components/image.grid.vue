@@ -8,7 +8,7 @@
     <div class="white">
       <v-row no-gutters>
         <v-col :class="suitclass(i)" v-for="(p, i) in pictures" :key="i" :cols="suitcols(i)">
-            <v-img :src="p.thumb_500"></v-img>
+            <v-img :src="p.large ? p.large : p.original"></v-img>
         </v-col>
       </v-row>
       <v-btn icon dark x-small color="primary" outlined @click="show = false"
@@ -52,6 +52,6 @@ export default {
   },
   data: () => ({
     index: null
-  }),
+  })
 }
 </script>

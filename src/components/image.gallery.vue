@@ -153,13 +153,14 @@ export default {
   }),
   created() {
     for (let i = 0; i < 5 && i < this.pictures.length; i++) {
-      console.log(this.pictures[i].large);
       this.gallery.push(
-        i == 0 ? this.pictures[i].large : this.pictures[i].original
+        this.pictures[i].large ? this.pictures[i].large : this.pictures[i].original
       );
     }
     for (let i = 0; i < this.pictures.length; i++) {
-      this.slider.push(this.pictures[i].large);
+      this.slider.push(
+        this.pictures[i].large ? this.pictures[i].large : this.pictures[i].original
+      );
     }
   },
 };

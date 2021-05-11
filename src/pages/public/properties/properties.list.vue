@@ -90,6 +90,7 @@
                 threshold: 0.5,
               }"
             >
+            <v-fab-transition mode="out-in">
               <v-row no-gutters>
                 <v-col cols="12" lg="4" md="3" sm="4">
                   <router-link :to="{ path: `/properties/${property._id}` }">
@@ -174,6 +175,7 @@
                   </v-row>
                 </v-col>
               </v-row>
+            </v-fab-transition>
             </v-lazy>
             <v-divider class="mt-4"></v-divider>
           </v-col>

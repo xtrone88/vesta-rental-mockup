@@ -46,7 +46,6 @@
     background-color: white;
   }
 }
-
 </style>
 
 <template>
@@ -70,16 +69,13 @@
       </v-col>
     </v-row>
   </v-container>
-
 </template>
 
 <script>
-import { listPropertys } from "../../../graphql/queries";
-import { API } from "aws-amplify";
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 
 export default {
-  name: "Login2",
+  name: "Login",
 
   data: () => ({
     properties: null,
@@ -92,12 +88,7 @@ export default {
     this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
       this.authState = authState;
       this.user = authData;
-      console.log(JSON.parse(JSON.stringify(this.user)));
     });
-    const allProperties = await API.graphql({ query: listPropertys });
-    console.log(allProperties);
-    console.log(JSON.parse(JSON.stringify(allProperties)));
-    this.properties = allProperties;
   },
 };
 </script>

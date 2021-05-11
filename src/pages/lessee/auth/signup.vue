@@ -53,43 +53,36 @@ export default {
     unsubscribeAuth: undefined,
     formFields: [
       {
-        type: 'name',
-        label: 'Username',
-        placeholder: 'Username',
+        type: "name",
+        label: "Username",
+        placeholder: "Username",
         required: true,
       },
       {
-        type: 'password',
-        label: 'Password',
-        placeholder: 'Password.',
+        type: "password",
+        label: "Password",
+        placeholder: "Password.",
         required: true,
       },
       {
-        type: 'email',
-        label: 'Email',
-        placeholder: 'Email.',
+        type: "email",
+        label: "Email",
+        placeholder: "Email.",
         required: false,
       },
       {
-        type: 'birthdate',
-        label: 'Date of Birth',
-        placeholder: 'Enter your date of birth.',
-        required: true,
+        type: "phone_number",
+        label: "Phone Number",
+        placeholder: "Enter your phone number.",
+        required: false,
       },
-      {
-        type: 'phone_number',
-        label: 'Phone Number',
-        placeholder: 'Enter your phone number.',
-        required: true,
-      },
-    ]
+    ],
   }),
 
   async created() {
     this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
       this.authState = authState;
       this.user = authData;
-      console.log(JSON.parse(JSON.stringify(this.user)));
     });
   },
 };

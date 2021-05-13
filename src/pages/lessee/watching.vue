@@ -21,7 +21,7 @@
           }"
         >
           <v-row no-gutters>
-            <v-col cols="12" lg="3" sm="3">
+            <v-col cols="12" lg="3" md="3">
               <router-link :to="{ path: '/properties/' + property._id }">
                 <v-img
                   :src="property.pictures[0].original"
@@ -31,11 +31,11 @@
                 </v-img>
               </router-link>
             </v-col>
-            <v-col class="pl-sm-4" cols="7" sm="3">
+            <v-col class="pl-sm-4" cols="7" sm="6" md="3">
               <div class="d-flex fill-height flex-column">
                 <div>
                   <div
-                    class="font-weight-bold text-md-h5 text-sm-h6 text-subtitle-1"
+                    class="font-weight-bold text-subtitle-1"
                   >
                     <router-link :to="{ path: '/properties/' + property._id }">
                       {{ property.title }}
@@ -43,7 +43,7 @@
                     <v-icon v-on:click="toggleWatch(i)">mdi-eye-outline</v-icon>
                   </div>
                   <div
-                    class="font-weight-regular text-lg-h6 text-md-body-1 text-sm-body-2 text-caption"
+                    class="font-weight-regular text-caption"
                   >
                     {{ property.address.street }}<br />
                     {{ property.address.city + "," + property.address.country }}
@@ -51,7 +51,7 @@
                 </div>
                 <div class="mt-auto">
                   <div
-                    class="font-weight-regular text-lg-h6 text-md-body-1 text-sm-body-2 text-caption mb-2"
+                    class="font-weight-regular text-caption mb-2"
                   >
                     {{ property.capacity }}
                   </div>
@@ -70,11 +70,11 @@
                 </div>
               </div>
             </v-col>
-            <v-col class="d-none d-sm-flex" cols="3" sm="3">
+            <v-col class="d-none d-sm-flex justify-center" cols="3" sm="3">
               <div class="d-flex fill-height flex-column align-baseline">
                 <div class="d-inline-block text-center">
                   <div
-                    class="font-weight-bold text-lg-h6 text-md-subtitle-1 text-sm-body-2 text-caption"
+                    class="font-weight-bold text-sm-body-2 text-caption"
                   >
                     Current Bid
                   </div>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="mt-auto mb-4 d-inline-block text-center">
                   <div
-                    class="font-weight-bold text-lg-h6 text-md-subtitle-1 text-sm-body-2 text-caption"
+                    class="font-weight-bold text-sm-body-2 text-caption"
                   >
                     Total Bids
                   </div>
@@ -107,8 +107,8 @@
               </div>
             </v-col>
             <v-col cols="5" sm="2">
-              <div class="d-flex fill-height flex-column align-baseline">
-                <div class="text-md-subtitle-1 text-sm-body-2 text-caption">
+              <div class="d-flex fill-height flex-column justify-space-between">
+                <div class="text-sm-body-2 text-caption">
                   <div>TAKING POST BIDS</div>
                   <div class="font-weight-bold">
                     {{ property.postbids }} days
@@ -116,7 +116,7 @@
                   <div>Ends {{ property.postBidsEndingDate }}</div>
                 </div>
                 <div
-                  class="mt-2 text-md-subtitle-1 text-sm-body-2 text-caption"
+                  class="mt-2 text-sm-body-2 text-caption"
                 >
                   <div>Lease Start</div>
                   <div class="font-weight-bold">

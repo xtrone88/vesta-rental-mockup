@@ -90,7 +90,11 @@
           ></v-text-field>
         </div>
         <div class="d-flex flex-column">
-          <v-text-field label="City" v-model="info.city" required></v-text-field>
+          <v-text-field
+            label="City"
+            v-model="info.city"
+            required
+          ></v-text-field>
         </div>
         <div class="d-flex flex-column">
           <v-text-field
@@ -111,11 +115,11 @@
 <script>
 import VuePhoneNumberInput from "vue-phone-number-input";
 import "vue-phone-number-input/dist/vue-phone-number-input.css";
-import store from '../../store/store';
+import store from "../../store/store";
 
 export default {
   name: "LessorBiddingPage",
-  title: "Bidding",
+  title: "Edit Personal Info",
 
   data: () => ({
     date: null,
@@ -132,9 +136,9 @@ export default {
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
-    gender: 'Male',
-    genderIcon: 'mdi-human-male',
-    info: store.getters.user_info
+    gender: "Male",
+    genderIcon: "mdi-human-male",
+    info: store.getters.user_info,
   }),
   components: {
     VuePhoneNumberInput,
@@ -157,12 +161,10 @@ export default {
         this.genderIcon = "mdi-human-male";
       }
     },
-    inputPhone: function() {
-      
-    },
+    inputPhone: function () {},
     saveAllUserInfo() {
-      store.commit('setUserInfo', this.info)
-    }
+      store.commit("setUserInfo", this.info);
+    },
   },
 };
 </script>

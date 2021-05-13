@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import Amplify from 'aws-amplify';
 
 Vue.use(Vuex);
 
@@ -27,6 +28,8 @@ export default new Vuex.Store({
     },
     setUserLogInfo(state, log){
       state.user_log = log
+      if(!log)
+        Amplify.Auth.signOut();
     },
   },
   actions: {

@@ -225,7 +225,6 @@
 import Footer from "./components/layout/footer/footer";
 import store from "./store/store";
 import "./assets/css/main.css";
-import Amplify from 'aws-amplify';
 
 export default {
   name: "App",
@@ -254,7 +253,6 @@ export default {
   methods: {
     logout() {
       store.commit('setUserLogInfo', false);
-      Amplify.Auth.signOut();
     }
   }
 };

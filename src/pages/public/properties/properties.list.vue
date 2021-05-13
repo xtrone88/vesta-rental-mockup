@@ -1,7 +1,7 @@
 ﻿<template>
   <v-container class="page-wrapper" ref="el" fluid>
     <v-row no-gutters>
-      <v-col md="7" lg="6">
+      <v-col md="7" lg="6" xl="5">
         <v-row no-gutters>
           <v-col class="d-flex align-center justify-space-between">
             <div class="d-flex align-baseline">
@@ -84,25 +84,20 @@
         <v-divider class="mb-4"></v-divider>
         <v-row v-for="property in properties" :key="property._id">
           <v-col cols="12">
-            <v-lazy
-              v-model="property.isActive"
-              :options="{
-                threshold: 0.5,
-              }"
-            >
+            
             <v-fab-transition mode="out-in">
               <v-row no-gutters>
-                <v-col cols="12" lg="4" md="4" sm="4">
+                <v-col cols="12" xl="3" lg="4" md="4" sm="4">
                   <router-link :to="{ path: `/properties/${property._id}` }">
                     <v-img
-                      :src="property.pictures[0].original"
+                      :src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
                       :aspect-ratio="3 / 2"
                       class="rounded-xl fill-height"
                     >
                     </v-img>
                   </router-link>
                 </v-col>
-                <v-col cols="12" lg="8" md="8" sm="8" class="pl-sm-4">
+                <v-col cols="12" xl="9" lg="8" md="8" sm="8" class="pl-sm-4">
                   <v-row no-gutters>
                     <v-col cols="8">
                       <div class="font-weight-bold text-subtitle-1">
@@ -176,12 +171,12 @@
                 </v-col>
               </v-row>
             </v-fab-transition>
-            </v-lazy>
+            
             <v-divider class="mt-4"></v-divider>
           </v-col>
         </v-row>
       </v-col>
-      <v-col md="5" lg="6" class="pa-0" v-if="!$vuetify.breakpoint.mobile">
+      <v-col md="5" lg="6" xl="7" class="pa-0" v-if="!$vuetify.breakpoint.mobile">
         <GmapMap
           :center="center || defaultCenter"
           :zoom="12"

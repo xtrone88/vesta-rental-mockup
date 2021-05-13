@@ -38,12 +38,6 @@
                         ></v-progress-circular>
                       </v-row>
                     </template>
-                    <div
-                      v-if="pictures[0].caption"
-                      class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
-                    >
-                      {{ pictures[0].caption }}
-                    </div>
                   </v-img>
                   <v-fade-transition>
                     <v-overlay
@@ -54,6 +48,14 @@
                         !$vuetify.breakpoint.smAndDown ? 'rounded-l-lg' : '',
                       ]"
                     >
+
+                      <div
+                        v-if="pictures[0].caption"
+                        class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
+                      >
+                        {{ pictures[0].caption }}
+                      </div>
+
                     </v-overlay>
                   </v-fade-transition>
                 </v-card>
@@ -95,12 +97,6 @@
                         }}</span>
                       </v-row>
                     </template>
-                    <div
-                      v-if="pictures[idx].caption"
-                      class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
-                    >
-                      {{ pictures[idx].caption }}
-                    </div>
                   </v-img>
 
                   <v-fade-transition>
@@ -116,6 +112,14 @@
                           : ''
                       }`"
                     >
+
+                    <div
+                      v-if="pictures[idx].caption"
+                      class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
+                    >
+                      {{ pictures[idx].caption }}
+                    </div>
+
                     </v-overlay>
                   </v-fade-transition>
                 </v-card>
@@ -126,6 +130,7 @@
       </v-row>
     </v-container>
     <gallery
+      :options="options"
       :images="slider"
       :index="index"
       @close="index = null"
@@ -169,24 +174,52 @@ export default {
   data: () => ({
     index: null,
     grid: false,
+    images: [],
     gallery: [],
     slider: [],
+    options: {}
   }),
   created() {
-    for (let i = 0; i < 5 && i < this.pictures.length; i++) {
+    var ordered = [], picmap = {};
+    this.pictures.map((picture) => {
+      picmap[picture._id] = picture;
+      ordered.push(picture._id);
+    });
+
+    ordered = ordered.sort();
+    ordered.map((ord) => {
+      this.images.push(picmap[ord]);
+      this.slider.push(picmap[ord].original);
+    });
+
+    for (let i = 0; i < 5 && i < this.images.length; i++) {
       if (i == 0) {
-        this.gallery.push(
-          this.pictures[i].large
-            ? this.pictures[i].large
-            : this.pictures[i].original
-        );
+        // push full size image if first image
+        this.gallery.push(this.images[i].original);
       } else {
-        this.gallery.push(this.pictures[i].large);
+        // push large image if exists for others.
+        this.gallery.push(
+          this.images[i].large
+            ? this.images[i].large
+            : this.images[i].original
+        );
       }
     }
 
-    for (let i = 0; i < this.pictures.length; i++) {
-      this.slider.push(this.pictures[i].original);
+    this.options.onslide = (index, slide) => {
+        let image = this.images[index];
+        if (!image.caption) {
+          return;
+        }
+        let elCaption = slide.querySelector(".gallery-image-caption");
+        if (!elCaption) {
+          elCaption = document.createElement("div");
+          elCaption.className = "gallery-image-caption";
+          elCaption.innerHTML = image.caption;
+          slide.appendChild(elCaption);
+          let elImg = slide.querySelector(".slide-content");
+          elImg.style.top = parseInt(elCaption.getBoundingClientRect().height) * 2 + "px";
+        }
     }
   },
 };

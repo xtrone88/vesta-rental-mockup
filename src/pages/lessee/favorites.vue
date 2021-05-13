@@ -24,7 +24,7 @@
             <v-col cols="12" lg="3" md="3">
               <router-link :to="{ path: '/properties/' + property._id }">
                 <v-img
-                  :src="property.pictures[0].original"
+                  :src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
                   class="fill-height rounded-xl"
                   :aspect-ratio="3 / 2"
                 >

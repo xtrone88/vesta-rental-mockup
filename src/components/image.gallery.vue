@@ -175,13 +175,15 @@ export default {
   created() {
     for (let i = 0; i < 5 && i < this.pictures.length; i++) {
       if (i == 0) {
+        // push full size image if first image
+        this.gallery.push(this.pictures[i].original);
+      } else {
+        // push large image if exists for others.
         this.gallery.push(
           this.pictures[i].large
             ? this.pictures[i].large
             : this.pictures[i].original
         );
-      } else {
-        this.gallery.push(this.pictures[i].large);
       }
     }
 

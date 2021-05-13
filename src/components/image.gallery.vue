@@ -164,6 +164,7 @@ export default {
         this.pictures[i].original
       );
     }
+    
     for (let i = 0; i < this.pictures.length; i++) {
       this.slider.push(
         this.pictures[i].large ? this.pictures[i].large : this.pictures[i].original

@@ -42,80 +42,121 @@
               </v-card-title>
               <v-card-text>
                 <v-card outlined class="rounded text-center pa-2 black--text">
-                  {{this.stringHelpers.pluralize(property.accommodates, "guest", "guests")}} ·
-                  {{this.stringHelpers.pluralize(property.bedrooms, "bedroom", "bedrooms")}} ·
-                  {{this.stringHelpers.pluralize(property.beds, "bed", "beds")}} ·
-                  {{this.stringHelpers.pluralize(property.bathrooms, "bath", "baths")}}
+                  {{
+                    this.stringHelpers.pluralize(
+                      property.accommodates,
+                      "guest",
+                      "guests"
+                    )
+                  }}
+                  ·
+                  {{
+                    this.stringHelpers.pluralize(
+                      property.bedrooms,
+                      "bedroom",
+                      "bedrooms"
+                    )
+                  }}
+                  ·
+                  {{
+                    this.stringHelpers.pluralize(property.beds, "bed", "beds")
+                  }}
+                  ·
+                  {{
+                    this.stringHelpers.pluralize(
+                      property.bathrooms,
+                      "bath",
+                      "baths"
+                    )
+                  }}
                 </v-card>
               </v-card-text>
               <v-divider class="mx-4" />
               <template v-if="property.publicDescription.neighborhood">
-              <v-card-title class="text-subtitle-2"> Neighborhood </v-card-title>
-              <v-card-text>
-                <TextClamp>
-                  {{property.publicDescription.neighborhood}}
-                </TextClamp>
-              </v-card-text>
+                <v-card-title class="text-subtitle-2">
+                  Neighborhood
+                </v-card-title>
+                <v-card-text>
+                  <TextClamp>
+                    {{ property.publicDescription.neighborhood }}
+                  </TextClamp>
+                </v-card-text>
               </template>
               <template v-if="property.publicDescription.space">
-              <v-card-title class="text-subtitle-2"> Space </v-card-title>
-              <v-card-text>
-                <TextClamp>
-                  {{property.publicDescription.space}}
-                </TextClamp>
-              </v-card-text>
+                <v-card-title class="text-subtitle-2"> Space </v-card-title>
+                <v-card-text>
+                  <TextClamp>
+                    {{ property.publicDescription.space }}
+                  </TextClamp>
+                </v-card-text>
               </template>
               <template v-if="property.publicDescription.transit">
-              <v-card-title class="text-subtitle-2"> Transit </v-card-title>
-              <v-card-text>
-                <TextClamp>
-                  {{property.publicDescription.transit}}
-                </TextClamp>
-              </v-card-text>
+                <v-card-title class="text-subtitle-2"> Transit </v-card-title>
+                <v-card-text>
+                  <TextClamp>
+                    {{ property.publicDescription.transit }}
+                  </TextClamp>
+                </v-card-text>
               </template>
               <template v-if="property.publicDescription.interactionWithGuests">
-              <v-card-title class="text-subtitle-2"> Interaction With Guests </v-card-title>
-              <v-card-text>
-                <TextClamp>
-                  {{property.publicDescription.interactionWithGuests}}
-                </TextClamp>
-              </v-card-text>
+                <v-card-title class="text-subtitle-2">
+                  Interaction With Guests
+                </v-card-title>
+                <v-card-text>
+                  <TextClamp>
+                    {{ property.publicDescription.interactionWithGuests }}
+                  </TextClamp>
+                </v-card-text>
               </template>
               <template v-if="property.publicDescription.houseRules">
-              <v-card-title class="text-subtitle-2"> House Rules </v-card-title>
-              <v-card-text>
-                <v-chip
-                  v-for="allow in houseRules"
-                  :key=allow
-                  class="ma-2"
-                  :color="allow.trim().indexOf('No') === 0 ? 'red' : 'success'"
-                  text-color="white"
-                  small
-                >
-                  {{allow.trim()}}
-                </v-chip>
-              </v-card-text>
+                <v-card-title class="text-subtitle-2">
+                  House Rules
+                </v-card-title>
+                <v-card-text>
+                  <v-chip
+                    v-for="allow in houseRules"
+                    :key="allow"
+                    class="ma-2"
+                    :color="
+                      allow.trim().indexOf('No') === 0 ? 'red' : 'success'
+                    "
+                    text-color="white"
+                    small
+                  >
+                    {{ allow.trim() }}
+                  </v-chip>
+                </v-card-text>
               </template>
               <v-divider class="mx-4" />
               <v-card-title class="text-subtitle-2"> Amentities </v-card-title>
               <v-card-text>
                 <v-row align="center" justify="space-between">
-                  <v-col class="text-center" cols="3" v-for="(amenity,i) in amenities" :key="i">
-                    <v-icon large color="black">{{amenity.icon}}</v-icon>
+                  <v-col
+                    class="text-center"
+                    cols="3"
+                    v-for="(amenity, i) in amenities"
+                    :key="i"
+                  >
+                    <v-icon large color="black">{{ amenity.icon }}</v-icon>
                     <br />
-                    {{amenity.amenity}}
+                    {{ amenity.amenity }}
                   </v-col>
                 </v-row>
               </v-card-text>
               <v-divider class="mx-4" />
               <v-card-text>
                 <VueClamp autoresize :max-lines="1" :expanded="summaryExpand">
-                  {{property.publicDescription.summary}}
-                  {{property.publicDescription.notes}}
+                  {{ property.publicDescription.summary }}
+                  {{ property.publicDescription.notes }}
                 </VueClamp>
               </v-card-text>
-              <v-btn text color="secondary" small @click="summaryExpand=!summaryExpand">
-                {{summaryExpand ? "Show Less" : "Show More"}}
+              <v-btn
+                text
+                color="secondary"
+                small
+                @click="summaryExpand = !summaryExpand"
+              >
+                {{ summaryExpand ? "Show Less" : "Show More" }}
               </v-btn>
             </v-card>
           </v-col>
@@ -125,17 +166,19 @@
                 AUCTION TIME LEFT
               </v-card-title>
               <div class="font-weight-bold mb-8">
-                {{this.stringHelpers.pluralize(day, "day", "days")}} {{this.stringHelpers.pluralize(hour, "hour", "hours")}} {{ min }} : {{ sec }}
+                {{ this.stringHelpers.pluralize(day, "day", "days") }}
+                {{ this.stringHelpers.pluralize(hour, "hour", "hours") }}
+                {{ min }} : {{ sec }}
               </div>
 
               <v-row class="my-0 mx-n6 lease-time">
                 <v-col>
                   <div class="cyan--text">LEASE START</div>
-                  <div>Mar 22, 2021</div>
+                  <div>July 22, 2021</div>
                 </v-col>
                 <v-col style="border-left: solid 1px lightgray">
                   <div class="cyan--text">LEASE END</div>
-                  <div>Aug 22, 2021</div>
+                  <div>July 29, 2021</div>
                 </v-col>
               </v-row>
 
@@ -143,14 +186,14 @@
                 OPENING BID
               </v-card-title>
               <v-card-text>
-                <div class="pa-2 mb-3 rounded bid-price">$10,000</div>
+                <div class="pa-2 mb-3 rounded bid-price">$530</div>
                 <div class="black--text mt-6">
                   NUMBER OF BIDS :
                   <span class="rounded-circle pa-1 bid-number">20</span>
                 </div>
                 <v-btn block class="mt-6 cyan white--text"> BID NOW </v-btn>
                 <v-btn block class="mt-6 cyan white--text">
-                  LEASE IT NOW FOR $11,000
+                  LEASE IT NOW FOR $654
                 </v-btn>
                 <v-btn
                   text
@@ -206,7 +249,7 @@
 </template>
 
 <script>
-import VueClamp from "vue-clamp"
+import VueClamp from "vue-clamp";
 import ImageGallery from "@/components/image.gallery";
 import TextClamp from "@/components/text.clamp";
 // import { sampleProperties } from "@/data/properties";
@@ -219,7 +262,7 @@ export default {
   components: {
     ImageGallery,
     VueClamp,
-    TextClamp
+    TextClamp,
   },
   data: () => ({
     property: null,
@@ -233,6 +276,7 @@ export default {
     summaryExpand: false,
   }),
   computed: {
+    // this is kind of complicated might be the best way, but later maybe worth looking into
     day() {
       return moment(this.endDate).diff(this.now, "days");
     },
@@ -252,7 +296,7 @@ export default {
       return this.property.amenities.reduce((a, amenity) => {
         let icon = amenityIcons[amenity];
         if (icon != undefined && icon != null) {
-          a.push({icon, amenity});
+          a.push({ icon, amenity });
         }
         return a;
       }, []);
@@ -264,7 +308,7 @@ export default {
       }
       houseRules = houseRules.split("•");
       return houseRules.length > 1 ? houseRules.slice(1) : houseRules;
-    }
+    },
   },
   methods: {
     setupCountdown() {
@@ -281,7 +325,7 @@ export default {
       if (this.property.stats.favorites >= 0) {
         this.favorite = true;
       }
-    }
+    },
   },
   created() {
     this.setupCountdown();

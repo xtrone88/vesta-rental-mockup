@@ -38,8 +38,11 @@
                         ></v-progress-circular>
                       </v-row>
                     </template>
-                    <div v-if="pictures[0].caption" class="d-flex full-width full-height align-center justify-center white--text text-center pa-4">
-                      {{pictures[0].caption}}
+                    <div
+                      v-if="pictures[0].caption"
+                      class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
+                    >
+                      {{ pictures[0].caption }}
                     </div>
                   </v-img>
                   <v-fade-transition>
@@ -76,11 +79,7 @@
                     idx == 1 ? 'rounded-tr-lg' : idx == 3 ? 'rounded-br-lg' : ''
                   }`"
                 >
-                  <v-img
-                    :src="image"
-                    aspect-ratio="1"
-                    class="grey lighten-2"
-                  >
+                  <v-img :src="image" aspect-ratio="1" class="grey lighten-2">
                     <template v-slot:placeholder>
                       <v-row
                         class="fill-height ma-0"
@@ -91,11 +90,16 @@
                           indeterminate
                           color="grey lighten-5"
                         ></v-progress-circular>
-                        <span v-if="pictures[idx].caption">{{pictures[idx].caption}}</span>
+                        <span v-if="pictures[idx].caption">{{
+                          pictures[idx].caption
+                        }}</span>
                       </v-row>
                     </template>
-                    <div v-if="pictures[idx].caption" class="d-flex full-width full-height align-center justify-center white--text text-center pa-4">
-                      {{pictures[idx].caption}}
+                    <div
+                      v-if="pictures[idx].caption"
+                      class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
+                    >
+                      {{ pictures[idx].caption }}
                     </div>
                   </v-img>
 
@@ -121,8 +125,18 @@
         </v-col>
       </v-row>
     </v-container>
-    <gallery :images="slider" :index="index" @close="index = null" v-if="!$vuetify.breakpoint.smAndDown" />
-    <picture-grid :pictures="pictures" v-model="grid" @close="grid = false" v-if="$vuetify.breakpoint.smAndDown" />
+    <gallery
+      :images="slider"
+      :index="index"
+      @close="index = null"
+      v-if="!$vuetify.breakpoint.smAndDown"
+    />
+    <picture-grid
+      :pictures="pictures"
+      v-model="grid"
+      @close="grid = false"
+      v-if="$vuetify.breakpoint.smAndDown"
+    />
   </v-card>
 </template>
 
@@ -134,8 +148,8 @@ export default {
   name: "ImageGallery",
   props: ["pictures"],
   components: {
-    'gallery': VueGallery,
-    'picture-grid': PictureGrid,
+    gallery: VueGallery,
+    "picture-grid": PictureGrid,
   },
   computed: {
     showAll: {
@@ -149,8 +163,8 @@ export default {
         } else {
           this.index = index;
         }
-      }
-    }
+      },
+    },
   },
   data: () => ({
     index: null,
@@ -160,15 +174,19 @@ export default {
   }),
   created() {
     for (let i = 0; i < 5 && i < this.pictures.length; i++) {
-      this.gallery.push(
-        this.pictures[i].original
-      );
+      if (i == 0) {
+        this.gallery.push(
+          this.pictures[i].large
+            ? this.pictures[i].large
+            : this.pictures[i].original
+        );
+      } else {
+        this.gallery.push(this.pictures[i].large);
+      }
     }
-    
+
     for (let i = 0; i < this.pictures.length; i++) {
-      this.slider.push(
-        this.pictures[i].large ? this.pictures[i].large : this.pictures[i].original
-      );
+      this.slider.push(this.pictures[i].original);
     }
   },
 };

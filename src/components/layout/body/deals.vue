@@ -18,7 +18,6 @@
         <v-card
           class="rounded-xl fill-height mr-6 my-2"
           width="250px"
-          height="384px"
           min-width="250px"
           max-width="250px"
           v-for="(property, i) in properties"
@@ -42,7 +41,9 @@
             <v-col cols="8" class="pl-4 pb-2 pt-2">
               <div class="font-weight-bold card-title">Apartment for Rent</div>
               <div class="text--primary card-subtitle-g">
-                {{ property.address.full }}
+                <VueClamp autoresize :max-lines="2">
+                  {{ property.address.full }}
+                </VueClamp>
               </div>
             </v-col>
             <v-col cols="4" class="pr-4 pb-2 d-flex align-center justify-end">
@@ -64,6 +65,7 @@
 </template>
 
 <script>
+import VueClamp from "vue-clamp"
 // import { sampleProperties } from "@/data/properties";
 import guestyProperties from "@/data/guesty.json";
 
@@ -72,7 +74,9 @@ export default {
 
   props: ["name", "background", "tColor", "bColor"],
 
-  components: {},
+  components: {
+    VueClamp
+  },
 
   data: () => ({
     properties: guestyProperties.results,

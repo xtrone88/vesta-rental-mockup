@@ -71,6 +71,12 @@ export default {
         required: false,
       },
       {
+        type: "date",
+        label: "Date of Birth",
+        placeholder: "Date of Birth",
+        required: false,
+      },
+      {
         type: "phone_number",
         label: "Phone Number",
         placeholder: "Enter your phone number.",

@@ -16,22 +16,18 @@
             v-for="(notif, i) in notifications"
             elevation="2"
           >
-            <v-col align-self="center">
-              <v-list-item three-line>
-                <v-list-item-avatar>
+            <v-col class="d-flex-column">
+              <div class="d-flex align-center">
+                <div class="pr-12 pl-12">
                   <v-icon>mdi-cellphone-arrow-down</v-icon>
-                </v-list-item-avatar>
-                <v-list-item-content>
-                  <v-list-item-title>{{ notif.title }}</v-list-item-title>
-                  <v-list-item-subtitle>
-                    {{notif.content}}
-                  </v-list-item-subtitle>
-                  <v-list-item-subtitle>
-                    {{ notif.date }}
-                  </v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider v-if="i != notifications.length - 1"></v-divider>
+                </div>
+                <div class="d-flex-column">
+                  <span>{{notif.title}}</span><br>
+                  <span>{{notif.content}}</span><br>
+                  <span>{{notif.date}}</span>
+                </div>
+              </div>
+              <v-divider class="pt-0 pb-0" v-if="i != notifications.length - 1"></v-divider>
             </v-col>
           </v-row>
         </v-card>

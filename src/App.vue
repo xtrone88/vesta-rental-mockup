@@ -26,20 +26,20 @@
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" text>
-            <v-icon v-show="!loggedin">mdi-account-circle</v-icon>
-            <v-avatar v-show="loggedin" width="30px" height="30px">
+            <v-icon v-show="loggedin!='signedin'">mdi-account-circle</v-icon>
+            <v-avatar v-show="loggedin==='signedin'" width="30px" height="30px">
               <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
             </v-avatar>
           </v-btn>
         </template>
         <v-list>
-          <v-list-item v-show="!loggedin" :to="{ path: '/account/signup' }">
+          <v-list-item v-show="loggedin!='signedin'" :to="{ path: '/account/signup' }">
             <v-list-item-title>Sign up</v-list-item-title>
           </v-list-item>
-          <v-list-item v-show="!loggedin" :to="{ path: '/account/login' }">
+          <v-list-item v-show="loggedin!='signedin'" :to="{ path: '/account/login' }">
             <v-list-item-title>Log in</v-list-item-title>
           </v-list-item>
-          <v-list-item v-show="loggedin" v-on:click="logout">
+          <v-list-item v-show="loggedin==='signedin'" v-on:click="logout">
             <v-list-item-title>Log out</v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>

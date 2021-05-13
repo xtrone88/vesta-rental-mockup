@@ -56,7 +56,6 @@
           <div class="title">
             <h1 class="login-title">Log In</h1>
           </div>
-          
           <amplify-authenticator>
             <div v-if="authState === 'signedin' && user">
               <div class="pa-12">
@@ -85,22 +84,21 @@ export default {
     user: undefined,
     authState: undefined,
     unsubscribeAuth: undefined,
-    logVal: store.getters.loginStatus,
+    email: '',
+    password: '',
   }),
+  methods: {
+    login() {
+
+    }
+  },
 
   async created() {
     this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
       this.authState = authState;
       this.user = authData;
 
-      if(this.authState === 'signedin' && this.user)
-      {
-        store.commit('setUserLogInfo', true);
-      }
-      else if(this.authState === 'signedout')
-      {
-        store.commit('setUserLogInfo', false);
-      }
+      store.commit('setUserLogInfo', this.authState);
     });
   },
 };

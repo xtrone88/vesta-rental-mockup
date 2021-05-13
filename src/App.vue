@@ -280,17 +280,4 @@ export default {
     padding-bottom: 40px !important;
   }
 }
-
-i.v-icon.v-icon {
-  color: black;
-}
-.gm-style a,
-.gmnoprint,
-.gm-style-cc {
-  display: none !important;
-}
-.pac-container:after {
-  background-image: none !important;
-  height: 0px;
-}
 </style>

@@ -38,6 +38,9 @@
                         ></v-progress-circular>
                       </v-row>
                     </template>
+                    <div v-if="pictures[0].caption" class="d-flex full-width full-height align-center justify-center white--text text-center pa-4">
+                      {{pictures[0].caption}}
+                    </div>
                   </v-img>
                   <v-fade-transition>
                     <v-overlay
@@ -88,8 +91,12 @@
                           indeterminate
                           color="grey lighten-5"
                         ></v-progress-circular>
+                        <span v-if="pictures[idx].caption">{{pictures[idx].caption}}</span>
                       </v-row>
                     </template>
+                    <div v-if="pictures[idx].caption" class="d-flex full-width full-height align-center justify-center white--text text-center pa-4">
+                      {{pictures[idx].caption}}
+                    </div>
                   </v-img>
 
                   <v-fade-transition>
@@ -154,7 +161,7 @@ export default {
   created() {
     for (let i = 0; i < 5 && i < this.pictures.length; i++) {
       this.gallery.push(
-        this.pictures[i].large ? this.pictures[i].large : this.pictures[i].original
+        this.pictures[i].original
       );
     }
     for (let i = 0; i < this.pictures.length; i++) {

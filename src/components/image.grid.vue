@@ -8,11 +8,12 @@
     <div class="white">
       <v-row no-gutters>
         <v-col :class="suitclass(i)" v-for="(p, i) in pictures" :key="i" :cols="suitcols(i)">
-            <v-img :src="p.large ? p.large : p.original"></v-img>
+          <v-img :src="p.large ? p.large : p.original">
+          </v-img>
         </v-col>
       </v-row>
-      <v-btn icon dark x-small color="primary" outlined @click="show = false"
-        style="position:absolute;left:5px;top:5px;">
+      <v-btn icon dark x-small color="white" outlined @click="show = false"
+        style="position:fixed;left:5px;top:5px;">
         <v-icon>mdi-close</v-icon>
       </v-btn>
     </div>

@@ -23,6 +23,7 @@
     "v-stripe-elements": "^1.2.0",
     "vue": "^2.6.12",
     "vue-chartjs": "^3.5.1",
+    "vue-clamp": "^0.3.2",
     "vue-gallery": "^2.0.1",
     "vue-phone-number-input": "^1.1.10",
     "vue-photo-grid": "^1.0.2",

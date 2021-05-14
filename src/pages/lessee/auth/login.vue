@@ -1,11 +1,9 @@
 <style lang="scss" scoped>
-.title {
-  height: 10px;
-}
+
 .login-title {
   text-align: center;
   font-size: 50px;
-  margin-top: 150px;
+  margin-top: 50px;
 }
 .login-panel {
   margin-top: 79px;
@@ -53,16 +51,19 @@
     <v-row no-gutters>
       <v-col md="6">
         <div>
-          <div class="title">
+          <div class="pt-12 pb-12">
             <h1 class="login-title">Log In</h1>
           </div>
-          <amplify-authenticator>
-            <div v-if="authState === 'signedin' && user">
-              <div class="pa-12">
-                <center><h2>{{user.username}} is already logged in.</h2></center>
+          <div class="text-center">
+            <amplify-sign-in>
+              <div v-if="authState === 'signedin' && user">
+                <div class="pa-12">
+                  <center><h2>{{user.username}} is successfuly logged in.</h2></center>
+                </div>
               </div>
-            </div>
-          </amplify-authenticator>
+            </amplify-sign-in>
+          </div>
+          
         </div>
       </v-col>
       <v-col md="6" class="hidden-sm-and-down">
@@ -74,7 +75,7 @@
 
 <script>
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import store from '../../../store/store';
+import store from '@/store/store';
 
 export default {
   name: "Login",

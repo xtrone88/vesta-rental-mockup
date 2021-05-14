@@ -20,17 +20,15 @@
           <div class="title pa-16">
             <h1 class="login-title">Registration</h1>
           </div>
-          <amplify-authenticator>
-            <amplify-sign-up
-              slot="sign-up"
-              username-alias="email"
-              :form-fields.prop="formFields"
-            >
-              <div v-if="authState === 'signedup' && user">
-                <div>New Account successfuly created.</div>
-              </div>
-            </amplify-sign-up>
-          </amplify-authenticator>
+          <amplify-sign-up
+            slot="sign-up"
+            username-alias="email"
+            :form-fields.prop="formFields"
+          >
+            <div v-if="authState === 'signedup' && user">
+              <div>New Account successfuly created.</div>
+            </div>
+          </amplify-sign-up>
         </div>
       </v-col>
       <v-col md="6" class="hidden-sm-and-down">

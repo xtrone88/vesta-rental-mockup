@@ -11,23 +11,23 @@
           :outlined="!$vuetify.breakpoint.xs"
         >
           <v-row
-            class="mb-4"
+            class="pa-0 ma-0"
             v-bind:key="notif.id"
             v-for="(notif, i) in notifications"
             elevation="2"
           >
-            <v-col class="d-flex-column">
+            <v-col class="d-flex-column pt-4">
               <div class="d-flex align-center">
-                <div class="pr-12 pl-12">
+                <div class="pr-8 pl-8">
                   <v-icon>mdi-cellphone-arrow-down</v-icon>
                 </div>
                 <div class="d-flex-column">
-                  <span>{{notif.title}}</span><br>
-                  <span>{{notif.content}}</span><br>
-                  <span>{{notif.date}}</span>
+                  <span class="text-body-1 font-weight-bold">{{notif.title}}</span><br>
+                  <span class="text-body-2">{{notif.content}}</span><br>
+                  <span class="text-body-2">{{notif.date}}</span>
                 </div>
               </div>
-              <v-divider class="pt-0 pb-0" v-if="i != notifications.length - 1"></v-divider>
+              <v-divider v-if="i != notifications.length - 1"></v-divider>
             </v-col>
           </v-row>
         </v-card>

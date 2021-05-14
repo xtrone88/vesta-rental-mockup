@@ -69,8 +69,8 @@
 </template>
 
 <script>
-import { sampleNotifications } from "../../data/notifications";
-import store from '../../store/store';
+import { sampleNotifications } from "@/data/notifications";
+import store from '@/store/store';
 
 export default {
   name: "PaymentPage",

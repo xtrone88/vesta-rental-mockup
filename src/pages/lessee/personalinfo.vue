@@ -46,15 +46,6 @@
           <VuePhoneNumberInput v-model="info.phone" clearable />
         </div>
         <div class="d-flex flex-column mb-4">
-          <v-text-field
-            v-on:click="changeContent"
-            :value="gender"
-            :prepend-inner-icon="genderIcon"
-            readonly
-          >
-          </v-text-field>
-        </div>
-        <div class="d-flex flex-column mb-4">
           <v-menu
             ref="menu"
             v-model="menu"
@@ -84,8 +75,15 @@
         </div>
         <div class="d-flex flex-column">
           <v-text-field
-            label="Address"
-            v-model="info.address"
+            label="Address1"
+            v-model="info.address1"
+            required
+          ></v-text-field>
+        </div>
+        <div class="d-flex flex-column">
+          <v-text-field
+            label="Address2"
+            v-model="info.address2"
             required
           ></v-text-field>
         </div>
@@ -136,8 +134,6 @@ export default {
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
-    gender: "Male",
-    genderIcon: "mdi-human-male",
     info: store.getters.user_info,
   }),
   components: {

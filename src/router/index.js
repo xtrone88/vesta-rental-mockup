@@ -17,7 +17,7 @@ import BiddingPage from "../pages/lessee/bidding";
 import NotificationsPage from "../pages/lessee/notifications";
 import NotificationSettingsPage from "../pages/lessee/notifications.settings";
 import LogoutPage from "../pages/lessee/auth/logout";
-import LoginPage from "../pages/lessee/auth/login";
+import SignInPage from "../pages/lessee/auth/signin";
 
 import SignUpPage from "../pages/lessee/auth/signup";
 
@@ -148,7 +148,7 @@ const routes = [
       {
         path: "login",
         name: "Login",
-        component: LoginPage
+        component: SignInPage
       },
       {
         path: "login_old",

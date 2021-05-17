@@ -17,7 +17,8 @@ export default new Vuex.Store({
       {title:"MasterCard **** 1010", date:"01/2022"}
     ],
     user_info: {firstname:'', lastname:'', email:'', phone:'', birthday: '', address1:'',address2:'', city:'', state:'', zip:''},
-    user_log: false,
+    user_log: '',
+    user_id: ''
   },
   mutations: {
     setUserInfo(state, data){
@@ -26,9 +27,10 @@ export default new Vuex.Store({
     setPaymentsInfo(state, data) {
       state.payments = data
     },
-    setUserLogInfo(state, log){
-      state.user_log = log
-      if(!log)
+    setUserLogInfo(state, param){
+      state.user_id = param.id
+      state.user_log = param.state
+      if(param.state != "signedin")
         Amplify.Auth.signOut();
     },
   },
@@ -52,6 +54,9 @@ export default new Vuex.Store({
     },
     loginStatus(state) {
       return state.user_log
+    },
+    user_id(state) {
+      return state.user_id
     }
   }
 });

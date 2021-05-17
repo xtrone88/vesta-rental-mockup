@@ -3,7 +3,6 @@
 .login-title {
   text-align: center;
   font-size: 50px;
-  margin-top: 50px;
 }
 .login-panel {
   margin-top: 79px;
@@ -51,17 +50,17 @@
     <v-row no-gutters>
       <v-col md="6">
         <div>
-          <div class="pt-12 pb-12">
+          <div class="pt-12 pb-0 text-center">
             <h1 class="login-title">Log In</h1>
           </div>
-          <div class="text-center">
-            <amplify-sign-in>
+          <div class="text-center pt-0">
+            <amplify-authenticator>
               <div v-if="authState === 'signedin' && user">
                 <div class="pa-12">
-                  <center><h2>{{user.username}} is successfuly logged in.</h2></center>
+                  <center><h2>{{ user.id }}  is successfuly logged in.</h2></center>
                 </div>
               </div>
-            </amplify-sign-in>
+            </amplify-authenticator>
           </div>
         </div>
       </v-col>
@@ -81,20 +80,32 @@ export default {
 
   data: () => ({
     properties: null,
-    user: undefined,
-    authState: undefined,
-    unsubscribeAuth: undefined,
+    user: null,
+    authState: null,
+    unsubscribeAuth: null,
     email: '',
     password: '',
+    catchUser: null,
   }),
 
   async created() {
+    let $this = this;
     this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
-      this.authState = authState;
-      this.user = authData;
-
-      store.commit('setUserLogInfo', this.authState);
+      if (!authData) {
+        return;
+      }
+      $this.authState = authState;
+      let userAttrs = JSON.parse(authData.storage[authData.userDataKey]);
+      let id = '';
+      userAttrs.UserAttributes.map((item) => {
+        if (item.Name == "sub") {
+          id = item.Value;
+        }
+      });
+      store.commit('setUserLogInfo', {id, state:authState});
     });
+
+    console.log(store.getters.user_id);
   },
 };
 </script>

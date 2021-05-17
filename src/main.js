@@ -16,9 +16,11 @@ import "./api";
 import "@aws-amplify/ui-vue";
 import Amplify from "aws-amplify";
 import aws_exports from "./aws-exports";
+import awsconfig from "./aws-exports";
 // import { applyPolyfills, defineCustomElements } from "@aws-amplify/ui-components/loader";
 
 Amplify.configure(aws_exports);
+Amplify.configure(awsconfig);
 // applyPolyfills().then(() => {
 //   defineCustomElements(window);
 // });

@@ -111,6 +111,8 @@
 </template>
 
 <script>
+import { getUser } from "../../graphql/queries";
+import { API } from "aws-amplify";
 import VuePhoneNumberInput from "vue-phone-number-input";
 import "vue-phone-number-input/dist/vue-phone-number-input.css";
 import store from "../../store/store";
@@ -162,6 +164,11 @@ export default {
       store.commit("setUserInfo", this.info);
     },
   },
+  async created() {
+    console.log(store.getters.user_id);
+    const userData = await API.graphql({ query: getUser, variables:{id:store.getters.user_id} });
+    console.log(userData);
+  }
 };
 </script>
 

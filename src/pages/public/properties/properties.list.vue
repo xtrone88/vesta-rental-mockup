@@ -82,16 +82,18 @@
           </v-col>
         </v-row>
         <v-divider class="mb-4"></v-divider>
-        <v-row v-for="property in properties" :key="property._id">
+        <v-row v-for="(property, index) in properties" :key="property._id">
           <v-col cols="12">
             
-            <v-fab-transition mode="out-in">
+            <transition name="fade" mode="out-in" :appear="isImgLoaded(index)">
               <v-row no-gutters>
                 <v-col cols="12" xl="3" lg="4" md="4" sm="4">
                   <router-link :to="{ path: `/properties/${property._id}` }">
                     <v-img
                       :src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
+                      :lazy-src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
                       :aspect-ratio="3 / 2"
+                      :load="setImgLoaded(index)"
                       class="rounded-xl fill-height"
                     >
                     </v-img>
@@ -170,7 +172,7 @@
                   </v-row>
                 </v-col>
               </v-row>
-            </v-fab-transition>
+            </transition>
             
             <v-divider class="mt-4"></v-divider>
           </v-col>
@@ -283,14 +285,21 @@ export default {
     popularLocation: "",
     dialog: false,
     mapDialog: false,
+    imgLoaded: []
   }),
   components: {
-    BiddingDialog,
+    BiddingDialog
   },
   methods: {
     getAddressData: function (addressData/*, placeResultData, id*/) {
       this.popularLocation = addressData.name;
     },
+    isImgLoaded: function(index) {
+      return this.imgLoaded[index] ? true : false;
+    },
+    setImgLoaded: function(index) {
+      this.imgLoaded[index] = true;
+    }
   },
   computed: {
     dateRangeText() {
@@ -303,16 +312,21 @@ export default {
       return guestyProperties.results.map((property) => {
         let details = [];
         details.push(
-          this.stringHelpers.pluralize(property.accommodates, "guest", "guests")
+          this.stringHelpers.pluralize(
+            property.accommodates,
+            "guest", "guests"
+          )
         );
         details.push(
-          this.stringHelpers.pluralize(property.bedrooms, "bedroom", "bedrooms")
+          this.stringHelpers.pluralize(
+            property.bedrooms,
+            "bedroom", "bedrooms"
+          )
         );
         details.push(
           this.stringHelpers.pluralize(
             property.bathrooms,
-            "bathroom",
-            "bathrooms"
+            "bathroom", "bathrooms"
           )
         );
 

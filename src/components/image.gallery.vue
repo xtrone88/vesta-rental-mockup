@@ -50,10 +50,10 @@
                     >
 
                       <div
-                        v-if="pictures[0].caption"
+                        v-if="images[0].caption"
                         class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
                       >
-                        {{ pictures[0].caption }}
+                        {{ images[0].caption }}
                       </div>
 
                     </v-overlay>
@@ -92,9 +92,6 @@
                           indeterminate
                           color="grey lighten-5"
                         ></v-progress-circular>
-                        <span v-if="pictures[idx].caption">{{
-                          pictures[idx].caption
-                        }}</span>
                       </v-row>
                     </template>
                   </v-img>
@@ -114,10 +111,10 @@
                     >
 
                     <div
-                      v-if="pictures[idx].caption"
+                      v-if="images[idx + 1].caption"
                       class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
                     >
-                      {{ pictures[idx].caption }}
+                      {{ images[idx + 1].caption }}
                     </div>
 
                     </v-overlay>
@@ -137,7 +134,7 @@
       v-if="!$vuetify.breakpoint.smAndDown"
     />
     <picture-grid
-      :pictures="pictures"
+      :pictures="images"
       v-model="grid"
       @close="grid = false"
       v-if="$vuetify.breakpoint.smAndDown"

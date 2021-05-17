@@ -16,7 +16,7 @@ export default new Vuex.Store({
       {title:"Visa *** 1316", date:"06/2023"},
       {title:"MasterCard **** 1010", date:"01/2022"}
     ],
-    user_info: {firstname:"", lastname:"", email:"", phone:"", male: null, birthday: "", address:"", city:"", state:"", zip:""},
+    user_info: {firstname:'', lastname:'', email:'', phone:'', birthday: '', address1:'',address2:'', city:'', state:'', zip:''},
     user_log: false,
   },
   mutations: {

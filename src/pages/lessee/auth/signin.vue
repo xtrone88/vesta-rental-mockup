@@ -63,7 +63,6 @@
               </div>
             </amplify-sign-in>
           </div>
-          
         </div>
       </v-col>
       <v-col md="6" class="hidden-sm-and-down">
@@ -78,7 +77,7 @@ import { onAuthUIStateChange } from "@aws-amplify/ui-components";
 import store from '@/store/store';
 
 export default {
-  name: "Login",
+  name: "SignIn",
 
   data: () => ({
     properties: null,
@@ -88,11 +87,6 @@ export default {
     email: '',
     password: '',
   }),
-  methods: {
-    login() {
-
-    }
-  },
 
   async created() {
     this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {

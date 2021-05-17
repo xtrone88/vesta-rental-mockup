@@ -1,13 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomePage from "../pages/public/home";
+
 import FAQPage from "../pages/public/faq";
-import ContactPage from "../pages/public/contact";
-import PropertiesListPage from "../pages/public/properties/properties.list";
-import PropertyDetailPage from "../pages/public/properties/property.detail";
-import BidHistoryPage from "../pages/public/properties/bid.history";
-import TermsPage from "../pages/public/terms";
-import PrivacyPage from "../pages/public/privacy";
+
+//import HomePage from "../pages/public/home";
+//import ContactPage from "../pages/public/contact";
+//import PropertiesListPage from "../pages/public/properties/properties.list";
+//import PropertyDetailPage from "../pages/public/properties/property.detail";
+//import BidHistoryPage from "../pages/public/properties/bid.history";
+//import TermsPage from "../pages/public/terms";
+//import PrivacyPage from "../pages/public/privacy";
 
 // Lessee
 import WatchingPage from "../pages/lessee/watching";
@@ -60,28 +62,29 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: HomePage,
+    component: () => import(/* webpackChunkName: "home" */ "../pages/public/home.vue"),
     nested: true
   },
   {
     path: "/contact/:propertyId",
     name: "Contact",
-    component: ContactPage
+    component: () => import(/* webpackChunkName: "contact" */ "../pages/public/contact.vue"),
+    
   },
   {
     path: "/contact",
     name: "ContactAny",
-    component: ContactPage
+    component: () => import(/* webpackChunkName: "contact" */ "../pages/public/contact.vue"),
   },
   {
     path: "/terms",
     name: "Terms",
-    component: TermsPage
+    component: () => import(/* webpackChunkName: "terms" */ "../pages/public/terms.vue"),
   },
   {
     path: "/privacy",
     name: "Privacy",
-    component: PrivacyPage
+    component: () => import(/* webpackChunkName: "privacy" */ "../pages/public/privacy.vue"),
   },
   {
     // path: "/properties",
@@ -94,17 +97,17 @@ const routes = [
   {
     path: "/locations/:address",
     name: "Locations",
-    component: PropertiesListPage
+    component: () => import(/* webpackChunkName: "propertieslistpage" */ "../pages/public/properties/properties.list"),
   },
   {
     path: "/properties/:propertyId",
     name: "PropertyDetail",
-    component: PropertyDetailPage
+    component: () => import(/* webpackChunkName: "propertydetailpage" */ "../pages/public/properties/property.detail"),
   },
   {
     path: "/bidhistory/:propertyId",
     name: "BidHistory",
-    component: BidHistoryPage
+    component: () => import(/* webpackChunkName: "bidhistory" */ "../pages/public/properties/bid.history"),
   },
   {
     path: "/about",

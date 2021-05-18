@@ -84,97 +84,103 @@
         <v-divider class="mb-4"></v-divider>
         <v-row v-for="(property, index) in properties" :key="property._id">
           <v-col cols="12">
-            
-            <transition name="fade" mode="out-in" :appear="isImgLoaded(index)">
-              <v-row no-gutters>
-                <v-col cols="12" xl="3" lg="4" md="4" sm="4">
-                  <router-link :to="{ path: `/properties/${property._id}` }">
-                    <v-img
-                      :src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
-                      :lazy-src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
-                      :aspect-ratio="3 / 2"
-                      :load="setImgLoaded(index)"
-                      class="rounded-xl fill-height"
-                    >
-                    </v-img>
-                  </router-link>
-                </v-col>
-                <v-col cols="12" xl="9" lg="8" md="8" sm="8" class="pl-sm-4">
-                  <v-row no-gutters>
-                    <v-col cols="8">
-                      <div class="font-weight-bold text-subtitle-1">
-                        <router-link
-                          :to="{ path: `/properties/${property._id}` }"
-                        >
-                          <span class="mr-4">{{ property.title }}</span>
-                        </router-link>
-                        <v-icon class="mr-1">mdi-eye-outline</v-icon>
-                        <v-icon>mdi-heart-outline</v-icon>
-                      </div>
-                      <div class="text-caption">
-                        {{ property.address.street }}<br />
-                        {{
-                          property.address.city + "," + property.address.country
-                        }}
-                      </div>
-                    </v-col>
-                    <v-col cols="4">
-                      <div class="text-caption black--text">
-                        <div>TAKING POST BIDS</div>
-                        <div>
-                          <b>{{ property.postbids }} days</b>
-                        </div>
-                        <div>Ends {{ property.postBidsEndingDate }}</div>
-                      </div>
-                    </v-col>
-                  </v-row>
-                  <v-row no-gutters>
-                    <v-col cols="8" class="d-flex align-end">
-                      <div>
-                        <div class="text-caption mb-2">
-                          {{ property.capacity }}
-                        </div>
-                        <div>
-                          <v-btn
-                            x-small
-                            elevation="0"
-                            color="primary"
-                            class="mr-1 mb-1"
-                            @click="dialog = true"
-                          >
-                            <v-icon class="rotate-270" left>mdi-hammer</v-icon>
-                            CURRENT BID | $900
-                          </v-btn>
-                          <v-btn
-                            x-small
-                            elevation="0"
-                            color="secondary"
-                            class="px-1 mb-1"
+            <v-lazy
+              :options="{
+                threshold: 0.5
+              }"
+              min-height="160">
+              <v-fab-transition mode="out-in">
+              <div>
+                <v-row no-gutters>
+                  <v-col cols="12" xl="3" lg="4" md="4" sm="4">
+                    <router-link :to="{ path: `/properties/${property._id}` }">
+                      <v-img
+                        :src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
+                        :lazy-src="property.pictures[0].thumbnail ? property.pictures[0].thumbnail : property.pictures[0].original"
+                        :aspect-ratio="3 / 2"
+                        :load="setImgLoaded(index)"
+                        class="rounded-xl fill-height"
+                      >
+                      </v-img>
+                    </router-link>
+                  </v-col>
+                  <v-col cols="12" xl="9" lg="8" md="8" sm="8" class="pl-sm-4">
+                    <v-row no-gutters>
+                      <v-col cols="8">
+                        <div class="font-weight-bold text-subtitle-1">
+                          <router-link
                             :to="{ path: `/properties/${property._id}` }"
                           >
-                            LEASE IT FOR $1000
-                          </v-btn>
+                            <span class="mr-4">{{ property.title }}</span>
+                          </router-link>
+                          <v-icon class="mr-1">mdi-eye-outline</v-icon>
+                          <v-icon>mdi-heart-outline</v-icon>
                         </div>
-                      </div>
-                    </v-col>
-                    <v-col cols="4">
-                      <div class="text-caption black--text mt-2">
-                        <div>Lease Start</div>
+                        <div class="text-caption">
+                          {{ property.address.street }}<br />
+                          {{
+                            property.address.city + "," + property.address.country
+                          }}
+                        </div>
+                      </v-col>
+                      <v-col cols="4">
+                        <div class="text-caption black--text">
+                          <div>TAKING POST BIDS</div>
+                          <div>
+                            <b>{{ property.postbids }} days</b>
+                          </div>
+                          <div>Ends {{ property.postBidsEndingDate }}</div>
+                        </div>
+                      </v-col>
+                    </v-row>
+                    <v-row no-gutters>
+                      <v-col cols="8" class="d-flex align-end">
                         <div>
-                          <b>{{ property.leaseStartDate }}</b>
+                          <div class="text-caption mb-2">
+                            {{ property.capacity }}
+                          </div>
+                          <div>
+                            <v-btn
+                              x-small
+                              elevation="0"
+                              color="primary"
+                              class="mr-1 mb-1"
+                              @click="dialog = true"
+                            >
+                              <v-icon class="rotate-270" left>mdi-hammer</v-icon>
+                              CURRENT BID | $900
+                            </v-btn>
+                            <v-btn
+                              x-small
+                              elevation="0"
+                              color="secondary"
+                              class="px-1 mb-1"
+                              :to="{ path: `/properties/${property._id}` }"
+                            >
+                              LEASE IT FOR $1000
+                            </v-btn>
+                          </div>
                         </div>
-                        <div>Lease End</div>
-                        <div>
-                          <b>{{ property.leaseEndDate }}</b>
+                      </v-col>
+                      <v-col cols="4">
+                        <div class="text-caption black--text mt-2">
+                          <div>Lease Start</div>
+                          <div>
+                            <b>{{ property.leaseStartDate }}</b>
+                          </div>
+                          <div>Lease End</div>
+                          <div>
+                            <b>{{ property.leaseEndDate }}</b>
+                          </div>
                         </div>
-                      </div>
-                    </v-col>
-                  </v-row>
-                </v-col>
-              </v-row>
-            </transition>
-            
-            <v-divider class="mt-4"></v-divider>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                </v-row>
+                <v-divider class="mt-4"></v-divider>
+              </div>
+              </v-fab-transition>
+            </v-lazy>
           </v-col>
         </v-row>
       </v-col>
@@ -255,20 +261,10 @@
   </v-container>
 </template>
 <script>
+import Vue from "vue";
 // import { sampleProperties } from "@/data/properties";
 import guestyProperties from "@/data/guesty.json";
 import BiddingDialog from "@/components/dialog.bidding";
-
-Date.prototype.yyyymmdd = function () {
-  var mm = this.getMonth() + 1;
-  var dd = this.getDate();
-
-  return [
-    this.getFullYear(),
-    (mm > 9 ? "" : "0") + mm,
-    (dd > 9 ? "" : "0") + dd,
-  ].join("-");
-};
 
 var startDate = new Date();
 var endDate = new Date();
@@ -279,7 +275,7 @@ export default {
   title: "Properties",
   data: () => ({
     center: null,
-    dates: [startDate.yyyymmdd(), endDate.yyyymmdd()],
+    dates: [Vue.dateHelpers.yyyymmdd(startDate), Vue.dateHelpers.yyyymmdd(endDate)],
     datePickerMenu: false,
     address: "",
     popularLocation: "",
@@ -309,40 +305,18 @@ export default {
       return guestyProperties.results[0].address;
     },
     properties() {
-      return guestyProperties.results.map((property) => {
-        let details = [];
-        details.push(
-          this.stringHelpers.pluralize(
-            property.accommodates,
-            "guest", "guests"
-          )
-        );
-        details.push(
-          this.stringHelpers.pluralize(
-            property.bedrooms,
-            "bedroom", "bedrooms"
-          )
-        );
-        details.push(
-          this.stringHelpers.pluralize(
-            property.bathrooms,
-            "bathroom", "bathrooms"
-          )
-        );
-
-        property.postbids = 3;
-        property.postBidsEndingDate = "Mar 11, 2021";
-        property.leaseStartDate = "Mar 24, 2021";
-        property.leaseEndDate = "Mar 30, 2021";
-        return {
-          ...property,
-          capacity: details.join("·"),
-        };
-      });
+      return guestyProperties.results.map(Vue.propertyHelpers.decorating);
     },
     propertyTypes() {
       return ["All", "Apartment", "House", "More"];
     },
+    lazyOption() {
+      return {
+        root: document.querySelector('.v-main'),
+        rootMargin: '0px',
+        threshold: 1.0
+      }
+    }
   },
   mounted() {
     let param = this.$route.params.address;
@@ -351,7 +325,6 @@ export default {
     } else {
       this.address = this.popularLocation = param;
     }
-
     let gmap = document.querySelector("#googleMap");
     if (gmap == null) {
       return;

@@ -50,10 +50,10 @@
                     >
 
                       <div
-                        v-if="images[0].caption"
+                        v-if="pictures[0].caption"
                         class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
                       >
-                        {{ images[0].caption }}
+                        {{ pictures[0].caption }}
                       </div>
 
                     </v-overlay>
@@ -111,10 +111,10 @@
                     >
 
                     <div
-                      v-if="images[idx + 1].caption"
+                      v-if="pictures[idx + 1].caption"
                       class="d-flex full-width full-height align-center justify-center white--text text-center pa-4"
                     >
-                      {{ images[idx + 1].caption }}
+                      {{ pictures[idx + 1].caption }}
                     </div>
 
                     </v-overlay>
@@ -134,7 +134,7 @@
       v-if="!$vuetify.breakpoint.smAndDown"
     />
     <picture-grid
-      :pictures="images"
+      :pictures="pictures"
       v-model="grid"
       @close="grid = false"
       v-if="$vuetify.breakpoint.smAndDown"
@@ -171,40 +171,27 @@ export default {
   data: () => ({
     index: null,
     grid: false,
-    images: [],
     gallery: [],
     slider: [],
     options: {}
   }),
   created() {
-    var ordered = [], picmap = {};
-    this.pictures.map((picture) => {
-      picmap[picture._id] = picture;
-      ordered.push(picture._id);
-    });
-
-    ordered = ordered.sort();
-    ordered.map((ord) => {
-      this.images.push(picmap[ord]);
-      this.slider.push(picmap[ord].original);
-    });
-
-    for (let i = 0; i < 5 && i < this.images.length; i++) {
-      if (i == 0) {
-        // push full size image if first image
-        this.gallery.push(this.images[i].original);
-      } else {
-        // push large image if exists for others.
+    this.pictures.sort(this.propertyHelpers.sorting);
+    this.pictures.forEach((picture, index) => {
+      this.slider.push(picture.original);
+      if (index == 0) {
+        this.gallery.push(picture.original);
+      } else if (index < 5) {
         this.gallery.push(
-          this.images[i].large
-            ? this.images[i].large
-            : this.images[i].original
+          picture.large
+            ? picture.large
+            : picture.original
         );
       }
-    }
+    });
 
     this.options.onslide = (index, slide) => {
-        let image = this.images[index];
+        let image = this.pictures[index];
         if (!image.caption) {
           return;
         }

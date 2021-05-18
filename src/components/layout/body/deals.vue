@@ -22,7 +22,6 @@
           max-width="250px"
           v-for="(property, i) in properties"
           :key="i"
-          v-show="i < 4"
         >
           <v-row no-gutters>
             <v-col>
@@ -79,7 +78,7 @@ export default {
   },
 
   data: () => ({
-    properties: guestyProperties.results,
+    properties: []
   }),
 
   computed: {
@@ -94,7 +93,36 @@ export default {
     },
   },
 
-  methods: {},
+  created() {
+    this.properties = guestyProperties.results.slice(0, 4).map((property) => {
+      property.pictures.sort((a, b) => {
+        if (a.sort && b.sort) {
+          return a.sort > b.sort ? 1 : -1;
+        } else if (a.sort && !b.sort) {
+          return -1
+        } else if (!a.sort && b.sort) {
+          return 1;
+        }
+        if (a.id && b.id) {
+          if (a.id.length > b.id.length) {
+            return 1;
+          } else if (a.id.length < b.id.length) {
+            return -1;
+          } else {
+            return a.id > b.id ? 1 : -1;
+          }
+        } else if (a.id && !b.id) {
+          return -1;
+        } else if (!a.id && b.id) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+
+      return {...property};
+    });
+  }
 };
 </script>
 

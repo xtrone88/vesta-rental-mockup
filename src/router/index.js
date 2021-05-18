@@ -12,48 +12,48 @@ import FAQPage from "../pages/public/faq";
 //import PrivacyPage from "../pages/public/privacy";
 
 // Lessee
-import WatchingPage from "../pages/lessee/watching";
-import FavoritesPage from "../pages/lessee/favorites";
+// import WatchingPage from "../pages/lessee/watching";
+// import FavoritesPage from "../pages/lessee/favorites";
 
-import BiddingPage from "../pages/lessee/bidding";
-import NotificationsPage from "../pages/lessee/notifications";
-import NotificationSettingsPage from "../pages/lessee/notifications.settings";
-import LogoutPage from "../pages/lessee/auth/logout";
-import SignInPage from "../pages/lessee/auth/signin";
+// import BiddingPage from "../pages/lessee/bidding";
+// import NotificationsPage from "../pages/lessee/notifications";
+// import NotificationSettingsPage from "../pages/lessee/notifications.settings";
+// import LogoutPage from "../pages/lessee/auth/logout";
+// import SignInPage from "../pages/lessee/auth/signin";
 
-import SignUpPage from "../pages/lessee/auth/signup";
+// import SignUpPage from "../pages/lessee/auth/signup";
 
 // Old Auth Pages
-import LoginPageOld from "../pages/lessee/auth/login.old";
-import SignUpPageOld from "../pages/lessee/auth/signup.old";
+// import LoginPageOld from "../pages/lessee/auth/login.old";
+// import SignUpPageOld from "../pages/lessee/auth/signup.old";
 
-import TransactionsPage from "../pages/lessee/transactions";
-import SettingsDashboardPage from "../pages/lessee/settings";
-import TestAuth from "../pages/lessee/test.auth";
+// import TransactionsPage from "../pages/lessee/transactions";
+// import SettingsDashboardPage from "../pages/lessee/settings";
+// import TestAuth from "../pages/lessee/test.auth";
 
-import LesseePage from "../pages/lessee/lessee";
-import PersonalInfo from "../pages/lessee/personalinfo";
-import PaymentsPage from "../pages/lessee/payments";
+// import LesseePage from "../pages/lessee/lessee";
+// import PersonalInfo from "../pages/lessee/personalinfo";
+// import PaymentsPage from "../pages/lessee/payments";
 
 // added by Malcom 4/14/2021
-import WonAuctionPage from "../pages/lessee/wonauction";
+// import WonAuctionPage from "../pages/lessee/wonauction";
 
 // Lessor
-import LessorPage from "../pages/lessor/lessor";
-import LessorDashboardPage from "../pages/lessor/dashboard";
-import LessorBiddingPage from "../pages/lessor/bidding";
-import LessorBookingPage from "../pages/lessor/bookings";
-import LessorRevenuePage from "../pages/lessor/revenue";
-import LessorListingsPage from "../pages/lessor/listings";
+// import LessorPage from "../pages/lessor/lessor";
+// import LessorDashboardPage from "../pages/lessor/dashboard";
+// import LessorBiddingPage from "../pages/lessor/bidding";
+// import LessorBookingPage from "../pages/lessor/bookings";
+// import LessorRevenuePage from "../pages/lessor/revenue";
+// import LessorListingsPage from "../pages/lessor/listings";
 
 // Admin
-import AdminPage from "../pages/admin/admin";
-import AdminDashboardPage from "../pages/admin/dashboard";
-import AdminListingsPage from "../pages/admin/listings";
-import AdminBookingPage from "../pages/admin/bookings";
-import AdminLesseesPage from "../pages/admin/lessees";
-import AdminLessorsPage from "../pages/admin/lessors";
-import NotFoundPage from "../pages/notfound";
+// import AdminPage from "../pages/admin/admin";
+// import AdminDashboardPage from "../pages/admin/dashboard";
+// import AdminListingsPage from "../pages/admin/listings";
+// import AdminBookingPage from "../pages/admin/bookings";
+// import AdminLesseesPage from "../pages/admin/lessees";
+// import AdminLessorsPage from "../pages/admin/lessors";
+// import NotFoundPage from "../pages/notfound";
 
 Vue.use(VueRouter);
 
@@ -128,90 +128,90 @@ const routes = [
   {
     path: "/account",
     name: "Account",
-    component: LesseePage,
+    component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/lessee.vue"),
 
     children: [
       //test
       {
         path: "test",
         name: "Test Amplify Page",
-        component: TestAuth
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/test.auth.vue"),
       },
       // main
       {
         path: "settings",
         name: "SettingsDashboardPage",
-        component: SettingsDashboardPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/settings.vue"),
       },
       {
         path: "watching",
         name: "Watching",
-        component: WatchingPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/watching.vue")
       },
       {
         path: "login",
         name: "Login",
-        component: SignInPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signin.vue"),
       },
       {
         path: "login_old",
         name: "LoginOld",
-        component: LoginPageOld
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/login.old.vue"),
       },
       {
         path: "signup",
         name: "SignUp",
-        component: SignUpPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signup.vue"),
       },
       {
         path: "signup_old",
         name: "SignUpOld",
-        component: SignUpPageOld
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signup.old.vue"),
       },
       {
         path: "logout",
         name: "Logout",
-        component: LogoutPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/logout.vue"),
       },
       {
         path: "bidding",
         name: "Bidding",
-        component: BiddingPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/bidding.vue"),
       },
       {
         path: "transactions",
         name: "Transactions",
-        component: TransactionsPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/transactions.vue"),
       },
       {
         path: "favorites",
         name: "Favorites",
-        component: FavoritesPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/favorites.vue"),
       },
       {
         path: "notifications",
         name: "Notifications",
-        component: NotificationsPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/notifications.vue"),
       },
       {
         path: "notifications/settings",
         name: "NotificationSettings",
-        component: NotificationSettingsPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/notifications.settings.vue"),
       },
       {
         path: "personalinfo",
         name: "personalinfo",
-        component: PersonalInfo
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/personalinfo.vue"),
       },
       {
         path: "payments",
         name: "payments",
-        component: PaymentsPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/payments.vue"),
       },
       {
         path: "wonauction/:propertyId",
         name: "WonAuction",
-        component: WonAuctionPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/wonauction.vue"),
       }
     ]
   },
@@ -220,33 +220,33 @@ const routes = [
   {
     path: "/lessor",
     name: "Lessor",
-    component: LessorPage,
+    component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/lessor.vue"),
 
     children: [
       {
         path: "dashboard",
         name: "LessorDashboard",
-        component: LessorDashboardPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/dashboard.vue"),
       },
       {
         path: "listings",
         name: "LessorListings",
-        component: LessorListingsPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/listings.vue"),
       },
       {
         path: "bookings",
         name: "LessorBookings",
-        component: LessorBookingPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/bookings.vue"),
       },
       {
         path: "revenue",
         name: "LessorRevenue",
-        component: LessorRevenuePage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/revenue.vue"),
       },
       {
         path: "bidding",
         name: "LessorBidding",
-        component: LessorBiddingPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/bidding.vue"),
       }
     ]
   },
@@ -254,40 +254,40 @@ const routes = [
   {
     path: "/admin",
     name: "Admin",
-    component: AdminPage,
+    component: () => import(/* webpackChunkName: "about" */ "../pages/admin/admin.vue"),
 
     children: [
       {
         path: "dashboard",
         name: "AdminDashboard",
-        component: AdminDashboardPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/dashboard/index.vue"),
       },
       {
         path: "listings",
         name: "AdminListings",
-        component: AdminListingsPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/listings.vue"),
       },
       {
         path: "bookings",
         name: "AdminBookings",
-        component: AdminBookingPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/bookings.vue"),
       },
       {
         path: "lessees",
         name: "AdminLessees",
-        component: AdminLesseesPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/lessees.vue"),
       },
       {
         path: "lessors",
         name: "AdminLessors",
-        component: AdminLessorsPage
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/lessors.vue"),
       }
     ]
   },
   {
     path: "*",
     name: "Not Found",
-    component: NotFoundPage
+    component: () => import(/* webpackChunkName: "about" */ "../pages/notfound.vue"),
   }
 ];
 

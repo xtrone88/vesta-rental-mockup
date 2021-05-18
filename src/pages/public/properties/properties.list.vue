@@ -255,20 +255,10 @@
   </v-container>
 </template>
 <script>
+import Vue from "vue";
 // import { sampleProperties } from "@/data/properties";
 import guestyProperties from "@/data/guesty.json";
 import BiddingDialog from "@/components/dialog.bidding";
-
-Date.prototype.yyyymmdd = function () {
-  var mm = this.getMonth() + 1;
-  var dd = this.getDate();
-
-  return [
-    this.getFullYear(),
-    (mm > 9 ? "" : "0") + mm,
-    (dd > 9 ? "" : "0") + dd,
-  ].join("-");
-};
 
 var startDate = new Date();
 var endDate = new Date();
@@ -279,7 +269,7 @@ export default {
   title: "Properties",
   data: () => ({
     center: null,
-    dates: [startDate.yyyymmdd(), endDate.yyyymmdd()],
+    dates: [Vue.dateHelpers.yyyymmdd(startDate), Vue.dateHelpers.yyyymmdd(endDate)],
     datePickerMenu: false,
     address: "",
     popularLocation: "",
@@ -309,62 +299,7 @@ export default {
       return guestyProperties.results[0].address;
     },
     properties() {
-      return guestyProperties.results.map((property) => {
-        let details = [];
-        details.push(
-          this.stringHelpers.pluralize(
-            property.accommodates,
-            "guest", "guests"
-          )
-        );
-        details.push(
-          this.stringHelpers.pluralize(
-            property.bedrooms,
-            "bedroom", "bedrooms"
-          )
-        );
-        details.push(
-          this.stringHelpers.pluralize(
-            property.bathrooms,
-            "bathroom", "bathrooms"
-          )
-        );
-
-        property.postbids = 3;
-        property.postBidsEndingDate = "Mar 11, 2021";
-        property.leaseStartDate = "Mar 24, 2021";
-        property.leaseEndDate = "Mar 30, 2021";
-
-        property.pictures.sort((a, b) => {
-          if (a.sort && b.sort) {
-            return a.sort > b.sort ? 1 : -1;
-          } else if (a.sort && !b.sort) {
-            return -1
-          } else if (!a.sort && b.sort) {
-            return 1;
-          }
-          if (a.id && b.id) {
-            if (a.id.length > b.id.length) {
-              return 1;
-            } else if (a.id.length < b.id.length) {
-              return -1;
-            } else {
-              return a.id > b.id ? 1 : -1;
-            }
-          } else if (a.id && !b.id) {
-            return -1;
-          } else if (!a.id && b.id) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-        
-        return {
-          ...property,
-          capacity: details.join("·"),
-        };
-      });
+      return guestyProperties.results.map(Vue.propertyHelpers.decorating);
     },
     propertyTypes() {
       return ["All", "Apartment", "House", "More"];
@@ -377,7 +312,6 @@ export default {
     } else {
       this.address = this.popularLocation = param;
     }
-
     let gmap = document.querySelector("#googleMap");
     if (gmap == null) {
       return;

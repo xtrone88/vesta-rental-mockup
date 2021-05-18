@@ -176,33 +176,8 @@ export default {
     options: {}
   }),
   created() {
-    this.pictures.sort((a, b) => {
-      if (a.sort && b.sort) {
-        return a.sort > b.sort ? 1 : -1;
-      } else if (a.sort && !b.sort) {
-        return -1
-      } else if (!a.sort && b.sort) {
-        return 1;
-      }
-      if (a.id && b.id) {
-        if (a.id.length > b.id.length) {
-          return 1;
-        } else if (a.id.length < b.id.length) {
-          return -1;
-        } else {
-          return a.id > b.id ? 1 : -1;
-        }
-      } else if (a.id && !b.id) {
-        return -1;
-      } else if (!a.id && b.id) {
-        return 1;
-      } else {
-        return a._id > b._id ? 1 : -1;
-      }
-    });
-
+    this.pictures.sort(this.propertyHelpers.sorting);
     this.pictures.forEach((picture, index) => {
-      console.log(picture.id + ":" + picture._id + ":" + picture.sort);
       this.slider.push(picture.original);
       if (index == 0) {
         this.gallery.push(picture.original);

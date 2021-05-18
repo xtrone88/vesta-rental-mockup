@@ -91,7 +91,7 @@
                   <router-link :to="{ path: `/properties/${property._id}` }">
                     <v-img
                       :src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
-                      :lazy-src="property.pictures[0].large ? property.pictures[0].large : property.pictures[0].original"
+                      :lazy-src="property.pictures[0].thumbnail ? property.pictures[0].thumbnail : property.pictures[0].original"
                       :aspect-ratio="3 / 2"
                       :load="setImgLoaded(index)"
                       class="rounded-xl fill-height"
@@ -334,6 +334,32 @@ export default {
         property.postBidsEndingDate = "Mar 11, 2021";
         property.leaseStartDate = "Mar 24, 2021";
         property.leaseEndDate = "Mar 30, 2021";
+
+        property.pictures.sort((a, b) => {
+          if (a.sort && b.sort) {
+            return a.sort > b.sort ? 1 : -1;
+          } else if (a.sort && !b.sort) {
+            return -1
+          } else if (!a.sort && b.sort) {
+            return 1;
+          }
+          if (a.id && b.id) {
+            if (a.id.length > b.id.length) {
+              return 1;
+            } else if (a.id.length < b.id.length) {
+              return -1;
+            } else {
+              return a.id > b.id ? 1 : -1;
+            }
+          } else if (a.id && !b.id) {
+            return -1;
+          } else if (!a.id && b.id) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        
         return {
           ...property,
           capacity: details.join("·"),

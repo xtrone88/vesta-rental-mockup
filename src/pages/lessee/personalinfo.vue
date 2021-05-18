@@ -104,7 +104,7 @@
         <div class="d-flex flex-column">
           <v-text-field label="Zip" v-model="info.zip" required></v-text-field>
         </div>
-        <v-btn block color="primary" width="212" height="52">Save Change</v-btn>
+        <v-btn block color="primary" @click="saveAllUserInfo" width="212" height="52">Save Change</v-btn>
       </v-form>
     </v-card>
   </v-container>
@@ -112,6 +112,8 @@
 
 <script>
 import { getUser } from "../../graphql/queries";
+import { updateUser } from "../../graphql/mutations";
+
 import { API } from "aws-amplify";
 import VuePhoneNumberInput from "vue-phone-number-input";
 import "vue-phone-number-input/dist/vue-phone-number-input.css";
@@ -125,8 +127,6 @@ export default {
     date: null,
     menu: false,
     valid: false,
-    firstname: "",
-    lastname: "",
     nameRules: [
       (v) => !!v || "Name is required",
       (v) => v.length <= 10 || "Name must be less than 10 characters",
@@ -136,7 +136,7 @@ export default {
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
-    info: store.getters.user_info,
+
   }),
   components: {
     VuePhoneNumberInput,
@@ -146,28 +146,55 @@ export default {
       val && setTimeout(() => (this.$refs.picker.activePicker = "YEAR"));
     },
   },
+
+  computed: {
+    info: function () {
+      return store.getters.user_info;
+    }
+  },
+
   methods: {
     save(date) {
       this.$refs.menu.save(date);
     },
-    changeContent: function () {
-      if (this.gender == "Male") {
-        this.gender = "Female";
-        this.genderIcon = "mdi-human-female";
-      } else {
-        this.gender = "Male";
-        this.genderIcon = "mdi-human-male";
-      }
-    },
     inputPhone: function () {},
     saveAllUserInfo() {
-      store.commit("setUserInfo", this.info);
+      
+      console.log(this.info.phone.replace(/[(). -]/g, ""));
+
+      const inputData = {
+        address1: this.info.address1,
+        address2: this.info.address2,
+        city: this.info.city,
+        email: this.info.email,
+        firstname: this.info.firstname,
+        id: store.getters.user_id,
+        lastname: this.info.lastname,
+        phone: this.info.phone.replace(/[(). -]/g, ""),
+        postalCode: "",
+        state: this.info.state,
+      }
+
+      const updateDt = API.graphql({query: updateUser, variables:{input: inputData}});
+      console.log(updateDt);
     },
+
   },
   async created() {
+
+    if(store.getters.user_id == "")
+      return;
+
+//    let $this = this;
+
     console.log(store.getters.user_id);
+
     const userData = await API.graphql({ query: getUser, variables:{id:store.getters.user_id} });
-    console.log(userData);
+    var user = userData.data.getUser;
+
+    console.log(user);
+
+    store.commit('setUserInfo', user);
   }
 };
 </script>

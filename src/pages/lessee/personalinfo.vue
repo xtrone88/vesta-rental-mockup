@@ -6,11 +6,6 @@
       :elevation="$vuetify.breakpoint.xs ? 0 : 1"
       :outlined="!$vuetify.breakpoint.xs"
     >
-      <div justify="space-around" align="center" class="mb-4">
-        <v-avatar width="150px" height="150px">
-          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-        </v-avatar>
-      </div>
       <v-form v-model="valid">
         <div class="d-flex flex-column">
           <v-text-field

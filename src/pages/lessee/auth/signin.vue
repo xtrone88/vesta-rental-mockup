@@ -102,10 +102,9 @@ export default {
           id = item.Value;
         }
       });
+      
       store.commit('setUserLogInfo', {id, state:authState});
     });
-
-    console.log(store.getters.user_id);
   },
 };
 </script>

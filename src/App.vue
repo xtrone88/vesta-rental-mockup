@@ -26,14 +26,7 @@
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" text>
-            <v-icon v-show="loggedin != 'signedin'">mdi-account-circle</v-icon>
-            <v-avatar
-              v-show="loggedin === 'signedin'"
-              width="30px"
-              height="30px"
-            >
-              <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-            </v-avatar>
+            <v-icon>mdi-account-circle</v-icon>
           </v-btn>
         </template>
         <v-list>

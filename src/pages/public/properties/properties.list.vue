@@ -1,7 +1,7 @@
 ﻿<template>
   <v-container class="page-wrapper" ref="el" fluid>
     <v-row no-gutters>
-      <v-col md="7" lg="6" xl="5">
+      <v-col id="prop-list" md="7" lg="6" xl="5" style="max-width:1000px">
         <v-row no-gutters>
           <v-col class="d-flex align-center justify-space-between">
             <div class="d-flex align-baseline">
@@ -184,7 +184,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col md="5" lg="6" xl="7" class="pa-0" v-if="!$vuetify.breakpoint.mobile">
+      <v-col id="gmap-panel" class="pa-0 d-sm-none d-md-flex">
         <GmapMap
           :center="center || defaultCenter"
           :zoom="12"
@@ -295,6 +295,22 @@ export default {
     },
     setImgLoaded: function(index) {
       this.imgLoaded[index] = true;
+    },
+    adjustGmap: function() {
+      let plist = document.querySelector("#prop-list");
+      let gpane = document.querySelector("#gmap-panel");
+      let pRect = plist.getBoundingClientRect();
+      gpane.style.maxWidth = window.innerWidth - pRect.width + "px";
+
+      let gmap = document.querySelector("#googleMap");
+      if (gmap == null) {
+        return;
+      }
+      let rect = gmap.getBoundingClientRect();
+      gmap.style.position = "fixed";
+      let top = gmap.style.top = rect.top - gmap.parentNode.getBoundingClientRect().top;
+      gmap.style.width = gpane.style.maxWidth;
+      gmap.style.height = window.innerHeight - top + "px";
     }
   },
   computed: {
@@ -325,15 +341,8 @@ export default {
     } else {
       this.address = this.popularLocation = param;
     }
-    let gmap = document.querySelector("#googleMap");
-    if (gmap == null) {
-      return;
-    }
-    let rect = gmap.getBoundingClientRect();
-    gmap.style.position = "fixed";
-    let top = gmap.style.top = rect.top - gmap.parentNode.getBoundingClientRect().top;
-    gmap.style.width = gmap.parentNode.clientWidth + "px";
-    gmap.style.height = window.innerHeight - top + "px";
+    this.adjustGmap();
+    window.addEventListener('resize', this.adjustGmap);
   },
 };
 </script>

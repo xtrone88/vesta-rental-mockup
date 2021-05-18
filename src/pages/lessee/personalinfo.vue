@@ -154,8 +154,6 @@ export default {
     },
     inputPhone: function () {},
     saveAllUserInfo() {
-      
-      console.log(this.info.phone.replace(/[(). -]/g, ""));
 
       const inputData = {
         address1: this.info.address1,
@@ -165,7 +163,7 @@ export default {
         firstname: this.info.firstname,
         id: store.getters.user_id,
         lastname: this.info.lastname,
-        phone: this.info.phone.replace(/[(). -]/g, ""),
+        phone: this.info.phone,
         postalCode: "",
         state: this.info.state,
       }

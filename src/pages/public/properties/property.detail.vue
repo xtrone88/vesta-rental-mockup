@@ -191,7 +191,7 @@
                   NUMBER OF BIDS :
                   <span class="rounded-circle pa-1 bid-number">20</span>
                 </div>
-                <v-btn block class="mt-6 cyan white--text"> BID NOW </v-btn>
+                <v-btn block class="mt-6 cyan white--text" @click="dialog = true"> BID NOW </v-btn>
                 <v-btn block class="mt-6 cyan white--text">
                   LEASE IT NOW FOR $654
                 </v-btn>
@@ -245,6 +245,7 @@
         </v-btn>
       </template>
     </v-snackbar>
+    <BiddingDialog v-model="dialog" />
   </v-container>
 </template>
 
@@ -256,6 +257,7 @@ import TextClamp from "@/components/text.clamp";
 import guestyProperties from "@/data/guesty.json";
 import amenityIcons from "@/data/amenity.json";
 import moment from "moment";
+import BiddingDialog from "@/components/dialog.bidding";
 
 export default {
   name: "PropertyDetailPage",
@@ -263,9 +265,11 @@ export default {
     ImageGallery,
     VueClamp,
     TextClamp,
+    BiddingDialog
   },
   data: () => ({
     property: null,
+    dialog: false,
     endDate: new Date(),
     now: moment(),
 

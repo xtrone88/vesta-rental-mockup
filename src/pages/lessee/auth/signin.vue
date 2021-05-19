@@ -57,7 +57,7 @@
             <amplify-authenticator>
               <div v-if="authState === 'signedin' && user">
                 <div class="pa-12">
-                  <center><h2>{{ user.id }}  is successfuly logged in.</h2></center>
+                  <center><h2>{{ user.username }}  is successfully logged in.</h2></center>
                 </div>
               </div>
             </amplify-authenticator>
@@ -95,6 +95,7 @@ export default {
         return;
       }
       $this.authState = authState;
+      $this.user = authData;
       let userAttrs = JSON.parse(authData.storage[authData.userDataKey]);
       let id = '';
       userAttrs.UserAttributes.map((item) => {

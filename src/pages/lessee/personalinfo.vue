@@ -154,7 +154,6 @@ export default {
     },
     inputPhone: function () {},
     saveAllUserInfo() {
-
       const inputData = {
         address1: this.info.address1,
         address2: this.info.address2,
@@ -171,7 +170,6 @@ export default {
       const updateDt = API.graphql({query: updateUser, variables:{input: inputData}});
       console.log(updateDt);
     },
-
   },
   async created() {
 

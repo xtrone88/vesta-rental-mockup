@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-report": "vue-cli-service build --report",
     "lint": "vue-cli-service lint",
     "deploy-s3": "yarn build && aws --region us-west-2 --profile vesta-lease-deployer s3 sync ./dist s3://vestalease-demo --delete"
   },

@@ -5,7 +5,7 @@
   margin-top: 49px;
 }
 .signup-panel {
-  min-height:100vh;
+  min-height: 100vh;
   margin-top: 69px;
   margin-bottom: 65px;
   border-radius: 36px;
@@ -17,7 +17,9 @@
   <v-container class="pa-0" fluid>
     <v-row no-gutters>
       <v-col md="6">
-        <div class="signup-panel d-flex flex-column align-center justify-center">
+        <div
+          class="signup-panel d-flex flex-column align-center justify-center"
+        >
           <h1 class="signup-title text-center">Registration</h1>
           <amplify-sign-up
             slot="sign-up"
@@ -39,7 +41,7 @@
 
 <script>
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import { querySelectorDeep } from 'query-selector-shadow-dom';
+import { querySelectorDeep } from "query-selector-shadow-dom";
 
 export default {
   name: "SignUp",
@@ -68,12 +70,12 @@ export default {
         placeholder: "Email.",
         required: false,
       },
-      {
-        type: "date",
-        label: "Date of Birth",
-        placeholder: "Date of Birth",
-        required: false,
-      },
+      // {
+      //   type: "date",
+      //   label: "Date of Birth",
+      //   placeholder: "Date of Birth",
+      //   required: false,
+      // },
       {
         type: "phone_number",
         label: "Phone Number",
@@ -91,30 +93,33 @@ export default {
   },
 
   mounted() {
-    setTimeout(function() {
-      let phoneInput = querySelectorDeep(".phone-field>amplify-input>#phone", document.querySelector("amplify-sign-up"));
-      phoneInput.addEventListener("keydown", function(event) {
+    setTimeout(function () {
+      let phoneInput = querySelectorDeep(
+        ".phone-field>amplify-input>#phone",
+        document.querySelector("amplify-sign-up")
+      );
+      phoneInput.addEventListener("keydown", function (event) {
         let value = event.target.value;
-        let cleaned = value.replace(/\D/g, '');
+        let cleaned = value.replace(/\D/g, "");
         let match = cleaned.match(/^(\d{3})$/);
         if (match) {
-          value = '(' + match[1] + ') ';
+          value = "(" + match[1] + ") ";
           event.target.value = value;
           return;
         }
         match = cleaned.match(/^(\d{3})(\d{3})$/);
         if (match) {
-          value = '(' + match[1] + ') ' + match[2] + '-';
+          value = "(" + match[1] + ") " + match[2] + "-";
           event.target.value = value;
           return;
         }
         match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
         if (match) {
-          value = '(' + match[1] + ') ' + match[2] + '-' + match[3];
+          value = "(" + match[1] + ") " + match[2] + "-" + match[3];
           event.target.value = value;
         }
       });
     }, 1000);
-  }
+  },
 };
 </script>

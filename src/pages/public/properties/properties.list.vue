@@ -298,6 +298,9 @@ export default {
     },
     adjustGmap: function() {
       let plist = document.querySelector("#prop-list");
+      if (plist == null) {
+        return;
+      }
       let gpane = document.querySelector("#gmap-panel");
       let pRect = plist.getBoundingClientRect();
       gpane.style.maxWidth = window.innerWidth - pRect.width + "px";

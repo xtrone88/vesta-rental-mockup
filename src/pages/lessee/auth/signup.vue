@@ -5,6 +5,7 @@
   margin-top: 49px;
 }
 .signup-panel {
+  min-height:100vh;
   margin-top: 69px;
   margin-bottom: 65px;
   border-radius: 36px;
@@ -15,11 +16,9 @@
 <template>
   <v-container class="pa-0" fluid>
     <v-row no-gutters>
-      <v-col md="6" class="text-center">
-        <div>
-          <div class="title pa-16">
-            <h1 class="login-title">Registration</h1>
-          </div>
+      <v-col md="6">
+        <div class="signup-panel d-flex flex-column align-center justify-center">
+          <h1 class="signup-title text-center">Registration</h1>
           <amplify-sign-up
             slot="sign-up"
             username-alias="email"
@@ -40,6 +39,7 @@
 
 <script>
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
+import { querySelectorDeep } from 'query-selector-shadow-dom';
 
 export default {
   name: "SignUp",
@@ -89,5 +89,32 @@ export default {
       this.user = authData;
     });
   },
+
+  mounted() {
+    setTimeout(function() {
+      let phoneInput = querySelectorDeep(".phone-field>amplify-input>#phone", document.querySelector("amplify-sign-up"));
+      phoneInput.addEventListener("keydown", function(event) {
+        let value = event.target.value;
+        let cleaned = value.replace(/\D/g, '');
+        let match = cleaned.match(/^(\d{3})$/);
+        if (match) {
+          value = '(' + match[1] + ') ';
+          event.target.value = value;
+          return;
+        }
+        match = cleaned.match(/^(\d{3})(\d{3})$/);
+        if (match) {
+          value = '(' + match[1] + ') ' + match[2] + '-';
+          event.target.value = value;
+          return;
+        }
+        match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+        if (match) {
+          value = '(' + match[1] + ') ' + match[2] + '-' + match[3];
+          event.target.value = value;
+        }
+      });
+    }, 1000);
+  }
 };
 </script>

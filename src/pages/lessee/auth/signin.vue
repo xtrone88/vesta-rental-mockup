@@ -1,10 +1,10 @@
 <style lang="scss" scoped>
-
 .login-title {
   text-align: center;
   font-size: 50px;
 }
 .login-panel {
+  min-height:100vh;
   margin-top: 79px;
   margin-bottom: 113px;
   border-radius: 36px;
@@ -49,19 +49,15 @@
   <v-container class="pa-0" fluid>
     <v-row no-gutters>
       <v-col md="6">
-        <div>
-          <div class="pt-12 pb-0 text-center">
-            <h1 class="login-title">Log In</h1>
-          </div>
-          <div class="text-center pt-0">
-            <amplify-authenticator>
-              <div v-if="authState === 'signedin' && user">
-                <div class="pa-12">
-                  <center><h2>{{ user.id }}  is successfuly logged in.</h2></center>
-                </div>
+        <div class="login-panel d-flex flex-column align-center justify-center">
+          <h1 class="login-title text-center">Log In</h1>
+          <amplify-authenticator>
+            <div v-if="authState === 'signedin' && user">
+              <div class="pa-12">
+                <h2 class="text-center">{{ user.username }}  is successfuly logged in.</h2>
               </div>
-            </amplify-authenticator>
-          </div>
+            </div>
+          </amplify-authenticator>
         </div>
       </v-col>
       <v-col md="6" class="hidden-sm-and-down">
@@ -89,12 +85,13 @@ export default {
   }),
 
   async created() {
-    let $this = this;
     this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
-      if (!authData) {
+      if (!authData || authState != "signedin") {
         return;
       }
-      $this.authState = authState;
+      this.authState = authState;
+      this.user = authData;
+
       let userAttrs = JSON.parse(authData.storage[authData.userDataKey]);
       let id = '';
       userAttrs.UserAttributes.map((item) => {
@@ -102,9 +99,19 @@ export default {
           id = item.Value;
         }
       });
-      
-      store.commit('setUserLogInfo', {id, state:authState});
+      store.commit('setUserLogInfo', {id, state:true});
     });
   },
+
+  mounted() {
+    let amplifyShadow = document.querySelector("amplify-authenticator").shadowRoot;
+    let style = document.createElement('style');
+    style.textContent = `
+      .auth-container {
+        min-height: auto !important;
+      }
+    `;
+    amplifyShadow.appendChild(style);
+  }
 };
 </script>

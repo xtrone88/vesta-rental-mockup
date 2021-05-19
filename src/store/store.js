@@ -1,8 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
+
 import Amplify from 'aws-amplify';
 
 Vue.use(Vuex);
+
+const persistedState = createPersistedState({
+  paths: ['user_id', 'user_log', 'user_info']
+})
 
 export default new Vuex.Store({
   state: {
@@ -16,7 +22,7 @@ export default new Vuex.Store({
       {title:"Visa *** 1316", date:"06/2023"},
       {title:"MasterCard **** 1010", date:"01/2022"}
     ],
-    user_info: {firstname:'', lastname:'', email:'', phone:'', birthday: '', address1:'',address2:'', city:'', state:'', zip:''},
+    user_info: {firstname:'', lastname:'', email:'', phone:'', birthday: '', address1:'', address2:'', city:'', state:'', zip:''},
     user_log: '',
     user_id: ''
   },
@@ -27,12 +33,18 @@ export default new Vuex.Store({
     setPaymentsInfo(state, data) {
       state.payments = data
     },
-    setUserLogInfo(state, param){
+    setUserLogInfo(state, param) {
       state.user_id = param.id
       state.user_log = param.state
-      if(param.state != "signedin")
-        Amplify.Auth.signOut();
     },
+    setUserLogout(state) {
+      state.user_id = '';
+      state.user_log = false;
+      Object.keys(state.user_info).forEach((k) => {
+        state.user_info[k] = '';
+      });
+      Amplify.Auth.signOut();
+    }
   },
   actions: {
     setUserInfo({commit}, data) {
@@ -58,5 +70,6 @@ export default new Vuex.Store({
     user_id(state) {
       return state.user_id
     }
-  }
+  },
+  plugins: [persistedState]
 });

@@ -26,23 +26,23 @@
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" text>
-            <v-icon>mdi-account-circle</v-icon>
+            <v-icon :class="{'green--text':loggedin}">mdi-account-circle</v-icon>
           </v-btn>
         </template>
         <v-list>
           <v-list-item
-            v-show="loggedin != 'signedin'"
+            v-show="!loggedin"
             :to="{ path: '/account/signup' }"
           >
             <v-list-item-title>Sign up</v-list-item-title>
           </v-list-item>
           <v-list-item
-            v-show="loggedin != 'signedin'"
+            v-show="!loggedin"
             :to="{ path: '/account/login' }"
           >
             <v-list-item-title>Log in</v-list-item-title>
           </v-list-item>
-          <v-list-item v-show="loggedin === 'signedin'" v-on:click="logout">
+          <v-list-item v-show="loggedin" v-on:click="logout">
             <v-list-item-title>Log out</v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
@@ -255,7 +255,7 @@ export default {
   }),
   methods: {
     logout() {
-      store.commit("setUserLogInfo", false);
+      store.commit("setUserLogout");
     },
   },
 };
@@ -272,7 +272,6 @@ export default {
     padding-bottom: 80px !important;
   }
 }
-
 @media #{map-get($display-breakpoints, 'sm-only')} {
   .v-main__wrap .page-wrapper {
     margin-top: 0px !important;
@@ -280,5 +279,11 @@ export default {
     padding-top: 40px !important;
     padding-bottom: 40px !important;
   }
+}
+header, .v-menu__content {
+  z-index: 100 !important;
+}
+nav {
+  z-index: 101 !important;
 }
 </style>

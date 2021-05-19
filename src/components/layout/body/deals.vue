@@ -5,12 +5,6 @@
         <v-col>
           <div class="d-flex align-center justify-space-between">
             <h2 :class="titleColor">{{ name }}</h2>
-
-            <!-- <v-hover v-slot="{ hover }">
-              <button :class="titleColor" v-if="!$vuetify.breakpoint.xs">
-                <p :class="hover ? 'cyan--text' : ''">VIEW ALL</p>
-              </button>
-            </v-hover> -->
           </div>
         </v-col>
       </v-row>
@@ -70,17 +64,13 @@ import guestyProperties from "@/data/guesty.json";
 
 export default {
   name: "Deals",
-
   props: ["name", "background", "tColor", "bColor"],
-
   components: {
     VueClamp
   },
-
   data: () => ({
     properties: []
   }),
-
   computed: {
     bkColor() {
       return "background-color:" + this.background;
@@ -92,36 +82,8 @@ export default {
       return this.bColor;
     },
   },
-
   created() {
-    this.properties = guestyProperties.results.slice(0, 4).map((property) => {
-      property.pictures.sort((a, b) => {
-        if (a.sort && b.sort) {
-          return a.sort > b.sort ? 1 : -1;
-        } else if (a.sort && !b.sort) {
-          return -1
-        } else if (!a.sort && b.sort) {
-          return 1;
-        }
-        if (a.id && b.id) {
-          if (a.id.length > b.id.length) {
-            return 1;
-          } else if (a.id.length < b.id.length) {
-            return -1;
-          } else {
-            return a.id > b.id ? 1 : -1;
-          }
-        } else if (a.id && !b.id) {
-          return -1;
-        } else if (!a.id && b.id) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-
-      return {...property};
-    });
+    this.properties = guestyProperties.results.slice(0, 4).map(this.propertyHelpers.decorating);
   }
 };
 </script>

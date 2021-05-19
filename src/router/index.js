@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from '../store/store';
 
 import FAQPage from "../pages/public/faq";
 
@@ -129,24 +130,27 @@ const routes = [
     path: "/account",
     name: "Account",
     component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/lessee.vue"),
-
+    
     children: [
       //test
       {
         path: "test",
         name: "Test Amplify Page",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/test.auth.vue"),
+        meta: { requiresAuth: true }
       },
       // main
       {
         path: "settings",
         name: "SettingsDashboardPage",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/settings.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "watching",
         name: "Watching",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/watching.vue")
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/watching.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "login",
@@ -177,41 +181,49 @@ const routes = [
         path: "bidding",
         name: "Bidding",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/bidding.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "transactions",
         name: "Transactions",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/transactions.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "favorites",
         name: "Favorites",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/favorites.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "notifications",
         name: "Notifications",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/notifications.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "notifications/settings",
         name: "NotificationSettings",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/notifications.settings.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "personalinfo",
         name: "personalinfo",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/personalinfo.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "payments",
         name: "payments",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/payments.vue"),
+        meta: { requiresAuth: true }
       },
       {
         path: "wonauction/:propertyId",
         name: "WonAuction",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/wonauction.vue"),
+        meta: { requiresAuth: true }
       }
     ]
   },
@@ -303,6 +315,19 @@ const router = new VueRouter({
       return { x: 0, y: 0 };
     }
   }
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.getters.loginStatus) {
+      next({
+        path: '/account/login',
+        query: { redirect: to.fullPath }
+      })
+      return;
+    }
+  }
+  next()
 });
 
 export default router;

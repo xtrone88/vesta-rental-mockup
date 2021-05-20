@@ -5,7 +5,7 @@
   margin-top: 49px;
 }
 .signup-panel {
-  min-height:100vh;
+  min-height: 100vh;
   margin-top: 69px;
   margin-bottom: 65px;
   border-radius: 36px;
@@ -17,7 +17,9 @@
   <v-container class="pa-0" fluid>
     <v-row no-gutters>
       <v-col md="6">
-        <div class="signup-panel d-flex flex-column align-center justify-center">
+        <div
+          class="signup-panel d-flex flex-column align-center justify-center"
+        >
           <h1 class="signup-title text-center">Registration</h1>
           <amplify-sign-up
             slot="sign-up"
@@ -39,7 +41,7 @@
 
 <script>
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import { querySelectorDeep } from 'query-selector-shadow-dom';
+import { querySelectorDeep } from "query-selector-shadow-dom";
 
 export default {
   name: "SignUp",
@@ -105,6 +107,6 @@ export default {
         });
       }
     }, 1000);
-  }
+  },
 };
 </script>

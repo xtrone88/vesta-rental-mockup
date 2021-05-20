@@ -2,10 +2,9 @@
   <v-col
     :class="[
       !$vuetify.breakpoint.xs ? 'pa-12 dark-backcolor' : 'pa-0 light-backcolor',
-      'position-relative',
     ]"
   >
-    <v-container class="pa-0">
+    <v-container class="pa-0 position-relative">
       <v-img src="@/assets/home/slider1.png" class="full-width">
         <div class="d-flex d-sm-none fill-height pl-4">
           <v-col>

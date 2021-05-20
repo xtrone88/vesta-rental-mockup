@@ -22,7 +22,6 @@
     "moment": "^2.29.1",
     "nuxt": "^2.15.4",
     "query-selector-shadow-dom": "^1.0.0",
-    "v-stripe-elements": "^1.2.0",
     "vue": "^2.6.12",
     "vue-chartjs": "^3.5.1",
     "vue-clamp": "^0.3.2",

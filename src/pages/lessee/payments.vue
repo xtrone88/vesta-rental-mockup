@@ -6,14 +6,21 @@
           Payments
         </div>
         <v-card class="rounded-xl pb-4" outlined>
-          <div  v-bind:key="pay.id" v-for="pay in payments">
-            <v-list-item two-line >
+          <stripe-element-card
+            ref="elementRef"
+            :pk="pulishableKey"
+            @token="tokenCreated"
+          />
+          <div v-bind:key="pay.id" v-for="pay in payments">
+            <v-list-item two-line>
               <v-list-item-avatar>
                 <v-icon>mdi-credit-card-check</v-icon>
               </v-list-item-avatar>
               <v-list-item-content>
                 <v-list-item-title>{{ pay.title }}</v-list-item-title>
-                <v-list-item-subtitle> Expiration: {{ pay.date }} </v-list-item-subtitle>
+                <v-list-item-subtitle>
+                  Expiration: {{ pay.date }}
+                </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
             <v-divider></v-divider>
@@ -43,14 +50,7 @@
             </v-row>
           </v-toolbar>
         </v-row>
-        <v-row class="ma-4">
-          <v-text-field
-            label="Payment Information"
-            prepend-inner-icon="mdi-credit-card"
-            hint="Please enter card details"
-            suffix="MM/YY   CVC"
-          ></v-text-field>
-        </v-row>
+        <v-row class="ma-4"> </v-row>
         <v-row class="ma-4 mt-2">
           <v-col cols="12" md="3">
             <v-btn
@@ -70,15 +70,33 @@
 
 <script>
 import { sampleNotifications } from "@/data/notifications";
-import store from '@/store/store';
+import { StripeElementCard } from "@vue-stripe/vue-stripe";
+
+import store from "@/store/store";
 
 export default {
-  name: "PaymentPage",
+  components: {
+    StripeElementCard,
+  },
+  name: "Payment",
 
   data: () => ({
+    pulishableKey: process.env.VUE_APP_STRIPE_PUBLISHABLE_KEY,
     notifications: sampleNotifications,
     dialog: false,
     payments: store.getters.payments,
+    token: null,
   }),
+  methods: {
+    submit() {
+      // this will trigger the process
+      this.$refs.elementRef.submit();
+    },
+    tokenCreated(token) {
+      console.log(token);
+      // handle the token
+      // send it to your server
+    },
+  },
 };
 </script>

@@ -172,19 +172,11 @@ export default {
     },
   },
   async created() {
-
-    if(store.getters.user_id == "")
+    if (store.getters.user_id == "")
       return;
-
-//    let $this = this;
-
-    console.log(store.getters.user_id);
-
+    
     const userData = await API.graphql({ query: getUser, variables:{id:store.getters.user_id} });
     var user = userData.data.getUser;
-
-    console.log(user);
-
     store.commit('setUserInfo', user);
   }
 };

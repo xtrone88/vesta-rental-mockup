@@ -69,7 +69,7 @@
 
 <script>
 import { onAuthUIStateChange } from "@aws-amplify/ui-components";
-import store from '@/store/store';
+import { querySelectorDeep } from 'query-selector-shadow-dom';
 
 export default {
   name: "SignIn",
@@ -99,7 +99,7 @@ export default {
           id = item.Value;
         }
       });
-      store.commit('setUserLogInfo', {id, state:true});
+      this.$store.commit('setUserLogInfo', {id, state:true});
     });
   },
 
@@ -112,6 +112,26 @@ export default {
       }
     `;
     amplifyShadow.appendChild(style);
+
+    const phone_numberize = this.stringHelpers.phone_numberize;
+    const observer = new MutationObserver((list) => {
+      console.log(list);
+      setTimeout(() => {
+        let phoneInput = querySelectorDeep(".phone-field>amplify-input>#phone", amplifyShadow);
+        if (phoneInput != null) {
+          phoneInput.addEventListener("keydown", phone_numberize);
+        }
+        let toast = querySelectorDeep("amplify-toast .toast", amplifyShadow);
+        if (toast != null) {
+          toast.style.borderRadius = "0px";
+          toast.style.backgroundColor = "#426d96";
+          // toast.style.left = "50%";
+          // toast.style.width = "auto";
+          // toast.style.transform = "translateX(-50%)";
+        }
+      }, 100);
+    });
+    observer.observe(amplifyShadow, {childList: true, subtree: true});
   }
 };
 </script>

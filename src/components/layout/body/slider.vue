@@ -7,7 +7,7 @@
   >
     <v-container class="pa-0">
       <v-img src="@/assets/home/slider1.png" class="full-width">
-        <div v-if="$vuetify.breakpoint.xs" class="d-flex fill-height pl-4">
+        <div class="d-flex d-sm-none fill-height pl-4">
           <v-col>
             <h3 class="white--text">
               We Believe that the <br />
@@ -24,13 +24,15 @@
           !$vuetify.breakpoint.xs ? 'search-position' : 'search-position-mobile',
         ]"
       >
-        <h2 v-if="!$vuetify.breakpoint.xs" class="text-center white--text">
-          We Believe that the
-          <span style="font-size: 32px">Vesta Lease</span> platform is a
-          <span
-            ><i><b>WIN – WIN – WIN</b></i></span
-          >
-        </h2>
+        <div class="d-none d-sm-flex">
+          <h2 class="text-center white--text">
+            We Believe that the
+            <span style="font-size: 32px">Vesta Lease</span> platform is a
+            <span
+              ><i><b>WIN – WIN – WIN</b></i></span
+            >
+          </h2>
+        </div>
 
         <div :class="[!$vuetify.breakpoint.xs ? 'white--text pa-2' : 'px-5']">
           <vuetify-google-autocomplete

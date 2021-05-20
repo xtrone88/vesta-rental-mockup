@@ -226,7 +226,6 @@
 // import Header from "./components/layout/header/header";
 // import Sidebar from "./components/layout/sidebar/sidebar";
 import Footer from "./components/layout/footer/footer";
-import store from "./store/store";
 import "./assets/css/main.css";
 
 export default {
@@ -241,10 +240,10 @@ export default {
       return "#242424";
     },
     notifCount: function () {
-      return store.getters.notifCount;
+      return this.$store.getters.notifCount;
     },
     loggedin: function () {
-      return store.getters.loginStatus;
+      return this.$store.getters.loginStatus;
     },
   },
   components: {
@@ -255,7 +254,8 @@ export default {
   }),
   methods: {
     logout() {
-      store.commit("setUserLogout");
+      this.$store.commit("setUserLogout");
+      this.$router.push("/account/login");
     },
   },
 };

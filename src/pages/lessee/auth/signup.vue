@@ -68,12 +68,12 @@ export default {
         placeholder: "Email.",
         required: false,
       },
-      {
-        type: "date",
-        label: "Date of Birth",
-        placeholder: "Date of Birth",
-        required: false,
-      },
+      // {
+      //   type: "date",
+      //   label: "Date of Birth",
+      //   placeholder: "Date of Birth",
+      //   required: false,
+      // },
       {
         type: "phone_number",
         label: "Phone Number",
@@ -91,29 +91,19 @@ export default {
   },
 
   mounted() {
+    const $router = this.$router;
+    const phone_numberize = this.stringHelpers.phone_numberize;
     setTimeout(function() {
       let phoneInput = querySelectorDeep(".phone-field>amplify-input>#phone", document.querySelector("amplify-sign-up"));
-      phoneInput.addEventListener("keydown", function(event) {
-        let value = event.target.value;
-        let cleaned = value.replace(/\D/g, '');
-        let match = cleaned.match(/^(\d{3})$/);
-        if (match) {
-          value = '(' + match[1] + ') ';
-          event.target.value = value;
-          return;
-        }
-        match = cleaned.match(/^(\d{3})(\d{3})$/);
-        if (match) {
-          value = '(' + match[1] + ') ' + match[2] + '-';
-          event.target.value = value;
-          return;
-        }
-        match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-        if (match) {
-          value = '(' + match[1] + ') ' + match[2] + '-' + match[3];
-          event.target.value = value;
-        }
-      });
+      if (phoneInput != null) {
+        phoneInput.addEventListener("keydown", phone_numberize);
+      }
+      let signinButton = querySelectorDeep(".sign-up-form-footer amplify-button", document.querySelector("amplify-sign-up"));
+      if (signinButton != null) {
+        signinButton.addEventListener("click", () => {
+          $router.push("/account/login")
+        });
+      }
     }, 1000);
   }
 };

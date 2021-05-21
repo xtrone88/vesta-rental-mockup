@@ -24,8 +24,11 @@ Will interface and re-use this view frontend:
         $table->string('description');
         $table->json('amenities');
         $table->json('apiData');
-        $table->decimal('rate',6,2);
-        $table->decimal('rate_weekend',6,2);
+        $table->decimal('base_price',6,2);
+        $table->decimal('weekend_base_price',6,2);
+        $table->decimal('weekly_price_factor',6,2);
+        $table->decimal('monthly_price_factor',6,2);
+        $table->tinyInteger('min_nights');
         ```
 
     1. Auction Collection and detail
@@ -169,8 +172,10 @@ Will interface and re-use this view frontend:
 
        1. Post signup email.
        1. High bidder lost email. (Sent when a user is no longer the high bidder)
+       1. Post auction won email.
 
     1. Guesty Integration:
        1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly
+       1. Book on guesty post auction
     1. Stripe
        1. Should Immediately charge the card upon auction ending.

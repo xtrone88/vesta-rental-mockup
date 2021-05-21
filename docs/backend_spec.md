@@ -126,9 +126,11 @@ Will interface and re-use this view frontend:
 1.  Bidding APIs
 
     1.  Watching
-        you watch an auction
+        
+          // you watch an auction
 
     ```
+      // you watch an auction
       $table->integer('user_id');
       $table->integer('auction_id');
       $table->unique(['user_id', 'auction_id']);
@@ -136,9 +138,11 @@ Will interface and re-use this view frontend:
     ```
 
     1.  Favorites
-        you favorite a property
+        
+        // you favorite a property
 
     ```
+      // you favorite a property
       $table->integer('user_id');
       $table->integer('property_id');
       $table->unique(['user_id', 'property_id']);

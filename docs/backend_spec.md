@@ -37,6 +37,7 @@ Will interface and re-use this view frontend:
         $table->date('booking_start_at'); // use dates instead of datetime until we have to change
         $table->date('booking_end_at');
         $table->string('status');
+        $table->integer('high_bidder_user')
         $table->decimal('highest_bid',6,2);
         $table->decimal('lease_it_now',6,2);
         $table->string('views');
@@ -156,7 +157,13 @@ Will interface and re-use this view frontend:
 1.  Expanded search APIs
     1.  should include location search by location name and by lat , lon pair or Geohash
 1.  Laravel Tasks
-    1.  Guesty Integration:
-        1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly
-    1.  Stripe
-        1. Should Immediately charge the card upon auction ending.
+
+    1. Email
+
+       1. Post signup email.
+       1. High bidder lost email. (Sent when a user is no longer the high bidder)
+
+    1. Guesty Integration:
+       1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly
+    1. Stripe
+       1. Should Immediately charge the card upon auction ending.

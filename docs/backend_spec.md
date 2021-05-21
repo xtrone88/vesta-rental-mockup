@@ -24,6 +24,8 @@ Will interface and re-use this view frontend:
         $table->string('description');
         $table->json('amenities');
         $table->json('apiData');
+        $table->decimal('rate',6,2);
+        $table->decimal('rate_weekend',6,2);
         ```
 
     1. Auction Collection and detail
@@ -88,20 +90,54 @@ Will interface and re-use this view frontend:
 1.  Transactions Listing
 
     ```
+    $table->id();
+    $table->timestamps();
     $table->integer('user_id'); // foreign key to user
     $table->integer('card_id'); // foreign key to stripe card
+
     $table->decimal('amount',9,2);
+    $table->string('status'); // success / failure
 
     ```
 
 1.  Stays Listing (won auctions)
+
+    ```
+    $table->id();
+    $table->timestamps();
+    $table->integer('user_id'); // foreign key to user
+    $table->integer('auction_id'); // potentially optional
+    $table->integer('property_id'); // potentially optional
+    $table->date('booking_start_at'); // use dates instead of datetime until we have to change
+    $table->date('booking_end_at');
+    ```
+
 1.  Property Bidding Status Api (can either be added into existing property detail or can be separate, should list the bids and the current price and the next bid)
+    Probably just return the highest bid along with the auction bids collection (obviously per auction)
 
 1.  Bidding APIs
+
     1.  Watching
+        you watch an auction
+
+    ```
+      $table->integer('user_id');
+      $table->integer('auction_id');
+
+    ```
+
     1.  Favorites
+        you favorite a property
+
+    ```
+      $table->integer('user_id');
+      $table->integer('property_id');
+
+    ```
+
     1.  Bidding
     1.  Notifications
+
 1.  Lessor APIs
     1.  Listing CRUD
     1.  Bookings

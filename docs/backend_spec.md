@@ -63,8 +63,10 @@ Will interface and re-use this view frontend:
 2. Authenticated Lessee APIs
 
    1. User Fields:
-      Possibly use Laravel Jetpack here to get started:
-      Even if not using Jetpack we want to use Laravel Fortify
+      Possibly use Laravel Jetstream here to get started:
+      Even if not using Jetstrem we want to use Laravel Fortify
+
+      TODO: Need to evaluate if https://jetstream.laravel.com/1.x/features/teams.html is enough to satisfy lessee / leasor / admin requirements.
 
       ```
       $table->string('first_name');

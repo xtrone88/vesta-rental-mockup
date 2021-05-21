@@ -191,7 +191,13 @@
                   NUMBER OF BIDS :
                   <span class="rounded-circle pa-1 bid-number">20</span>
                 </div>
-                <v-btn block class="mt-6 cyan white--text" @click="dialog = true"> BID NOW </v-btn>
+                <v-btn
+                  block
+                  class="mt-6 cyan white--text"
+                  @click="dialog = true"
+                >
+                  BID NOW
+                </v-btn>
                 <v-btn block class="mt-6 cyan white--text">
                   LEASE IT NOW FOR $654
                 </v-btn>
@@ -212,6 +218,17 @@
               Contact
             </v-btn>
           </v-col>
+        </v-row>
+        <v-row>
+          <v-card class="ma-3">
+            <v-card-title>dev data </v-card-title>
+            <v-card-text>
+              External URL:
+              <a :href="property.integrations[0].externalUrl">{{
+                property.integrations[0].externalUrl
+              }}</a>
+            </v-card-text>
+          </v-card>
         </v-row>
       </v-col>
     </v-row>
@@ -265,7 +282,7 @@ export default {
     ImageGallery,
     VueClamp,
     TextClamp,
-    BiddingDialog
+    BiddingDialog,
   },
   data: () => ({
     property: null,

@@ -8,47 +8,50 @@ Will interface and re-use this view frontend:
 
 1. Public APIs
 
-1. Properties Collection and detail
+   1. Properties Collection and detail
 
-   ```
-   $table->id();
-   $table->timestamps();
-   $table->string('guesty_id')->unique();
-   $table->tinyInteger('bedrooms');
-   $table->tinyInteger('baths');
-   $table->string('address1');
-   $table->string('address2');
-   $table->string('zip');
-   $table->string('city');
-   $table->string('description');
-   $table->json('amenities');
-   $table->json('apiData');
-   ```
 
-1. Auction Collection and detail
+        ```
+        $table->id();
+        $table->timestamps();
+        $table->string('guesty_id')->unique();
+        $table->tinyInteger('bedrooms');
+        $table->tinyInteger('baths');
+        $table->string('address1');
+        $table->string('address2');
+        $table->string('zip');
+        $table->string('city');
+        $table->string('description');
+        $table->json('amenities');
+        $table->json('apiData');
+        ```
 
-   ```
-   $table->id();
-   $table->timestamps();
-   $table->date('booking_start_at'); // use dates instead of datetime until we have to change
-   $table->date('booking_end_at');
-   $table->string('status');
-   $table->decimal('highest_bid');
-   $table->decimal('lease_it_now');
-   $table->string('views');
-   ```
+    1. Auction Collection and detail
 
-1. Auction Bids
-   ```
-   $table->id();
-   $table->timestamps();
-   $table->decimal('amount');
-   $table->integer('auction_id'); (foreign key to auction)
-   $table->integer('user_id'); (foreign key to user)
-   ```
 
-1)  Property detail
-1)  Contact API
+        ```
+        $table->id();
+        $table->timestamps();
+        $table->date('booking_start_at'); // use dates instead of datetime until we have to change
+        $table->date('booking_end_at');
+        $table->string('status');
+        $table->decimal('highest_bid');
+        $table->decimal('lease_it_now');
+        $table->string('views');
+        ```
+
+    1. Auction Bids
+
+
+        ```
+        $table->id();
+        $table->timestamps();
+        $table->decimal('amount');
+        $table->integer('auction_id'); (foreign key to auction)
+        $table->integer('user_id'); (foreign key to user)
+        ```
+
+    1.  Contact API
 
 2. Authenticated Lessee APIs
 
@@ -72,6 +75,22 @@ Will interface and re-use this view frontend:
       ```
 
    1. Stripe Card association
+
+      ```
+      $table->string('first_name');
+      $table->string('last_name');
+      $table->string('address1');
+      $table->string('address2');
+      $table->string('postal_code');
+      $table->string('city');
+      $table->string('state');
+      $table->string('phone'); // might should use some validator
+      //notifications
+      $table->boolean('notify_email');
+      $table->boolean('notify_text');
+      $table->boolean('notify_browser');
+      ```
+
    1. Transactions Listing
    1. Stays Listing (won auctions)
    1. Property Bidding Status Api (can either be added into existing property detail or can be separate, should list the bids and the current price and the next bid)
@@ -92,3 +111,5 @@ Will interface and re-use this view frontend:
    1. payments apis to show summaries of cards added to system
 6. Expanded search APIs
    1. should include location search by location name and by lat , lon pair or Geohash
+7. Guesty Integration:
+   1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly

@@ -4,4 +4,5 @@ Questions for MVP:
 - What periods will auctions be run? mon-sunday (fixed), variable periods?, only events / holidays?
 - What will define the success of the MVP?
 - Will we connect to other software other than Guesty? If so when?
+- Has it been considered to make Vesta Lease an official Guesty integration https://www.guesty.com/integrations-marketplace/ (would it even meet the requirements?)?
 - How soon will other leasors be taken on we notice that matt really had nothing for this, how soon will it matter?

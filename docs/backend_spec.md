@@ -42,7 +42,7 @@ Will interface and re-use this view frontend:
         $table->decimal('lease_it_now',6,2);
         $table->string('views');
         ```
-
+        Needs logic to ensure that auctions don't overlap for the same property.
     1. Auction Bids
 
 
@@ -67,6 +67,7 @@ Will interface and re-use this view frontend:
       Even if not using Jetstrem we want to use Laravel Fortify
 
       TODO: Need to evaluate if https://jetstream.laravel.com/1.x/features/teams.html is enough to satisfy lessee / leasor / admin requirements.
+      It seems like leasors might fit into teams, and maybe their guesty api key should be defined on teams. And possibly admin should just be a boolean on user account.
 
       ```
       $table->string('first_name');

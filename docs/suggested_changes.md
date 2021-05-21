@@ -31,3 +31,9 @@ I would argue the way to make this whole concept work is you literally buy up bl
 and it would take a huge seo budget as well
 
 but regardless letting the site do something while not having auctions scheduled seems to me like a great idea
+
+## Integrations
+
+someone does need to look at the integration market for guesty and other platforms and see if this project could somehow use that as a promotion method to gain more traction, it would give some credibility if accepted on many platforms a verified plugin to manage auctions (not sure if feasible or desired)
+
+https://www.guesty.com/integrations-marketplace/

@@ -35,8 +35,8 @@ Will interface and re-use this view frontend:
         $table->date('booking_start_at'); // use dates instead of datetime until we have to change
         $table->date('booking_end_at');
         $table->string('status');
-        $table->decimal('highest_bid');
-        $table->decimal('lease_it_now');
+        $table->decimal('highest_bid',6,2);
+        $table->decimal('lease_it_now',6,2);
         $table->string('views');
         ```
 
@@ -46,7 +46,7 @@ Will interface and re-use this view frontend:
         ```
         $table->id();
         $table->timestamps();
-        $table->decimal('amount');
+        $table->decimal('amount',6,2);
         $table->integer('auction_id'); (foreign key to auction)
         $table->integer('user_id'); (foreign key to user)
         ```
@@ -77,39 +77,44 @@ Will interface and re-use this view frontend:
    1. Stripe Card association
 
       ```
-      $table->string('first_name');
-      $table->string('last_name');
-      $table->string('address1');
-      $table->string('address2');
-      $table->string('postal_code');
-      $table->string('city');
-      $table->string('state');
-      $table->string('phone'); // might should use some validator
-      //notifications
-      $table->boolean('notify_email');
-      $table->boolean('notify_text');
-      $table->boolean('notify_browser');
+      $table->integer('user_id'); // foreign key to user
+      $table->string('card_token');
+
       ```
 
-   1. Transactions Listing
-   1. Stays Listing (won auctions)
-   1. Property Bidding Status Api (can either be added into existing property detail or can be separate, should list the bids and the current price and the next bid)
 
-3. Bidding APIs
-   1. Watching
-   1. Favorites
-   1. Bidding
-   1. Notifications
-4. Lessor APIs
-   1. Listing CRUD
-   1. Bookings
-   1. Bids
-   1. Transactions
-5. Admin APIs
-   1. Nearly identical to lessor but will show all accounts at once.
-   1. dashboard api to show summed values of likes / watching / bids
-   1. payments apis to show summaries of cards added to system
-6. Expanded search APIs
-   1. should include location search by location name and by lat , lon pair or Geohash
-7. Guesty Integration:
-   1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly
+      ```
+
+1.  Transactions Listing
+
+    ```
+    $table->integer('user_id'); // foreign key to user
+    $table->integer('card_id'); // foreign key to stripe card
+    $table->decimal('amount',9,2);
+
+    ```
+
+1.  Stays Listing (won auctions)
+1.  Property Bidding Status Api (can either be added into existing property detail or can be separate, should list the bids and the current price and the next bid)
+
+1.  Bidding APIs
+    1.  Watching
+    1.  Favorites
+    1.  Bidding
+    1.  Notifications
+1.  Lessor APIs
+    1.  Listing CRUD
+    1.  Bookings
+    1.  Bids
+    1.  Transactions
+1.  Admin APIs
+    1.  Nearly identical to lessor but will show all accounts at once.
+    1.  dashboard api to show summed values of likes / watching / bids
+    1.  payments apis to show summaries of cards added to system
+1.  Expanded search APIs
+    1.  should include location search by location name and by lat , lon pair or Geohash
+1.  Laravel Tasks
+    1.  Guesty Integration:
+        1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly
+    1.  Stripe
+        1. Should Immediately charge the card upon auction ending.

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import store from '../store/store';
+import store from "../store/store";
 
 import FAQPage from "../pages/public/faq";
 
@@ -69,23 +69,22 @@ const routes = [
   {
     path: "/contact/:propertyId",
     name: "Contact",
-    component: () => import(/* webpackChunkName: "contact" */ "../pages/public/contact.vue"),
-    
+    component: () => import(/* webpackChunkName: "contact" */ "../pages/public/contact.vue")
   },
   {
     path: "/contact",
     name: "ContactAny",
-    component: () => import(/* webpackChunkName: "contact" */ "../pages/public/contact.vue"),
+    component: () => import(/* webpackChunkName: "contact" */ "../pages/public/contact.vue")
   },
   {
     path: "/terms",
     name: "Terms",
-    component: () => import(/* webpackChunkName: "terms" */ "../pages/public/terms.vue"),
+    component: () => import(/* webpackChunkName: "terms" */ "../pages/public/terms.vue")
   },
   {
     path: "/privacy",
     name: "Privacy",
-    component: () => import(/* webpackChunkName: "privacy" */ "../pages/public/privacy.vue"),
+    component: () => import(/* webpackChunkName: "privacy" */ "../pages/public/privacy.vue")
   },
   {
     // path: "/properties",
@@ -98,17 +97,24 @@ const routes = [
   {
     path: "/locations/:address",
     name: "Locations",
-    component: () => import(/* webpackChunkName: "propertieslistpage" */ "../pages/public/properties/properties.list"),
+    component: () =>
+      import(
+        /* webpackChunkName: "propertieslistpage" */ "../pages/public/properties/properties.list"
+      )
   },
   {
     path: "/properties/:propertyId",
     name: "PropertyDetail",
-    component: () => import(/* webpackChunkName: "propertydetailpage" */ "../pages/public/properties/property.detail"),
+    component: () =>
+      import(
+        /* webpackChunkName: "propertydetailpage" */ "../pages/public/properties/property.detail"
+      )
   },
   {
     path: "/bidhistory/:propertyId",
     name: "BidHistory",
-    component: () => import(/* webpackChunkName: "bidhistory" */ "../pages/public/properties/bid.history"),
+    component: () =>
+      import(/* webpackChunkName: "bidhistory" */ "../pages/public/properties/bid.history")
   },
   {
     path: "/about",
@@ -130,100 +136,104 @@ const routes = [
     path: "/account",
     name: "Account",
     component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/lessee.vue"),
-    
+
     children: [
       //test
       {
         path: "test",
         name: "Test Amplify Page",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/test.auth.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       // main
       {
         path: "settings",
         name: "SettingsDashboardPage",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/settings.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         path: "watching",
         name: "Watching",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/watching.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         path: "login",
         name: "Login",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signin.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signin.vue")
       },
       {
         path: "login_old",
         name: "LoginOld",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/login.old.vue"),
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../pages/lessee/auth/login.old.vue")
       },
       {
         path: "signup",
         name: "SignUp",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signup.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signup.vue")
       },
       {
         path: "signup_old",
         name: "SignUpOld",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signup.old.vue"),
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../pages/lessee/auth/signup.old.vue")
       },
       {
         path: "logout",
         name: "Logout",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/logout.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/auth/logout.vue")
       },
       {
         path: "bidding",
         name: "Bidding",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/bidding.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         path: "transactions",
         name: "Transactions",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/transactions.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         path: "favorites",
         name: "Favorites",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/favorites.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         path: "notifications",
         name: "Notifications",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/notifications.vue"),
-        meta: { requiresAuth: true }
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../pages/lessee/notifications.vue"),
+        meta: { requiresAuth: false }
       },
       {
         path: "notifications/settings",
         name: "NotificationSettings",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/notifications.settings.vue"),
-        meta: { requiresAuth: true }
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../pages/lessee/notifications.settings.vue"),
+        meta: { requiresAuth: false }
       },
       {
         path: "personalinfo",
         name: "personalinfo",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/personalinfo.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         path: "payments",
         name: "payments",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/payments.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       },
       {
         path: "wonauction/:propertyId",
         name: "WonAuction",
         component: () => import(/* webpackChunkName: "about" */ "../pages/lessee/wonauction.vue"),
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: false }
       }
     ]
   },
@@ -238,27 +248,27 @@ const routes = [
       {
         path: "dashboard",
         name: "LessorDashboard",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/dashboard.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/dashboard.vue")
       },
       {
         path: "listings",
         name: "LessorListings",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/listings.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/listings.vue")
       },
       {
         path: "bookings",
         name: "LessorBookings",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/bookings.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/bookings.vue")
       },
       {
         path: "revenue",
         name: "LessorRevenue",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/revenue.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/revenue.vue")
       },
       {
         path: "bidding",
         name: "LessorBidding",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/bidding.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/lessor/bidding.vue")
       }
     ]
   },
@@ -272,34 +282,35 @@ const routes = [
       {
         path: "dashboard",
         name: "AdminDashboard",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/dashboard/index.vue"),
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../pages/admin/dashboard/index.vue")
       },
       {
         path: "listings",
         name: "AdminListings",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/listings.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/listings.vue")
       },
       {
         path: "bookings",
         name: "AdminBookings",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/bookings.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/bookings.vue")
       },
       {
         path: "lessees",
         name: "AdminLessees",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/lessees.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/lessees.vue")
       },
       {
         path: "lessors",
         name: "AdminLessors",
-        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/lessors.vue"),
+        component: () => import(/* webpackChunkName: "about" */ "../pages/admin/lessors.vue")
       }
     ]
   },
   {
     path: "*",
     name: "Not Found",
-    component: () => import(/* webpackChunkName: "about" */ "../pages/notfound.vue"),
+    component: () => import(/* webpackChunkName: "about" */ "../pages/notfound.vue")
   }
 ];
 
@@ -321,13 +332,13 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!store.getters.loginStatus) {
       next({
-        path: '/account/login',
+        path: "/account/login",
         query: { redirect: to.fullPath }
-      })
+      });
       return;
     }
   }
-  next()
+  next();
 });
 
 export default router;

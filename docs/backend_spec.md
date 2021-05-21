@@ -129,8 +129,8 @@ Will interface and re-use this view frontend:
 1.  Bidding APIs
 
     1.  Watching
-        
-          // you watch an auction
+
+        // you watch an auction
 
     ```
       // you watch an auction
@@ -141,7 +141,7 @@ Will interface and re-use this view frontend:
     ```
 
     1.  Favorites
-        
+
         // you favorite a property
 
     ```
@@ -171,11 +171,12 @@ Will interface and re-use this view frontend:
     1. Email
 
        1. Post signup email.
-       1. High bidder lost email. (Sent when a user is no longer the high bidder)
+       1. High bidder lost email. (Sent when a user is no longer the high bidder, happens immediately so user can bid again)
        1. Post auction won email.
+       1. Pre - Stay email (1 day before stay send at 9am CST)
 
     1. Guesty Integration:
        1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly
-       1. Book on guesty post auction
+       1. Add Booking on guesty post auction using the create reservation api https://docs.guesty.com/#create-a-reservation
     1. Stripe
        1. Should Immediately charge the card upon auction ending.

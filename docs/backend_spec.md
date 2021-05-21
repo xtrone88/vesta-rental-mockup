@@ -51,7 +51,11 @@ Will interface and re-use this view frontend:
         $table->decimal('amount',6,2);
         $table->integer('auction_id'); (foreign key to auction)
         $table->integer('user_id'); (foreign key to user)
+
+
         ```
+
+        we could do $table->unique(['user_id', 'auction_id', 'amount']); but I think not necessary.
 
     1.  Contact API
 
@@ -123,6 +127,7 @@ Will interface and re-use this view frontend:
     ```
       $table->integer('user_id');
       $table->integer('auction_id');
+      $table->unique(['user_id', 'auction_id']);
 
     ```
 
@@ -132,6 +137,7 @@ Will interface and re-use this view frontend:
     ```
       $table->integer('user_id');
       $table->integer('property_id');
+      $table->unique(['user_id', 'property_id']);
 
     ```
 

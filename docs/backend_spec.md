@@ -12,8 +12,8 @@ Will interface and re-use this view frontend:
 
         ```
         $table->id();
-        $table->integer('team_id');  //jetstream team foreign key
         $table->timestamps();
+        $table->integer('team_id');  //jetstream team foreign key
         $table->string('guesty_id')->unique();
         $table->tinyInteger('bedrooms');
         $table->tinyInteger('baths');
@@ -159,17 +159,41 @@ Will interface and re-use this view frontend:
     1.  Notifications
 
 1.  Lessor APIs
+
     1.  Listing CRUD
     1.  Bookings
     1.  Bids
     1.  Transactions
-1.  Admin APIs
+
+1.  Leasor Models
+    1.  TeamGuestyAPI
+    
+        ```
+        // one to one model for team
+        $table->id();
+      
+        $table->timestamps();
+        $table->integer('team_id');  //jetstream team foreign key
+        $table->string('guesty_api_key');
+        $table->string('guesty_api_secret');
+        ``
+    1.  TeamStripe
+    
+        ```
+        // one to one model for team
+        $table->id();
+        $table->timestamps();
+        $table->integer('team_id');  //jetstream team foreign key
+        $table->string('stripe_secret');
+        $table->string('stripe_publishable_key');
+        ```
+3.  Admin APIs
     1.  Nearly identical to lessor but will show all accounts at once.
     1.  dashboard api to show summed values of likes / watching / bids
     1.  payments apis to show summaries of cards added to system
-1.  Expanded search APIs
+4.  Expanded search APIs
     1.  should include location search by location name and by lat , lon pair or Geohash
-1.  Laravel Tasks
+5.  Laravel Tasks
 
     1. Email
 

@@ -117,6 +117,15 @@ Will interface and re-use this view frontend:
       $table->boolean('notify_email');
       $table->boolean('notify_text');
       $table->boolean('notify_browser');
+      
+      $table->boolean('is_leasor');  //enables team functionality
+      $table->boolean('is_admin');
+      ```
+      
+      ```
+      Team roles:
+      Admin 
+      Property Manager - Right now same permissions as admin, might change in future
       ```
 
    1. Stripe Card association
@@ -132,7 +141,6 @@ Will interface and re-use this view frontend:
       ```
 
 
-      ```
 
 1.  Transactions Listing
 

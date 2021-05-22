@@ -11,17 +11,22 @@ Will interface and re-use this view frontend:
 
 
         ```
+        // use SoftDeletes;
         $table->id();
         $table->timestamps();
-        $table->integer('team_id');  //jetstream team foreign key
+        $table->unsignedBigInteger('team_id')->nullable();  //jetstream team foreign key
+        $table->foreignId('team_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
         $table->string('guesty_id')->unique();
-        $table->tinyInteger('bedrooms');
-        $table->tinyInteger('baths');
+        $table->unsignedTinyInteger('bedrooms');
+        $table->unsignedTinyInteger('baths');
         $table->string('address1');
         $table->string('address2');
         $table->string('postal_code');
         $table->string('city');
-        $table->double('longitude');
+        $table->double('longitude');  // maybe use point instead
         $table->double('latitude');
         $table->string('description');
         $table->json('amenities');
@@ -37,14 +42,27 @@ Will interface and re-use this view frontend:
 
 
         ```
+        // use SoftDeletes;
         $table->id();
         $table->timestamps();
-        $table->integer('team_id');  //jetstream team foreign key
-        $table->integer('property_id');  //property foreign key
+        $table->unsignedBigInteger('team_id')->nullable();  //jetstream team foreign key
+        $table->foreignId('team_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
+        $table->unsignedBigInteger('property_id')->nullable();  //property foreign key
+        $table->foreignId('property_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
         $table->date('booking_start_at'); // use dates instead of datetime until we have to change
         $table->date('booking_end_at');
         $table->string('status')
-        $table->integer('high_bidder_user'); // foreign key to user model
+        $table->unsignedBigInteger('high_bidder_user')->nullable(); // foreign key to user model this foreign key
+        $table->foreignId('team_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
         $table->decimal('highest_bid',6,2);
         $table->decimal('lease_it_now',6,2);
         $table->string('views');
@@ -57,8 +75,16 @@ Will interface and re-use this view frontend:
         $table->id();
         $table->timestamps();
         
-        $table->integer('auction_id'); // (foreign key to auction)
-        $table->integer('user_id'); // (foreign key to user)
+        $table->unsignedBigInteger('auction_id'); // (foreign key to auction)
+        $table->foreignId('auction_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
+        $table->unsignedBigInteger('user_id'); // (foreign key to user)
+        $table->foreignId('user_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
         $table->decimal('amount',6,2);
 
 
@@ -95,7 +121,11 @@ Will interface and re-use this view frontend:
    1. Stripe Card association
 
       ```
-      $table->integer('user_id'); // foreign key to user
+      $table->unsignedBigInteger('user_id'); // foreign key to user
+      $table->foreignId('user_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
       $table->string('card_token');
 
       ```
@@ -108,8 +138,8 @@ Will interface and re-use this view frontend:
     ```
     $table->id();
     $table->timestamps();
-    $table->integer('user_id'); // foreign key to user
-    $table->integer('card_id'); // foreign key to stripe card
+    $table->unsignedBigInteger('user_id'); // foreign key to user
+    $table->unsignedBigInteger('card_id'); // foreign key to stripe card
 
     $table->decimal('amount',9,2);
     $table->string('status'); // success / failure
@@ -121,9 +151,21 @@ Will interface and re-use this view frontend:
     ```
     $table->id();
     $table->timestamps();
-    $table->integer('user_id'); // foreign key to user
-    $table->integer('auction_id'); // potentially optional
-    $table->integer('property_id'); // potentially optional
+    $table->unsignedBigInteger('user_id'); // foreign key to user
+    $table->foreignId('user_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
+    $table->unsignedBigInteger('auction_id'); // potentially optional
+    $table->foreignId('user_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
+    $table->unsignedBigInteger('property_id')->nullable(); // potentially optional
+    $table->foreignId('property_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('set null');
     $table->date('booking_start_at'); // use dates instead of datetime until we have to change
     $table->date('booking_end_at');
     ```
@@ -139,8 +181,16 @@ Will interface and re-use this view frontend:
 
     ```
       // you watch an auction
-      $table->integer('user_id');
-      $table->integer('auction_id');
+      $table->unsignedBigInteger('user_id');
+      $table->foreignId('user_id')
+      ->constrained()
+      ->onUpdate('cascade')
+      ->onDelete('cascade');
+      $table->unsignedBigInteger('auction_id');
+      $table->foreignId('auction_id')
+      ->constrained()
+      ->onUpdate('cascade')
+      ->onDelete('cascade');
       $table->unique(['user_id', 'auction_id']);
 
     ```
@@ -151,8 +201,16 @@ Will interface and re-use this view frontend:
 
     ```
       // you favorite a property
-      $table->integer('user_id');
-      $table->integer('property_id');
+      $table->unsignedBigInteger('user_id');
+      $table->foreignId('user_id')
+      ->constrained()
+      ->onUpdate('cascade')
+      ->onDelete('cascade');
+      $table->unsignedBigInteger('property_id');
+      $table->foreignId('property_id')
+      ->constrained()
+      ->onUpdate('cascade')
+      ->onDelete('cascade');
       $table->unique(['user_id', 'property_id']);
 
     ```
@@ -175,7 +233,11 @@ Will interface and re-use this view frontend:
         $table->id();
       
         $table->timestamps();
-        $table->integer('team_id');  //jetstream team foreign key
+        $table->unsignedBigInteger('team_id');  //jetstream team foreign key
+        $table->foreignId('team_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('cascade');
         $table->string('guesty_api_key');
         $table->string('guesty_api_secret');
         ``
@@ -185,7 +247,11 @@ Will interface and re-use this view frontend:
         // one to one model for team
         $table->id();
         $table->timestamps();
-        $table->integer('team_id');  //jetstream team foreign key
+        $table->unsignedBigInteger('team_id');  //jetstream team foreign key
+        $table->foreignId('team_id')
+          ->constrained()
+          ->onUpdate('cascade')
+          ->onDelete('cascade');
         $table->string('stripe_secret');
         $table->string('stripe_publishable_key');
         ```

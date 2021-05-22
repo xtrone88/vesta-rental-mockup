@@ -2,7 +2,6 @@ Backend should be Laravel 8.0 + PHP version should be 7.4._ or 8.0._. postgresq 
 
 We will deploy the backend via heroku. The frontend can either be combined into the backend via mix / inertia or deployed separately to heroku or cloudfront / s3 (cloudfront for https).
 
-Use https://github.com/InfyOmLabs/laravel-generator for scaffold generating or use https://orchid.software/en/docs/ for backend generation.
 
 Will interface and re-use this view frontend:
 
@@ -13,6 +12,7 @@ Will interface and re-use this view frontend:
 
         ```
         $table->id();
+        $table->integer('team_id');  //jetstream team foreign key
         $table->timestamps();
         $table->string('guesty_id')->unique();
         $table->tinyInteger('bedrooms');
@@ -37,6 +37,8 @@ Will interface and re-use this view frontend:
         ```
         $table->id();
         $table->timestamps();
+        $table->integer('team_id');  //jetstream team foreign key
+        $table->integer('property_id');  //property foreign key
         $table->date('booking_start_at'); // use dates instead of datetime until we have to change
         $table->date('booking_end_at');
         $table->string('status');
@@ -52,9 +54,10 @@ Will interface and re-use this view frontend:
         ```
         $table->id();
         $table->timestamps();
-        $table->decimal('amount',6,2);
+        
         $table->integer('auction_id'); (foreign key to auction)
         $table->integer('user_id'); (foreign key to user)
+        $table->decimal('amount',6,2);
 
 
         ```

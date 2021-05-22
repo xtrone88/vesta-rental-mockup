@@ -19,8 +19,10 @@ Will interface and re-use this view frontend:
         $table->tinyInteger('baths');
         $table->string('address1');
         $table->string('address2');
-        $table->string('zip');
+        $table->string('postal_code');
         $table->string('city');
+        $table->double('longitude');
+        $table->double('latitude');
         $table->string('description');
         $table->json('amenities');
         $table->json('apiData');
@@ -41,8 +43,8 @@ Will interface and re-use this view frontend:
         $table->integer('property_id');  //property foreign key
         $table->date('booking_start_at'); // use dates instead of datetime until we have to change
         $table->date('booking_end_at');
-        $table->string('status');
-        $table->integer('high_bidder_user'); foreign key to user model
+        $table->string('status')
+        $table->integer('high_bidder_user'); // foreign key to user model
         $table->decimal('highest_bid',6,2);
         $table->decimal('lease_it_now',6,2);
         $table->string('views');
@@ -55,8 +57,8 @@ Will interface and re-use this view frontend:
         $table->id();
         $table->timestamps();
         
-        $table->integer('auction_id'); (foreign key to auction)
-        $table->integer('user_id'); (foreign key to user)
+        $table->integer('auction_id'); // (foreign key to auction)
+        $table->integer('user_id'); // (foreign key to user)
         $table->decimal('amount',6,2);
 
 

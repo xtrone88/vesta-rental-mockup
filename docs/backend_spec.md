@@ -42,7 +42,7 @@ Will interface and re-use this view frontend:
         $table->date('booking_start_at'); // use dates instead of datetime until we have to change
         $table->date('booking_end_at');
         $table->string('status');
-        $table->integer('high_bidder_user')
+        $table->integer('high_bidder_user'); foreign key to user model
         $table->decimal('highest_bid',6,2);
         $table->decimal('lease_it_now',6,2);
         $table->string('views');

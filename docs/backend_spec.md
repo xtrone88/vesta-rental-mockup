@@ -280,7 +280,7 @@ Will interface and re-use this view frontend:
        1. Pre - Stay email (1 day before stay send at 9am CST)
 
     1. Guesty Integration:
-       1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly
+       1. Should be able to sync properties with [Guesty](https://docs.guesty.com/) with a command and cron job occurring hourly. Sync may get confusing if we allow them to edit properties on our site, long term we likely will support non-guesty properties which will require additional attributes and local images.  If we allow even sorting of images locally, this will get complex.
        1. Add Booking on guesty post auction using the create reservation api https://docs.guesty.com/#create-a-reservation
     1. Stripe
        1. Should Immediately charge the card upon auction ending.

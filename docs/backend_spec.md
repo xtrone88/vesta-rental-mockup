@@ -35,7 +35,8 @@ Will interface and re-use this view frontend:
         $table->decimal('weekend_base_price',6,2);
         $table->decimal('weekly_price_factor',6,2);
         $table->decimal('monthly_price_factor',6,2);
-        $table->tinyInteger('min_nights');
+        $table->unsignedTinyInteger('min_nights');
+        $table->unsignedTinyInteger('turnover_days');
         ```
 
     1. Auction Collection and detail

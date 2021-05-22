@@ -2,7 +2,7 @@ Backend should be Laravel 8.0 + PHP version should be 7.4._ or 8.0._. postgresq 
 
 We will deploy the backend via heroku. The frontend can either be combined into the backend via mix / inertia or deployed separately to heroku or cloudfront / s3 (cloudfront for https).
 
-Use https://github.com/InfyOmLabs/laravel-generator for scaffold generating.
+Use https://github.com/InfyOmLabs/laravel-generator for scaffold generating or use https://orchid.software/en/docs/ for backend generation.
 
 Will interface and re-use this view frontend:
 

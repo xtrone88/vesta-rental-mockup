@@ -35,4 +35,4 @@ No  | Function | Expected Period (days)
 | - | high bidder lost | 1
 | - | won auction | 1
 | - | pre-stay | 1
-9 | Total | Approximately 6 weeks \n Expecting feedbacks and other additional works, 8 weeks
+9 | Total | Approximately 6 weeks <br> Expecting feedbacks and other additional works, 8 weeks

@@ -39,7 +39,8 @@
             ref="address"
             class="pa-0 mb-0"
             prepend-icon="mdi-crosshairs-gps"
-            placeholder="Enter an address, neighborhood, city or ZIP code"
+            types="(cities)"
+            placeholder="Enter neighborhood, city or ZIP code"
             v-on:placechanged="getAddressData"
           >
           </vuetify-google-autocomplete>
@@ -56,13 +57,13 @@ export default {
   components: {},
 
   data: () => ({
-    
+
   }),
 
   computed: {},
 
   watch: {
-    
+
   },
 
   methods: {

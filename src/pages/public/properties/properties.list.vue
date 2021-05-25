@@ -30,6 +30,7 @@
               v-model="address"
               prepend-icon="mdi-target"
               placeholder="Location"
+              types="(cities)"
               v-on:placechanged="getAddressData"
             >
             </vuetify-google-autocomplete>

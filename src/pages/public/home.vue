@@ -35,9 +35,11 @@ import Renting from "@/components/layout/body/renting";
 import Deals from "@/components/layout/body/deals";
 
 export default {
-  title: "Vesta Lease",
-  name: "HomePage",
-  methods: {},
+  methods: {
+    getAddressData: function (addressData /*, placeResultData, id*/) {
+      this.$router.push({ path: "/properties/" + addressData.name });
+    },
+  },
   components: {
     Slider,
     Renting,
